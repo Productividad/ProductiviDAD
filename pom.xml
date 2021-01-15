@@ -30,5 +30,10 @@
 		    <artifactId>jfoenix</artifactId>
 		    <version>9.0.10</version>
 		</dependency>
+				<dependency>
+			<groupId>org.hildan.fxgson</groupId>
+			<artifactId>fx-gson</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
 </project>
