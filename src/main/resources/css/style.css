@@ -11,6 +11,12 @@ Paleta:
     -Negro:             #363434
 */
 
+#calendarioVBox
+{	
+	-fx-background-image: url('../images/appointment.png');
+	-fx-background-size: stretch;
+}
+
 .titled-pane > .title
 {
     -fx-padding: 1.166667em 0.16em 0.85em 1.17em; /*Alto del title*/
@@ -23,7 +29,7 @@ Paleta:
 linear-gradient(to bottom, derive(-fx-color,-02%), derive(-fx-color,65%) 12%,      derive(-fx-color,23%) 88%, derive(-fx-color,50%) 99%, -fx-box-border);
 -fx-background-insets: 0, 0 1 1 1;
 -fx-padding: 0.167em;
- }
+}
 
 #calendario > .title
 {

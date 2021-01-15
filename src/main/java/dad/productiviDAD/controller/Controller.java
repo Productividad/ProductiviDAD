@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,5 +37,35 @@ public class Controller implements Initializable {
 	}
 	public BorderPane getView() {
 		return this.view;
+	}
+	
+	@FXML
+	private void onCalendarAction(ActionEvent event) {
+		 		 
+	}
+
+	@FXML
+	private void onEntryReaderAction(ActionEvent event) {
+
+	}
+
+	@FXML
+	private void onExpenseHistory(ActionEvent event) {
+
+	}
+
+	@FXML
+	private void onIdeasAction(ActionEvent event) {
+
+	}
+
+	@FXML
+	private void onProyectManagerAction(ActionEvent event) {
+
+	}
+
+	@FXML
+	private void onTaskHistoryAction(ActionEvent event) {
+
 	}
 }
