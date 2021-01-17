@@ -34,14 +34,14 @@ Prototipo de inferfaz
 
 Bosquejos de la interfaz
 
-![](github_images/1_Perfiles.bmp)
+![](github_images/1.bmp)
 
-![](github_images/2_MainView.bmp)
+![](github_images/2.bmp)
 
-![](github_images/3_MenuBar.bmp)
+![](github_images/3.bmp)
 
-![](github_images/4.-Caleandario.bmp)
+![](github_images/4.bmp)
 
-![](github_images/5.-Gestor de proyectos.bmp)
+![](github_images/5.bmp)
 
-![](github_images/6.-Gestor de gastos.bmp)
+![](github_images/6.bmp)
