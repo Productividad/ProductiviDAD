@@ -30,3 +30,18 @@ Prototipo de inferfaz
 
 ![img](https://cdn.discordapp.com/attachments/788716046089191454/798953312258490378/MainConcept.jpg)
 
+
+
+Bosquejos de la interfaz
+
+![](github_images/1_Perfiles.bmp)
+
+![](github_images/2_MainView.bmp)
+
+![](github_images/3_MenuBar.bmp)
+
+![](github_images/4.-Caleandario.bmp)
+
+![](github_images/5.-Gestor de proyectos.bmp)
+
+![](github_images/6.-Gestor de gastos.bmp)

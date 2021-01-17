@@ -11,11 +11,15 @@ Paleta:
     -Negro:             #363434
 */
 
-#calendarioVBox
-{	
-	-fx-background-image: url('../images/appointment.png');
-	-fx-background-size: stretch;
+/*
+#calendarVBox
+{
+	-fx-background-image:url("../images/appointment.png");
+	-fx-background-position:center;
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:contain;
 }
+*/
 
 .titled-pane > .title
 {
@@ -67,8 +71,19 @@ linear-gradient(to bottom, derive(-fx-color,-02%), derive(-fx-color,65%) 12%,   
 }
 #topBar
 {
-    -fx-background-color: #363434;
+    -fx-background-color: #241623;
 }
+
+#buttonPane
+{
+    -fx-background-color: #948392;
+}
+
+.VBox
+{
+	-fx-background-color: #CAC1C9;
+}
+
 #topSidePane
 {
     -fx-background-color: #4C4C4C;
