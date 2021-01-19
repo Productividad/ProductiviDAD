@@ -10,20 +10,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class Controller implements Initializable {
 
 	//View
-	 @FXML
-	 private BorderPane view;
-
-	 @FXML
-	 private HBox topBar;
 	 
-	 @FXML
-	 private TitledPane calendario,historialTareas,buJoReader, gestorProyectos,
-	    				ideas,gestorGastos,tareasDia;
+	@FXML
+	private BorderPane view;
+
+	@FXML
+	private TitledPane historialTareas;
+
+	@FXML
+	private TitledPane buJoReader;
+
+	@FXML
+	private TitledPane gestorProyectos;
+
+	@FXML
+	private TitledPane ideas;
+
+	@FXML
+	private TitledPane gestorGastos;
+
+	@FXML
+	private TitledPane calendario;
+
+	@FXML
+	private VBox calendarVBox;
 
 	public Controller() throws IOException{
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
@@ -39,33 +54,43 @@ public class Controller implements Initializable {
 		return this.view;
 	}
 	
-	@FXML
-	private void onCalendarAction(ActionEvent event) {
-		 		 
-	}
+    @FXML
+    void onCalendarAction(ActionEvent event) {
 
-	@FXML
-	private void onEntryReaderAction(ActionEvent event) {
+    }
 
-	}
+    @FXML
+    void onEntryReaderAction(ActionEvent event) {
 
-	@FXML
-	private void onExpenseHistory(ActionEvent event) {
+    }
 
-	}
+    @FXML
+    void onExpenseHistory(ActionEvent event) {
 
-	@FXML
-	private void onIdeasAction(ActionEvent event) {
+    }
 
-	}
+    @FXML
+    void onHomeAction(ActionEvent event) {
 
-	@FXML
-	private void onProyectManagerAction(ActionEvent event) {
+    }
 
-	}
+    @FXML
+    void onIdeasAction(ActionEvent event) {
 
-	@FXML
-	private void onTaskHistoryAction(ActionEvent event) {
+    }
 
-	}
+    @FXML
+    void onProyectManagerAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onTaskHistoryAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onToolsAction(ActionEvent event) {
+
+    }
 }

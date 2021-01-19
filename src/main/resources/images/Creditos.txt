@@ -5,3 +5,7 @@
 "Icon made by Becris from www.flaticon.com"
 "Icon made by Roundicons from www.flaticon.com"
 
+
+SVG
+https://dribbble.com/shots/1182482-budicon-tester
+https://icons.getbootstrap.com
