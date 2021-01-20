@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="view" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
@@ -25,18 +26,50 @@
                   <String fx:value="user-button" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onHomeAction">
+            <Button mnemonicParsing="false">
                <styleClass>
                   <String fx:value="side-custom-button" />
                   <String fx:value="home-button" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onToolsAction">
+            <Button disable="true" maxHeight="2.0" minHeight="2.0" mnemonicParsing="false" styleClass="separator" />
+            <Button mnemonicParsing="false">
                <styleClass>
                   <String fx:value="side-custom-button" />
-                  <String fx:value="tool-button" />
+                  <String fx:value="calendar-button" />
                </styleClass>
             </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="side-custom-button" />
+                  <String fx:value="reader-button" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="side-custom-button" />
+                  <String fx:value="project-manager-button" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="side-custom-button" />
+                  <String fx:value="idea-button" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="side-custom-button" />
+                  <String fx:value="expenses-button" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="side-custom-button" />
+                  <String fx:value="clock-button" />
+               </styleClass>
+            </Button>
+            <Button disable="true" maxHeight="2.0" minHeight="2.0" mnemonicParsing="false" styleClass="separator" />
             <Button mnemonicParsing="false">
                <styleClass>
                   <String fx:value="side-custom-button" />
@@ -54,143 +87,22 @@
             <String fx:value="secondary-color" />
             <String fx:value="side-menu-bar" />
          </styleClass>
+         <padding>
+            <Insets bottom="15.0" top="15.0" />
+         </padding>
       </VBox>
    </left>
-   <center>
-      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="main-color" BorderPane.alignment="CENTER">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
-            <ColumnConstraints hgrow="NEVER" prefWidth="40.0" />
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
-            <ColumnConstraints hgrow="NEVER" prefWidth="40.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="350.0" />
-            <ColumnConstraints hgrow="SOMETIMES" prefWidth="40.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints prefHeight="40.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="250.0" vgrow="ALWAYS" />
-            <RowConstraints prefHeight="40.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="250.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="40.0" vgrow="NEVER" />
-        </rowConstraints>
-         <children>
-            <TitledPane fx:id="historialTareas" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="custom-titledPane" text="Historial de tareas" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/history.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onTaskHistoryAction" ripplerFill="#cf9a00" text=" " GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-            <TitledPane fx:id="buJoReader" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Lector de entradas" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/bullet.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onEntryReaderAction" ripplerFill="#9b1e3f" text=" " GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
-            <TitledPane fx:id="gestorProyectos" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Gestor de proyectos" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/analytics.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onProyectManagerAction" ripplerFill="#9d2828" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TitledPane fx:id="ideas" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Ideas" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/lamp.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onIdeasAction" ripplerFill="#6287d6" text=" " GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TitledPane fx:id="gestorGastos" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Historial de gastos" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/coin.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onExpenseHistory" ripplerFill="#360241" text=" " GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <TitledPane fx:id="calendario" animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Calendario" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <content>
-                  <VBox fx:id="calendarVBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="250.0">
-                     <children>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/appointment.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
-            <JFXButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onCalendarAction" ripplerFill="#007878" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-   </center>
    <top>
-      <GridPane styleClass="secondary-color" BorderPane.alignment="CENTER">
+      <GridPane fx:id="topBar" styleClass="secondary-color" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="NEVER" maxWidth="477.0" minWidth="10.0" prefWidth="47.75" />
           <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="925.0" spacing="15.0" styleClass="top-menu-bar" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" styleClass="top-menu-bar" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                <children>
                   <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
@@ -218,4 +130,43 @@
          </children>
       </GridPane>
    </top>
+   <center>
+      <VBox minHeight="800.0" minWidth="705.0" prefHeight="800.0" prefWidth="705.0" styleClass="main-color" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox prefHeight="800.0" prefWidth="345.0" styleClass="tertiary-color" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Titulo de la tarea visionado en un TextField" GridPane.columnSpan="2" />
+                  <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Contenido de la tarea siendo visualizado en un TextArea&#10;" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER" spacing="150.0">
+               <children>
+                  <Label prefHeight="50.0" text="Añadir una tarea" textFill="WHITE">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <ImageView pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/add.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <JFXListView fx:id="listView" styleClass="tertiary-color" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

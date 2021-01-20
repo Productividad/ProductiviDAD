@@ -1,28 +1,21 @@
-/*
-#calendarVBox
-{
-	-fx-background-image:url("../images/appointment.png");
-	-fx-background-position:center;
-	-fx-background-repeat:no-repeat;
-	-fx-background-size:contain; 
-}   
-*/       
- 
-@import "menuSideBar.css";
-@import "mainViewButton.css";
+@import "menuSideBar.css";  
 @import "topBar.css";
   
-.main-color
+.main-color 
 {
-    -fx-background-color:#948392;
+    -fx-background-color:#948392;   
 }
 .secondary-color
-{
+{   
     -fx-background-color:#241623;
+}
+.tertiary-color
+{
+	-fx-background-color:#35305A;
 }
 .highlight-color
 {
-    -fx-background-color:#918CAB;
+    -fx-background-color:#4C3B4D;
 }
 
 .top-menu-bar

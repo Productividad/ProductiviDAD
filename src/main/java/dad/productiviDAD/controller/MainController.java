@@ -4,43 +4,33 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXListView;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class Controller implements Initializable {
+public class MainController implements Initializable {
 
 	//View
 	 
-	@FXML
-	private BorderPane view;
-
-	@FXML
-	private TitledPane historialTareas;
-
-	@FXML
-	private TitledPane buJoReader;
-
-	@FXML
-	private TitledPane gestorProyectos;
-
-	@FXML
-	private TitledPane ideas;
-
-	@FXML
-	private TitledPane gestorGastos;
-
-	@FXML
-	private TitledPane calendario;
-
-	@FXML
-	private VBox calendarVBox;
-
-	public Controller() throws IOException{
+    @FXML
+    private BorderPane view; 
+    
+    @FXML
+    private GridPane topBar;
+    
+    @FXML
+    private VBox center;
+    
+    @FXML 
+    private JFXListView<String> listView;
+ 
+	public MainController() throws IOException{
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
 		loader.setController(this);
 		loader.load();
@@ -49,12 +39,18 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+
+		
+		
 	}
 	public BorderPane getView() {
 		return this.view;
 	}
+	public GridPane getTopBar() {
+		return this.topBar;
+	}
 	
-    @FXML
+    @FXML 
     void onCalendarAction(ActionEvent event) {
 
     }
