@@ -24,8 +24,8 @@ public class App extends Application{
 		
 		Scene scene=new Scene(controller.getView());
 		
-
 		controller.getView().setTop(controller.getTopBar());
+		
 		
 		controller.getTopBar().setOnMouseClicked(e -> {
 			// doble clic con bot�n primario -> maximimizar/restaurar ventana
@@ -52,14 +52,19 @@ public class App extends Application{
 		controller.getTopBar().setOnMouseReleased(e->{
 			// Si al soltar el boton del raton se encuentra en la parte de arriba de la pantalla
 			// maximiza la ventana
+			lastValueYCoodIs0=primaryStage.isMaximized();
 			if(e.getScreenY()==(double)0) {
 				primaryStage.setMaximized(true);
 				lastValueYCoodIs0=primaryStage.isMaximized();
+				primaryStage.setX((double)0);
+				primaryStage.setY((double)0);
 			}
-			//Si la ventana estava maximizada al arrastrarla hacia abajo la minimiza
+			//Si la ventana estaba maximizada al arrastrarla hacia abajo la minimiza
 			else if(lastValueYCoodIs0) {
 				primaryStage.setMaximized(!primaryStage.isMaximized());
 				lastValueYCoodIs0=primaryStage.isMaximized();
+				primaryStage.setX(e.getScreenX() + x);
+				primaryStage.setY(e.getScreenY() + y);
 			}
 		});
 		

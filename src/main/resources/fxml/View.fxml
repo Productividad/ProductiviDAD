@@ -104,19 +104,19 @@
          <children>
             <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" styleClass="top-menu-bar" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                <children>
-                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
+                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onMinimizeWindow">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-fullscreen-button" />
                      </styleClass>
                   </Button>
-                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
+                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onMaximizeButton">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="fullscreen-button" />
                      </styleClass>
                   </Button>
-                  <Button maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
+                  <Button maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onCloseWindow">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-button" />
