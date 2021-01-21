@@ -26,9 +26,8 @@ public class App extends Application{
 		
 		controller.getView().setTop(controller.getTopBar());
 		
-		
 		controller.getTopBar().setOnMouseClicked(e -> {
-			// doble clic con bot�n primario -> maximimizar/restaurar ventana
+			//Double click with primary mouse button->Maximize/restore window
 			if (e.getClickCount() == 2 && e.getButton().equals(MouseButton.PRIMARY)) {
 				primaryStage.setMaximized(!primaryStage.isMaximized());
 				if(primaryStage.isMaximized())
@@ -36,30 +35,28 @@ public class App extends Application{
 			}
 		});
 		controller.getTopBar().setOnMousePressed(e -> { 
-			// clic con botón primario -> guarda coordenadas del clic
+			//Click with primary mouse button -> Saves x and y coordenates of mouse position
 			if (e.getButton().equals(MouseButton.PRIMARY)) {
 			    x = primaryStage.getX() - e.getScreenX();
 			    y = primaryStage.getY() - e.getScreenY();
 			}
 		});
 		controller.getTopBar().setOnMouseDragged(e -> {
-			// arrastra panel con botón primario -> se mueve ventana a nuevas coordenadas
+			//Drag with primary mose button -> moves window to the new coordinates
 			if (e.getButton().equals(MouseButton.PRIMARY)) {
 				primaryStage.setX(e.getScreenX() + x);
 				primaryStage.setY(e.getScreenY() + y);
 			}
 		});
 		controller.getTopBar().setOnMouseReleased(e->{
-			// Si al soltar el boton del raton se encuentra en la parte de arriba de la pantalla
-			// maximiza la ventana
+			//If mouse is released when the window is on top then is maximized
 			lastValueYCoodIs0=primaryStage.isMaximized();
 			if(e.getScreenY()==(double)0) {
 				primaryStage.setMaximized(true);
 				lastValueYCoodIs0=primaryStage.isMaximized();
-				primaryStage.setX((double)0);
-				primaryStage.setY((double)0);
+				primaryStage.centerOnScreen();
 			}
-			//Si la ventana estaba maximizada al arrastrarla hacia abajo la minimiza
+			//If the window was maximized when dragged down then is restored
 			else if(lastValueYCoodIs0) {
 				primaryStage.setMaximized(!primaryStage.isMaximized());
 				lastValueYCoodIs0=primaryStage.isMaximized();
@@ -67,11 +64,9 @@ public class App extends Application{
 				primaryStage.setY(e.getScreenY() + y);
 			}
 		});
-		
+		primaryStage.setTitle("ProductiviDAD");
 		primaryStage.setScene(scene);
 		primaryStage.initStyle(StageStyle.UNDECORATED); 
-		primaryStage.setTitle("Bullet Journal, gestor de productiviDAD");
-		primaryStage.getIcons().add(new Image("images/eclipse-icon-32px.png"));
 		primaryStage.show();
 	}
 	

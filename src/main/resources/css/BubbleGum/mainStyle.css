@@ -1,15 +1,15 @@
 @import "borderPaneLeft.css";
-@import "borderPaneRight.css";  
+@import "menuSideBar.css";  
 @import "topBar.css";  
 @import "scrollBar.css";     
-               
-.main-color        
-{        
-    -fx-background-color:#EBEBD3;  
+  
+.main-color     
+{      
+    -fx-background-color:#EBEBD3; 
 }
 .secondary-color
 {
-    -fx-background-color:#083D77; 
+    -fx-background-color:#083D77;
 }
 .tertiary-color
 {
@@ -24,4 +24,4 @@
 {
 	-fx-border-color: transparent #F4D35E transparent transparent;
 	-fx-border-width: 2px;
-} 
+}

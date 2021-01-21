@@ -1,0 +1,43 @@
+.note
+{
+	-jfx-focus-color:#184A80;
+	-fx-background-radius:5;	
+}
+	.note:hover{
+		-jfx-unfocus-color:#184A80;
+	}
+	.note:focused{
+		-fx-background-color:#6586AA;							/*Un par de tonitos mas fuerte que .left-color, .list-cell*/
+		-fx-text-fill: white;
+				
+	}
+ 
+.left-color, .list-cell
+{
+	-fx-background-color:#F4D35E;
+}
+
+.header-listView
+{
+	-fx-background-color:#205084;
+}
+
+.list-view
+{
+	-fx-background-insets: 0; 
+	-fx-padding: 0;
+}
+
+.list-cell
+{
+	-fx-cell-size:60;
+	-fx-font-size:15.0;
+}
+	.list-cell:filled:hover {
+	    -fx-background-color: #6586AA;
+	    -fx-text-fill: white;
+	}
+	.list-cell:filled:selected:focused, .list-cell:filled:selected {
+	    -fx-background-color: #466E99;								/*Un par de tonitos mas oscuro que list-cell:filled:hover*/
+	    -fx-text-fill: white;
+	}
