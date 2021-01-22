@@ -4,14 +4,14 @@
 	-fx-pref-height: 30px;
     -fx-pref-width: 30px; 
 }
-.side-custom-button:hover
-{
-    -fx-background-color :derive(#205084,50.0%);		/*Secondary color*/
-}
-.side-custom-button:pressed
-{
-	-fx-background-color:derive(#205084,80.0%);		/*Highlight color*/
-}
+	.side-custom-button:hover
+	{
+	    -fx-background-color :derive(#205084,50.0%);		/*Secondary color*/
+	}
+	.side-custom-button:pressed
+	{
+		-fx-background-color:derive(#205084,80.0%);		/*Highlight color*/
+	}
 
 /*Sgv path*/
 .user-button

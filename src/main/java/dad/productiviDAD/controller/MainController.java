@@ -4,17 +4,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 
 import javafx.application.Platform;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -28,48 +30,70 @@ public class MainController implements Initializable  {
     private BorderPane view;   
     
     @FXML
+    private AnchorPane centerPane;
+    
+    @FXML
     private GridPane topBar;
      
     @FXML 
     private VBox center; 
     
+    @FXML
+    private JFXHamburger hamburger;
+    @FXML
+    private JFXDrawer drawer;
+
+	//Transición
+	private HamburgerNextArrowBasicTransition transiction;
+     
     @FXML 
-    private ListView<String> listView;
+    private ListView<String> listView;  
     
-	public MainController() throws IOException{
-		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
-		loader.setController(this);
-		loader.load(); 
+	public MainController(){
+		try {
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
+			loader.setController(this);
+			loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
-	
-	@Override
+	 
+	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-	
-		ListProperty<String>lista=new SimpleListProperty<>(FXCollections.observableArrayList());
-		int contador=0;
 		
-		for(contador=0;contador<=20;contador++) {
-			String string=""+contador;
-			lista.add(string);
-		}
-		String tarea1="Sacar al perro";
-		String tarea2="Hacer quereseres";
-		String tarea3="Hacer cosa de bases de datos";
-		String tarea4="Hacer la comida";
-		String tarea5="Vida antes que muerte";
+		TaskManagerController taskManager=new TaskManagerController();
+ 
+		//Desplegable
+		transiction=new HamburgerNextArrowBasicTransition(hamburger);
 		
-		lista.addAll(tarea1,tarea2,tarea3,tarea4,tarea5);
+		drawer.setSidePane(taskManager.getView()); 
+		drawer.open(); 
+		transiction.setRate(-1); 
 		
-		listView.itemsProperty().bindBidirectional(lista);
-		 
-		
-		
+		hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
+			transiction.setRate(transiction.getRate() * -1);
+			transiction.play();
+ 
+			if (drawer.isOpened()) 
+				drawer.close();
+			else 
+				drawer.open();
+		});
 	}
+
+
+
+	
 	public BorderPane getView() {
 		return this.view;
 	}
 	public GridPane getTopBar() {
 		return this.topBar;
+	}
+	public JFXDrawer getDrawer() {
+		return this.drawer;
 	}
 	
 	//TopBar

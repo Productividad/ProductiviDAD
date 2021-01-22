@@ -11,7 +11,7 @@
 {
     -fx-background-color:#083D77; 
 }
-.tertiary-color
+.sideBars-color,.list-cell 
 {
 	-fx-background-color:#F4D35E;
 }
@@ -24,4 +24,4 @@
 {
 	-fx-border-color: transparent #F4D35E transparent transparent;
 	-fx-border-width: 2px;
-} 
+}

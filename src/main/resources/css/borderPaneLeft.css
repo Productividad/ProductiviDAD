@@ -11,12 +11,7 @@
 		-fx-text-fill: white;
 				
 	}
- 
-.left-color, .list-cell
-{
-	-fx-background-color:#F4D35E;
-}
-
+	
 .header-listView
 {
 	-fx-background-color:#205084;
