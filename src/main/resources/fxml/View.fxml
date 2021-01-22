@@ -152,8 +152,8 @@
    <right>
       <AnchorPane styleClass="sideBars-color" BorderPane.alignment="CENTER">
          <children>
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="400.0" layoutX="-14.0" layoutY="57.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-430.0" AnchorPane.topAnchor="30.0" />
-            <JFXHamburger fx:id="hamburger">
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="400.0" layoutX="-14.0" layoutY="57.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="0.0" />
+            <JFXHamburger fx:id="hamburger" maxWidth="30.0">
                <padding>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </padding>

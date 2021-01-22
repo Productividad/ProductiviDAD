@@ -62,7 +62,7 @@ public class MainController implements Initializable  {
 	 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		 
 		TaskManagerController taskManager=new TaskManagerController();
  
 		//Desplegable
@@ -74,7 +74,7 @@ public class MainController implements Initializable  {
 		
 		hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
 			transiction.setRate(transiction.getRate() * -1);
-			transiction.play();
+			transiction.play(); 
  
 			if (drawer.isOpened()) 
 				drawer.close();
