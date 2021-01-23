@@ -1,5 +1,6 @@
 package dad.productiviDAD.model;
 
+<<<<<<< HEAD
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -72,4 +73,8 @@ public class Task {
 	
 	
 	
+=======
+public class Task {
+
+>>>>>>> 6352ca4e6267b87cf7d8a33e65b457111f80d608
 }
