@@ -4,9 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+
+import dad.productiviDAD.model.Task;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,44 +26,55 @@ public class TaskManagerController implements Initializable{
 	private VBox view;
 		
 	@FXML
-    private ListView<String> listView;
+    private ListView<Task> listView;
+	
+    @FXML
+    private JFXTextField titleFTF;
 
+    @FXML
+    private JFXTextArea descriptionFTA;
+	
+	private ListProperty<Task> taskObservableList=new SimpleListProperty<>(FXCollections.observableArrayList());
+	
+	private ObjectProperty<Task> selectedTask=new SimpleObjectProperty<>();
 	
 	public TaskManagerController() {
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/TaskManagerView.fxml"));
 		loader.setController(this);
 		try {
 			loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block 
-			e.printStackTrace();
-		} 
+		} catch (IOException e) {e.printStackTrace();} 
 	} 
 	 
-	@Override
+	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		//Pruebas
-		ListProperty<String>lista=new SimpleListProperty<>(FXCollections.observableArrayList());
-		int contador=0;
+		taskObservableList.addAll(
+				new Task("Tarea 1", "Descripcion 1", true),
+				new Task("Tarea 2", "Descripcion 2", true),
+				new Task("Tarea 3", "Descripcion 3", true),
+				new Task("Tarea 4", "Descripcion 4", true),
+				new Task("Tarea 5", "Descripcion 5", true),
+				new Task("Tarea 6", "Descripcion 6", true),
+				new Task("Tarea 7", "Descripcion 7", true), 
+				new Task("Tarea 8", "Descripcion 8", true),
+				new Task("Tarea 9", "Descripcion 9", true),
+				new Task("Tarea 10", "Descripcion 10", true),
+				new Task("Tarea 11", "Descripcion 11", true)
+		);
 		
-		for(contador=0;contador<=20;contador++) {
-			String string=""+contador;
-			lista.add(string);
-		}
-		String tarea1="Sacar al perro";
-		String tarea2="Hacer quereseres";
-		String tarea3="Hacer cosa de bases de datos";
-		String tarea4="Hacer la comida";
-		String tarea5="Vida antes que muerte";
-		
-		lista.addAll(tarea1,tarea2,tarea3,tarea4,tarea5);
-		
-		listView.itemsProperty().bindBidirectional(lista);				
-
-	}
+		listView.setItems(taskObservableList.get());
+		selectedTask.bind(listView.getSelectionModel().selectedItemProperty());
+		selectedTask.addListener((o,ov,nv)->{
+			titleFTF.textProperty().set(selectedTask.get().getTitle());
+			descriptionFTA.textProperty().set(selectedTask.get().getDescription());
+		});
+	} 
 	public VBox getView() {
 		return this.view;
 	}
 
+    @FXML
+    void cosa(ActionEvent event) {
+    }
 }

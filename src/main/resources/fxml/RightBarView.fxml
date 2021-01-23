@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="view" minHeight="768.0" styleClass="sideBars-color" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXHamburger fx:id="hamburger" maxWidth="30.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </JFXHamburger>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="400.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="-400.0" AnchorPane.topAnchor="30.0" />
+   </children>
+</AnchorPane>

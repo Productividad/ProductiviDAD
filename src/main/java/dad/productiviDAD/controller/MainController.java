@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 
+import animatefx.animation.FadeIn;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,120 +38,119 @@ public class MainController implements Initializable  {
      
     @FXML 
     private VBox center; 
-    
-    @FXML
-    private JFXHamburger hamburger;
-    @FXML
-    private JFXDrawer drawer;
-
-	//Transición
-	private HamburgerNextArrowBasicTransition transiction;
      
     @FXML 
     private ListView<String> listView;  
     
+    
+ //Controllers
+	private RightBarController rightBarController;
+
+	private HomeController homeController;
+	private IdeasController ideasController;
+    
 	public MainController(){
 		try {
-			FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/View.fxml"));
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
 			loader.setController(this);
 			loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		} catch (IOException e) {e.printStackTrace();} 
 	}
 	 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		 
-		TaskManagerController taskManager=new TaskManagerController();
- 
-		//Desplegable
-		transiction=new HamburgerNextArrowBasicTransition(hamburger);
 		
-		drawer.setSidePane(taskManager.getView()); 
-		drawer.open(); 
-		transiction.setRate(-1); 
+		rightBarController=new RightBarController(); 
 		
-		hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
-			transiction.setRate(transiction.getRate() * -1);
-			transiction.play(); 
- 
-			if (drawer.isOpened()) 
-				drawer.close();
-			else 
-				drawer.open();
-		});
+		homeController=new HomeController();
+		ideasController=new IdeasController();
+			
+		view.setCenter(homeController.getView());
+		view.setRight(rightBarController.getView());
 	}
 
-
-
-	
 	public BorderPane getView() {
 		return this.view;
 	}
 	public GridPane getTopBar() {
 		return this.topBar;
-	}
-	public JFXDrawer getDrawer() {
-		return this.drawer;
-	}
+	} 
+
 	
-	//TopBar
+ //TopBar
     @FXML
-    void onCloseWindow(ActionEvent event) {
+    private void onCloseWindow(ActionEvent event) {
         Platform.exit();
     }
     
     @FXML
-    void onMaximizeButton(ActionEvent event) {
+    private void onMaximizeButton(ActionEvent event) {
     	Stage stage=(Stage)view.getScene().getWindow();
 		stage.setMaximized(!stage.isMaximized());
     }
     
     @FXML
-    void onMinimizeWindow(ActionEvent event) {
+    private void onMinimizeWindow(ActionEvent event) {
     	Stage stage=(Stage)view.getScene().getWindow();
     	stage.setIconified(true);
     }
 	
-    //SideBar
+ //LeftMenuBar
+    
+    
+    @FXML
+    private void onHomeButton(ActionEvent event) {
+    	new FadeIn(homeController.getView()).play();;
+    	view.setCenter(homeController.getView());
+    	resetRightBar();
+    }
+    
     @FXML 
-    void onCalendarAction(ActionEvent event) {
+    private void onCalendarButton(ActionEvent event) {
+
     }
     
     @FXML
-    void onEntryReaderAction(ActionEvent event) {
+    private void onEntryReaderButton(ActionEvent event) {
+
     
+    }
+    @FXML
+    private void onProyectManagerButton(ActionEvent event) {
+    
+    }
+    @FXML 
+    private void onIdeasButton(ActionEvent event) {
+    	new FadeIn(ideasController.getView()).play();
+    	view.setCenter(ideasController.getView());
+    	resetRightBar();
     }
     
     @FXML
-    void onExpenseHistory(ActionEvent event) {
+    private void onBalanceManagerButton(ActionEvent event) {
     
     }
-    
     @FXML
-    void onHomeAction(ActionEvent event) {
+    private void onTimePlannerButton(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    private void onToolsButton(ActionEvent event) {
     
     }
-    
     @FXML
-    void onIdeasAction(ActionEvent event) {
-    
+    private void onGithubButton(ActionEvent event) {
+    	
     }
     
-    @FXML
-    void onProyectManagerAction(ActionEvent event) {
-    
-    }
-    
-    @FXML
-    void onTaskHistoryAction(ActionEvent event) {
-    
-    }
-    
-    @FXML
-    void onToolsAction(ActionEvent event) {
-    
+    /**
+     * Resets right side of the view so the
+     * JFXDrawer doesn't get unreachable under the 
+     * new center node
+     */
+    private void resetRightBar() { 
+		view.setRight(null);
+		view.setRight(rightBarController.getView());
     }
 }
