@@ -10,6 +10,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 
 import animatefx.animation.FadeIn;
+import animatefx.animation.Shake;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,7 @@ public class MainController implements Initializable  {
 
 	private HomeController homeController;
 	private IdeasController ideasController;
+	private BalanceManagerController balanceManagerController;
     
 	public MainController(){
 		try {
@@ -64,6 +66,7 @@ public class MainController implements Initializable  {
 		
 		homeController=new HomeController();
 		ideasController=new IdeasController();
+		balanceManagerController=new BalanceManagerController();
 			
 		view.setCenter(homeController.getView());
 		view.setRight(rightBarController.getView());
@@ -100,9 +103,15 @@ public class MainController implements Initializable  {
     
     @FXML
     private void onHomeButton(ActionEvent event) {
-    	new FadeIn(homeController.getView()).play();;
-    	view.setCenter(homeController.getView());
-    	resetRightBar();
+    	
+    	if(view.getCenter()==homeController.getView()) {
+    		new Shake(view.getCenter()).play();
+    	}
+    	else {
+		    new FadeIn(homeController.getView()).play();;
+		    view.setCenter(homeController.getView());
+		    resetRightBar();
+    	}
     }
     
     @FXML 
@@ -121,15 +130,30 @@ public class MainController implements Initializable  {
     }
     @FXML 
     private void onIdeasButton(ActionEvent event) {
-    	new FadeIn(ideasController.getView()).play();
-    	view.setCenter(ideasController.getView());
-    	resetRightBar();
+    	
+	    if(view.getCenter()==ideasController.getView()){
+    		new Shake(view.getCenter()).play();
+	    }
+    	else {
+	    	new FadeIn(ideasController.getView()).play();
+	    	view.setCenter(ideasController.getView());
+	    	resetRightBar();
+	    }
     }
     
     @FXML
     private void onBalanceManagerButton(ActionEvent event) {
-    
+    	
+	    if(view.getCenter()==balanceManagerController.getView()){
+    		new Shake(view.getCenter()).play();
+	    }
+    	else {
+	    	new FadeIn(balanceManagerController.getView()).play();
+	    	view.setCenter(balanceManagerController.getView());
+	    	resetRightBar();
+	    }
     }
+    
     @FXML
     private void onTimePlannerButton(ActionEvent event) {
     	

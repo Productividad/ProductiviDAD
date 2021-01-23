@@ -1,5 +1,5 @@
-@import "borderPaneLeft.css";
-@import "borderPaneRight.css";  
+@import "leftBorderPane.css";
+@import "rightBorderPane.css";  
 @import "topBar.css";  
 @import "scrollBar.css";     
                
@@ -25,3 +25,6 @@
 	-fx-border-color: transparent #F4D35E transparent transparent;
 	-fx-border-width: 2px;
 }
+
+/* BalanceManagerView */
+
