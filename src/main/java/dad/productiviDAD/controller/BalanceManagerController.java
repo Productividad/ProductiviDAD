@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productiviDAD.model.IncomeExpense;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,30 +35,47 @@ public class BalanceManagerController implements Initializable{
     private TableColumn<IncomeExpense, String> conceptColumn;
 
     @FXML
-    private TableColumn<IncomeExpense, Integer> amountColumn;
-
+    private TableColumn<IncomeExpense, Number> amountColumn;
+ 
     @FXML
 	private JFXTextField conceptTF;
 
-    @FXML
+    @FXML 
     private JFXTextField amountTF;
 
-    @FXML
+    @FXML  
     private Label totalLabel;
+ 
+    private ListProperty<IncomeExpense>movementsList=new SimpleListProperty<>(FXCollections.observableArrayList());
+  
     
     public BalanceManagerController() {
-    	try {
+    	try { 
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/balanceManagerView.fxml"));
-		loader.setController(this);
+		loader.setController(this); 
 		loader.load();
 		} catch (IOException e) {e.printStackTrace();} 
-    }
-
+    } 
+ 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) { 
+				
+		for(int i=0;i<=25;i++) { 
+			 
+			LocalDate date=LocalDate.now();
+			String string=new String("String "+i);
+			
+			IncomeExpense income=new IncomeExpense(date, string, i, true); 
+			movementsList.add(income);
+		} 
 		
+		balanceTableView.itemsProperty().bind(movementsList);
+		
+		dateColumn.setCellValueFactory(v->v.getValue().dateProperty());
+		conceptColumn.setCellValueFactory(v->v.getValue().conceptProperty());
+		amountColumn.setCellValueFactory(v->v.getValue().amountProperty());
 	}
-	
+	 
 	public GridPane getView() {
 		return this.view;
 	}
@@ -67,6 +87,6 @@ public class BalanceManagerController implements Initializable{
 
     @FXML
     private void onInsertMovement(ActionEvent event) {
-    	
+    	 
     }	
 }

@@ -34,5 +34,4 @@
 	}
 	.list-cell:filled:selected:focused, .list-cell:filled:selected {
 	    -fx-background-color: #466E99;								/*Un par de tonitos mas oscuro que list-cell:filled:hover*/
-	    -fx-text-fill: white;
 	}
