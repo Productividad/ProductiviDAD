@@ -48,7 +48,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="totalLabel" styleClass="balance-manager-label" text="1500" />
+            <Label fx:id="totalLabel" styleClass="balance-manager-label" />
          </children>
       </HBox>
    </children>

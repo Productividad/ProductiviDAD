@@ -47,7 +47,7 @@ public class BalanceManagerController implements Initializable{
     private Label totalLabel;
  
     private ListProperty<IncomeExpense>movementsList=new SimpleListProperty<>(FXCollections.observableArrayList());
-  
+   
     
     public BalanceManagerController() {
     	try { 

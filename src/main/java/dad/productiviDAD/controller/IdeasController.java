@@ -13,7 +13,7 @@ public class IdeasController {
     public IdeasController() {
 		Random random=new Random(); 
 		
-		for(int i=0;i<=10;i++) {
+		for(int i=0;i<=20;i++) {
 			Label label=new Label("Nota "+i);
 			label.setPrefSize(random.nextInt(180), random.nextInt(180));
 			
