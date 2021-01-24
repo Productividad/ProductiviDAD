@@ -3,9 +3,11 @@ package dad.productiviDAD.model;
 import java.time.LocalDate;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,10 +17,10 @@ public class IncomeExpense {
 
 	private ObjectProperty<LocalDate> date=new SimpleObjectProperty<>();
 	private StringProperty concept=new SimpleStringProperty();
-	private IntegerProperty amount=new SimpleIntegerProperty();
+	private DoubleProperty amount=new SimpleDoubleProperty();
 	private BooleanProperty isPositive=new SimpleBooleanProperty();
 	
-	public IncomeExpense(LocalDate date, String concept, int amount, boolean isPositive) {
+	public IncomeExpense(LocalDate date, String concept, double amount, boolean isPositive) {
 		this.date.set(date);
 		this.concept.set(concept);
 		this.amount.set(amount);
@@ -55,12 +57,12 @@ public class IncomeExpense {
 	}
 	
 
-	public final IntegerProperty amountProperty() {
+	public final DoubleProperty amountProperty() {
 		return this.amount;
 	}
 	
 
-	public final int getAmount() {
+	public final double getAmount() {
 		return this.amountProperty().get();
 	}
 	
