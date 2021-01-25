@@ -18,13 +18,11 @@ public class IncomeExpense {
 	private ObjectProperty<LocalDate> date=new SimpleObjectProperty<>();
 	private StringProperty concept=new SimpleStringProperty();
 	private DoubleProperty amount=new SimpleDoubleProperty();
-	private BooleanProperty isPositive=new SimpleBooleanProperty();
 	
-	public IncomeExpense(LocalDate date, String concept, double amount, boolean isPositive) {
+	public IncomeExpense(LocalDate date, String concept, double amount) {
 		this.date.set(date);
 		this.concept.set(concept);
 		this.amount.set(amount);
-		this.isPositive.set(isPositive);
 	}
 
 	public final ObjectProperty<LocalDate> dateProperty() {
@@ -69,24 +67,5 @@ public class IncomeExpense {
 
 	public final void setAmount(final int amount) {
 		this.amountProperty().set(amount);
-	}
-	
-
-	public final BooleanProperty isPositiveProperty() {
-		return this.isPositive;
-	}
-	
-
-	public final boolean isIsPositive() {
-		return this.isPositiveProperty().get();
-	}
-	
-
-	public final void setIsPositive(final boolean isPositive) {
-		this.isPositiveProperty().set(isPositive);
-	}
-	
-	
-	
-	
+	}	
 }
