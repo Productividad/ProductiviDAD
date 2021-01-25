@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -92,14 +93,15 @@
    <top>
       <GridPane fx:id="topBar" minWidth="1024.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="NEVER" maxWidth="477.0" minWidth="10.0" prefWidth="47.75" />
+          <ColumnConstraints hgrow="NEVER" maxWidth="477.0" minWidth="10.0" prefWidth="32.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="225.0" minWidth="215.0" prefWidth="225.0" />
           <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
                <children>
                   <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onMinimizeWindow">
                      <styleClass>
@@ -124,6 +126,7 @@
                   <Insets right="15.0" />
                </padding>
             </HBox>
+            <Label styleClass="title-label" text="Bullet Journal, gestor de productiviDAD" GridPane.columnIndex="1" />
          </children>
          <styleClass>
             <String fx:value="secondary-color" />

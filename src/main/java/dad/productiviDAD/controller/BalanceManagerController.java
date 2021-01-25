@@ -51,23 +51,23 @@ public class BalanceManagerController implements Initializable{
     
     public BalanceManagerController() {
     	try { 
-		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/balanceManagerView.fxml"));
+		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
 		loader.setController(this); 
 		loader.load();
 		} catch (IOException e) {e.printStackTrace();} 
-    } 
- 
-	@Override
+    }  
+      
+	@Override  
 	public void initialize(URL location, ResourceBundle resources) { 
-				
+				  
 		for(int i=0;i<=25;i++) { 
-			 
-			LocalDate date=LocalDate.now();
+			    
+			LocalDate date=LocalDate.now(); 
 			String string=new String("String "+i);
 			
 			IncomeExpense income=new IncomeExpense(date, string, i, true); 
 			movementsList.add(income);
-		} 
+		}  
 		
 		balanceTableView.itemsProperty().bind(movementsList);
 		
@@ -75,7 +75,7 @@ public class BalanceManagerController implements Initializable{
 		conceptColumn.setCellValueFactory(v->v.getValue().conceptProperty());
 		amountColumn.setCellValueFactory(v->v.getValue().amountProperty());
 	}
-	 
+	   
 	public GridPane getView() {
 		return this.view;
 	}
@@ -85,8 +85,8 @@ public class BalanceManagerController implements Initializable{
     	
     }
 
-    @FXML
+    @FXML 
     private void onInsertMovement(ActionEvent event) {
-    	 
+    	  
     }	
-}
+} 

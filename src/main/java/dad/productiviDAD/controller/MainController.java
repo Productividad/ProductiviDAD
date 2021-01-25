@@ -42,7 +42,7 @@ public class MainController implements Initializable  {
  //Controllers
 	private RightBarController rightBarController;
 
-	private HomeController homeController;
+	private ProjectManagerController homeController;
 	private IdeasController ideasController;
 	private BalanceManagerController balanceManagerController;
     
@@ -59,7 +59,7 @@ public class MainController implements Initializable  {
 		
 		rightBarController=new RightBarController(); 
 		
-		homeController=new HomeController();
+		homeController=new ProjectManagerController();
 		ideasController=new IdeasController();
 		balanceManagerController=new BalanceManagerController();
 			

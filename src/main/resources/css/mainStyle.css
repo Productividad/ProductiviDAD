@@ -2,17 +2,21 @@
 @import "drawerContent.css";  
 @import "topBar.css";  
 @import "scrollBar.css";  
-@import "balanceManager.css";   
+@import "balanceManager.css";    
               
               
-.main-color,.table-view,.table-row-cell
-{        
+.title-label{
+	-fx-text-fill:white;
+}
+              
+.main-color,.table-view,.table-row-cell 
+{         
     -fx-background-color:#EBEBD3;  
 }
-.secondary-color
+.secondary-color 
 {
     -fx-background-color:#083D77; 
-}
+} 
 .sideBars-color,.list-cell
 {
 	-fx-background-color:#F4D35E;
@@ -26,5 +30,4 @@
 {
 	-fx-border-color: transparent #F4D35E transparent transparent;
 	-fx-border-width: 2px;
-}
-
+} 
