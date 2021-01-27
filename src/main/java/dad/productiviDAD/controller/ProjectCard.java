@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.productiviDAD.model.Project;
+import dad.productiviDAD.resourceUtils.ResourceUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -58,35 +59,31 @@ public class ProjectCard extends VBox implements Initializable {
     private void onEditProject(ActionEvent event) {
 
     }
-
-	public final StringProperty titleProperty() {
+   
+	public final StringProperty titleProperty()  {
 		return this.title;
 	}
-	
-	//TODO setear valores del modelo al componente
-	public void prepareProjectCard(Project project, int index){
+		
+	//TODO Terminar método
+	public void prepareProjectCard(Project project){
 		
 		title.set(project.getTitle());
 		progress.set(project.getProgress()+"%");
-		
+		 
 		String textColor="white";
 		if(!project.isIsWhite())
 			textColor="black";
 		
-		String style="#cardSection:hover #textSection{\r\n"
-		 		+ "    -fx-background-color:"+project.getColor()+";\r\n"
-		 		+ "}\r\n"
-		 		+ "#textSection,#accessButton:hover,#editButton:hover, #deleteButton:hover{\r\n"
-		 		+ "    -fx-background-color:derive("+project.getColor()+",10.0%);\r\n"
-		 		+ "}\r\n"
-		 		+ "#buttonSection,#accessButton,#editButton,#deleteButton{\r\n"
-		 		+ "    -fx-background-color:derive("+project.getColor()+",20.0%);\r\n"
-		 		+ "    -fx-text-fill:derive("+project.getColor()+",20.0%);\r\n"
-		 		+ "}\r\n"
-		 		+ "#buttonSection:hover #accessButton,#buttonSection:hover #editButton,#buttonSection:hover #deleteButton{\r\n"
-		 		+ "    -fx-text-fill: "+textColor+";\r\n"
-		 		+ "}";
+		System.out.println(getCss(project.getColor(),textColor));
 		
+		this.setStyle(getCss(project.getColor(),textColor));
+	}
+	
+	private String getCss(String cardColor,String textColor) {
+		String css=ResourceUtils.getResourceAsString("/css/ProjectCardStyle.txt");
+		css=css.replaceAll("\\$cardColor", cardColor);
+		css=css.replaceAll("\\$textColor", textColor);
+		return css;
 	}
 
 	public final String getTitle() {

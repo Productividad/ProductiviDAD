@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
 
 public class Project {
 
+	private IntegerProperty primaryKey=new SimpleIntegerProperty();
 	private StringProperty title=new SimpleStringProperty();
 	private IntegerProperty progress=new SimpleIntegerProperty();
 	private BooleanProperty isCompleted=new SimpleBooleanProperty();
@@ -20,7 +21,6 @@ public class Project {
 	private ObjectProperty<LocalDate>deadLine=new SimpleObjectProperty<>();
 	private StringProperty color=new SimpleStringProperty();
 	
-	//TODO Hacer el constructor bien. Este es para hacer pruebas y no tiene todos los campos
 	public Project(String title, int progress, String color, boolean isWhite) {
 		this.title.set(title);
 		this.progress.set(progress);
@@ -115,8 +115,18 @@ public class Project {
 	public final void setIsWhite(final boolean isWhite) {
 		this.isWhiteProperty().set(isWhite);
 	}
+
+	public final IntegerProperty primaryKeyProperty() {
+		return this.primaryKey;
+	}
 	
+
+	public final int getPrimaryKey() {
+		return this.primaryKeyProperty().get();
+	}
 	
-	
-	
+
+	public final void setPrimaryKey(final int primaryKey) {
+		this.primaryKeyProperty().set(primaryKey);
+	}	
 }
