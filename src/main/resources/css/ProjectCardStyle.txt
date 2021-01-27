@@ -1,0 +1,20 @@
+#cardSection:hover #textSection{
+    -fx-background-color:$cardColor;   
+}
+#textSection,#accessButton:hover,#editButton:hover, #deleteButton:hover{
+    -fx-background-color:derive($cardColor,10.0%);
+}
+#accessButton:pressed,#editButton:pressed, #deleteButton:pressed{
+	-fx-background-color:derive($cardColor,15.0%);	
+}
+#accessButton,#editButton,#deleteButton{
+	-fx-background-color:derive($cardColor,20.0%);
+    -fx-text-fill:derive($cardColor,20.0%);
+	-fx-background-radius:15;
+}
+#buttonSection{
+    -fx-background-color:derive($cardColor,20.0%);
+}
+#buttonSection:hover #accessButton,#buttonSection:hover #editButton,#buttonSection:hover #deleteButton,#textSection .label{
+    -fx-text-fill: $textColor;
+}

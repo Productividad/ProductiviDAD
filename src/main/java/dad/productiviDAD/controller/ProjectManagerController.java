@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import dad.productiviDAD.model.Project;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,22 +29,13 @@ public class ProjectManagerController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 	 
 		
-		for (int i=0;i<3;i++) {
-			Random random=new Random();
-			
-			int red= random.nextInt(255); 
-			int green= random.nextInt(255);
-			int blue= random.nextInt(255);
-			
-			ProjectCard carta=new ProjectCard();
-	
-			
-			carta.setStyle("-fx-background-color:rgb("+red+","+green+","+blue+")");
-			view.getChildren().add(carta);
-			view.setHgrow(carta, Priority.ALWAYS);
-		}
-
+		ProjectCard card1=new ProjectCard();
+		Project project1=new Project("Project 1", 27, "#9EE493", false);
 		
+		card1.prepareProjectCard(project1);
+		view.getChildren().add(card1);
+		HBox.setHgrow(card1, Priority.ALWAYS);
+			
 	}
 	
 	public HBox getView() {

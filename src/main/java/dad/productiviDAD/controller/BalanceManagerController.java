@@ -65,7 +65,7 @@ public class BalanceManagerController implements Initializable{
 			LocalDate date=LocalDate.now(); 
 			String string=new String("String "+i);
 			
-			IncomeExpense income=new IncomeExpense(date, string, i, true); 
+			IncomeExpense income=new IncomeExpense(date, string, i); 
 			movementsList.add(income);
 		}  
 		

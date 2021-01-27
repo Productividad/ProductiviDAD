@@ -2,9 +2,13 @@ package dad.productiviDAD.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import dad.productiviDAD.model.Project;
+import dad.productiviDAD.utils.CSSUtils;
+import dad.productiviDAD.utils.ResourceUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -58,35 +62,26 @@ public class ProjectCard extends VBox implements Initializable {
     private void onEditProject(ActionEvent event) {
 
     }
-
-	public final StringProperty titleProperty() {
+   
+	public final StringProperty titleProperty()  {
 		return this.title;
 	}
-	
-	//TODO setear valores del modelo al componente
-	public void prepareProjectCard(Project project, int index){
+		
+	//TODO Terminar método
+	public void prepareProjectCard(Project project){
 		
 		title.set(project.getTitle());
 		progress.set(project.getProgress()+"%");
-		
+		 
 		String textColor="white";
 		if(!project.isIsWhite())
 			textColor="black";
+
+		Map<String, String> params = new HashMap<>();
+		params.put("cardColor", project.getColor());
+		params.put("textColor", textColor);
 		
-		String style="#cardSection:hover #textSection{\r\n"
-		 		+ "    -fx-background-color:"+project.getColor()+";\r\n"
-		 		+ "}\r\n"
-		 		+ "#textSection,#accessButton:hover,#editButton:hover, #deleteButton:hover{\r\n"
-		 		+ "    -fx-background-color:derive("+project.getColor()+",10.0%);\r\n"
-		 		+ "}\r\n"
-		 		+ "#buttonSection,#accessButton,#editButton,#deleteButton{\r\n"
-		 		+ "    -fx-background-color:derive("+project.getColor()+",20.0%);\r\n"
-		 		+ "    -fx-text-fill:derive("+project.getColor()+",20.0%);\r\n"
-		 		+ "}\r\n"
-		 		+ "#buttonSection:hover #accessButton,#buttonSection:hover #editButton,#buttonSection:hover #deleteButton{\r\n"
-		 		+ "    -fx-text-fill: "+textColor+";\r\n"
-		 		+ "}";
-		
+		this.getStylesheets().setAll(CSSUtils.generateCss("/css/ProjectCardStyle.txt", params));
 	}
 
 	public final String getTitle() {
