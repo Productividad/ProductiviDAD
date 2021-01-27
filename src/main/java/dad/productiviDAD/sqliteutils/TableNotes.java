@@ -43,4 +43,25 @@ public class TableNotes {
 		return id;
 
 	}
+	
+	/*
+	 * Method to get Registries from the table
+	 * 
+	 * @param number The number of registries to be shown
+	 * 
+	 * @return A ResultSet of registries.
+	 */
+	public ResultSet getRegistries(int number) {
+		String select = "SELECT * FROM notes ORDER BY ID_note DESC LIMIT ?";
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			pstmt.setInt(1, number);
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }
