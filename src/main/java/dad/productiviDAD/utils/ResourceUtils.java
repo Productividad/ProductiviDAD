@@ -1,4 +1,4 @@
-package dad.productiviDAD.resourceUtils;
+package dad.productiviDAD.utils;
 
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 

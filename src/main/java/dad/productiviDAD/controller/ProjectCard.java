@@ -2,10 +2,13 @@ package dad.productiviDAD.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import dad.productiviDAD.model.Project;
-import dad.productiviDAD.resourceUtils.ResourceUtils;
+import dad.productiviDAD.utils.CSSUtils;
+import dad.productiviDAD.utils.ResourceUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -73,17 +76,12 @@ public class ProjectCard extends VBox implements Initializable {
 		String textColor="white";
 		if(!project.isIsWhite())
 			textColor="black";
+
+		Map<String, String> params = new HashMap<>();
+		params.put("cardColor", project.getColor());
+		params.put("textColor", textColor);
 		
-		System.out.println(getCss(project.getColor(),textColor));
-		
-		this.setStyle(getCss(project.getColor(),textColor));
-	}
-	
-	private String getCss(String cardColor,String textColor) {
-		String css=ResourceUtils.getResourceAsString("/css/ProjectCardStyle.txt");
-		css=css.replaceAll("\\$cardColor", cardColor);
-		css=css.replaceAll("\\$textColor", textColor);
-		return css;
+		this.getStylesheets().setAll(CSSUtils.generateCss("/css/ProjectCardStyle.txt", params));
 	}
 
 	public final String getTitle() {
