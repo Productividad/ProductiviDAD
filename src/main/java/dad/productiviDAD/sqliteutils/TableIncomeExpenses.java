@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 /*
  * Class used to interact with the IncomeExpenses table in the database.
@@ -55,7 +56,7 @@ public class TableIncomeExpenses {
 	 * 
 	 */
 	public void updateIncomeExpense(int id, double amount, String concept) {
-		String update = "UPDATE incomeExpenses SET amount = ? , concept = ? WHERE id_incomeExpense = ?";
+		String update = "UPDATE incomeExpenses SET amount = ? , concept = ? WHERE ID_incomeExpense = ?";
 		try {
 			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(update);
 			pstmt.setDouble(1, amount);
@@ -74,7 +75,7 @@ public class TableIncomeExpenses {
 	 * @param id The ID from the registry to be deleted
 	 */
 	public void deleteIncomeExpense(int id) {
-		String delete = "DELETE FROM incomeExpenses WHERE id_incomeExpense = ?";
+		String delete = "DELETE FROM incomeExpenses WHERE ID_incomeExpense = ?";
 		try {
 			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(delete);
 			pstmt.setInt(1, id);
@@ -85,4 +86,24 @@ public class TableIncomeExpenses {
 
 	}
 
+	/*
+	 * Method to get Registries from the table
+	 * 
+	 * @param number The number of registries to be shown
+	 * 
+	 * @return A ResultSet of registries.
+	 */
+	public ResultSet getRegistries(int number) {
+		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			pstmt.setInt(1, number);
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 }

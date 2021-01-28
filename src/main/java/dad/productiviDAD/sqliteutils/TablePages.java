@@ -48,4 +48,26 @@ public class TablePages {
 		return id;
 
 	}
+
+	/*
+	 * Method to get Registries from the table
+	 * 
+	 * @param number The number of days we want to show
+	 * 
+	 * @return A ResultSet of registries.
+	 */
+	public ResultSet getRegistries(int number) {
+		String select = "SELECT * FROM pages WHERE date_page < date('now','-? days')";
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			pstmt.setInt(1, number);
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 }
