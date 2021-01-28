@@ -4,9 +4,9 @@
 @import "scrollBar.css";  
 @import "balanceManager.css";    
 @import "projectManager.css";              
-              
-.title-label{
-	-fx-text-fill:white;
+               
+.title-label{ 
+	-fx-text-fill:white; 
 }
               
 .main-color,.table-view,.table-row-cell 

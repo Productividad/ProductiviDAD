@@ -1,3 +1,13 @@
+
+/*RadioButtons */
+#positiveRB{
+	-jfx-selected-color:#138A36;
+}
+#negativeRB{
+	-jfx-selected-color:#F76C5E;
+}
+
+
 /*Botones */
 .balance-manager-button{
 	-fx-background-radius:0;
