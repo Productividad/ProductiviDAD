@@ -29,17 +29,16 @@ public class ProjectCard extends VBox implements Initializable {
     @FXML
     private Label percentageLabel;
  
-
     public ProjectCard() {
     	super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectCardComponent.fxml"));
 			loader.setController(this);
-			loader.setRoot(this);
+			loader.setRoot(this); 
 			loader.load();
 		} catch (IOException e) {e.printStackTrace();}
-    }
-	
+    } 
+	 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -47,7 +46,6 @@ public class ProjectCard extends VBox implements Initializable {
 		percentageLabel.textProperty().bindBidirectional(progress);		
 	}
 	
-
     @FXML
     private void onAccessProject(ActionEvent event) {
 
@@ -63,16 +61,19 @@ public class ProjectCard extends VBox implements Initializable {
 
     }
    
-	public final StringProperty titleProperty()  {
-		return this.title;
-	}
-		
-	//TODO Terminar método
-	public void prepareProjectCard(Project project){
+	public final StringProperty titleProperty()  {  
+		return this.title;  
+	} 
+	
+	/**
+	 * Check the color values from a project and applies it to a projectCard
+	 * @param project
+	 */
+	public void styleProjectCard(Project project){
 		
 		title.set(project.getTitle());
 		progress.set(project.getProgress()+"%");
-		 
+		
 		String textColor="white";
 		if(!project.isIsWhite())
 			textColor="black";
@@ -88,27 +89,19 @@ public class ProjectCard extends VBox implements Initializable {
 		return this.titleProperty().get();
 	}
 	
-
 	public final void setTitle(final String title) {
 		this.titleProperty().set(title);
 	}
 	
-
 	public final StringProperty percentageProperty() {
 		return this.progress;
 	}
-	
 
 	public final String getPercentage() {
 		return this.percentageProperty().get();
 	}
 	
-
 	public final void setPercentage(final String percentage) {
 		this.percentageProperty().set(percentage);
-	}
-	
-    
-    
-    
+	} 
 }

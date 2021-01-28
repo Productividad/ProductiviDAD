@@ -27,7 +27,7 @@ public class Project {
 		this.color.set(color);
 		this.isWhite.set(isWhite);
 	}
-
+	
 	public final StringProperty titleProperty() {
 		return this.title;
 	}

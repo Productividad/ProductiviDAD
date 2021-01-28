@@ -6,9 +6,19 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-
+/**
+ *	Class to work with dynamic stylesheet 
+ *
+ */
 public class CSSUtils {
 
+	/**
+	 * Creates a temporal .css stylesheet file using a template stylesheet and replacing
+	 * the $values with the parameters 
+	 * @param resource
+	 * @param params
+	 * @return
+	 */
 	public static String generateCss(String resource, Map<String, String> params) {
 		String css = ResourceUtils.getResourceAsString(resource);
 		for (String paramName : params.keySet()) { 
@@ -22,5 +32,4 @@ public class CSSUtils {
 			return null;
 		}
 	}
-
 }
