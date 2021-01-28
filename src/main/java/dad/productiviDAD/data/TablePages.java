@@ -1,4 +1,4 @@
-package dad.productiviDAD.sqliteutils;
+package dad.productiviDAD.data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ public class TablePages {
 	public void insertPage() {
 		String insert = "INSERT INTO pages (date_page) VALUES (?)";
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(insert);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
 			pstmt.setString(1, "date('now')");
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -35,7 +35,7 @@ public class TablePages {
 		String select = "SELECT ID_page FROM pages WHERE date_page = ?";
 		int id = 0;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setString(1, date.toString());
 			ResultSet rs = pstmt.executeQuery();
 
@@ -60,7 +60,7 @@ public class TablePages {
 		String select = "SELECT * FROM pages WHERE date_page < date('now','-? days')";
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, number);
 			rs = pstmt.executeQuery();
 

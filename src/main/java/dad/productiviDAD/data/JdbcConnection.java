@@ -1,4 +1,4 @@
-package dad.productiviDAD.sqliteutils;
+package dad.productiviDAD.data;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -9,10 +9,10 @@ import java.sql.SQLException;
  * The class used to open and close the connection in the app to the SQLite database.
  *
  */
-public class JdbcSQLiteConnection {
+public class JdbcConnection {
 	static Connection connection;
 
-	public void connect() {
+	public static void connect() {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			String dbURL = "jdbc:sqlite:database/productiviDAD.db";
@@ -32,7 +32,7 @@ public class JdbcSQLiteConnection {
 		}
 	}
 
-	public void closeConnection() {
+	public static void closeConnection() {
 		try {
 			connection.close();
 		} catch (SQLException e) {

@@ -1,10 +1,14 @@
-package dad.productiviDAD.sqliteutils;
+package dad.productiviDAD.data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import dad.productiviDAD.model.IncomeExpense;
 
 /*
  * Class used to interact with the IncomeExpenses table in the database.
@@ -19,29 +23,31 @@ public class TableIncomeExpenses {
 	 * 
 	 * @return id The ID of the inserted registry
 	 */
-	public int insertIncomeExpense(double amount, String concept) {
+	public static void create(IncomeExpense incomeExpense) {
+
 		String insert = "INSERT INTO incomeExpenses (amount, concept, FK_ID_page) VALUES (?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='incomeExpenses'";
 		int id = 0;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(insert);
-			pstmt.setDouble(1, amount);
-			pstmt.setString(2, concept);
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
+			pstmt.setDouble(1, incomeExpense.getAmount());
+			pstmt.setString(2, incomeExpense.getConcept());
 			pstmt.setString(3, "(SELECT id_page FROM pages where page_date=date('now'))");
 			pstmt.executeUpdate();
 
-			Statement stmt = JdbcSQLiteConnection.connection.createStatement();
+			Statement stmt = JdbcConnection.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(getPkId);
 
 			while (rs.next()) {
-				id = rs.getInt("ID_incomeExpense");
+				id = rs.getInt("seq");
 			}
-
+			incomeExpense.setId(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcConnection.closeConnection();
 		}
-
-		return id;
 
 	}
 
@@ -55,16 +61,19 @@ public class TableIncomeExpenses {
 	 * @param concept The concept of the transaction
 	 * 
 	 */
-	public void updateIncomeExpense(int id, double amount, String concept) {
+	public static void update(IncomeExpense incomeExpense) {
 		String update = "UPDATE incomeExpenses SET amount = ? , concept = ? WHERE ID_incomeExpense = ?";
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(update);
-			pstmt.setDouble(1, amount);
-			pstmt.setString(2, concept);
-			pstmt.setInt(3, id);
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
+			pstmt.setDouble(1, incomeExpense.getAmount());
+			pstmt.setString(2, incomeExpense.getConcept());
+			pstmt.setInt(3, incomeExpense.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcConnection.closeConnection();
 		}
 
 	}
@@ -74,14 +83,17 @@ public class TableIncomeExpenses {
 	 * 
 	 * @param id The ID from the registry to be deleted
 	 */
-	public void deleteIncomeExpense(int id) {
+	public static void delete(IncomeExpense incomeExpense) {
 		String delete = "DELETE FROM incomeExpenses WHERE ID_incomeExpense = ?";
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(delete);
-			pstmt.setInt(1, id);
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
+			pstmt.setInt(1, incomeExpense.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcConnection.closeConnection();
 		}
 
 	}
@@ -93,17 +105,29 @@ public class TableIncomeExpenses {
 	 * 
 	 * @return A ResultSet of registries.
 	 */
-	public ResultSet getRegistries(int number) {
-		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
+	public static List<IncomeExpense> read(int number) {
+		String select = "SELECT * FROM incomeExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
 		ResultSet rs = null;
+		ArrayList<IncomeExpense> arrayList = new ArrayList<IncomeExpense>();
+		IncomeExpense incomeExpense = new IncomeExpense();
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, number);
 			rs = pstmt.executeQuery();
 
+			while (rs.next()) {
+				incomeExpense.setId(rs.getInt("ID_incomeExpense"));
+				incomeExpense.setAmount(rs.getDouble("amount"));
+				incomeExpense.setConcept(rs.getString("concept"));
+				arrayList.add(incomeExpense);
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcConnection.closeConnection();
 		}
-		return rs;
+		return arrayList;
 	}
 }

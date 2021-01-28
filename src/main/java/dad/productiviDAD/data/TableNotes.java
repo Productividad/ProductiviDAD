@@ -1,4 +1,4 @@
-package dad.productiviDAD.sqliteutils;
+package dad.productiviDAD.data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,13 +23,13 @@ public class TableNotes {
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='notes'";
 		int id = 0;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(insert);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, "(SELECT id_page FROM pages where page_date=date('now'))");
 			pstmt.executeUpdate();
 
-			Statement stmt = JdbcSQLiteConnection.connection.createStatement();
+			Statement stmt = JdbcConnection.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(getPkId);
 
 			while (rs.next()) {
@@ -55,7 +55,7 @@ public class TableNotes {
 		String select = "SELECT * FROM notes ORDER BY ID_note DESC LIMIT ?";
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, number);
 			rs = pstmt.executeQuery();
 

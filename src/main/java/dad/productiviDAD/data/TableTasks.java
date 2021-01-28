@@ -1,4 +1,4 @@
-package dad.productiviDAD.sqliteutils;
+package dad.productiviDAD.data;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +36,7 @@ public class TableTasks {
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(insert);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
 			pstmt.setString(1, title);
 			pstmt.setInt(2, 0);
 			pstmt.setString(3, description);
@@ -47,7 +47,7 @@ public class TableTasks {
 			pstmt.setString(8, (project != 0) ? String.valueOf(project) : "NULL");
 			pstmt.executeUpdate();
 
-			Statement stmt = JdbcSQLiteConnection.connection.createStatement();
+			Statement stmt = JdbcConnection.connection.createStatement();
 			ResultSet rs = stmt.executeQuery(getPkId);
 
 			while (rs.next()) {
@@ -70,7 +70,7 @@ public class TableTasks {
 	public void deleteIncomeExpense(int id) {
 		String delete = "DELETE FROM tasks WHERE ID_task = ?";
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(delete);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -90,7 +90,7 @@ public class TableTasks {
 		String select = "SELECT * FROM tasks ORDER BY ID_task DESC LIMIT ?";
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(select);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, number);
 			rs = pstmt.executeQuery();
 
@@ -127,7 +127,7 @@ public class TableTasks {
 		String update = "UPDATE incomeExpenses SET title_task = ? , completed = ?, description_task = ?, color_task ?, "
 				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, icon_project = ? WHERE ID_task = ?";
 		try {
-			PreparedStatement pstmt = JdbcSQLiteConnection.connection.prepareStatement(update);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
 			pstmt.setString(1, title);
 			pstmt.setInt(2, (completed) ? 1 : 0);
 			pstmt.setString(3, description);

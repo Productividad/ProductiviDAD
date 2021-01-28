@@ -14,7 +14,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class IncomeExpense {
-
+	private IntegerProperty id = new SimpleIntegerProperty(); 
 	private ObjectProperty<LocalDate> date=new SimpleObjectProperty<>();
 	private StringProperty concept=new SimpleStringProperty();
 	private DoubleProperty amount=new SimpleDoubleProperty();
@@ -23,6 +23,9 @@ public class IncomeExpense {
 		this.date.set(date);
 		this.concept.set(concept);
 		this.amount.set(amount);
+	}
+	public IncomeExpense() {
+		
 	}
 
 	public final ObjectProperty<LocalDate> dateProperty() {
@@ -65,7 +68,25 @@ public class IncomeExpense {
 	}
 	
 
-	public final void setAmount(final int amount) {
+	public final void setAmount(final double amount) {
 		this.amountProperty().set(amount);
-	}	
+	}
+
+	public final IntegerProperty idProperty() {
+		return this.id;
+	}
+	
+
+	public final int getId() {
+		return this.idProperty().get();
+	}
+	
+
+	public final void setId(final int id) {
+		this.idProperty().set(id);
+	}
+		
+	
 }
+
+
