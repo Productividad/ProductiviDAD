@@ -17,11 +17,7 @@ public class TableIncomeExpenses {
 	/*
 	 * Method to insert a new income or expense into the table
 	 * 
-	 * @param amount The amount of money of the transaction
-	 * 
-	 * @param concept The concept of the transaction
-	 * 
-	 * @return id The ID of the inserted registry
+	 * @param incomeExpense The income or expense to be created
 	 */
 	public static void create(IncomeExpense incomeExpense) {
 
@@ -54,11 +50,7 @@ public class TableIncomeExpenses {
 	/*
 	 * Method to update an existing income or expense from the table
 	 * 
-	 * @param id The ID from the registry to be updated
-	 * 
-	 * @param amount The amount of money of the transaction
-	 * 
-	 * @param concept The concept of the transaction
+	 * @param incomeExpense The income or expense from the registry to be updated
 	 * 
 	 */
 	public static void update(IncomeExpense incomeExpense) {
@@ -81,7 +73,7 @@ public class TableIncomeExpenses {
 	/*
 	 * Method to delete an existing income or expense from the table
 	 * 
-	 * @param id The ID from the registry to be deleted
+	 * @param incomeExpense The income or expense to be deleted
 	 */
 	public static void delete(IncomeExpense incomeExpense) {
 		String delete = "DELETE FROM incomeExpenses WHERE ID_incomeExpense = ?";
@@ -103,7 +95,7 @@ public class TableIncomeExpenses {
 	 * 
 	 * @param number The number of registries to be shown
 	 * 
-	 * @return A ResultSet of registries.
+	 * @return arrayList An ArrayList of incomeExpense objects
 	 */
 	public static List<IncomeExpense> read(int number) {
 		String select = "SELECT * FROM incomeExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";

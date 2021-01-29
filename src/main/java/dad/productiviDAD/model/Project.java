@@ -3,9 +3,11 @@ package dad.productiviDAD.model;
 import java.time.LocalDate;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,19 +15,24 @@ import javafx.beans.property.StringProperty;
 
 public class Project {
 
-	private IntegerProperty primaryKey=new SimpleIntegerProperty();
+	private IntegerProperty id=new SimpleIntegerProperty();
 	private StringProperty title=new SimpleStringProperty();
-	private IntegerProperty progress=new SimpleIntegerProperty();
-	private BooleanProperty isCompleted=new SimpleBooleanProperty();
-	private BooleanProperty isWhite=new SimpleBooleanProperty();
+	private DoubleProperty progress=new SimpleDoubleProperty();
+	private BooleanProperty Completed=new SimpleBooleanProperty();
+	private BooleanProperty White=new SimpleBooleanProperty();
 	private ObjectProperty<LocalDate>deadLine=new SimpleObjectProperty<>();
 	private StringProperty color=new SimpleStringProperty();
+	private StringProperty description = new SimpleStringProperty();
 	
-	public Project(String title, int progress, String color, boolean isWhite) {
+	public Project(String title, double progress, String color, boolean White) {
 		this.title.set(title);
 		this.progress.set(progress);
 		this.color.set(color);
-		this.isWhite.set(isWhite);
+		this.White.set(White);
+	}
+	
+	public Project() {
+		
 	}
 	
 	public final StringProperty titleProperty() {
@@ -43,33 +50,33 @@ public class Project {
 	}
 	
 
-	public final IntegerProperty progressProperty() {
+	public final DoubleProperty progressProperty() {
 		return this.progress;
 	}
 	
 
-	public final int getProgress() {
+	public final double getProgress() {
 		return this.progressProperty().get();
 	}
 	
 
-	public final void setProgress(final int progress) {
+	public final void setProgress(final double progress) {
 		this.progressProperty().set(progress);
 	}
 	
 
-	public final BooleanProperty isCompletedProperty() {
-		return this.isCompleted;
+	public final BooleanProperty CompletedProperty() {
+		return this.Completed;
 	}
 	
 
-	public final boolean isIsCompleted() {
-		return this.isCompletedProperty().get();
+	public final boolean isCompleted() {
+		return this.CompletedProperty().get();
 	}
 	
 
-	public final void setIsCompleted(final boolean isCompleted) {
-		this.isCompletedProperty().set(isCompleted);
+	public final void setCompleted(final boolean Completed) {
+		this.CompletedProperty().set(Completed);
 	}
 	
 
@@ -102,31 +109,48 @@ public class Project {
 		this.colorProperty().set(color);
 	}
 
-	public final BooleanProperty isWhiteProperty() {
-		return this.isWhite;
+	public final IntegerProperty IDProperty() {
+		return this.id;
 	}
 	
 
-	public final boolean isIsWhite() {
-		return this.isWhiteProperty().get();
+	public final int getId() {
+		return this.IDProperty().get();
 	}
 	
 
-	public final void setIsWhite(final boolean isWhite) {
-		this.isWhiteProperty().set(isWhite);
+	public final void setId(final int id) {
+		this.IDProperty().set(id);
 	}
 
-	public final IntegerProperty primaryKeyProperty() {
-		return this.primaryKey;
-	}
-	
-
-	public final int getPrimaryKey() {
-		return this.primaryKeyProperty().get();
+	public final StringProperty descriptionProperty() {
+		return this.description;
 	}
 	
 
-	public final void setPrimaryKey(final int primaryKey) {
-		this.primaryKeyProperty().set(primaryKey);
-	}	
+	public final String getDescription() {
+		return this.descriptionProperty().get();
+	}
+	
+
+	public final void setDescription(final String description) {
+		this.descriptionProperty().set(description);
+	}
+
+	public final BooleanProperty WhiteProperty() {
+		return this.White;
+	}
+	
+
+	public final boolean isWhite() {
+		return this.WhiteProperty().get();
+	}
+	
+
+	public final void setWhite(final boolean White) {
+		this.WhiteProperty().set(White);
+	}
+	
+		
+	
 }
