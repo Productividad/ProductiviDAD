@@ -83,7 +83,7 @@ public class ProjectCard extends VBox implements Initializable {
 //		progress.set(project.getProgress()+"%");
 		
 		String textColor="white";
-		if(!getProject().isIsWhite())
+		if(!getProject().isWhite())
 			textColor="black";
 
 		Map<String, String> params = new HashMap<>();

@@ -2,10 +2,13 @@ package dad.productiviDAD.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
+import dad.productiviDAD.data.TablePages;
+import dad.productiviDAD.model.Page;
 import dad.productiviDAD.model.Project;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,8 +23,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
-
+	static Page todaysPage = new Page();
 	// View
+
+	public static Page getTodaysPage() {
+		return todaysPage;
+	}
 
 	@FXML
 	private BorderPane view;
@@ -42,7 +49,7 @@ public class MainController implements Initializable {
 	private RightBarController rightBarController;
 
 	private ProjectManagerController homeController;
-	private NotesController notesController;
+	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
 	public static MainController mainController;
 
@@ -59,21 +66,29 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		todaysPage.setDate(LocalDate.now());
 
 		rightBarController = new RightBarController();
 
 		homeController = new ProjectManagerController();
-		notesController = new NotesController();
+		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 
 		view.setCenter(homeController.getView());
 		view.setRight(rightBarController.getView());
+
+		if (TablePages.todaysPage())
+			TablePages.setID(todaysPage);
+		else
+			TablePages.insertPage(todaysPage);
+		System.out.println(todaysPage.getId());
 	}
 
 	public void openProject(Project project) {
 //		view.setCenter();
-		System.out.println("Abriendo proyecto: "+project.getTitle());
-		
+		System.out.println("Abriendo proyecto: " + project.getTitle());
+
 	}
 
 	public BorderPane getView() {
@@ -135,11 +150,11 @@ public class MainController implements Initializable {
 	@FXML
 	private void onIdeasButton(ActionEvent event) {
 
-		if (view.getCenter() == notesController.getView()) {
+		if (view.getCenter() == notasController.getView()) {
 			new Shake(view.getCenter()).play();
 		} else {
-			new FadeIn(notesController.getView()).play();
-			view.setCenter(notesController.getView());
+			new FadeIn(notasController.getView()).play();
+			view.setCenter(notasController.getView());
 			resetRightBar();
 		}
 	}
