@@ -1,0 +1,73 @@
+@import "leftBorderPane.css";
+@import "drawerContent.css";  
+@import "topBar.css";  
+@import "scrollBar.css";  
+@import "balanceManager.css";    
+@import "projectManager.css";              
+               
+.title-label{ 
+	-fx-text-fill:white; 
+}
+              
+.main-color, .table-view,.table-row-cell 
+{         
+    -fx-background-color:#EBEBD3;  
+}
+.secondary-color 
+{
+    -fx-background-color:#083D77; 
+} 
+.sideBars-color, .list-cell
+{
+	-fx-background-color:#F4D35E;
+}
+.top-menu-bar
+{
+	-fx-border-color: transparent transparent #FFD500 transparent;
+	-fx-border-width: 2px;
+}
+.side-menu-bar
+{
+	-fx-border-color: transparent #F4D35E transparent transparent;
+	-fx-border-width: 2px;
+} 
+
+.border-section
+{
+	-fx-border-color:transparent, transparent, black, transparent;
+	-fx-border-width:0 0 2 0;
+}
+
+/*Project Manager*/
+#addProjectButton, #SeeOldProjectButton
+{
+	-fx-background-radius:20;
+	-fx-background-color:derive(#083D77,30.0%);		/*Secondary color */
+	-fx-text-fill:white;	
+}
+#addProjectButton:hover, #SeeOldProjectButton:hover
+{
+	-fx-background-color:derive(#083D77,50.0%);		/*Secondary color */
+}
+#addProjectButton:pressed, #SeeOldProjectButton:pressed
+{
+	-fx-background-color:derive(#083D77,40.0%);		/*Secondary color */	
+}
+
+/*Add project Dialog*/
+
+.customDialog .content {
+    -fx-padding: 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
