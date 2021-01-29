@@ -101,7 +101,7 @@ public class TableIncomeExpenses {
 		String select = "SELECT * FROM incomeExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
 		ResultSet rs = null;
 		ArrayList<IncomeExpense> arrayList = new ArrayList<IncomeExpense>();
-		IncomeExpense incomeExpense = new IncomeExpense();
+		IncomeExpense incomeExpense;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -109,6 +109,7 @@ public class TableIncomeExpenses {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				incomeExpense = new IncomeExpense();
 				incomeExpense.setId(rs.getInt("ID_incomeExpense"));
 				incomeExpense.setAmount(rs.getDouble("amount"));
 				incomeExpense.setConcept(rs.getString("concept"));

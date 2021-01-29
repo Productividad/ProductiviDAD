@@ -102,7 +102,7 @@ public class TableNotes {
 		String select = "SELECT * FROM notes ORDER BY ID_note DESC LIMIT ?";
 		ResultSet rs = null;
 		ArrayList<Note> arrayList = new ArrayList<Note>();
-		Note note = new Note();
+		Note note;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -110,6 +110,7 @@ public class TableNotes {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				note = new Note();
 				note.setId(rs.getInt("ID_note"));
 				note.setTitle(rs.getString("title_note"));
 				note.setContent(rs.getString("content_note"));

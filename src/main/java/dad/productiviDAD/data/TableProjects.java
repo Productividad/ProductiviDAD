@@ -113,7 +113,7 @@ public class TableProjects {
 		String select = "SELECT * FROM projects ORDER BY ID_project DESC LIMIT ?";
 		ResultSet rs = null;
 		ArrayList<Project> arrayList = new ArrayList<Project>();
-		Project project = new Project();
+		Project project;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -121,6 +121,7 @@ public class TableProjects {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				project = new Project();
 				project.setId(rs.getInt("ID_project"));
 				project.setTitle(rs.getString("title_project"));
 				project.setProgress(rs.getDouble("progress"));

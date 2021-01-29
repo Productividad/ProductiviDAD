@@ -59,7 +59,7 @@ public class TablePages {
 			pstmt.setString(1, "date('now')");
 			ResultSet rs = pstmt.executeQuery();
 
-			result = (rs.next()) ? true : false;
+			result = (rs.next()) ? false : true; //.next() == false means is at the last (and only) row.
 
 		} catch (SQLException e) {
 			e.printStackTrace();

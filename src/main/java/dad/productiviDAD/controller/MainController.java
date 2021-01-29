@@ -23,8 +23,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
-
+	static Page todaysPage = new Page();
 	// View
+
+	public static Page getTodaysPage() {
+		return todaysPage;
+	}
 
 	@FXML
 	private BorderPane view;
@@ -62,7 +66,7 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Page todaysPage = new Page();
+		
 		todaysPage.setDate(LocalDate.now());
 
 		rightBarController = new RightBarController();
@@ -74,11 +78,11 @@ public class MainController implements Initializable {
 		view.setCenter(homeController.getView());
 		view.setRight(rightBarController.getView());
 
-		if (!TablePages.todaysPage())
-			TablePages.insertPage(todaysPage);
-		else
+		if (TablePages.todaysPage())
 			TablePages.setID(todaysPage);
-
+		else
+			TablePages.insertPage(todaysPage);
+		System.out.println(todaysPage.getId());
 	}
 
 	public void openProject(Project project) {
