@@ -27,7 +27,7 @@ public class BalanceManagerController implements Initializable {
 
 	@FXML
 	private GridPane view;
-
+ 
 	@FXML
 	private TableView<IncomeExpense> balanceTableView;
 

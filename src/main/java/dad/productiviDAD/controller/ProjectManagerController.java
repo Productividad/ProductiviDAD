@@ -4,21 +4,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.controlsfx.control.NotificationPane;
-
 import dad.productiviDAD.model.Project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
+import javafx.stage.Stage;
 /**
  * Controller class of ProjectManagerView
  */
@@ -85,7 +81,7 @@ public class ProjectManagerController implements Initializable{
 	 * @param project
 	 */
 	private void setProjectCard(ProjectCard card, Project project) {
-		card.styleProjectCard(project);
+		card.setProject(project);
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
 	} 
@@ -96,7 +92,9 @@ public class ProjectManagerController implements Initializable{
 	
     @FXML
     void onAddProject(ActionEvent event) {
-        
+    	ProjectEditorDialog dialog=new ProjectEditorDialog();
+        Stage stage=(Stage)dialog.getDialogPane().getScene().getWindow();
+        dialog.show();
     }
 
     @FXML

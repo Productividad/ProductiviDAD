@@ -9,7 +9,7 @@
 	-fx-text-fill:white; 
 }
               
-.main-color,.table-view,.table-row-cell 
+.main-color, .table-view,.table-row-cell 
 {         
     -fx-background-color:#EBEBD3;  
 }
@@ -17,7 +17,7 @@
 {
     -fx-background-color:#083D77; 
 } 
-.sideBars-color,.list-cell
+.sideBars-color, .list-cell
 {
 	-fx-background-color:#F4D35E;
 }
@@ -39,19 +39,35 @@
 }
 
 /*Project Manager*/
-#addProjectButton,#SeeOldProjectButton
+#addProjectButton, #SeeOldProjectButton
 {
 	-fx-background-radius:20;
 	-fx-background-color:derive(#083D77,30.0%);		/*Secondary color */
-	-fx-text-fill:white;
-	
+	-fx-text-fill:white;	
 }
-#addProjectButton:hover,#SeeOldProjectButton:hover
+#addProjectButton:hover, #SeeOldProjectButton:hover
 {
 	-fx-background-color:derive(#083D77,50.0%);		/*Secondary color */
 }
-#addProjectButton:pressed,#SeeOldProjectButton:pressed
+#addProjectButton:pressed, #SeeOldProjectButton:pressed
 {
-	-fx-background-color:derive(#083D77,40.0%);		/*Secondary color */
-	
+	-fx-background-color:derive(#083D77,40.0%);		/*Secondary color */	
 }
+
+/*Add project Dialog*/
+
+.customDialog .content {
+    -fx-padding: 0 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
