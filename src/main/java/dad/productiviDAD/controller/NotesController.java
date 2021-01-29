@@ -23,7 +23,7 @@ public class NotesController {
 //	view.getChildren().addAll(button1,button2,button3,button4);
 
 	//get titulo y fecha de la nota
-    private JFXMasonryPane view=new JFXMasonryPane();
+    private FlowPane view=new FlowPane();
 	 
     public NotesController() {
 		Random random=new Random(); 
@@ -41,7 +41,7 @@ public class NotesController {
 			view.getChildren().add(button);
 		}
 	}
-	public JFXMasonryPane getView() {
+	public FlowPane getView() {
 		return this.view;
 	}
 

@@ -42,7 +42,7 @@ public class MainController implements Initializable {
 	private RightBarController rightBarController;
 
 	private ProjectManagerController homeController;
-	private IdeasController ideasController;
+	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
 	public static MainController mainController;
 
@@ -63,7 +63,7 @@ public class MainController implements Initializable {
 		rightBarController = new RightBarController();
 
 		homeController = new ProjectManagerController();
-		ideasController = new IdeasController();
+		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 
 		view.setCenter(homeController.getView());
@@ -135,11 +135,11 @@ public class MainController implements Initializable {
 	@FXML
 	private void onIdeasButton(ActionEvent event) {
 
-		if (view.getCenter() == ideasController.getView()) {
+		if (view.getCenter() == notasController.getView()) {
 			new Shake(view.getCenter()).play();
 		} else {
-			new FadeIn(ideasController.getView()).play();
-			view.setCenter(ideasController.getView());
+			new FadeIn(notasController.getView()).play();
+			view.setCenter(notasController.getView());
 			resetRightBar();
 		}
 	}
