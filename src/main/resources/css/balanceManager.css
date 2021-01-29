@@ -7,10 +7,9 @@
 	-jfx-selected-color:#F76C5E;
 }
 
-
 /*Botones */
 .balance-manager-button{
-	-fx-background-radius:0;
+	-fx-background-radius:20;
 	-fx-background-color:#205084;
 	-fx-text-fill:white;
 	-fx-min-height:30;

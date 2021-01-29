@@ -26,13 +26,13 @@ public class ProjectCard extends VBox implements Initializable {
 	private StringProperty progress=new SimpleStringProperty();
 	private ObjectProperty<Project>project=new SimpleObjectProperty<>();
 	
-	
+	 
     @FXML
     private Label projectTitleLabel;
 
     @FXML
-    private Label percentageLabel;
- 
+    private Label percentageLabel; 
+  
     public ProjectCard() {
     	super();
 		try {

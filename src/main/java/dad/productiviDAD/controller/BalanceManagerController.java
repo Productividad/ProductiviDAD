@@ -70,14 +70,6 @@ public class BalanceManagerController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-//		for(int i=0;i<=25;i++) { 
-//			    
-//			LocalDate date=LocalDate.now(); 
-//			String string=new String("String "+i);
-//			
-//			IncomeExpense income=new IncomeExpense(date, string, i); 
-//			movementsList.add(income);
-//		}
 		for (IncomeExpense i : TableIncomeExpenses.read(20))
 			movementsList.add(i);
 
@@ -104,6 +96,7 @@ public class BalanceManagerController implements Initializable {
 		TableIncomeExpenses.delete(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.getItems().remove(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.refresh();
+		
 	}
 
 	@FXML
