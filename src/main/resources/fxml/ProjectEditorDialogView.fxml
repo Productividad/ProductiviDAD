@@ -15,33 +15,47 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane fx:id="view" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" minWidth="700.0" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vgap="10.0">
+      <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" vgap="10.0">
         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="20.0" />
             <ColumnConstraints hgrow="NEVER" />
-          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints vgrow="NEVER" />
+          <RowConstraints minHeight="50.0" vgrow="NEVER" />
           <RowConstraints maxHeight="100.0" minHeight="100.0" vgrow="SOMETIMES" />
-          <RowConstraints vgrow="NEVER" />
+            <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="NEVER" />
+            <RowConstraints vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <JFXTextField maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" />
-            <JFXTextArea prefColumnCount="10" GridPane.columnSpan="3" GridPane.rowIndex="1">
+            <JFXTextField fx:id="titleTF" focusColor="#405aa800" labelFloat="true" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="Título del proyecto" styleClass="dialog-textFieldArea" unFocusColor="#4d4d4d00" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </padding></JFXTextField>
+            <JFXTextArea fx:id="descriptionTA" focusColor="#405aa800" labelFloat="true" prefColumnCount="10" promptText="Descripción del proyecto" styleClass="dialog-textFieldArea" unFocusColor="#4d4d4d00" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+               </padding>
             </JFXTextArea>
-            <JFXDatePicker defaultColor="#944d00" maxWidth="1.7976931348623157E308" minWidth="140.0" GridPane.rowIndex="2" />
-            <JFXCheckBox text="Texto en blanco" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <JFXColorPicker GridPane.columnIndex="2" />
+            <JFXDatePicker fx:id="datePicker" defaultColor="BLACK" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <JFXCheckBox fx:id="whiteText" minWidth="120.0" text="Texto en blanco" GridPane.columnIndex="2" />
+            <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAcceptAction" styleClass="project-dialog-button" text="Aceptar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
          </children>
          <BorderPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets />
          </BorderPane.margin>
+         <padding>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </padding>
       </GridPane>
    </center>
    <top>

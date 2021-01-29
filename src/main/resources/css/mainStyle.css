@@ -3,7 +3,8 @@
 @import "topBar.css";  
 @import "scrollBar.css";  
 @import "balanceManager.css";    
-@import "projectManager.css";              
+@import "projectManager.css";    
+@import "addEditProjectDialog.css";      
                
 .title-label{ 
 	-fx-text-fill:white; 
@@ -15,7 +16,7 @@
 }
 .secondary-color 
 {
-    -fx-background-color:#083D77; 
+    -fx-background-color:#083D77;    
 } 
 .sideBars-color, .list-cell
 {
@@ -37,17 +38,7 @@
 	-fx-border-color:transparent, transparent, black, transparent;
 	-fx-border-width:0 0 2 0;
 }
-/*Add project Dialog*/
 
 .customDialog .content {
-    -fx-padding: 0 ;
+    -fx-padding: 0;
 }
-
-
-
-
-
-
-
-
-

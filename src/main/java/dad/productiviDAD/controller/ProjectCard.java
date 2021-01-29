@@ -31,7 +31,7 @@ public class ProjectCard extends VBox implements Initializable {
     private Label projectTitleLabel;
 
     @FXML
-    private Label percentageLabel; 
+    private Label percentageLabel;  
   
     public ProjectCard() {
     	super();
@@ -53,9 +53,9 @@ public class ProjectCard extends VBox implements Initializable {
 				styleProjectCard();
 			}
 			
-		});
-		
-		projectTitleLabel.textProperty().bindBidirectional(title);
+		}); 
+		 
+		projectTitleLabel.textProperty().bindBidirectional(title); 
 		percentageLabel.textProperty().bind(progress);		
 	}
 	
@@ -75,7 +75,7 @@ public class ProjectCard extends VBox implements Initializable {
     }
 	/**
 	 * Check the color values from a project and applies it to a projectCard
-	 * @param project
+	 * @param project 
 	 */
 	private void styleProjectCard(){
 		

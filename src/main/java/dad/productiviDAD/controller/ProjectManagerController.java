@@ -72,9 +72,10 @@ public class ProjectManagerController implements Initializable{
 		for(Node project: projectCardContainer.getChildren())
 			counter++; 
 	
-		return counter;
+		return counter; 
 	}
-	/**
+
+	/** 
 	 * Combines a Project and a ProjectCard and set the result in the 
 	 * projectCardContainer
 	 * @param card
@@ -85,15 +86,10 @@ public class ProjectManagerController implements Initializable{
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
 	} 
-	
-	public VBox getView() {
-		return this.view;
-	}
-	
+
     @FXML
     void onAddProject(ActionEvent event) {
     	ProjectEditorDialog dialog=new ProjectEditorDialog();
-        Stage stage=(Stage)dialog.getDialogPane().getScene().getWindow();
         dialog.show();
     }
 
@@ -101,5 +97,9 @@ public class ProjectManagerController implements Initializable{
     void onSeeOldProjects(ActionEvent event) {
 
     }
+	
+	public VBox getView() {
+		return this.view;
+	}
 }
  
