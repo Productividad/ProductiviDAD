@@ -18,17 +18,17 @@ public class Project {
 	private IntegerProperty id=new SimpleIntegerProperty();
 	private StringProperty title=new SimpleStringProperty();
 	private DoubleProperty progress=new SimpleDoubleProperty();
-	private BooleanProperty Completed=new SimpleBooleanProperty();
-	private BooleanProperty White=new SimpleBooleanProperty();
+	private BooleanProperty completed=new SimpleBooleanProperty();
+	private BooleanProperty white=new SimpleBooleanProperty();
 	private ObjectProperty<LocalDate>deadLine=new SimpleObjectProperty<>();
 	private StringProperty color=new SimpleStringProperty();
 	private StringProperty description = new SimpleStringProperty();
 	
-	public Project(String title, double progress, String color, boolean White) {
+	public Project(String title, double progress, String color, boolean white) {
 		this.title.set(title);
 		this.progress.set(progress);
 		this.color.set(color);
-		this.White.set(White);
+		this.white.set(white);
 	}
 	
 	public Project() {
@@ -66,7 +66,7 @@ public class Project {
 	
 
 	public final BooleanProperty CompletedProperty() {
-		return this.Completed;
+		return this.completed;
 	}
 	
 
@@ -138,7 +138,7 @@ public class Project {
 	}
 
 	public final BooleanProperty WhiteProperty() {
-		return this.White;
+		return this.white;
 	}
 	
 
@@ -147,8 +147,8 @@ public class Project {
 	}
 	
 
-	public final void setWhite(final boolean White) {
-		this.WhiteProperty().set(White);
+	public final void setWhite(final boolean white) {
+		this.WhiteProperty().set(white);
 	}
 	
 		

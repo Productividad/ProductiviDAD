@@ -2,10 +2,13 @@ package dad.productiviDAD.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
+import dad.productiviDAD.data.TablePages;
+import dad.productiviDAD.model.Page;
 import dad.productiviDAD.model.Project;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -59,6 +62,8 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Page todaysPage = new Page();
+		todaysPage.setDate(LocalDate.now());
 
 		rightBarController = new RightBarController();
 
@@ -68,12 +73,18 @@ public class MainController implements Initializable {
 
 		view.setCenter(homeController.getView());
 		view.setRight(rightBarController.getView());
+
+		if (!TablePages.todaysPage())
+			TablePages.insertPage(todaysPage);
+		else
+			TablePages.setID(todaysPage);
+
 	}
 
 	public void openProject(Project project) {
 //		view.setCenter();
-		System.out.println("Abriendo proyecto: "+project.getTitle());
-		
+		System.out.println("Abriendo proyecto: " + project.getTitle());
+
 	}
 
 	public BorderPane getView() {

@@ -18,7 +18,7 @@ public class TableNotes {
 	 * 
 	 * @param note The note to be inserted
 	 */
-	public int insertNote(Note note) {
+	public static int insertNote(Note note) {
 		String insert = "INSERT INTO notes (title_note, content_note, FK_ID_page) VALUES (?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='notes'";
 		int id = 0;
@@ -99,7 +99,7 @@ public class TableNotes {
 	 * @return arrayList An ArrayList of Note objects
 	 */
 	public static List<Note> read(int number) {
-		String select = "SELECT * FROM incomeExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
+		String select = "SELECT * FROM notes ORDER BY ID_note DESC LIMIT ?";
 		ResultSet rs = null;
 		ArrayList<Note> arrayList = new ArrayList<Note>();
 		Note note = new Note();
