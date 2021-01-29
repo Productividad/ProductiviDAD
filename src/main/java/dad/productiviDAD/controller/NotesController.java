@@ -1,10 +1,18 @@
 package dad.productiviDAD.controller;
 
+import java.util.List;
 import java.util.Random;
 
 import com.jfoenix.controls.JFXMasonryPane;
+import com.jfoenix.controls.JFXTextField;
 
+import dad.productiviDAD.data.TableNotes;
+import dad.productiviDAD.model.IncomeExpense;
+import dad.productiviDAD.model.Note;
 import javafx.application.Application;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -23,27 +31,38 @@ public class NotesController {
 //	view.getChildren().addAll(button1,button2,button3,button4);
 
 	//get titulo y fecha de la nota
-    private FlowPane view=new FlowPane();
+    
+	private List<Note> noteList;
+
+	
+	private JFXMasonryPane view=new JFXMasonryPane();
 	 
     public NotesController() {
 		Random random=new Random(); 
-		
-		for(int i=0;i<=29;i++) {
-			Button button=new Button("Nota "+ i);
-			button.setPrefSize(200,200);
+		noteList = TableNotes.read(20);
+		for (Note i : noteList) {
+			JFXTextField textContent=new JFXTextField(i.getContent());
+			textContent.setPrefSize(400,400);
 			
 			int red= random.nextInt(255); 
 			int green= random.nextInt(255);
 			int blue= random.nextInt(255);
 			
-			button.setStyle("-fx-background-color:rgb("+red+","+green+","+blue+")");
+			textContent.setStyle("-fx-background-color:rgb("+red+","+green+","+blue+")");
 			
-			view.getChildren().add(button);
+			textContent.focusedProperty().addListener((obs, oldVal,newVal)->{  //https://stackoverflow.com/questions/16549296/how-perform-task-on-javafx-textfield-at-onfocus-and-outfocus
+				if (!newVal) { //cuando pierde el foco 
+					i.setContent(textContent.getText());
+					TableNotes.update(i);
+				}
+			});
+			
+			view.getChildren().add(textContent);
 		}
 	}
-	public FlowPane getView() {
+	public JFXMasonryPane getView() {
 		return this.view;
 	}
-
+	
 
 }
