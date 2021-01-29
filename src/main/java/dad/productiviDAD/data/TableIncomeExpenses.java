@@ -46,7 +46,7 @@ public class TableIncomeExpenses {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcConnection.closeConnection();
+			JdbcConnection.close();
 		}
 
 	}
@@ -73,7 +73,7 @@ public class TableIncomeExpenses {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcConnection.closeConnection();
+			JdbcConnection.close();
 		}
 
 	}
@@ -93,7 +93,7 @@ public class TableIncomeExpenses {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcConnection.closeConnection();
+			JdbcConnection.close();
 		}
 
 	}
@@ -126,7 +126,7 @@ public class TableIncomeExpenses {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcConnection.closeConnection();
+			JdbcConnection.close();
 		}
 		return arrayList;
 	}

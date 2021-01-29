@@ -32,7 +32,7 @@ public class JdbcConnection {
 		}
 	}
 
-	public static void closeConnection() {
+	public static void close() {
 		try {
 			connection.close();
 		} catch (SQLException e) {
