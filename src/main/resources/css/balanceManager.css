@@ -6,7 +6,16 @@
 #negativeRB{
 	-jfx-selected-color:#F76C5E;
 }
-
+/*DatePicker */
+#datePicker{
+	-jfx-default-color:#205084;
+}
+	#datePicker .date-picker-display-node{
+		-jfx-unfocus-color:transparent;
+	}
+	#datePicker:hover .date-picker-display-node{
+		-jfx-unfocus-color:#205084;
+	}
 /*Botones */
 .balance-manager-button{
 	-fx-background-radius:20;

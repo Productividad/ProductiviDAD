@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
@@ -45,6 +46,9 @@ public class BalanceManagerController implements Initializable {
 
 	@FXML
 	private JFXTextField amountTF;
+	
+	@FXML
+	private JFXDatePicker datePicker;
 
 	@FXML
 	private Label totalLabel;
@@ -83,7 +87,6 @@ public class BalanceManagerController implements Initializable {
 		positiveRB.setToggleGroup(toggleGroup);
 		positiveRB.setSelected(true);
 		negativeRB.setToggleGroup(toggleGroup);
-
 	}
 
 	public GridPane getView() {
@@ -96,7 +99,6 @@ public class BalanceManagerController implements Initializable {
 		TableIncomeExpenses.delete(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.getItems().remove(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.refresh();
-		
 	}
 
 	@FXML

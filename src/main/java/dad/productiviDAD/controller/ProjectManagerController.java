@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  */
 public class ProjectManagerController implements Initializable{
 
-	@FXML 
+	@FXML  
 	private VBox view;
 	
 	@FXML 

@@ -26,13 +26,13 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     @FXML
     private GridPane topBar;
 
-    @FXML
+    @FXML 
     private Label titleTopBar;
          
     public ProjectEditorDialog() {
     	super();
     	initStyle(StageStyle.UNDECORATED);
-		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectEditorView.fxml"));
+		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectEditorDialogView.fxml"));
 		loader.setController(this); 
 		try {
 			loader.load();
@@ -47,7 +47,7 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     
     @FXML 
     void onCloseWindow(ActionEvent event) {
-        Platform.exit();
+    	Stage stage=(Stage)view.getScene().getWindow();
+    	stage.close();
     }
-
 }

@@ -43,17 +43,6 @@
     -fx-padding: 0 ;
 }
 
-/*DatePicker */
-#datePicker{
-	-jfx-default-color:#205084;
-}
-
-#datePicker .date-picker-display-node{
-	-jfx-unfocus-color:transparent;
-}
-#datePicker:hover .date-picker-display-node{
-	-jfx-unfocus-color:#205084;
-}
 
 
 
