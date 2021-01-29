@@ -11,6 +11,7 @@ import java.util.List;
 import dad.productiviDAD.controller.MainController;
 import dad.productiviDAD.controller.TaskManagerController;
 import dad.productiviDAD.model.Note;
+import dad.productiviDAD.model.Project;
 import dad.productiviDAD.model.Task;
 
 /*
@@ -64,7 +65,7 @@ public class TableTasks {
 	 * 
 	 * @param task The task to be deleted
 	 */
-	public void delete(Task task) {
+	public static void delete(Task task) {
 		String delete = "DELETE FROM tasks WHERE ID_task = ?";
 		try {
 			JdbcConnection.connect();
@@ -82,18 +83,23 @@ public class TableTasks {
 	/*
 	 * Method to get parent Tasks from the table
 	 * 
+	 * @param project To be used if we want to get the tasks of a project
 	 * 
 	 * @return arrayList List of registries.
 	 */
-	public List<Task> readParentTasks() {
-		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = NULL";
+	public static List<Task> readParentTasks(Project project) {
+		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = NULL AND FK_ID_Parent_task = ?";
 		ResultSet rs = null;
 		ArrayList<Task> arrayList = new ArrayList<Task>();
 		Task task;
 		try {
 			JdbcConnection.connect();
-			Statement stmt = JdbcConnection.connection.createStatement();
-			rs = stmt.executeQuery(select);
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
+			if (project.getId() != 0)
+				pstmt.setInt(1, project.getId());
+			else
+				pstmt.setString(1, "NULL");
+			rs = pstmt.executeQuery(select);
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
@@ -103,30 +109,29 @@ public class TableTasks {
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
 				task.setPage(MainController.getTodaysPage());
-				//Cargar tareas padre
-				
-				//task.setParentTask(rs.getInt("FK_ID_Parent_task");
-				//Cargar proyectos
-				//task.setProject(rs.getInt("FK_ID_project");
+				if(project != null)
+					task.setProject(project);
 				task.setPriority((rs.getInt("priority_task") == 1) ? true : false);
-				
+
 				arrayList.add(task);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcConnection.close();
 		}
 		return arrayList;
 	}
+
 	/*
 	 * Method to get child tasks from the table
 	 * 
-	 * @param number The number of registries to be shown
+	 * @param parentTask The parent Task
 	 * 
 	 * @return A ResultSet of registries.
+	 * 
 	 */
-	public void readChildTasks(Task parentTask) {
+	public static void readChildTasks(Task parentTask) {
 		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = ?";
 		ResultSet rs = null;
 		Task task;
@@ -145,25 +150,26 @@ public class TableTasks {
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
 				task.setPage(MainController.getTodaysPage());
 				task.setParentTask(parentTask);
-				//Cargar proyectos
-				//task.setProject(rs.getInt("FK_ID_project");
+				if (parentTask.getProject() != null)
+					task.setProject(parentTask.getProject());
 				task.setPriority((rs.getInt("priority_task") == 1) ? true : false);
-				
+
 				parentTask.getChildTasks().add(task);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			JdbcConnection.close();
 		}
 	}
+
 	/*
 	 * Method to update an existing task from the table
 	 * 
 	 * @param task The task to be updated
 	 * 
 	 */
-	public void update(Task task) {
+	public static void update(Task task) {
 		String update = "UPDATE tasks SET title_task = ? , completed = ?, description_task = ?, color_task ?, "
 				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, priority_task = ? WHERE ID_task = ?";
 		try {
@@ -184,6 +190,5 @@ public class TableTasks {
 		} finally {
 			JdbcConnection.close();
 		}
-
 	}
 }
