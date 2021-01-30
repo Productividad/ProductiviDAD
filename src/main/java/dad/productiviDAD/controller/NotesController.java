@@ -1,14 +1,8 @@
 package dad.productiviDAD.controller;
 
-import java.util.Random;
-
-import com.jfoenix.controls.JFXMasonryPane;
-
-import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import dad.productiviDAD.model.Note;
+import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
 
 public class NotesController {
 
@@ -26,24 +20,32 @@ public class NotesController {
     private FlowPane view=new FlowPane();
 	 
     public NotesController() {
-		Random random=new Random(); 
-		
-		for(int i=0;i<=29;i++) {
-			Button button=new Button("Nota "+ i);
-			button.setPrefSize(200,200);
-			
-			int red= random.nextInt(255); 
-			int green= random.nextInt(255);
-			int blue= random.nextInt(255);
-			
-			button.setStyle("-fx-background-color:rgb("+red+","+green+","+blue+")");
-			
-			view.getChildren().add(button);
-		}
+
+    	NoteComponent postIt1=new NoteComponent();
+    	Note note1=new Note("Titulo1","Descripcion1","#DBC2CF",false);
+    	postIt1.setNote(note1);
+    	
+    	NoteComponent postIt2=new NoteComponent();
+    	Note note2=new Note("Titulo2","Descripcion2","#708D81",false);
+    	postIt2.setNote(note2);
+    	
+    	NoteComponent postIt3=new NoteComponent();
+    	Note note3=new Note("Titulo3","Descripcion3","#001427",true);
+    	postIt3.setNote(note3);
+    	
+    	NoteComponent postIt4=new NoteComponent();
+    	Note note4=new Note("Titulo4","Descripcion4","#DDA15E",false);
+    	postIt4.setNote(note4);
+    	
+    	view.setPadding(new Insets(5));
+    	view.setHgap(5);
+    	view.setVgap(5);
+    	view.getChildren().addAll(postIt1,postIt2,postIt3,postIt4);
+ 
 	}
 	public FlowPane getView() {
-		return this.view;
+		return this.view; 
 	}
 
 
-}
+}   

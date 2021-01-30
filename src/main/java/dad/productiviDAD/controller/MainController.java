@@ -83,7 +83,7 @@ public class MainController implements Initializable {
 		else
 			TablePages.insertPage(todaysPage);
 		System.out.println(todaysPage.getId());
-	}
+	} 
 
 	public void openProject(Project project) {
 //		view.setCenter();

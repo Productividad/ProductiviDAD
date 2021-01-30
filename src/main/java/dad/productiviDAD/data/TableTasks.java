@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dad.productiviDAD.controller.MainController;
-import dad.productiviDAD.controller.TaskManagerController;
-import dad.productiviDAD.model.Note;
 import dad.productiviDAD.model.Project;
 import dad.productiviDAD.model.Task;
 

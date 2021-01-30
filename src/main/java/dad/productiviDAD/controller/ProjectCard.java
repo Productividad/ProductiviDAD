@@ -78,10 +78,7 @@ public class ProjectCard extends VBox implements Initializable {
 	 * @param project 
 	 */
 	private void styleProjectCard(){
-		
-//		title.set(project.getTitle());
-//		progress.set(project.getProgress()+"%");
-		
+
 		String textColor="white";
 		if(!getProject().isWhite())
 			textColor="black";
