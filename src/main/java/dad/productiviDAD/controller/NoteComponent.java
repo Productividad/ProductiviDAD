@@ -105,6 +105,44 @@ public class NoteComponent extends GridPane	implements Initializable{
 	public final void setNote(final Note note) {
 		this.noteProperty().set(note);
 	}
+
+	public NoteComponent(StringProperty title, StringProperty content) {
+		super();
+		this.title = title;
+		this.content = content;
+	}
+
+	public StringProperty getTitle() {
+		return title;
+	}
+
+	public void setTitle(StringProperty title) {
+		this.title = title;
+	}
+
+	public StringProperty getContent() {
+		return content;
+	}
+
+	public void setContent(StringProperty content) {
+		this.content = content;
+	}
+
+	public JFXTextField getNoteTF() {
+		return noteTF;
+	}
+
+	public void setNoteTF(JFXTextField noteTF) {
+		this.noteTF = noteTF;
+	}
+
+	public JFXTextArea getNoteTA() {
+		return noteTA;
+	}
+
+	public void setNoteTA(JFXTextArea noteTA) {
+		this.noteTA = noteTA;
+	}
 	
 	
 }

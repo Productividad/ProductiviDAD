@@ -1,5 +1,8 @@
 package dad.productiviDAD.controller;
 
+import java.util.List;
+
+import dad.productiviDAD.data.TableNotes;
 import dad.productiviDAD.model.Note;
 import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
@@ -13,21 +16,39 @@ public class NotesController {
 //	
 //	view.getChildren().addAll(button1,button2,button3,button4);
 
-	//get titulo y fecha de la nota
-    
-//	private List<Note> noteList;
+	    
+	private List<Note> noteList;
 
 	
 //	private JFXMasonryPane view=new JFXMasonryPane();
 	private FlowPane view = new FlowPane();
-
+//
     public NotesController() {
-
+    	noteList = TableNotes.read(20);
+    	for(Note i : noteList) {
     	NoteComponent postIt1=new NoteComponent();
-    	Note note1=new Note("Titulo1","Descripcion1","#DBC2CF",false);
+    	Note note1=new Note(i.getTitle(),i.getContent(),"#708D81",false);
     	postIt1.setNote(note1);
     	
-    	NoteComponent postIt2=new NoteComponent();
+    	postIt1.getNoteTF().focusedProperty().addListener((o,ov,nv)->{
+    		
+    		if (!nv) { //cuando pierde el foco 
+				i.setTitle(note1.getTitle());
+				TableNotes.update(i);
+			}
+    		
+    	});
+    	
+    	postIt1.getNoteTA().focusedProperty().addListener((o,ov,nv)->{
+    		
+    		if (!nv) { //cuando pierde el foco 
+				i.setContent(note1.getContent());
+				TableNotes.update(i);
+			}
+    		
+    	});
+    	
+    /*	NoteComponent postIt2=new NoteComponent();
     	Note note2=new Note("Titulo2","Descripcion2","#708D81",false);
     	postIt2.setNote(note2);
     	
@@ -37,13 +58,15 @@ public class NotesController {
     	
     	NoteComponent postIt4=new NoteComponent();
     	Note note4=new Note("Titulo4","Descripcion4","#DDA15E",false);
-    	postIt4.setNote(note4);
+    	postIt4.setNote(note4);*/
     	
+    	
+
+    	view.getChildren().addAll(postIt1);
+    	}
     	view.setHgap(5);
     	view.setVgap(5);
     	view.setPadding(new Insets(5));
-
-    	view.getChildren().addAll(postIt1,postIt2,postIt3,postIt4);
  
 	}
 /*	public FlowPane getView() {
