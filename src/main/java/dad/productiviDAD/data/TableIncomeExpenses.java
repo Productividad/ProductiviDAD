@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,15 +22,15 @@ public class TableIncomeExpenses {
 	 */
 	public static void create(IncomeExpense incomeExpense) {
 
-		String insert = "INSERT INTO incomeExpenses (amount, concept, FK_ID_page) VALUES (?, ?, ?)";
-		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='incomeExpenses'";
+		String insert = "INSERT INTO incomesExpenses (amount, concept, date_incomeExpense) VALUES (?, ?, ?)";
+		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='incomesExpenses'";
 		int id = 0;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
 			pstmt.setDouble(1, incomeExpense.getAmount());
 			pstmt.setString(2, incomeExpense.getConcept());
-			pstmt.setString(3, "(SELECT id_page FROM pages where page_date=date('now'))");
+			pstmt.setString(3, incomeExpense.getDate().toString());
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
@@ -54,13 +55,14 @@ public class TableIncomeExpenses {
 	 * 
 	 */
 	public static void update(IncomeExpense incomeExpense) {
-		String update = "UPDATE incomeExpenses SET amount = ? , concept = ? WHERE ID_incomeExpense = ?";
+		String update = "UPDATE incomesExpenses SET amount = ? , concept = ?, date_incomeExpense = ? WHERE ID_incomeExpense = ?";
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
 			pstmt.setDouble(1, incomeExpense.getAmount());
 			pstmt.setString(2, incomeExpense.getConcept());
-			pstmt.setInt(3, incomeExpense.getId());
+			pstmt.setString(3, incomeExpense.getDate().toString());
+			pstmt.setInt(4, incomeExpense.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -76,7 +78,7 @@ public class TableIncomeExpenses {
 	 * @param incomeExpense The income or expense to be deleted
 	 */
 	public static void delete(IncomeExpense incomeExpense) {
-		String delete = "DELETE FROM incomeExpenses WHERE ID_incomeExpense = ?";
+		String delete = "DELETE FROM incomesExpenses WHERE ID_incomeExpense = ?";
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
@@ -98,7 +100,7 @@ public class TableIncomeExpenses {
 	 * @return arrayList An ArrayList of incomeExpense objects
 	 */
 	public static List<IncomeExpense> read(int number) {
-		String select = "SELECT * FROM incomeExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
+		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
 		ResultSet rs = null;
 		ArrayList<IncomeExpense> arrayList = new ArrayList<IncomeExpense>();
 		IncomeExpense incomeExpense;
@@ -113,6 +115,7 @@ public class TableIncomeExpenses {
 				incomeExpense.setId(rs.getInt("ID_incomeExpense"));
 				incomeExpense.setAmount(rs.getDouble("amount"));
 				incomeExpense.setConcept(rs.getString("concept"));
+				incomeExpense.setDate(LocalDate.parse(rs.getString("date_incomeExpense")));
 				arrayList.add(incomeExpense);
 			}
 

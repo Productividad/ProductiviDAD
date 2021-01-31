@@ -10,7 +10,9 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productiviDAD.data.TableIncomeExpenses;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -59,7 +61,7 @@ public class BalanceManagerController implements Initializable {
 	private JFXRadioButton negativeRB;
 
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
-
+	private DoubleProperty totalAmount = new SimpleDoubleProperty();
 	public BalanceManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
@@ -86,6 +88,12 @@ public class BalanceManagerController implements Initializable {
 		positiveRB.setToggleGroup(toggleGroup);
 		positiveRB.setSelected(true);
 		negativeRB.setToggleGroup(toggleGroup);
+		
+		for(IncomeExpense inEx : movementsList) {
+			totalAmount.add(inEx.getAmount());
+		}
+		System.out.println(totalAmount.get());
+		totalLabel.textProperty().set(String.format("%.2f", totalAmount.get()));
 	}
 
 	public GridPane getView() {
@@ -106,6 +114,7 @@ public class BalanceManagerController implements Initializable {
 		incomeExpense.setAmount((positiveRB.selectedProperty().get()) ? Double.parseDouble(amountTF.getText())
 				: Double.parseDouble("-" + amountTF.getText()));
 		incomeExpense.setConcept(conceptTF.getText());
+		incomeExpense.setDate(datePicker.getValue());
 		TableIncomeExpenses.create(incomeExpense);
 		movementsList.add(incomeExpense);
 	}
