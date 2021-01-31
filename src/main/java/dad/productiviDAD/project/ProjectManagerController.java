@@ -1,10 +1,9 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.project;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.model.Project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,23 +39,23 @@ public class ProjectManagerController implements Initializable{
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		ProjectCard card1=new ProjectCard();
+		ProjectCardComponent card1=new ProjectCardComponent();
 		Project project1=new Project("Project 1", 27, "#DAD6D6", false);
 		setProjectCard(card1,project1);
 		 
-		ProjectCard card2=new ProjectCard();
+		ProjectCardComponent card2=new ProjectCardComponent();
 		Project project2=new Project("Project 2", 14, "#92BFB1", false); 
 		setProjectCard(card2,project2);
 
-		ProjectCard card3=new ProjectCard();
+		ProjectCardComponent card3=new ProjectCardComponent();
 		Project project3=new Project("Project 3", 52, "#F4AC45", false);
 		setProjectCard(card3,project3);
  
-		ProjectCard card4=new ProjectCard();
+		ProjectCardComponent card4=new ProjectCardComponent();
 		Project project4=new Project("Project 4", 70, "#A61C3C", true);
 		setProjectCard(card4,project4); 
 		
-		ProjectCard card5=new ProjectCard();
+		ProjectCardComponent card5=new ProjectCardComponent();
 		Project project5=new Project("Project 5", 70, "#A42C3C", true);
 		setProjectCard(card5,project5);
 		
@@ -81,7 +80,7 @@ public class ProjectManagerController implements Initializable{
 	 * @param card
 	 * @param project
 	 */
-	private void setProjectCard(ProjectCard card, Project project) {
+	private void setProjectCard(ProjectCardComponent card, Project project) {
 		card.setProject(project);
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);

@@ -1,4 +1,4 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.balanceManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -10,7 +10,6 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productiviDAD.data.TableIncomeExpenses;
-import dad.productiviDAD.model.IncomeExpense;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;

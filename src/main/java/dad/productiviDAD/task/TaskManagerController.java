@@ -1,4 +1,4 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.task;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.model.Task;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;

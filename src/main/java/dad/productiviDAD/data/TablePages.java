@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productiviDAD.model.IncomeExpense;
-import dad.productiviDAD.model.Page;
+import dad.productiviDAD.balanceManager.IncomeExpense;
+import dad.productiviDAD.page.Page;
 
 /*
  * Class used to interact with the Pages table in the database.

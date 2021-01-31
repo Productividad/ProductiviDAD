@@ -1,4 +1,4 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.note;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.model.Note;
 import dad.productiviDAD.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

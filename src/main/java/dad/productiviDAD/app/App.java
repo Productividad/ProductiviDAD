@@ -1,6 +1,5 @@
 package dad.productiviDAD.app;
 
-import dad.productiviDAD.controller.MainController;
 import javafx.application.Application;
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.Scene;

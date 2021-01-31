@@ -1,4 +1,4 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.project;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.model.Project;
+import dad.productiviDAD.app.MainController;
 import dad.productiviDAD.utils.CSSUtils;
 import dad.productiviDAD.utils.ResourceUtils;
 import javafx.beans.property.ObjectProperty;
@@ -19,8 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
- 
-public class ProjectCard extends VBox implements Initializable {
+
+
+public class ProjectCardComponent extends VBox implements Initializable {
 
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty progress=new SimpleStringProperty();
@@ -33,7 +34,7 @@ public class ProjectCard extends VBox implements Initializable {
     @FXML
     private Label percentageLabel;  
   
-    public ProjectCard() {
+    public ProjectCardComponent() {
     	super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectCardComponent.fxml"));

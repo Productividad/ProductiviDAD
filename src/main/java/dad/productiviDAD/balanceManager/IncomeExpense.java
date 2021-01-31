@@ -1,4 +1,4 @@
-package dad.productiviDAD.model;
+package dad.productiviDAD.balanceManager;
 
 import java.time.LocalDate;
 

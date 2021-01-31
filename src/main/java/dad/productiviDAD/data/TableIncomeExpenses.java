@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dad.productiviDAD.model.IncomeExpense;
+import dad.productiviDAD.balanceManager.IncomeExpense;
 
 /*
  * Class used to interact with the IncomeExpenses table in the database.

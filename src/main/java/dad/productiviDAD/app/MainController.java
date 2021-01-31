@@ -1,4 +1,4 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.app;
 
 import java.io.IOException;
 import java.net.URL;
@@ -7,9 +7,13 @@ import java.util.ResourceBundle;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
+import dad.productiviDAD.balanceManager.BalanceManagerController;
 import dad.productiviDAD.data.TablePages;
-import dad.productiviDAD.model.Page;
-import dad.productiviDAD.model.Project;
+import dad.productiviDAD.note.NotesController;
+import dad.productiviDAD.page.Page;
+import dad.productiviDAD.project.Project;
+import dad.productiviDAD.project.ProjectManagerController;
+import dad.productiviDAD.task.RightBarController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

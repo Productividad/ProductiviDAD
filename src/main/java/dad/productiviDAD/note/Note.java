@@ -1,4 +1,4 @@
-package dad.productiviDAD.model;
+package dad.productiviDAD.note;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;

@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productiviDAD.controller.MainController;
-import dad.productiviDAD.model.Project;
-import dad.productiviDAD.model.Task;
+import dad.productiviDAD.app.MainController;
+import dad.productiviDAD.project.Project;
+import dad.productiviDAD.task.Task;
 
 /*
  * Class used to interact with the IncomeExpenses table in the database.

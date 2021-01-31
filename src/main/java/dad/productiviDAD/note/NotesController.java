@@ -1,9 +1,8 @@
-package dad.productiviDAD.controller;
+package dad.productiviDAD.note;
 
 import java.util.List;
 
 import dad.productiviDAD.data.TableNotes;
-import dad.productiviDAD.model.Note;
 import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
 
@@ -59,8 +58,6 @@ public class NotesController {
     	NoteComponent postIt4=new NoteComponent();
     	Note note4=new Note("Titulo4","Descripcion4","#DDA15E",false);
     	postIt4.setNote(note4);*/
-    	
-    	
 
     	view.getChildren().addAll(postIt1);
     	}

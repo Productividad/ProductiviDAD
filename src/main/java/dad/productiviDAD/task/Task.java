@@ -1,6 +1,9 @@
-package dad.productiviDAD.model;
+package dad.productiviDAD.task;
 
 import java.time.LocalDate;
+
+import dad.productiviDAD.page.Page;
+import dad.productiviDAD.project.Project;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;

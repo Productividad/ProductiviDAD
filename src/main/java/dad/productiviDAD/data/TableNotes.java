@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productiviDAD.model.Note;
+import dad.productiviDAD.note.Note;
 
 /*
  * Class used to interact with the Notes table in the database.

@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productiviDAD.model.IncomeExpense;
-import dad.productiviDAD.model.Project;
+import dad.productiviDAD.balanceManager.IncomeExpense;
+import dad.productiviDAD.project.Project;
 
 /*
  * Class used to interact with the Projects table in the database.
