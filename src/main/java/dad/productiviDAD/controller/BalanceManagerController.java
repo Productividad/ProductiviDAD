@@ -73,7 +73,7 @@ public class BalanceManagerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		for (IncomeExpense i : TableIncomeExpenses.read(20))
 			movementsList.add(i);
 

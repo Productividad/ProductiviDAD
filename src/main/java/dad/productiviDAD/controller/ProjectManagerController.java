@@ -90,7 +90,9 @@ public class ProjectManagerController implements Initializable{
     @FXML
     void onAddProject(ActionEvent event) {
     	ProjectEditorDialog dialog=new ProjectEditorDialog();
+    	dialog.setTitleDialog("Añadir proyecto");
         dialog.show();
+        //TOOD recogida de datos a traves del controlador del dialogo
     }
 
     @FXML

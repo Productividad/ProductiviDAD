@@ -102,7 +102,8 @@ public class MainController implements Initializable {
 	// TopBar
 	@FXML
 	private void onCloseWindow(ActionEvent event) {
-		Platform.exit();
+		Stage stage=(Stage)view.getScene().getWindow();
+    	stage.close();
 	}
 
 	@FXML

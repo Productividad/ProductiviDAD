@@ -1,0 +1,43 @@
+/*Add project Dialog*/
+
+/*Dialog */
+
+#projectTopBar{
+	-fx-background-color:#000000;
+}
+
+.dialog-background{
+	-fx-background-color:derive(white, 20.00%);
+}
+
+.dialog-textFieldArea{
+	-fx-border-width:2;
+	-fx-border-color:#000000;
+	-fx-border-radius:15;
+	-fx-text-fill:#000000;
+}
+
+.project-dialog-button{
+	-fx-background-radius:20;
+	-fx-background-color:#000000;
+	-fx-text-fill:white;
+}
+	.project-dialog-button:hover{
+		-fx-background-color:derive(#000000, 30.0%);
+	}
+	.project-dialog-button:pressed{
+		-fx-background-color:derive(#000000, 5.0%);
+	}
+.project-datepicker:editable{
+	-jfx-default-color:#000000;
+}
+	.project-datepicker:editable:hover{
+		-jfx-default-color:derive(#000000, 30.0%);
+	}
+
+.project-checkBox:determinate{
+	-jfx-unchecked-color:#000000;
+}
+.project-checkBox:determinate .text{
+	-fx-fill:#000000;
+}
