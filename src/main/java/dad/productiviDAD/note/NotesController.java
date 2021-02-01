@@ -2,7 +2,7 @@ package dad.productiviDAD.note;
 
 import java.util.List;
 
-import dad.productiviDAD.data.TableNotes;
+import dad.productiviDAD.dataManager.TableNotes;
 import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
 
