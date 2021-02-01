@@ -23,6 +23,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -77,6 +78,22 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 		
 		ButtonBar buttonBar=(ButtonBar)getDialogPane().lookup(".button-bar");
 		buttonBar.setStyle("-fx-background-color:derive(white, 20.00%)");
+		
+		colorPicker.setValue(new Color(0, 0, 0, 1));
+		
+		whiteText.selectedProperty().set(true);
+		whiteText.selectedProperty().addListener((o,ov,nv)->{
+			if(whiteText.selectedProperty().get()) {
+				acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue())+
+						"; -fx-text-fill:white;");
+				titleTopBar.setStyle("-fx-text-fill:white;");
+			}
+			else {
+				acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue())+
+						"; -fx-text-fill:black;");
+				titleTopBar.setStyle("-fx-text-fill:black;");
+			}
+		});
 		
 		colorPicker.valueProperty().addListener((o,ov,nv)->{
 			acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));

@@ -13,8 +13,8 @@ import dad.productiviDAD.note.NotesController;
 import dad.productiviDAD.page.Page;
 import dad.productiviDAD.project.Project;
 import dad.productiviDAD.project.ProjectManagerController;
+import dad.productiviDAD.project.projectDetailController;
 import dad.productiviDAD.task.RightBarController;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,9 +52,11 @@ public class MainController implements Initializable {
 	// Controllers
 	private RightBarController rightBarController;
 
-	private ProjectManagerController homeController;
+	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
+	private projectDetailController projectDetailController;	
+	
 	public static MainController mainController;
 
 	public MainController() {
@@ -75,11 +77,11 @@ public class MainController implements Initializable {
 
 		rightBarController = new RightBarController();
 
-		homeController = new ProjectManagerController();
+		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
-
-		view.setCenter(homeController.getView());
+		
+		view.setCenter(projectManagerController.getView());
 		view.setRight(rightBarController.getView());
 
 		if (TablePages.todaysPage())
@@ -90,9 +92,13 @@ public class MainController implements Initializable {
 	} 
 
 	public void openProject(Project project) {
-//		view.setCenter();
-		System.out.println("Abriendo proyecto: " + project.getTitle());
-
+		projectDetailController=new projectDetailController();
+		
+		new FadeIn(projectDetailController.getView()).play();
+			
+		view.setCenter(projectDetailController.getView());
+		resetRightBar();
+		
 	}
 
 	public BorderPane getView() {
@@ -127,12 +133,12 @@ public class MainController implements Initializable {
 	@FXML
 	private void onHomeButton(ActionEvent event) {
 
-		if (view.getCenter() == homeController.getView()) {
+		if (view.getCenter() == projectManagerController.getView()) {
 			new Shake(view.getCenter()).play();
 		} else {
-			new FadeIn(homeController.getView()).play();
-			;
-			view.setCenter(homeController.getView());
+			new FadeIn(projectManagerController.getView()).play();
+			
+			view.setCenter(projectManagerController.getView());
 			resetRightBar();
 		}
 	}
