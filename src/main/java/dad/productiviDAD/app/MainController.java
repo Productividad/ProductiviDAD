@@ -9,6 +9,7 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import dad.productiviDAD.balanceManager.BalanceManagerController;
 import dad.productiviDAD.data.TablePages;
+import dad.productiviDAD.home.HomeController;
 import dad.productiviDAD.note.NotesController;
 import dad.productiviDAD.page.Page;
 import dad.productiviDAD.project.Project;
@@ -56,6 +57,7 @@ public class MainController implements Initializable {
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
 	private projectDetailController projectDetailController;	
+	private HomeController homeController;	 
 	
 	public static MainController mainController;
 
@@ -80,8 +82,9 @@ public class MainController implements Initializable {
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
+		homeController=new HomeController();
 		
-		view.setCenter(projectManagerController.getView());
+		view.setCenter(homeController.getView());
 		view.setRight(rightBarController.getView());
 
 		if (TablePages.todaysPage())
@@ -133,12 +136,12 @@ public class MainController implements Initializable {
 	@FXML
 	private void onHomeButton(ActionEvent event) {
 
-		if (view.getCenter() == projectManagerController.getView()) {
+		if (view.getCenter() == homeController.getView()) 
 			new Shake(view.getCenter()).play();
-		} else {
-			new FadeIn(projectManagerController.getView()).play();
+		else {
+			new FadeIn(homeController.getView()).play();
 			
-			view.setCenter(projectManagerController.getView());
+			view.setCenter(homeController.getView());
 			resetRightBar();
 		}
 	}
@@ -156,14 +159,22 @@ public class MainController implements Initializable {
 	@FXML
 	private void onProyectManagerButton(ActionEvent event) {
 
+		if(view.getCenter()==projectManagerController.getView())
+			new Shake(view.getCenter()).play();
+		else {
+			new FadeIn(projectManagerController.getView()).play();
+			view.setCenter(projectManagerController.getView());
+			resetRightBar();
+		}
+		
 	}
 
 	@FXML
 	private void onIdeasButton(ActionEvent event) {
 
-		if (view.getCenter() == notasController.getView()) {
+		if (view.getCenter() == notasController.getView())
 			new Shake(view.getCenter()).play();
-		} else {
+		else {
 			new FadeIn(notasController.getView()).play();
 			view.setCenter(notasController.getView());
 			resetRightBar();
@@ -173,9 +184,9 @@ public class MainController implements Initializable {
 	@FXML
 	private void onBalanceManagerButton(ActionEvent event) {
 
-		if (view.getCenter() == balanceManagerController.getView()) {
+		if (view.getCenter() == balanceManagerController.getView())
 			new Shake(view.getCenter()).play();
-		} else {
+		else {
 			new FadeIn(balanceManagerController.getView()).play();
 			view.setCenter(balanceManagerController.getView());
 			resetRightBar();
