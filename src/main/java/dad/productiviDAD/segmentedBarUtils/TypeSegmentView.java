@@ -36,6 +36,6 @@ public class TypeSegmentView extends StackPane {
 		setPrefHeight(40);
 		setPrefWidth(40);
 
-		setOnMouseClicked(evt->System.out.println("holo "+segment.getText()));
+		setOnMouseClicked(evt->System.out.println("holo "+segment.getText()+" Cambiame en TypeSegmentView"));
 	}
 }
