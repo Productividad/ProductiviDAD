@@ -9,7 +9,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.data.TableIncomeExpenses;
+import dad.productiviDAD.dataManager.TableIncomeExpenses;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleDoubleProperty;

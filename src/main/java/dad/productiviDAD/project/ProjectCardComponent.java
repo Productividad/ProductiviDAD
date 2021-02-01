@@ -26,7 +26,6 @@ public class ProjectCardComponent extends VBox implements Initializable {
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty progress=new SimpleStringProperty();
 	private ObjectProperty<Project>project=new SimpleObjectProperty<>();
-	
 	 
     @FXML
     private Label projectTitleLabel;

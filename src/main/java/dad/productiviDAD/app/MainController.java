@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import dad.productiviDAD.balanceManager.BalanceManagerController;
-import dad.productiviDAD.data.TablePages;
+import dad.productiviDAD.dataManager.TablePages;
 import dad.productiviDAD.home.HomeController;
 import dad.productiviDAD.note.NotesController;
 import dad.productiviDAD.page.Page;
