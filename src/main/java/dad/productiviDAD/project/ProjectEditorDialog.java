@@ -17,8 +17,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -53,7 +56,6 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     @FXML
     private JFXColorPicker colorPicker; 
     
-    @FXML 
     private Button acceptButton;
       
     private StringProperty titleDialog=new SimpleStringProperty();
@@ -75,38 +77,41 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 		
 		getDialogPane().getStyleClass().add("customDialog");
 		getDialogPane().setContent(view);
+
+		getDialogPane().getButtonTypes().add(new ButtonType("Aceptar",ButtonData.OK_DONE));
+		acceptButton = (Button) getDialogPane().lookupButton(getDialogPane().getButtonTypes().get(0));
+		styleButton("white", "#000000");
 		
 		ButtonBar buttonBar=(ButtonBar)getDialogPane().lookup(".button-bar");
 		buttonBar.setStyle("-fx-background-color:derive(white, 20.00%)");
-		
+		buttonBar.setPadding(new Insets(0,10,0,0));
+		 
 		colorPicker.setValue(new Color(0, 0, 0, 1));
 		
 		whiteText.selectedProperty().set(true);
+		
 		whiteText.selectedProperty().addListener((o,ov,nv)->{
+			
 			if(whiteText.selectedProperty().get()) {
-				acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue())+
-						"; -fx-text-fill:white;");
+				styleButton("white", ColorUtils.getHexString(colorPicker.getValue()));
 				titleTopBar.setStyle("-fx-text-fill:white;");
 			}
 			else {
-				acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue())+
-						"; -fx-text-fill:black;");
+				styleButton("black", ColorUtils.getHexString(colorPicker.getValue()));
 				titleTopBar.setStyle("-fx-text-fill:black;");
 			}
 		});
 		
 		colorPicker.valueProperty().addListener((o,ov,nv)->{
-			acceptButton.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));
+			
+			if(whiteText.selectedProperty().get()) 
+				styleButton("white", ColorUtils.getHexString(colorPicker.getValue()));
+			else 
+				styleButton("black", ColorUtils.getHexString(colorPicker.getValue()));
+			
 			projectTopBar.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));
 		});
-		
 	} 
-
-    @FXML 
-    private void onAcceptAction(ActionEvent event) {
-    	//TODO crear proyecto en la base de datos e insertar projectCard en la interfaz
-    	System.out.println("Implementar");
-    } 
 	
     @FXML  
     private void onCloseWindow(ActionEvent event) {  
@@ -114,6 +119,20 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     	stage.close();
     }
 
+    /**
+     * Styles the ButtonData.OK_DONE button of the dialog
+     * @param colorText String color of the text
+     * @param backgroundColor String color of the background
+     */
+    private void styleButton(String colorText, String backgroundColor) {
+		acceptButton
+			.setStyle("-fx-background-radius:20; "
+					+ "-fx-background-color:"+backgroundColor+"; "
+					+ "-fx-text-fill:"+colorText+"; "
+					+ "-fx-min-width:130;"
+					+ "-fx-min-height:30;");
+    }
+    
 	public final StringProperty titleDialogProperty() {
 		return this.titleDialog;
 	}

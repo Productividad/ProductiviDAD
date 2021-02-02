@@ -27,7 +27,6 @@
           <RowConstraints minHeight="50.0" vgrow="NEVER" />
           <RowConstraints maxHeight="100.0" minHeight="100.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints vgrow="NEVER" />
         </rowConstraints>
          <children>
             <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="Título del proyecto" styleClass="dialog-textFieldArea" unFocusColor="#7bc46600" GridPane.columnSpan="2">
@@ -48,7 +47,6 @@
             <JFXDatePicker fx:id="projectDatePicker" defaultColor="#cf0a0a00" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" styleClass="project-datepicker" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" styleClass="project-checkBox" text="Texto en blanco" unCheckedColor="BLACK" GridPane.columnIndex="2" />
             <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="acceptButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAcceptAction" styleClass="project-dialog-button" text="Aceptar" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
          </children>
          <BorderPane.margin>
             <Insets />
