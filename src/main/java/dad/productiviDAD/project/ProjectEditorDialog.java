@@ -74,7 +74,8 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		datePicker = new JFXDatePicker();
+		datePicker.setValue(LocalDate.now());
 		titleTopBar.textProperty().bindBidirectional(titleDialog);
 		
 		getDialogPane().getStyleClass().add("customDialog");
@@ -115,19 +116,17 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 			projectTopBar.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));
 		});
 		
-		datePicker.setValue(LocalDate.now());
 	} 
 	private Project onAccept(ButtonType buttonType) {
 		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
 	
 	    	Project project = new Project();
 	    	project.setTitle(titleTF.textProperty().get());
-	    	System.out.println("HOLA" + titleTF.textProperty().get());
 	    	project.setDescription(descriptionTA.textProperty().get());
 	    	project.setColor(ColorUtils.getHexString(colorPicker.getValue()));
 	    	project.setWhite(whiteText.isSelected());
 	    	project.setDeadLine(datePicker.getValue());
-	    	
+	    	System.out.println("HOLA" + datePicker.getValue());
 	    	TableProjects.create(project);
 
 	    	return project;

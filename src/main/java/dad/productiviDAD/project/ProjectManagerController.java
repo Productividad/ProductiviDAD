@@ -20,56 +20,62 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 /**
  * Controller class of ProjectManagerView
  */
-public class ProjectManagerController implements Initializable{
+public class ProjectManagerController implements Initializable {
 
-	@FXML  
-	private VBox view;
-	
-	@FXML 
-	private HBox projectCardContainer;
-	
 	@FXML
-	private Button addProjectButton,SeeOldProjectButton;
+	private VBox view;
+
+	@FXML
+	private HBox projectCardContainer;
+
+	@FXML
+	private Button addProjectButton, SeeOldProjectButton;
 	private ListProperty<Project> projectsList = new SimpleListProperty<>(FXCollections.observableArrayList());
+
 	public ProjectManagerController() {
 		try {
-			FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectManagerView.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectManagerView.fxml"));
 			loader.setController(this);
-			loader.load();  
-		} catch (IOException e) {e.printStackTrace();}  
+			loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	 
-	@Override 
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		for(Project project : TableProjects.read(5)) {
+		for (Project project : TableProjects.read(5)) {
 			getProjectsList().add(project);
 		}
-		for(Project project : projectsList) {
-			ProjectCardComponent card=new ProjectCardComponent();
+		for (Project project : projectsList) {
+			ProjectCardComponent card = new ProjectCardComponent();
 			setProjectCard(card, project);
 		}
-		
-	}  
-	
+
+	}
+
 	/**
 	 * Counts the number of childrens that projectCardContainer have
+	 * 
 	 * @return Int number of children
 	 */
 	private int countChildrens() {
-		int counter=0;
-		
-		for(Node project: projectCardContainer.getChildren())
-			counter++; 
-	
-		return counter; 
+		int counter = 0;
+
+		for (Node project : projectCardContainer.getChildren())
+			counter++;
+
+		return counter;
 	}
 
-	/** 
-	 * Combines a Project and a ProjectCard and set the result in the 
+	/**
+	 * Combines a Project and a ProjectCard and set the result in the
 	 * projectCardContainer
+	 * 
 	 * @param card
 	 * @param project
 	 */
@@ -77,26 +83,26 @@ public class ProjectManagerController implements Initializable{
 		card.setProject(project);
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
-	} 
+	}
 
-    @FXML
-    void onAddProject(ActionEvent event) {
-    	ProjectEditorDialog dialog=new ProjectEditorDialog();
-    	dialog.setTitleDialog("Añadir proyecto");
-        Optional<Project> result = dialog.showAndWait();
-        if(result.isPresent()) {
-        	getProjectsList().add(result.get());
-			ProjectCardComponent card=new ProjectCardComponent();
+	@FXML
+	void onAddProject(ActionEvent event) {
+		ProjectEditorDialog dialog = new ProjectEditorDialog();
+		dialog.setTitleDialog("Añadir proyecto");
+		Optional<Project> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			getProjectsList().add(result.get());
+			ProjectCardComponent card = new ProjectCardComponent();
 			setProjectCard(card, result.get());
-        }
-        
-    }
+		}
 
-    @FXML
-    void onSeeOldProjects(ActionEvent event) {
+	}
 
-    }
-	
+	@FXML
+	void onSeeOldProjects(ActionEvent event) {
+
+	}
+
 	public VBox getView() {
 		return this.view;
 	}
@@ -104,13 +110,9 @@ public class ProjectManagerController implements Initializable{
 	public final ListProperty<Project> projectsListProperty() {
 		return this.projectsList;
 	}
-	
 
 	public final ObservableList<Project> getProjectsList() {
 		return this.projectsListProperty().get();
 	}
 
-	
-	
 }
- 

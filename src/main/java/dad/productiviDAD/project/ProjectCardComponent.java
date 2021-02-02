@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import dad.productiviDAD.app.MainController;
+import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.CSSUtils;
 import dad.productiviDAD.utils.ResourceUtils;
 import javafx.beans.property.ObjectProperty;
@@ -66,7 +67,8 @@ public class ProjectCardComponent extends VBox implements Initializable {
 
     @FXML
     private void onDeleteProject(ActionEvent event) {
-
+    	TableProjects.delete(getProject());
+    	
     } 
  
     @FXML
