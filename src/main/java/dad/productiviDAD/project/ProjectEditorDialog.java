@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.ColorUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -81,6 +82,7 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 		getDialogPane().getButtonTypes().add(new ButtonType("Aceptar",ButtonData.OK_DONE));
 		acceptButton = (Button) getDialogPane().lookupButton(getDialogPane().getButtonTypes().get(0));
 		styleButton("white", "#000000");
+		setResultConverter(d -> onAccept(d));
 		
 		ButtonBar buttonBar=(ButtonBar)getDialogPane().lookup(".button-bar");
 		buttonBar.setStyle("-fx-background-color:derive(white, 20.00%)");
@@ -112,7 +114,23 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 			projectTopBar.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));
 		});
 	} 
+	private Project onAccept(ButtonType buttonType) {
+		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
 	
+	    	Project project = new Project();
+	    	project.setTitle(titleTF.textProperty().get());
+	    	System.out.println("HOLA" + titleTF.textProperty().get());
+	    	project.setDescription(descriptionTA.textProperty().get());
+	    	project.setColor(ColorUtils.getHexString(colorPicker.getValue()));
+	    	project.setWhite(whiteText.isSelected());
+	    	project.setDeadLine(datePicker.getValue());
+	    	
+	    	TableProjects.create(project);
+
+	    	return project;
+	    }
+		return null;
+	}
     @FXML  
     private void onCloseWindow(ActionEvent event) {  
     	Stage stage=(Stage)view.getScene().getWindow();

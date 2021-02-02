@@ -2,8 +2,14 @@ package dad.productiviDAD.project;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import dad.productiviDAD.dataManager.TableProjects;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +33,7 @@ public class ProjectManagerController implements Initializable{
 	
 	@FXML
 	private Button addProjectButton,SeeOldProjectButton;
-	 
+	private ListProperty<Project> projectsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	public ProjectManagerController() {
 		try {
 			FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectManagerView.fxml"));
@@ -38,26 +44,13 @@ public class ProjectManagerController implements Initializable{
 	 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		ProjectCardComponent card1=new ProjectCardComponent();
-		Project project1=new Project("Project 1", 27, "#DAD6D6", false);
-		setProjectCard(card1,project1);
-		 
-		ProjectCardComponent card2=new ProjectCardComponent();
-		Project project2=new Project("Project 2", 14, "#92BFB1", false); 
-		setProjectCard(card2,project2);
-
-		ProjectCardComponent card3=new ProjectCardComponent();
-		Project project3=new Project("Project 3", 52, "#F4AC45", false);
-		setProjectCard(card3,project3);
- 
-		ProjectCardComponent card4=new ProjectCardComponent();
-		Project project4=new Project("Project 4", 70, "#A61C3C", true);
-		setProjectCard(card4,project4); 
-		
-		ProjectCardComponent card5=new ProjectCardComponent();
-		Project project5=new Project("Project 5", 70, "#A42C3C", true);
-		setProjectCard(card5,project5);
+		for(Project project : TableProjects.read(5)) {
+			getProjectsList().add(project);
+		}
+		for(Project project : projectsList) {
+			ProjectCardComponent card=new ProjectCardComponent();
+			setProjectCard(card, project);
+		}
 		
 	}  
 	
@@ -90,8 +83,13 @@ public class ProjectManagerController implements Initializable{
     void onAddProject(ActionEvent event) {
     	ProjectEditorDialog dialog=new ProjectEditorDialog();
     	dialog.setTitleDialog("Añadir proyecto");
-        dialog.show();
-        //TOOD recogida de datos a traves del controlador del dialogo
+        Optional<Project> result = dialog.showAndWait();
+        if(result.isPresent()) {
+        	getProjectsList().add(result.get());
+			ProjectCardComponent card=new ProjectCardComponent();
+			setProjectCard(card, result.get());
+        }
+        
     }
 
     @FXML
@@ -102,5 +100,17 @@ public class ProjectManagerController implements Initializable{
 	public VBox getView() {
 		return this.view;
 	}
+
+	public final ListProperty<Project> projectsListProperty() {
+		return this.projectsList;
+	}
+	
+
+	public final ObservableList<Project> getProjectsList() {
+		return this.projectsListProperty().get();
+	}
+
+	
+	
 }
  
