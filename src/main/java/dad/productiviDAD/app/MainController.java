@@ -100,6 +100,7 @@ public class MainController implements Initializable {
 
 	public void openProject(Project project) {
 		projectDetailController=new projectDetailController();
+		projectDetailController.setProject(project);
 		
 		new FadeIn(projectDetailController.getView()).play();
 			
