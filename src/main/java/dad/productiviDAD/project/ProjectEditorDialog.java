@@ -2,6 +2,7 @@ package dad.productiviDAD.project;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
@@ -113,6 +114,8 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 			
 			projectTopBar.setStyle("-fx-background-color:"+ColorUtils.getHexString(colorPicker.getValue()));
 		});
+		
+		datePicker.setValue(LocalDate.now());
 	} 
 	private Project onAccept(ButtonType buttonType) {
 		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
