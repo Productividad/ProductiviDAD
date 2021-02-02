@@ -1,9 +1,13 @@
 package dad.productiviDAD.app;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import com.sun.javafx.application.HostServicesDelegate;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
@@ -49,7 +53,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	private ListView<String> listView;
-
+	
 	// Controllers
 	private RightBarController rightBarController;
 
@@ -206,6 +210,13 @@ public class MainController implements Initializable {
 	@FXML
 	private void onGithubButton(ActionEvent event) {
 
+		try {
+			Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
+		} catch (IOException | URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
