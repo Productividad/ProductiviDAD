@@ -10,6 +10,7 @@ import java.util.List;
 
 import dad.productiviDAD.app.MainController;
 import dad.productiviDAD.project.Project;
+import dad.productiviDAD.segmentedBarUtils.StatusType;
 import dad.productiviDAD.task.Task;
 
 /*
@@ -23,7 +24,7 @@ public class TableTasks {
 	 * @param task The task to be inserted
 	 */
 	public static void insert(Task task) {
-		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, priority) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
@@ -40,6 +41,7 @@ public class TableTasks {
 			pstmt.setString(7,
 					(task.getParentTask().getId() != 0) ? String.valueOf(task.getParentTask().getId()) : "NULL");
 			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : "NULL");
+			pstmt.setInt(9, (task.isWhite()) ? 1 : 0);
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
@@ -107,10 +109,10 @@ public class TableTasks {
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
 				task.setPage(MainController.getTodaysPage());
-				if(project != null)
+				if (project != null)
 					task.setProject(project);
-				task.setPriority((rs.getInt("priority_task") == 1) ? true : false);
-
+				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
+				task.setWhite((rs.getInt("white_task") == 1) ? true : false);
 				arrayList.add(task);
 			}
 		} catch (SQLException e) {
@@ -150,7 +152,8 @@ public class TableTasks {
 				task.setParentTask(parentTask);
 				if (parentTask.getProject() != null)
 					task.setProject(parentTask.getProject());
-				task.setPriority((rs.getInt("priority_task") == 1) ? true : false);
+				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
+				task.setWhite((rs.getInt("white_task") == 1) ? true : false);
 
 				parentTask.getChildTasks().add(task);
 			}
@@ -169,7 +172,7 @@ public class TableTasks {
 	 */
 	public static void update(Task task) {
 		String update = "UPDATE tasks SET title_task = ? , completed = ?, description_task = ?, color_task ?, "
-				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, priority_task = ? WHERE ID_task = ?";
+				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, status_task = ?, white_task = ?  WHERE ID_task = ?";
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
@@ -180,8 +183,10 @@ public class TableTasks {
 			pstmt.setString(5, task.getDeadLine().toString());
 			pstmt.setInt(6, task.getParentTask().getId());
 			pstmt.setInt(7, task.getProject().getId());
-			pstmt.setInt(8, (task.isPriority()) ? 1 : 0);
-			pstmt.setInt(9, task.getId());
+			pstmt.setInt(8, (task.isWhite()) ? 1 : 0);
+			pstmt.setString(9, (task.getStatus().toString()));
+
+			pstmt.setInt(10, task.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
