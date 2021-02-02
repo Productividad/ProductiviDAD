@@ -1,6 +1,8 @@
 package dad.productiviDAD.app;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -205,7 +207,14 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onGithubButton(ActionEvent event) {
-
+		//this is using an awt component lol
+		try {
+		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch (URISyntaxException e) {
+		    e.printStackTrace();
+		}
 	}
 
 	/**
