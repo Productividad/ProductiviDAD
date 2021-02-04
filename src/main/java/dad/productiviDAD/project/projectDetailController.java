@@ -14,7 +14,9 @@ import dad.productiviDAD.segmentedBarUtils.TypeSegmentView;
 import dad.productiviDAD.task.Task;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,7 +36,7 @@ public class projectDetailController implements Initializable{
 	
 	private ObjectProperty<Project>project=new SimpleObjectProperty<>();
  
-//	private ListProperty<Task>projectTasks;
+	private ListProperty<Task>projectTasks=new SimpleListProperty<>(FXCollections.observableArrayList());
 	
     
     public projectDetailController() {
@@ -50,10 +52,13 @@ public class projectDetailController implements Initializable{
 		
 		//TODO recoger la lista de tareas del proyecto del que se abrio la interfaz
 		
-//		projectTasks.set(TableTasks.readParentTasks(project.get()));
-//		
-//		for(Task task:projectTasks)
-//			System.out.println(task.getTitle());
+		for(Task parentTask:TableTasks.readParentTasks(project.get())) {
+			projectTasks.add(parentTask);
+			System.out.println(parentTask.getTitle());
+//			for(Task childTask:TableTasks.readChildTasks(parentTask)) {
+//		         parentTask.getChildTasks().add(childTask);
+//			}
+		}
 		
 		segmentedBar.setSegmentViewFactory(TypeSegmentView::new);
 		segmentedBar.setInfoNodeFactory(segment->new InfoLabel((int)segment.getValue()+" Tareas"));
@@ -72,7 +77,6 @@ public class projectDetailController implements Initializable{
 		return this.project;
 	}
 	
-
 	public final Project getProject() {
 		return this.projectProperty().get();
 	}

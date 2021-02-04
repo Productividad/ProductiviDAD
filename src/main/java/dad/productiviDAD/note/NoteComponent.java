@@ -19,22 +19,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-public class NoteComponent extends GridPane	implements Initializable{
+public class NoteComponent extends BorderPane implements Initializable{
 
-	private StringProperty title=new SimpleStringProperty();	
 	private StringProperty content=new SimpleStringProperty();
 	private ObjectProperty<Note>note=new SimpleObjectProperty<>();
 	
-	@FXML
-    private JFXTextField noteTF;
 
     @FXML
-    private JFXTextArea noteTA;
+    private Button favouriteButton;
+
+    @FXML
+    private Button checkButton;
     
     @FXML
-    private Button favButton;
+    private JFXTextArea contentTA;
 
 	public NoteComponent() {
 		super();
@@ -46,20 +47,25 @@ public class NoteComponent extends GridPane	implements Initializable{
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
+//	public NoteComponent(StringProperty title, StringProperty content) {
+//		super();
+//		this.title = title;
+//		this.content = content;
+//	}
+//	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				title.bindBidirectional(nv.titleProperty());
+//				title.bindBidirectional(nv.titleProperty());
 				content.bindBidirectional(nv.contentProperty());
 				
-				styleNote();
+//				styleNote();
 			}
 		});
 		
-		noteTF.textProperty().bindBidirectional(title);
-		noteTA.textProperty().bindBidirectional(content);
+		contentTA.textProperty().bindBidirectional(content);
 		
 	}
 
@@ -76,21 +82,6 @@ public class NoteComponent extends GridPane	implements Initializable{
 		this.getStylesheets().setAll(CSSUtils.generateCss("/css/noteComponent.txt", params));
 	}
 
-    @FXML
-    void onColorSelectorButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onDeleteNote(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onFavButton(ActionEvent event) {
-
-    }
-
 	public final ObjectProperty<Note> noteProperty() {
 		return this.note;
 	}
@@ -104,44 +95,36 @@ public class NoteComponent extends GridPane	implements Initializable{
 	public final void setNote(final Note note) {
 		this.noteProperty().set(note);
 	}
+	
+    @FXML
+    void OnFavoritePressed(ActionEvent event) {
 
-	public NoteComponent(StringProperty title, StringProperty content) {
-		super();
-		this.title = title;
-		this.content = content;
-	}
+    }
 
-	public StringProperty getTitle() {
-		return title;
-	}
+    @FXML
+    void onDeleteNote(ActionEvent event) {
 
-	public void setTitle(StringProperty title) {
-		this.title = title;
-	}
+    }
 
-	public StringProperty getContent() {
-		return content;
-	}
+    @FXML
+    void onOpenOptions(ActionEvent event) {
 
-	public void setContent(StringProperty content) {
-		this.content = content;
-	}
+    }
 
-	public JFXTextField getNoteTF() {
-		return noteTF;
+	public final StringProperty contentProperty() {
+		return this.content;
 	}
+	
 
-	public void setNoteTF(JFXTextField noteTF) {
-		this.noteTF = noteTF;
+	public final String getContent() {
+		return this.contentProperty().get();
 	}
+	
 
-	public JFXTextArea getNoteTA() {
-		return noteTA;
+	public final void setContent(final String content) {
+		this.contentProperty().set(content);
 	}
-
-	public void setNoteTA(JFXTextArea noteTA) {
-		this.noteTA = noteTA;
-	}
+	
 	
 	
 }

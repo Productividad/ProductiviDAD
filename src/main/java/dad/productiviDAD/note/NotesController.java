@@ -28,24 +28,24 @@ public class NotesController {
     	NoteComponent postIt1=new NoteComponent();
     	Note note1=new Note(i.getTitle(),i.getContent(),"#708D81",false);
     	postIt1.setNote(note1);
-    	
-    	postIt1.getNoteTF().focusedProperty().addListener((o,ov,nv)->{
-    		
-    		if (!nv) { //cuando pierde el foco 
-				i.setTitle(note1.getTitle());
-				TableNotes.update(i);
-			}
-    		
-    	});
-    	
-    	postIt1.getNoteTA().focusedProperty().addListener((o,ov,nv)->{
-    		
-    		if (!nv) { //cuando pierde el foco 
-				i.setContent(note1.getContent());
-				TableNotes.update(i);
-			}
-    		
-    	});
+//    	
+//    	postIt1.getNoteTF().focusedProperty().addListener((o,ov,nv)->{
+//    		
+//    		if (!nv) { //cuando pierde el foco 
+//				i.setTitle(note1.getTitle());
+//				TableNotes.update(i);
+//			}
+//    		
+//    	});
+//    	
+//    	postIt1.getNoteTA().focusedProperty().addListener((o,ov,nv)->{
+//    		
+//    		if (!nv) { //cuando pierde el foco 
+//				i.setContent(note1.getContent());
+//				TableNotes.update(i);
+//			}
+//    		
+//    	});
     	
     /*	NoteComponent postIt2=new NoteComponent();
     	Note note2=new Note("Titulo2","Descripcion2","#708D81",false);
@@ -58,14 +58,15 @@ public class NotesController {
     	NoteComponent postIt4=new NoteComponent();
     	Note note4=new Note("Titulo4","Descripcion4","#DDA15E",false);
     	postIt4.setNote(note4);*/
-
-    	view.getChildren().addAll(postIt1);
-    	}
-    	view.setHgap(5);
-    	view.setVgap(5);
-    	view.setPadding(new Insets(5));
+//
+//    	view.getChildren().addAll(postIt1);
+//    	}
+//    	view.setHgap(5);
+//    	view.setVgap(5);
+//    	view.setPadding(new Insets(5));
  
 	}
+}
 /*	public FlowPane getView() {
 		return this.view; 
 		Random random=new Random(); 
