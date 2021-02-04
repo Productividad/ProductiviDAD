@@ -125,4 +125,22 @@ public class TableIncomeExpenses {
 		}
 		return arrayList;
 	}
+	
+	public static double getTotal() {
+		String query = "SELECT SUM(amount) FROM incomesExpenses";
+		double amount = 0;
+		try {
+			JdbcConnection.connect();
+			Statement stmt = JdbcConnection.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+				amount = rs.getDouble("SUM(amount)");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		return amount;
+	}
 }

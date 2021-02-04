@@ -90,10 +90,7 @@ public class BalanceManagerController implements Initializable {
 		positiveRB.setSelected(true);
 		negativeRB.setToggleGroup(toggleGroup);
 		
-		for(IncomeExpense inEx : movementsList) {
-			System.out.println(inEx.getAmount());
-			totalAmount.set(totalAmount.get()+inEx.getAmount());
-		}
+		totalAmount.set(TableIncomeExpenses.getTotal());
 		System.out.println(totalAmount.get());
 		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 	}
@@ -108,6 +105,7 @@ public class BalanceManagerController implements Initializable {
 		TableIncomeExpenses.delete(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.getItems().remove(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.refresh();
+		totalAmount.set(TableIncomeExpenses.getTotal());
 	}
 
 	@FXML
@@ -119,5 +117,6 @@ public class BalanceManagerController implements Initializable {
 		incomeExpense.setDate(datePicker.getValue());
 		TableIncomeExpenses.create(incomeExpense);
 		movementsList.add(incomeExpense);
+		totalAmount.set(TableIncomeExpenses.getTotal());
 	}
 }
