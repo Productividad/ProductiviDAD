@@ -88,7 +88,7 @@ public class TableTasks {
 	 * @return arrayList List of registries.
 	 */
 	public static List<Task> readParentTasks(Project project) {
-		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = NULL AND FK_ID_Parent_task = ?";
+		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = NULL AND FK_ID_project = ?";
 		ResultSet rs = null;
 		ArrayList<Task> arrayList = new ArrayList<Task>();
 		Task task;

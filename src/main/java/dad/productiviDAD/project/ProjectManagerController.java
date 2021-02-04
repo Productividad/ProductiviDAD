@@ -49,10 +49,7 @@ public class ProjectManagerController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		for (Project project : TableProjects.read(5)) {
 			getProjectsList().add(project);
-		}
-		for (Project project : projectsList) {
-			ProjectCardComponent card = new ProjectCardComponent();
-			setProjectCard(card, project);
+			addProjectCard(project);
 		}
 
 	}
@@ -78,7 +75,8 @@ public class ProjectManagerController implements Initializable {
 	 * @param card
 	 * @param project
 	 */
-	private void setProjectCard(ProjectCardComponent card, Project project) {
+	private void addProjectCard(Project project) {
+		ProjectCardComponent card = new ProjectCardComponent();
 		card.setProject(project);
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
@@ -91,8 +89,7 @@ public class ProjectManagerController implements Initializable {
 		Optional<Project> result = dialog.showAndWait();
 		if (result.isPresent()) {
 			getProjectsList().add(result.get());
-			ProjectCardComponent card = new ProjectCardComponent();
-			setProjectCard(card, result.get());
+			addProjectCard(result.get());
 		}
 
 	}

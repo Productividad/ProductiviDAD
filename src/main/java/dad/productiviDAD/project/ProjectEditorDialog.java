@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import dad.productiviDAD.app.App;
 import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.ColorUtils;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -65,6 +67,8 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     public ProjectEditorDialog() {
     	super();
     	initStyle(StageStyle.UNDECORATED);
+    	initModality(Modality.WINDOW_MODAL);
+    	initOwner(App.primaryStage);
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectEditorDialogView.fxml"));
 		loader.setController(this); 
 		try {

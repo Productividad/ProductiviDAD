@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.util.converter.NumberStringConverter;
 
 public class BalanceManagerController implements Initializable {
 
@@ -90,10 +91,11 @@ public class BalanceManagerController implements Initializable {
 		negativeRB.setToggleGroup(toggleGroup);
 		
 		for(IncomeExpense inEx : movementsList) {
-			totalAmount.add(inEx.getAmount());
+			System.out.println(inEx.getAmount());
+			totalAmount.set(totalAmount.get()+inEx.getAmount());
 		}
 		System.out.println(totalAmount.get());
-		totalLabel.textProperty().set(String.format("%.2f", totalAmount.get()));
+		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 	}
 
 	public GridPane getView() {

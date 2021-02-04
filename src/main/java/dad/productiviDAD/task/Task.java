@@ -45,6 +45,12 @@ public class Task {
 		this.description.set(description);
 		this.completed.set(completed);
 	}
+	
+
+	@Override
+	public String toString() {
+		return getTitle();
+	}
 
 	public final IntegerProperty idProperty() {
 		return this.id;

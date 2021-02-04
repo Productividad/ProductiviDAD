@@ -15,10 +15,10 @@ public class App extends Application{
 	private boolean lastValueYCoodIs0;
 	
 	private MainController controller;
-	
+	public static Stage primaryStage;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+		App.primaryStage = primaryStage;
 		controller=new MainController();
 		
 		Scene scene=new Scene(controller.getView());
