@@ -91,7 +91,7 @@ public class BalanceManagerController implements Initializable {
 		negativeRB.setToggleGroup(toggleGroup);
 		
 		totalAmount.set(TableIncomeExpenses.getTotal());
-		System.out.println(totalAmount.get());
+		
 		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 	}
 

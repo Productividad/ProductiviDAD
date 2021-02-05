@@ -88,18 +88,21 @@ public class TableTasks {
 	 * @return arrayList List of registries.
 	 */
 	public static List<Task> readParentTasks(Project project) {
-		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = NULL AND FK_ID_project = ?";
-		ResultSet rs = null;
+		String selectProject = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project = ?";
+		String selectTask = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
+		ResultSet rs;
+		PreparedStatement pstmt = null;
 		ArrayList<Task> arrayList = new ArrayList<Task>();
 		Task task;
 		try {
 			JdbcConnection.connect();
-			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
-			if (project.getId() != 0)
+			if (project.getId() != 0) {
+				pstmt = JdbcConnection.connection.prepareStatement(selectProject);
 				pstmt.setInt(1, project.getId());
-			else
-				pstmt.setString(1, "NULL");
-			rs = pstmt.executeQuery(select);
+			} else {
+				pstmt = JdbcConnection.connection.prepareStatement(selectTask);
+			}
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
@@ -139,7 +142,7 @@ public class TableTasks {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, parentTask.getId());
-			rs = pstmt.executeQuery(select);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
@@ -147,7 +150,7 @@ public class TableTasks {
 				task.setCompleted((rs.getInt("completed") == 1) ? true : false);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
-				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
+				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
 				task.setPage(MainController.getTodaysPage());
 				task.setParentTask(parentTask);
 				if (parentTask.getProject() != null)
