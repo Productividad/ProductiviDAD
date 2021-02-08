@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import dad.productiviDAD.dataManager.TableNotes;
+import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -47,12 +49,12 @@ public class NoteComponent extends BorderPane implements Initializable{
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
-//	public NoteComponent(StringProperty title, StringProperty content) {
-//		super();
-//		this.title = title;
-//		this.content = content;
-//	}
-//	
+	public NoteComponent(StringProperty content) {
+		super();
+		//this.title = title;
+		this.content = content;
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -103,6 +105,8 @@ public class NoteComponent extends BorderPane implements Initializable{
 
     @FXML
     void onDeleteNote(ActionEvent event) {
+    	TableNotes.delete(getNote());
+    	System.out.println("Borrado");
 
     }
 
@@ -123,6 +127,14 @@ public class NoteComponent extends BorderPane implements Initializable{
 
 	public final void setContent(final String content) {
 		this.contentProperty().set(content);
+	}
+
+	public JFXTextArea getContentTA() {
+		return contentTA;
+	}
+
+	public void setContentTA(JFXTextArea contentTA) {
+		this.contentTA = contentTA;
 	}
 	
 	
