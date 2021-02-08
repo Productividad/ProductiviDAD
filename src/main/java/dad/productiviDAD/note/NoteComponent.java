@@ -60,7 +60,6 @@ public class NoteComponent extends BorderPane implements Initializable{
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-//				title.bindBidirectional(nv.titleProperty());
 				content.bindBidirectional(nv.contentProperty());
 				
 //				styleNote();
