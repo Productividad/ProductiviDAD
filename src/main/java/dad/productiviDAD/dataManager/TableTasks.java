@@ -24,7 +24,8 @@ public class TableTasks {
 	 * @param task The task to be inserted
 	 */
 	public static void insert(Task task) {
-		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
@@ -36,12 +37,13 @@ public class TableTasks {
 			pstmt.setInt(2, 0);
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, task.getColor());
-			pstmt.setString(5, task.getDeadLine().toString());
+			pstmt.setString(5, (task.getDeadLine() != null) ? task.getDeadLine().toString() : null);
 			pstmt.setString(6, "SELECT id_page FROM pages where page_date=date('now')");
 			pstmt.setString(7,
-					(task.getParentTask().getId() != 0) ? String.valueOf(task.getParentTask().getId()) : "NULL");
-			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : "NULL");
-			pstmt.setInt(9, (task.isWhite()) ? 1 : 0);
+					(task.getParentTask().getId() != 0) ? String.valueOf(task.getParentTask().getId()) : null);
+			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : null);
+			pstmt.setString(9, "TODO");
+			pstmt.setInt(10, (task.isWhite()) ? 1 : 0);
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
