@@ -42,8 +42,8 @@
             <JFXDatePicker fx:id="datePicker" defaultColor="#008f8100" maxWidth="115.0" promptText="DD/MM/YYYY" />
             <JFXRadioButton fx:id="positiveRB" text="Positivo" />
             <JFXRadioButton fx:id="negativeRB" text="Negativo" />
-            <Button minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onInsertMovement" styleClass="balance-manager-button" text="Introducir Movimiento" />
-            <Button minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onDeleteMovement" styleClass="balance-manager-button" text="Borrar Movimiento" />
+            <Button fx:id="addButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onInsertMovement" styleClass="balance-manager-button" text="Introducir Movimiento" />
+            <Button fx:id="deleteButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onDeleteMovement" styleClass="balance-manager-button" text="Borrar Movimiento" />
          </children>
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

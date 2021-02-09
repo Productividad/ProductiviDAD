@@ -5,20 +5,29 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import org.controlsfx.validation.Severity;
+import org.controlsfx.validation.ValidationResult;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
+
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productiviDAD.dataManager.TableIncomeExpenses;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,7 +39,7 @@ public class BalanceManagerController implements Initializable {
 
 	@FXML
 	private GridPane view;
- 
+
 	@FXML
 	private TableView<IncomeExpense> balanceTableView;
 
@@ -48,13 +57,18 @@ public class BalanceManagerController implements Initializable {
 
 	@FXML
 	private JFXTextField amountTF;
-	
+
 	@FXML
 	private JFXDatePicker datePicker;
 
 	@FXML
 	private Label totalLabel;
 
+	@FXML
+	private Button addButton;
+
+	@FXML
+	private Button deleteButton;
 	@FXML
 	private JFXRadioButton positiveRB;
 
@@ -63,6 +77,7 @@ public class BalanceManagerController implements Initializable {
 
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
+
 	public BalanceManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
@@ -75,7 +90,7 @@ public class BalanceManagerController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		for (IncomeExpense i : TableIncomeExpenses.read(20))
 			movementsList.add(i);
 
@@ -89,10 +104,24 @@ public class BalanceManagerController implements Initializable {
 		positiveRB.setToggleGroup(toggleGroup);
 		positiveRB.setSelected(true);
 		negativeRB.setToggleGroup(toggleGroup);
-		
+
 		totalAmount.set(TableIncomeExpenses.getTotal());
-		
+
+		amountTF.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("\\d*")) {
+					amountTF.setText(newValue.replaceAll("[^\\d]", ""));
+				}
+			}
+		});
+
 		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
+
+		balanceTableView.getSelectionModel().clearSelection();
+		addButton.disableProperty().bind(Bindings.isEmpty(amountTF.textProperty()));
+		deleteButton.disableProperty().bind(balanceTableView.getSelectionModel().selectedItemProperty().isNull());
+
 	}
 
 	public GridPane getView() {
@@ -118,5 +147,6 @@ public class BalanceManagerController implements Initializable {
 		TableIncomeExpenses.create(incomeExpense);
 		movementsList.add(incomeExpense);
 		totalAmount.set(TableIncomeExpenses.getTotal());
+		amountTF.clear();
 	}
 }
