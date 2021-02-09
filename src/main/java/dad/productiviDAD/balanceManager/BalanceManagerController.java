@@ -118,7 +118,7 @@ public class BalanceManagerController implements Initializable {
 
 		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 
-		
+		balanceTableView.getSelectionModel().clearSelection();
 		addButton.disableProperty().bind(Bindings.isEmpty(amountTF.textProperty()));
 		deleteButton.disableProperty().bind(balanceTableView.getSelectionModel().selectedItemProperty().isNull());
 
