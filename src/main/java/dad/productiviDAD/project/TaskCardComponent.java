@@ -26,7 +26,7 @@ public class TaskCardComponent extends VBox implements Initializable{
 	
     public TaskCardComponent() {
         super();
-    	try {
+    	try { 
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskCardComponent.fxml"));
     		loader.setController(this);
     		loader.setRoot(this); 
@@ -37,11 +37,13 @@ public class TaskCardComponent extends VBox implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		titleLabel.textProperty().bind(title);
+		
 		task.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				title.bindBidirectional(nv.titleProperty());
+				title.set(nv.titleProperty().get());
 //				task
-			}
+			} 
 		});
 		
 		
