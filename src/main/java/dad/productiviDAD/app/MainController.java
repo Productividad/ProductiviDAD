@@ -88,7 +88,7 @@ public class MainController implements Initializable {
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		
-		view.setCenter(homeController.getView());
+		view.setCenter(projectManagerController.getView()); 
 		view.setRight(rightBarController.getView());
 
 		if (TablePages.todaysPage())

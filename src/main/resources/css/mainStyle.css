@@ -40,23 +40,6 @@
     -fx-padding: 0; 
 }
 
-
-/*TaskCardComponent */
-
-.task-card-header,.task-card-header .label{
-	-fx-background-color:derive(#F4AC45, 30.00%);
-	-fx-text-fill:black;
-}
-
-.task-card-bottom, .task-card-bottom .label{
-	-fx-background-color:#F4AC45;
-	-fx-text-fill:black;
-}
-
-.task-card-wrapper:hover .task-card-bottom{
-	-fx-background-color:derive(#F4AC45, 10.00%);	
-}
-
 /* Note */
 
 .note-fav-button{

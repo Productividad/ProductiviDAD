@@ -7,10 +7,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.dataManager.TableNotes;
-import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -22,13 +19,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 
 public class NoteComponent extends BorderPane implements Initializable{
-
-	private StringProperty content=new SimpleStringProperty();
-	private ObjectProperty<Note>note=new SimpleObjectProperty<>();
-	
 
     @FXML
     private Button favouriteButton;
@@ -38,6 +30,12 @@ public class NoteComponent extends BorderPane implements Initializable{
     
     @FXML
     private JFXTextArea contentTA;
+    
+	private StringProperty content=new SimpleStringProperty();
+
+    
+	private ObjectProperty<Note>note=new SimpleObjectProperty<>();
+
 
 	public NoteComponent() {
 		super();
@@ -58,15 +56,17 @@ public class NoteComponent extends BorderPane implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		contentTA.textProperty().bind(content);
+		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				content.bindBidirectional(nv.contentProperty());
+				content.set(nv.getContent());
 				
 //				styleNote();
 			}
 		});
 		
-		contentTA.textProperty().bindBidirectional(content);
+//		contentTA.textProperty().bindBidirectional(content);
 		
 	}
 
@@ -83,6 +83,24 @@ public class NoteComponent extends BorderPane implements Initializable{
 		this.getStylesheets().setAll(CSSUtils.generateCss("/css/noteComponent.txt", params));
 	}
 
+    @FXML
+    void OnFavoritePressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onDeleteNote(ActionEvent event) {
+//    	TableNotes.delete(getNote());
+    	System.out.println("Borrado");
+    	System.out.println(getNote().getId());
+
+    }
+
+    @FXML
+    void onOpenOptions(ActionEvent event) {
+
+    }
+
 	public final ObjectProperty<Note> noteProperty() {
 		return this.note;
 	}
@@ -97,45 +115,6 @@ public class NoteComponent extends BorderPane implements Initializable{
 		this.noteProperty().set(note);
 	}
 	
-    @FXML
-    void OnFavoritePressed(ActionEvent event) {
 
-    }
-
-    @FXML
-    void onDeleteNote(ActionEvent event) {
-    	TableNotes.delete(getNote());
-    	System.out.println("Borrado");
-
-    }
-
-    @FXML
-    void onOpenOptions(ActionEvent event) {
-
-    }
-
-	public final StringProperty contentProperty() {
-		return this.content;
-	}
-	
-
-	public final String getContent() {
-		return this.contentProperty().get();
-	}
-	
-
-	public final void setContent(final String content) {
-		this.contentProperty().set(content);
-	}
-
-	public JFXTextArea getContentTA() {
-		return contentTA;
-	}
-
-	public void setContentTA(JFXTextArea contentTA) {
-		this.contentTA = contentTA;
-	}
-	
-	
 	
 }

@@ -1,0 +1,14 @@
+
+.task-card-header,.task-card-header .label{
+	-fx-background-color:derive(#4682B4, 30.00%);
+	-fx-text-fill:black;
+}
+
+.task-card-bottom, .task-card-bottom .label{
+	-fx-background-color:#4682B4;
+	-fx-text-fill:black;
+}
+
+.task-card-wrapper:hover .task-card-bottom{
+	-fx-background-color:derive(#4682B4, 10.00%);	
+}

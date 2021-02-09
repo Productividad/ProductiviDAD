@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import org.controlsfx.control.SegmentedBar;
 
-import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.dataManager.TableTasks;
 import dad.productiviDAD.segmentedBarUtils.InfoLabel;
 import dad.productiviDAD.segmentedBarUtils.StatusType;
@@ -19,11 +18,15 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class projectDetailController implements Initializable {
@@ -35,15 +38,21 @@ public class projectDetailController implements Initializable {
 	private SegmentedBar<TypeSegment> segmentedBar = new SegmentedBar<>();
 
 	@FXML
-	private FlowPane flowPane;
-
+	private HBox hBox;
+	@FXML
+	
+	private Label titleProject,descriptionProject;
+	
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
 
 	private ListProperty<Task> projectTasks = new SimpleListProperty<>(FXCollections.observableArrayList());
 	
-	private IntegerProperty toDoTasks=new SimpleIntegerProperty();
-	private IntegerProperty inProgressTasks=new SimpleIntegerProperty();
-	private IntegerProperty doneTasks=new SimpleIntegerProperty();
+	private StringProperty title=new SimpleStringProperty();
+	private StringProperty description=new SimpleStringProperty();
+	
+	private IntegerProperty toDoTasks=new SimpleIntegerProperty(0);
+	private IntegerProperty inProgressTasks=new SimpleIntegerProperty(0);
+	private IntegerProperty doneTasks=new SimpleIntegerProperty(0);
 
 
 	public projectDetailController() {
@@ -53,45 +62,51 @@ public class projectDetailController implements Initializable {
 			loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}  
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-
-		project.addListener((o, ov, nv) -> {
-			if (nv != null) {
-				for (Task parentTask : TableTasks.readParentTasks(project.get())) {
-					projectTasks.add(parentTask);
-					TableTasks.readChildTasks(parentTask);
-					System.out.println(parentTask.getTitle());
-					TaskCardComponent taskCard=new TaskCardComponent();
-					taskCard.setTask(parentTask);
-					flowPane.getChildren().add(taskCard);
-				}
-				for (Task task : projectTasks) {
-					System.out.println(projectTasks.get(0).getId());
-					System.out.println(projectTasks.get(0).getChildTasks().get(0).getId());
-					System.out.println(projectTasks.get(0).getChildTasks().get(1).getId());
-				}
-			}
-
-		});
+	public void initialize(URL location, ResourceBundle resources) { 
+ 
+		titleProject.textProperty().bind(title);
+		descriptionProject.textProperty().bind(description);
+		
 		segmentedBar.setSegmentViewFactory(TypeSegmentView::new);
 		segmentedBar.setInfoNodeFactory(segment -> new InfoLabel((int) segment.getValue() + " Tareas"));
-		
-/*
- * 		TODO 
- * 		Cambiar los números de typeSegment por toDoTasks, inProgressTasks y doneTasks.
- * 		Que el valor de las property provengan de la cantidad de tareas con el status correspondiente
- * 		
- */
-		segmentedBar.getSegments().addAll(
-				new TypeSegment(5, StatusType.TODO),
-				new TypeSegment(3, StatusType.IN_PROGRESS),
-				new TypeSegment(9, StatusType.DONE)
-		);
+	
+		project.addListener((o, ov, nv) -> {
+			
+			if (nv != null) {
+				title.set(nv.getTitle());
+				description.set(nv.getDescription());
+				 
+				for (Task parentTask : TableTasks.readParentTasks(project.get())) {
+					TableTasks.readChildTasks(parentTask);
+					TaskCardComponent taskCard=new TaskCardComponent(); 
+					taskCard.setTask(parentTask);
+					taskCard.styleTaskCard();   
+					projectTasks.add(parentTask); 
+					hBox.getChildren().add(taskCard); 
+					HBox.setHgrow(taskCard, Priority.ALWAYS);
+				}
 
+				for (Task task : projectTasks) {
+					if(task.getStatus().equals(StatusType.TODO)) { 
+						toDoTasks.set(toDoTasks.get()+1);
+						System.out.println(task.getTitle()+task.getStatus());
+					} 
+					if(task.getStatus().equals(StatusType.IN_PROGRESS)) 
+						inProgressTasks.set(inProgressTasks.get()+1);   
+					if(task.getStatus().equals(StatusType.DONE))    
+						doneTasks.set(doneTasks.get()+1);    
+				}
+			}   
+			segmentedBar.getSegments().addAll(
+					new TypeSegment(toDoTasks.get(), StatusType.TODO),
+					new TypeSegment(inProgressTasks.get(), StatusType.IN_PROGRESS),
+					new TypeSegment(doneTasks.get(), StatusType.DONE)
+			);
+		});  
 	}
 
 	public VBox getView() {

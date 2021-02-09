@@ -15,22 +15,20 @@ public class NotesController {
 	private FlowPane view = new FlowPane();
     public NotesController() {
     	noteList = TableNotes.read(20);
+    	
     	for(Note i : noteList) {
     	NoteComponent postIt1=new NoteComponent();
-    	Note note1=new Note(i.getTitle(),i.getContent(),"#708D81",false);
-    	postIt1.setNote(note1);
-   	
-    	postIt1.getContentTA().focusedProperty().addListener((o,ov,nv)->{
-    		
-    		if (!nv) {
-    			//cuando pierde el foco 
-    			i.setContent(note1.getContent());
-    			TableNotes.update(i);
-			}
-    		    });
-
-
+    	postIt1.setNote(i);
     	view.getChildren().addAll(postIt1);
+   	
+//    	postIt1.getContentTA().focusedProperty().addListener((o,ov,nv)->{
+//    		
+//    		if (!nv) {
+//    			//cuando pierde el foco 
+//    			i.setContent(note1.getContent());
+//    			TableNotes.update(i);
+//			}
+//    		    });
     	}
     	view.setHgap(5);
     	view.setVgap(5);

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.productiviDAD.segmentedBarUtils.StatusType;
 import dad.productiviDAD.task.Task;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,8 +21,8 @@ public class TaskCardComponent extends VBox implements Initializable{
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty taskRemaining=new SimpleStringProperty();
 	private ObjectProperty<Task>task=new SimpleObjectProperty<>();
-	//TODO Tema subTareas contar tareas restantes como lo manejamos
-    @FXML
+
+	@FXML
     private Label titleLabel,taskRemainingLabel;
 	
     public TaskCardComponent() {
@@ -38,17 +39,42 @@ public class TaskCardComponent extends VBox implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		titleLabel.textProperty().bind(title);
+		taskRemainingLabel.textProperty().bind(taskRemaining);
 		
 		task.addListener((o,ov,nv)->{
-			if(nv!=null) {
+			if(nv!=null) {				
+				int subTaskNotDone=0; 
+				for(Task subtask:task.get().getChildTasks()) {
+					if(!subtask.getStatus().equals(StatusType.DONE))
+						subTaskNotDone=+1;
+				}
 				title.set(nv.titleProperty().get());
-//				task
+				taskRemaining.set((String.valueOf(subTaskNotDone)));
 			} 
 		});
 		
+		setOnMouseClicked(evt->onMouseClicked());
 		
 	}
 
+	public void onMouseClicked() {
+		System.out.println("Cambiar comportamiento en TaskCardComponent.java -> onMouseClicked()");
+	}
+	
+	public void styleTaskCard() {
+		
+		String pathStyleSheet="";
+		
+		if(task.get().getStatus().equals(StatusType.TODO))
+			pathStyleSheet="/css/ToDoTask.css";
+		if(task.get().getStatus().equals(StatusType.IN_PROGRESS))
+			pathStyleSheet="/css/InProgressTask.css";
+		if(task.get().getStatus().equals(StatusType.DONE))
+			pathStyleSheet="/css/DoneTask.css";
+		
+		getStylesheets().setAll(pathStyleSheet);
+	}
+	
 	public final ObjectProperty<Task> taskProperty() {
 		return this.task;
 	}
