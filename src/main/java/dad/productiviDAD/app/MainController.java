@@ -7,6 +7,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import com.dlsc.preferencesfx.PreferencesFx;
+import com.dlsc.preferencesfx.model.Category;
+import com.dlsc.preferencesfx.model.Group;
+import com.dlsc.preferencesfx.model.Setting;
 import com.sun.javafx.application.HostServicesDelegate;
 
 import animatefx.animation.FadeIn;
@@ -20,11 +24,21 @@ import dad.productiviDAD.project.Project;
 import dad.productiviDAD.project.ProjectManagerController;
 import dad.productiviDAD.project.projectDetailController;
 import dad.productiviDAD.task.RightBarController;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -205,7 +219,26 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onToolsButton(ActionEvent event) {
+		
+		StringProperty stringProperty = new SimpleStringProperty("String");
+		BooleanProperty booleanProperty = new SimpleBooleanProperty(true);
+		IntegerProperty integerProperty = new SimpleIntegerProperty(12);
+		DoubleProperty doubleProperty = new SimpleDoubleProperty(6.5);
 
+		PreferencesFx preferencesFx = PreferencesFx.of(App.class, // Save class (will be used to reference saved values of
+																	// Settings to)
+				Category.of("Category title 1", Setting.of("Setting title 1", stringProperty), // creates a group
+																								// automatically
+						Setting.of("Setting title 2", booleanProperty) // which contains both settings
+				), Category.of("Category title 2").expand() // Expand the parent category in the tree-view
+						.subCategories( // adds a subcategory to "Category title 2"
+								Category.of("Category title 3",
+										Group.of("Group title 1", Setting.of("Setting title 3", integerProperty)), Group.of( // group
+																																// without
+																																// title
+												Setting.of("Setting title 3", doubleProperty)))));
+		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
+		preferencesFx.show(true);
 	}
 
 	@FXML
