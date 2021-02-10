@@ -25,8 +25,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 public class projectDetailController implements Initializable {
@@ -38,10 +38,14 @@ public class projectDetailController implements Initializable {
 	private SegmentedBar<TypeSegment> segmentedBar = new SegmentedBar<>();
 
 	@FXML
-	private HBox hBox;
-	@FXML
+	private HBox taskContainer;
 	
+	@FXML
+	private ScrollPane scroll;
+	
+	@FXML
 	private Label titleProject,descriptionProject;
+	
 	
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
 
@@ -53,13 +57,12 @@ public class projectDetailController implements Initializable {
 	private IntegerProperty toDoTasks=new SimpleIntegerProperty(0);
 	private IntegerProperty inProgressTasks=new SimpleIntegerProperty(0);
 	private IntegerProperty doneTasks=new SimpleIntegerProperty(0);
-
-
-	public projectDetailController() {
+	
+	public projectDetailController() { 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
 			loader.setController(this);
-			loader.load();
+			loader.load(); 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
@@ -67,7 +70,7 @@ public class projectDetailController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { 
- 
+ 				
 		titleProject.textProperty().bind(title);
 		descriptionProject.textProperty().bind(description);
 		
@@ -76,38 +79,39 @@ public class projectDetailController implements Initializable {
 	
 		project.addListener((o, ov, nv) -> {
 			
-			if (nv != null) {
+			if (nv != null) { 
+				
+				view.getStylesheets().setAll(nv.getStyleSheet());
 				title.set(nv.getTitle());
-				description.set(nv.getDescription());
+				description.set(nv.getDescription()); 
 				 
 				for (Task parentTask : TableTasks.readParentTasks(project.get())) {
 					TableTasks.readChildTasks(parentTask);
 					TaskCardComponent taskCard=new TaskCardComponent(); 
-					taskCard.setTask(parentTask);
+					taskCard.setTask(parentTask); 
 					taskCard.styleTaskCard();   
 					projectTasks.add(parentTask); 
-					hBox.getChildren().add(taskCard); 
-					HBox.setHgrow(taskCard, Priority.ALWAYS);
+					taskContainer.getChildren().add(taskCard);
 				}
-
-				for (Task task : projectTasks) {
-					if(task.getStatus().equals(StatusType.TODO)) { 
+ 
+				for (Task task : projectTasks) { 
+					if(task.getStatus().equals(StatusType.TODO)) 
 						toDoTasks.set(toDoTasks.get()+1);
-						System.out.println(task.getTitle()+task.getStatus());
-					} 
 					if(task.getStatus().equals(StatusType.IN_PROGRESS)) 
 						inProgressTasks.set(inProgressTasks.get()+1);   
-					if(task.getStatus().equals(StatusType.DONE))    
-						doneTasks.set(doneTasks.get()+1);    
-				}
-			}   
-			segmentedBar.getSegments().addAll(
+					if(task.getStatus().equals(StatusType.DONE))     
+						doneTasks.set(doneTasks.get()+1);       
+				}       
+			}            
+			  
+			segmentedBar.getSegments().addAll(   
 					new TypeSegment(toDoTasks.get(), StatusType.TODO),
 					new TypeSegment(inProgressTasks.get(), StatusType.IN_PROGRESS),
 					new TypeSegment(doneTasks.get(), StatusType.DONE)
 			);
 		});  
-	}
+
+	}   
 
 	public VBox getView() {
 		return this.view;

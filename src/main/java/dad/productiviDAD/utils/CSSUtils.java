@@ -17,7 +17,7 @@ public class CSSUtils {
 	 * the $values with the parameters 
 	 * @param resource
 	 * @param params
-	 * @return
+	 * @return String Path of the temporal css file
 	 */
 	public static String generateCss(String resource, Map<String, String> params) {
 		String css = ResourceUtils.getResourceAsString(resource);

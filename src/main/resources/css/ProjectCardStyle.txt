@@ -1,3 +1,7 @@
+#view, #scroll, #taskContainer{
+    -fx-background-color:derive($cardColor,50.0%);
+}
+
 #cardSection{
 	-fx-border-color:black, transparent, transparent, transparent;
 	-fx-border-width:2 0 0 0;

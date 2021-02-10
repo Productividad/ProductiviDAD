@@ -67,7 +67,6 @@ public class NoteComponent extends BorderPane implements Initializable{
 		});
 		
 //		contentTA.textProperty().bindBidirectional(content);
-		
 	}
 
 	private void styleNote() {

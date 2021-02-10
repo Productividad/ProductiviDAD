@@ -23,6 +23,7 @@ public class Project {
 	private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
 	private StringProperty color = new SimpleStringProperty();
 	private StringProperty description = new SimpleStringProperty();
+	private StringProperty styleSheet=new SimpleStringProperty();
 
 	public Project(String title, double progress, String color, boolean white) {
 		this.title.set(title);
@@ -130,5 +131,22 @@ public class Project {
 	public final void setWhite(final boolean white) {
 		this.WhiteProperty().set(white);
 	}
+
+	public final StringProperty styleSheetProperty() {
+		return this.styleSheet;
+	}
+	
+
+	public final String getStyleSheet() {
+		return this.styleSheetProperty().get();
+	}
+	
+
+	public final void setStyleSheet(final String styleSheet) {
+		this.styleSheetProperty().set(styleSheet);
+	}
+	
+
+
 
 }
