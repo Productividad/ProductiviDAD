@@ -112,7 +112,7 @@ public class MainController implements Initializable {
 		System.out.println(todaysPage.getId());
 	} 
 
-	public void openProject(Project project) {
+	public void openProject(Project project, String styleSheetPath) {
 		projectDetailController=new projectDetailController();
 		projectDetailController.setProject(project);
 		

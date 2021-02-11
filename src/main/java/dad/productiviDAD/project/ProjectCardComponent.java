@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import dad.productiviDAD.app.MainController;
 import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.CSSUtils;
-import dad.productiviDAD.utils.ResourceUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,6 +26,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty progress=new SimpleStringProperty();
 	private ObjectProperty<Project>project=new SimpleObjectProperty<>();
+	private StringProperty styleSheetPath=new SimpleStringProperty();
 	 
     @FXML
     private Label projectTitleLabel;
@@ -62,7 +62,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
 	
     @FXML
     private void onAccessProject(ActionEvent event) {
-    	MainController.mainController.openProject(project.get());
+    	MainController.mainController.openProject(project.get(),styleSheetPath.get());
     }
 
     @FXML
@@ -89,7 +89,10 @@ public class ProjectCardComponent extends VBox implements Initializable {
 		params.put("cardColor", getProject().getColor());
 		params.put("textColor", textColor);
 		
-		this.getStylesheets().setAll(CSSUtils.generateCss("/css/ProjectCardStyle.txt", params));
+		styleSheetPath.set(CSSUtils.generateCss("/css/ProjectCardStyle.txt", params));
+		
+		project.get().setStyleSheet(styleSheetPath.get());
+		this.getStylesheets().setAll(styleSheetPath.get());
 	}
 
 	public final ObjectProperty<Project> projectProperty() {

@@ -9,6 +9,6 @@
 	-fx-text-fill:black;
 }
 
-.task-card-wrapper:hover .task-card-bottom{
+.task-card-wrapper:hover .task-card-bottom, .task-card-wrapper:hover .task-card-bottom .label{
 	-fx-background-color:derive(#4682B4, 10.00%);	
 }
