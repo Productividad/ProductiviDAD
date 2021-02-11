@@ -15,7 +15,7 @@ public class JdbcConnection {
 	public static void connect() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			String dbURL = "jdbc:sqlite:database/productiviDAD.db";
+			String dbURL = "jdbc:sqlite::resource:database/productiviDAD.db";
 			connection = DriverManager.getConnection(dbURL);
 			if (connection != null) {
 				System.out.println("Connected to the database");
