@@ -24,6 +24,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
@@ -46,7 +47,9 @@ public class projectDetailController implements Initializable {
 	@FXML
 	private Label titleProject,descriptionProject;
 	
-	
+    @FXML
+    private Button addTaskButton;
+    
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
 
 	private ListProperty<Task> projectTasks = new SimpleListProperty<>(FXCollections.observableArrayList());
@@ -57,15 +60,15 @@ public class projectDetailController implements Initializable {
 	private IntegerProperty toDoTasks=new SimpleIntegerProperty(0);
 	private IntegerProperty inProgressTasks=new SimpleIntegerProperty(0);
 	private IntegerProperty doneTasks=new SimpleIntegerProperty(0);
-	
-	public projectDetailController() { 
-		try {
+	 
+	public projectDetailController() {    
+		try { 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
 			loader.setController(this);
 			loader.load(); 
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
-		}  
+		}
 	}
 
 	@Override

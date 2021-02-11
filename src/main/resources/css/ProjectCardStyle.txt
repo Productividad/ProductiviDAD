@@ -1,7 +1,33 @@
-#view, #scroll, #taskContainer{
+#view, #scroll, #taskContainer, .scroll-pane .viewport{
     -fx-background-color:derive($cardColor,50.0%);
 }
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color :derive($cardColor,40.0%);					
+}
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color:$cardColor;
+}
+#addTaskButton
+{
+	-fx-background-radius:20;
+	-fx-background-color:$cardColor;		
+	-fx-text-fill:white;	
+}
+#addTaskButton:hover
+{
+	-fx-background-color:derive($cardColor,30.0%);		
+}
+#addTaskButton:pressed
+{
+	-fx-background-color:derive($cardColor,20.0%);		
+}
 
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color :derive($cardColor,10.0%);	
+}
 #cardSection{
 	-fx-border-color:black, transparent, transparent, transparent;
 	-fx-border-width:2 0 0 0;

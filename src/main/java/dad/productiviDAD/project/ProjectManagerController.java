@@ -74,13 +74,13 @@ public class ProjectManagerController implements Initializable {
 	 * 
 	 * @param card
 	 * @param project
-	 */
+	 */ 
 	private void addProjectCard(Project project) {
 		ProjectCardComponent card = new ProjectCardComponent();
 		card.setProject(project);
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
-	}
+	} 
 
 	@FXML
 	void onAddProject(ActionEvent event) {
