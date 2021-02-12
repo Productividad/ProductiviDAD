@@ -1,5 +1,7 @@
 package dad.productiviDAD.dataManager;
 
+import dad.productiviDAD.project.Project;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,9 +9,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import dad.productiviDAD.balanceManager.IncomeExpense;
-import dad.productiviDAD.project.Project;
 
 /*
  * Class used to interact with the Projects table in the database.

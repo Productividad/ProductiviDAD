@@ -1,25 +1,12 @@
 package dad.productiviDAD.project;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import org.controlsfx.control.SegmentedBar;
-
 import dad.productiviDAD.dataManager.TableTasks;
 import dad.productiviDAD.segmentedBarUtils.InfoLabel;
 import dad.productiviDAD.segmentedBarUtils.StatusType;
 import dad.productiviDAD.segmentedBarUtils.TypeSegment;
 import dad.productiviDAD.segmentedBarUtils.TypeSegmentView;
 import dad.productiviDAD.task.Task;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.SegmentedBar;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class projectDetailController implements Initializable {
 

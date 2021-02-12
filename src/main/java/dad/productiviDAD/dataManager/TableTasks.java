@@ -1,5 +1,10 @@
 package dad.productiviDAD.dataManager;
 
+import dad.productiviDAD.app.MainController;
+import dad.productiviDAD.project.Project;
+import dad.productiviDAD.segmentedBarUtils.*;
+import dad.productiviDAD.task.Task;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,11 +12,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import dad.productiviDAD.app.MainController;
-import dad.productiviDAD.project.Project;
-import dad.productiviDAD.segmentedBarUtils.StatusType;
-import dad.productiviDAD.task.Task;
 
 /*
  * Class used to interact with the IncomeExpenses table in the database.
