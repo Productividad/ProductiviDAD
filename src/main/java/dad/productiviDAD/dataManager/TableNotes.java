@@ -1,13 +1,13 @@
 package dad.productiviDAD.dataManager;
 
+import dad.productiviDAD.note.Note;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import dad.productiviDAD.note.Note;
 
 /*
  * Class used to interact with the Notes table in the database.

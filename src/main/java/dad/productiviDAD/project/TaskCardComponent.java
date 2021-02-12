@@ -1,9 +1,5 @@
 package dad.productiviDAD.project;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import dad.productiviDAD.segmentedBarUtils.StatusType;
 import dad.productiviDAD.task.Task;
 import javafx.beans.property.ObjectProperty;
@@ -15,6 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class TaskCardComponent extends VBox implements Initializable{
 

@@ -1,11 +1,5 @@
 package dad.productiviDAD.project;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import dad.productiviDAD.app.MainController;
 import dad.productiviDAD.dataManager.TableProjects;
 import dad.productiviDAD.utils.CSSUtils;
@@ -19,6 +13,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 
 public class ProjectCardComponent extends VBox implements Initializable {

@@ -1,20 +1,11 @@
 package dad.productiviDAD.app;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-
+import animatefx.animation.FadeIn;
+import animatefx.animation.Shake;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.Group;
 import com.dlsc.preferencesfx.model.Setting;
-import com.sun.javafx.application.HostServicesDelegate;
-
-import animatefx.animation.FadeIn;
-import animatefx.animation.Shake;
 import dad.productiviDAD.balanceManager.BalanceManagerController;
 import dad.productiviDAD.dataManager.TablePages;
 import dad.productiviDAD.home.HomeController;
@@ -24,26 +15,24 @@ import dad.productiviDAD.project.Project;
 import dad.productiviDAD.project.ProjectManagerController;
 import dad.productiviDAD.project.projectDetailController;
 import dad.productiviDAD.task.RightBarController;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 	static Page todaysPage = new Page();
