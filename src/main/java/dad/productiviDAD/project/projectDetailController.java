@@ -59,15 +59,15 @@ public class projectDetailController implements Initializable {
 	
 	private IntegerProperty toDoTasks=new SimpleIntegerProperty(0);
 	private IntegerProperty inProgressTasks=new SimpleIntegerProperty(0);
-	private IntegerProperty doneTasks=new SimpleIntegerProperty(0);
-	 
-	public projectDetailController() {    
-		try { 
+	private IntegerProperty doneTasks=new SimpleIntegerProperty(0); 
+	   
+	public projectDetailController() {         
+		try {   
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
 			loader.setController(this);
-			loader.load(); 
-		} catch (IOException e) { 
-			e.printStackTrace();
+			loader.load();    
+		} catch (IOException e) {  
+			e.printStackTrace();  
 		}
 	}
 

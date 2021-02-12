@@ -1,5 +1,5 @@
 #view, #scroll, #taskContainer, .scroll-pane .viewport{
-    -fx-background-color:derive($cardColor,50.0%);
+    -fx-background-color:derive($cardColor,70.0%);
 }
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
@@ -26,7 +26,7 @@
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
-    -fx-background-color :derive($cardColor,10.0%);	
+        -fx-background-color :derive($cardColor,10.0%);	
 }
 #cardSection{
 	-fx-border-color:black, transparent, transparent, transparent;
