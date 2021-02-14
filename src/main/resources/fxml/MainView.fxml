@@ -12,7 +12,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<<<<<<< Updated upstream
 <BorderPane fx:id="view" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1000.0" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<BorderPane fx:id="view" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> Stashed changes
    <left>
       <VBox alignment="CENTER" prefWidth="50.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
@@ -126,7 +130,7 @@
                   <Insets right="15.0" />
                </padding>
             </HBox>
-            <Label styleClass="title-label" text="Bullet Journal, gestor de productiviDAD" GridPane.columnIndex="1" />
+            <Label styleClass="title-label" text="%title" GridPane.columnIndex="1" />
          </children>
          <styleClass>
             <String fx:value="secondary-color" />
