@@ -10,11 +10,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Class used to interact with the IncomeExpenses table in the database.
  */
 public class TableIncomeExpenses {
-	/*
+	/**
 	 * Method to insert a new income or expense into the table
 	 * 
 	 * @param incomeExpense The income or expense to be created
@@ -47,7 +47,7 @@ public class TableIncomeExpenses {
 
 	}
 
-	/*
+	/**
 	 * Method to update an existing income or expense from the table
 	 * 
 	 * @param incomeExpense The income or expense from the registry to be updated
@@ -71,7 +71,7 @@ public class TableIncomeExpenses {
 
 	}
 
-	/*
+	/**
 	 * Method to delete an existing income or expense from the table
 	 * 
 	 * @param incomeExpense The income or expense to be deleted
@@ -91,7 +91,7 @@ public class TableIncomeExpenses {
 
 	}
 
-	/*
+	/**
 	 * Method to get Registries from the table
 	 * 
 	 * @param number The number of registries to be shown

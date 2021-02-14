@@ -10,11 +10,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Class used to interact with the Pages table in the database.
  */
 public class TablePages {
-	/*
+	/**
 	 * Method to insert a new page in the database
 	 * 
 	 * @param page The page to be inserted
@@ -44,7 +44,7 @@ public class TablePages {
 
 	}
 
-	/*
+	/**
 	 * Method to check if there's a page of current day
 	 * 
 	 * @return true if there's a page, false if there isn't.
@@ -68,7 +68,7 @@ public class TablePages {
 		return result;
 	}
 
-	/*
+	/**
 	 * Method to get the ID from a page
 	 * 
 	 * @param page The page we are setting its id
@@ -95,7 +95,7 @@ public class TablePages {
 
 	}
 
-	/*
+	/**
 	 * Method to get Registries from the table
 	 * 
 	 * @param number The number of days we want to show

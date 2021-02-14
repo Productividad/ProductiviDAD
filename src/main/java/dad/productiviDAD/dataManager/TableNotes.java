@@ -9,11 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Class used to interact with the Notes table in the database.
  */
 public class TableNotes {
-	/*
+	/**
 	 * Method to insert a new note in the database
 	 * 
 	 * @param note The note to be inserted
@@ -46,7 +46,7 @@ public class TableNotes {
 
 	}
 
-	/*
+	/**
 	 * Method to update an existing note from the table
 	 * 
 	 * @param note The note from the registry to be updated
@@ -69,7 +69,7 @@ public class TableNotes {
 
 	}
 
-	/*
+	/**
 	 * Method to delete an existing note from the table
 	 * 
 	 * @param note The note to be deleted
@@ -89,7 +89,7 @@ public class TableNotes {
 
 	}
 
-	/*
+	/**
 	 * Method to get Registries from the table
 	 * 
 	 * @param number The number of registries to be shown
