@@ -96,19 +96,16 @@ public class MainController implements Initializable {
 		homeController=new HomeController();
 		
 		view.setCenter(homeController.getView()); 
-		//TODO Modificar todo el tema de las task
-//		view.setRight(rightBarController.getView());
+
 
 		if (TablePages.todaysPage())
 			TablePages.setID(todaysPage);
 		else
 			TablePages.insertPage(todaysPage);
-		System.out.println(todaysPage.getId());
 	} 
 
 	public void openProject(Project project, String styleSheetPath) {
 		projectDetailController=new projectDetailController();
-		System.out.println(project.getTitle());
 		projectDetailController.setProject(project);
 		
 		new FadeIn(projectDetailController.getView()).play();
@@ -236,7 +233,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onGithubButton(ActionEvent event) {
-		//this is using an awt component lol
 		try {
 		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
 		} catch (IOException e) {

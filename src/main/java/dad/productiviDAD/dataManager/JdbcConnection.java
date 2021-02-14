@@ -18,12 +18,12 @@ public class JdbcConnection {
 			String dbURL = "jdbc:sqlite::resource:database/productiviDAD.db";
 			connection = DriverManager.getConnection(dbURL);
 			if (connection != null) {
-				System.out.println("Connected to the database");
+//				System.out.println("Connected to the database");
 				DatabaseMetaData dm = (DatabaseMetaData) connection.getMetaData();
-				System.out.println("Driver name: " + dm.getDriverName());
-				System.out.println("Driver version: " + dm.getDriverVersion());
-				System.out.println("Product name: " + dm.getDatabaseProductName());
-				System.out.println("Product version: " + dm.getDatabaseProductVersion());
+//				System.out.println("Driver name: " + dm.getDriverName());
+//				System.out.println("Driver version: " + dm.getDriverVersion());
+//				System.out.println("Product name: " + dm.getDatabaseProductName());
+//				System.out.println("Product version: " + dm.getDatabaseProductVersion());
 			}
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();

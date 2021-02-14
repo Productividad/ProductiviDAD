@@ -4,7 +4,7 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.*?>
-<AnchorPane fx:id="view" minHeight="768.0" styleClass="sideBars-color" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="view" minHeight="768.0" styleClass="sideBars-color" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXHamburger fx:id="hamburger" maxWidth="30.0" AnchorPane.topAnchor="0.0">
          <padding>
