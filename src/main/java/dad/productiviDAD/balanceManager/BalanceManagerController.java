@@ -71,6 +71,7 @@ public class BalanceManagerController implements Initializable {
 	public BalanceManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/balance"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -79,8 +80,7 @@ public class BalanceManagerController implements Initializable {
 	}
 
 	@Override 
-	public void initialize(URL location, ResourceBundle resources) { 
-
+	public void initialize(URL location, ResourceBundle resources) {
 		for (IncomeExpense i : TableIncomeExpenses.read(20)) 
 			movementsList.add(i);
 

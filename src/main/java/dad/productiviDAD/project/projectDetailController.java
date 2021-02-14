@@ -56,6 +56,7 @@ public class projectDetailController implements Initializable {
 	public projectDetailController() {         
 		try {   
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/projectdetail"));
 			loader.setController(this);
 			loader.load();    
 		} catch (IOException e) {  

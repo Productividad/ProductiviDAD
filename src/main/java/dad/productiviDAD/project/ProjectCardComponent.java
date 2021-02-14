@@ -38,6 +38,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
     	super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectCardComponent.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/projectcard"));
 			loader.setController(this);
 			loader.setRoot(this); 
 			loader.load();

@@ -61,6 +61,7 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
     	initModality(Modality.WINDOW_MODAL);
     	initOwner(App.primaryStage);
 		FXMLLoader loader=new FXMLLoader(getClass().getResource("/fxml/ProjectEditorDialogView.fxml"));
+		loader.setResources(ResourceBundle.getBundle("i18n/projectdialog"));
 		loader.setController(this); 
 		try {
 			loader.load();

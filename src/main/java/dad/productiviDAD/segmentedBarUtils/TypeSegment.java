@@ -2,6 +2,8 @@ package dad.productiviDAD.segmentedBarUtils;
 
 import org.controlsfx.control.SegmentedBar;
 
+import java.util.ResourceBundle;
+
 public class TypeSegment extends SegmentedBar.Segment {
 	
 	private StatusType type;
@@ -12,13 +14,13 @@ public class TypeSegment extends SegmentedBar.Segment {
 
 		switch(type) {
 			case TODO:
-				setText("Pendiente");
+				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("todo"));
 				break;
 			case IN_PROGRESS:
-				setText("En progreso");
+				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("inprogress"));
 				break;
 			case DONE:
-				setText("Finalizado");
+				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("done"));
 				break;
 		}
 	}

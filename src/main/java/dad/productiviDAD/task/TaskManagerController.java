@@ -38,6 +38,7 @@ public class TaskManagerController implements Initializable {
 
 	public TaskManagerController() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskManagerView.fxml"));
+		loader.setResources(ResourceBundle.getBundle("i18n/taskmanager"));
 		loader.setController(this);
 		try {
 			loader.load();

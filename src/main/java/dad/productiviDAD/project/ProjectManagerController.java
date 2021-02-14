@@ -38,6 +38,7 @@ public class ProjectManagerController implements Initializable {
 	public ProjectManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectManagerView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/project"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
