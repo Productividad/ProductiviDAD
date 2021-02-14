@@ -29,6 +29,7 @@ public class ProjectTaskComponent extends VBox implements Initializable{
         super();
     	try { 
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectTaskComponent.fxml"));
+    		loader.setResources(ResourceBundle.getBundle("i18n/taskcard"));
     		loader.setController(this);
     		loader.setRoot(this); 
     		loader.load();

@@ -13,11 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.SegmentedBar?>
 
-<<<<<<< Updated upstream
 <VBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-=======
-<VBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> Stashed changes
    <children>
       <GridPane hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -55,14 +51,11 @@
             </ScrollPane>
             <SegmentedBar fx:id="segmentedBar" orientation="HORIZONTAL" GridPane.columnSpan="4" GridPane.rowIndex="5" />
             <BorderPane GridPane.columnIndex="3" GridPane.rowIndex="3" />
-<<<<<<< Updated upstream
-            <Button fx:id="addTaskButton" maxWidth="150.0" mnemonicParsing="false" prefHeight="30.0" text="Añadir tarea" GridPane.rowIndex="3">
+            <Button fx:id="addTaskButton" maxWidth="150.0" mnemonicParsing="false" prefHeight="30.0" text="%addtask" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Button>
-=======
-            <Button fx:id="addTaskButton" maxWidth="150.0" mnemonicParsing="false" prefHeight="30.0" text="%addtask" GridPane.rowIndex="3" />
->>>>>>> Stashed changes
+               </font>
+            </Button>
          </children>
       </GridPane>
    </children>

@@ -80,7 +80,7 @@ public class MainController implements Initializable {
 			loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 	}  
   
 	@Override
@@ -108,6 +108,7 @@ public class MainController implements Initializable {
 
 	public void openProject(Project project, String styleSheetPath) {
 		projectDetailController=new projectDetailController();
+		System.out.println(project.getTitle());
 		projectDetailController.setProject(project);
 		
 		new FadeIn(projectDetailController.getView()).play();
