@@ -13,7 +13,7 @@
 {
 	-fx-background-radius:20;
 	-fx-background-color:$cardColor;		
-	-fx-text-fill:white;	
+	-fx-text-fill:$textColor;	
 }
 #addTaskButton:hover
 {

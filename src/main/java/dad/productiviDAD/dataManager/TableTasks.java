@@ -29,7 +29,7 @@ public class TableTasks {
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
-			task.setCompleted(false);
+			task.setDone(false);
 			task.setPage(MainController.getTodaysPage());
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
@@ -109,7 +109,7 @@ public class TableTasks {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
-				task.setCompleted((rs.getInt("completed") == 1) ? true : false);
+				task.setDone((rs.getInt("completed") == 1) ? true : false);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
@@ -149,7 +149,7 @@ public class TableTasks {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
-				task.setCompleted((rs.getInt("completed") == 1) ? true : false);
+				task.setDone((rs.getInt("completed") == 1) ? true : false);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
@@ -182,7 +182,7 @@ public class TableTasks {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
 			pstmt.setString(1, task.getTitle());
-			pstmt.setInt(2, (task.isCompleted()) ? 1 : 0);
+			pstmt.setInt(2, (task.isDone()) ? 1 : 0);
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, task.getColor());
 			pstmt.setString(5, task.getDeadLine().toString());

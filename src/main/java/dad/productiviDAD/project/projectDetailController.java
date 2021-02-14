@@ -82,7 +82,7 @@ public class projectDetailController implements Initializable {
 				 
 				for (Task parentTask : TableTasks.readParentTasks(project.get())) {
 					TableTasks.readChildTasks(parentTask);
-					TaskCardComponent taskCard=new TaskCardComponent(); 
+					ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
 					taskCard.setTask(parentTask); 
 					taskCard.styleTaskCard();   
 					projectTasks.add(parentTask); 
