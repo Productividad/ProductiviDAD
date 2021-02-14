@@ -1,6 +1,11 @@
-package dad.productividad.project;
+package dad.productiviDAD.project;
 
-import dad.productividad.dataManager.TableProjects;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+import dad.productiviDAD.dataManager.TableProjects;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -14,11 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 /**
  * Controller class of ProjectManagerView

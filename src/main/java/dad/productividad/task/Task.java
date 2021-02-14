@@ -1,13 +1,23 @@
-package dad.productividad.task;
+package dad.productiviDAD.task;
 
-import dad.productividad.page.Page;
-import dad.productividad.project.Project;
-import dad.productividad.segmentedBarUtils.StatusType;
-import javafx.beans.property.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
+
+import dad.productiviDAD.page.Page;
+import dad.productiviDAD.project.Project;
+import dad.productiviDAD.segmentedBarUtils.StatusType;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Task {
 

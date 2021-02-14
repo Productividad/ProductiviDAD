@@ -1,10 +1,10 @@
-package dad.productividad.note;
-
-import dad.productividad.dataManager.TableNotes;
-import javafx.geometry.Insets;
-import javafx.scene.layout.FlowPane;
+package dad.productiviDAD.note;
 
 import java.util.List;
+
+import dad.productiviDAD.dataManager.TableNotes;
+import javafx.geometry.Insets;
+import javafx.scene.layout.FlowPane;
 
 public class NotesController {
 	    

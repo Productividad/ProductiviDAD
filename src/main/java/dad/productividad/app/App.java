@@ -1,4 +1,4 @@
-package dad.productividad.app;
+package dad.productiviDAD.app;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package dad.productividad.note;
+package dad.productiviDAD.note;
 
 import javafx.beans.property.*;
 

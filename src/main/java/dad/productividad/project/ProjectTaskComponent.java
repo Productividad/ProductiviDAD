@@ -1,7 +1,11 @@
-package dad.productividad.project;
+package dad.productiviDAD.project;
 
-import dad.productividad.segmentedBarUtils.StatusType;
-import dad.productividad.task.Task;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import dad.productiviDAD.segmentedBarUtils.StatusType;
+import dad.productiviDAD.task.Task;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,10 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class ProjectTaskComponent extends VBox implements Initializable{
 

@@ -1,4 +1,4 @@
-package dad.productividad.segmentedBarUtils;
+package dad.productiviDAD.segmentedBarUtils;
 
 import org.controlsfx.control.SegmentedBar;
 

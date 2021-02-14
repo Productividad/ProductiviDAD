@@ -1,6 +1,4 @@
-package dad.productividad.dataManager;
-
-import dad.productividad.balanceManager.IncomeExpense;
+package dad.productiviDAD.dataManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +7,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import dad.productiviDAD.balanceManager.IncomeExpense;
 
 /**
  * Class used to interact with the IncomeExpenses table in the database.

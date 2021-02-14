@@ -1,8 +1,8 @@
-package dad.productividad.project;
+package dad.productiviDAD.project;
 
-import dad.productividad.app.MainController;
-import dad.productividad.dataManager.TableProjects;
-import dad.productividad.utils.CSSUtils;
+import dad.productiviDAD.app.MainController;
+import dad.productiviDAD.dataManager.TableProjects;
+import dad.productiviDAD.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

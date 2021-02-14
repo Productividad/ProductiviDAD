@@ -1,4 +1,4 @@
-package dad.productividad.balanceManager;
+package dad.productiviDAD.balanceManager;
 
 import javafx.beans.property.*;
 

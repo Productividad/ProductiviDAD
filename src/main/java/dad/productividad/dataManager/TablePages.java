@@ -1,6 +1,4 @@
-package dad.productividad.dataManager;
-
-import dad.productividad.page.Page;
+package dad.productiviDAD.dataManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +7,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import dad.productiviDAD.page.Page;
 
 /**
  * Class used to interact with the Pages table in the database.
