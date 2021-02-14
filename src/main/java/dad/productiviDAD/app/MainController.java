@@ -67,7 +67,7 @@ public class MainController implements Initializable {
 	private HomeController homeController;	 
 	
 	public static MainController mainController;
-
+ 
 	public MainController() {
 		MainController.mainController = this;
 		try {

@@ -9,7 +9,7 @@
 .title-label{ 
 	-fx-text-fill:white; 
 }            
-.main-color, .table-view,.table-row-cell 
+.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover
 {         
     -fx-background-color:#EBEBD3;  
 }

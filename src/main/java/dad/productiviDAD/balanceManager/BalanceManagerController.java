@@ -28,12 +28,12 @@ import java.util.ResourceBundle;
 public class BalanceManagerController implements Initializable {
 
 	@FXML
-	private GridPane view;
-
+	private GridPane view;  
+ 
 	@FXML
 	private TableView<IncomeExpense> balanceTableView;
 
-	@FXML
+	@FXML 
 	private TableColumn<IncomeExpense, LocalDate> dateColumn;
 
 	@FXML
@@ -78,13 +78,13 @@ public class BalanceManagerController implements Initializable {
 		}
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	@Override 
+	public void initialize(URL location, ResourceBundle resources) { 
 
-		for (IncomeExpense i : TableIncomeExpenses.read(20))
+		for (IncomeExpense i : TableIncomeExpenses.read(20)) 
 			movementsList.add(i);
 
-		balanceTableView.itemsProperty().bindBidirectional(movementsList);
+		balanceTableView.itemsProperty().bindBidirectional(movementsList); 
 
 		dateColumn.setCellValueFactory(v -> v.getValue().dateProperty());
 		conceptColumn.setCellValueFactory(v -> v.getValue().conceptProperty());
@@ -104,7 +104,7 @@ public class BalanceManagerController implements Initializable {
 					amountTF.setText(newValue.replaceAll("[^\\d]", ""));
 				}
 			}
-		});
+		}); 
 
 		totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 
