@@ -4,7 +4,6 @@ import javafx.beans.property.*;
 
 public class Note {
 
-	private StringProperty title = new SimpleStringProperty();
 	private StringProperty content = new SimpleStringProperty();
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private IntegerProperty idPage = new SimpleIntegerProperty();
@@ -13,8 +12,7 @@ public class Note {
 	private StringProperty color=new SimpleStringProperty();
 	private BooleanProperty white=new SimpleBooleanProperty();
 
-	public Note(String title,String content,String color,Boolean white) {
-		this.title.set(title);
+	public Note(String content,String color,Boolean white) {
 		this.content.set(content);
 		this.color.set(color);
 		this.white.set(white);
@@ -23,19 +21,7 @@ public class Note {
 		
 	}
 
-	public final StringProperty titleProperty() {
-		return this.title;
-	}
 	
-
-	public final String getTitle() {
-		return this.titleProperty().get();
-	}
-	
-
-	public final void setTitle(final String title) {
-		this.titleProperty().set(title);
-	}
 	
 
 	public final StringProperty contentProperty() {

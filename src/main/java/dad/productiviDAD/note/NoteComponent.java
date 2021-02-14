@@ -48,14 +48,13 @@ public class NoteComponent extends BorderPane implements Initializable{
 	
 	public NoteComponent(StringProperty content) {
 		super();
-		//this.title = title;
 		this.content = content;
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		contentTA.textProperty().bind(content);
+		contentTA.textProperty().bindBidirectional(content);
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
@@ -111,6 +110,14 @@ public class NoteComponent extends BorderPane implements Initializable{
 
 	public final void setNote(final Note note) {
 		this.noteProperty().set(note);
+	}
+
+	public JFXTextArea getContentTA() {
+		return contentTA;
+	}
+
+	public void setContentTA(JFXTextArea contentTA) {
+		this.contentTA = contentTA;
 	}
 	
 
