@@ -2,6 +2,8 @@
 
 .grid{
 	-fx-background-color:white;
+	-fx-background-radius:10px;
+	-fx-border-radius:10px;
 }
 .grid:hover{
 	-fx-background-color:#CACFD6;

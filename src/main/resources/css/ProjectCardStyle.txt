@@ -9,6 +9,7 @@
 .scroll-bar:vertical .thumb {
     -fx-background-color:$cardColor;
 }
+
 #addTaskButton
 {
 	-fx-background-radius:20;
@@ -28,6 +29,9 @@
 .scroll-bar:vertical .thumb:hover {
         -fx-background-color :derive($cardColor,10.0%);	
 }
+
+/*CardComponent*/
+
 #cardSection{
 	-fx-border-color:black, transparent, transparent, transparent;
 	-fx-border-width:2 0 0 0;

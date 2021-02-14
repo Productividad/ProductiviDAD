@@ -48,9 +48,7 @@ public class TaskComponent extends VBox implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		setStyle("-fx-background-radius:5px;");
-		
+				
 		taskTitleLabel.textProperty().bindBidirectional(title);
 		doneCheckBox.selectedProperty().bindBidirectional(done);
 		favouriteCheckBox.selectedProperty().bindBidirectional(favourite);

@@ -9,9 +9,9 @@
 .title-label{ 
 	-fx-text-fill:white; 
 }            
-.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover
+.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, #scrollPane .viewport
 {         
-	-fx-background-color:#EBEBD3; 
+	-fx-background-color:#F7BFB4; 
 }
 .secondary-color 
 {  
@@ -84,4 +84,7 @@
 	-fx-background-radius:0;
 }
 
-
+/* HomeView */
+.scroll-pane {
+    -fx-background-color:transparent;
+}

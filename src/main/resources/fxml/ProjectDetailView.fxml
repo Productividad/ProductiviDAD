@@ -41,7 +41,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="scroll" prefHeight="220.0" vbarPolicy="NEVER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <ScrollPane fx:id="scroll" prefHeight="220.0" style="-fx-border-color: transparent;" vbarPolicy="NEVER" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
