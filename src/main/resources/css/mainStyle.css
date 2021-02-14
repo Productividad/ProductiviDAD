@@ -11,7 +11,7 @@
 }            
 .main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover
 {         
-    -fx-background-color:#EBEBD3;  
+	-fx-background-color:#EBEBD3; 
 }
 .secondary-color 
 {  
@@ -23,7 +23,7 @@
 } 
 .top-menu-bar 
 { 
-	-fx-border-color: transparent transparent #FFD500 transparent;
+	-fx-border-color: transparent transparent derive(#083D77, 40.0%) transparent;
 	-fx-border-width: 2px;
 } 
 .side-menu-bar

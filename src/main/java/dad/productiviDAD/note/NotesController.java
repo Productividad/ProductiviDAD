@@ -18,17 +18,18 @@ public class NotesController {
     	
     	for(Note i : noteList) {
     	NoteComponent postIt1=new NoteComponent();
+    	Note note = new Note(i.getContent(),"#708D81",false);
     	postIt1.setNote(i);
     	view.getChildren().addAll(postIt1);
    	
-//    	postIt1.getContentTA().focusedProperty().addListener((o,ov,nv)->{
-//    		
-//    		if (!nv) {
-//    			//cuando pierde el foco 
-//    			i.setContent(note1.getContent());
-//    			TableNotes.update(i);
-//			}
-//    		    });
+    	postIt1.getContentTA().focusedProperty().addListener((o,ov,nv)->{
+   		
+    		if (!nv) {
+    			//cuando pierde el foco 
+    			i.setContent(note.getContent());
+    			TableNotes.update(i);
+			}
+    		    });
     	}
     	view.setHgap(5);
     	view.setVgap(5);

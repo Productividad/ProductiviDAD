@@ -77,13 +77,13 @@ public class MainController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
+	} 
+  
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources) { 
 		
 		todaysPage.setDate(LocalDate.now());
-
+ 
 		rightBarController = new RightBarController();
 
 		projectManagerController = new ProjectManagerController();
@@ -91,8 +91,9 @@ public class MainController implements Initializable {
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		
-		view.setCenter(projectManagerController.getView()); 
-		view.setRight(rightBarController.getView());
+		view.setCenter(homeController.getView()); 
+		//TODO Modificar todo el tema de las task
+//		view.setRight(rightBarController.getView());
 
 		if (TablePages.todaysPage())
 			TablePages.setID(todaysPage);
@@ -108,7 +109,6 @@ public class MainController implements Initializable {
 		new FadeIn(projectDetailController.getView()).play();
 			
 		view.setCenter(projectDetailController.getView());
-		resetRightBar();
 		
 	}
 
@@ -150,7 +150,6 @@ public class MainController implements Initializable {
 			new FadeIn(homeController.getView()).play();
 			
 			view.setCenter(homeController.getView());
-			resetRightBar();
 		}
 	}
 
@@ -172,7 +171,6 @@ public class MainController implements Initializable {
 		else {
 			new FadeIn(projectManagerController.getView()).play();
 			view.setCenter(projectManagerController.getView());
-			resetRightBar();
 		}
 		
 	}
@@ -185,7 +183,6 @@ public class MainController implements Initializable {
 		else {
 			new FadeIn(notasController.getView()).play();
 			view.setCenter(notasController.getView());
-			resetRightBar();
 		}
 	}
 
@@ -197,7 +194,6 @@ public class MainController implements Initializable {
 		else {
 			new FadeIn(balanceManagerController.getView()).play();
 			view.setCenter(balanceManagerController.getView());
-			resetRightBar();
 		}
 	}
 
@@ -240,14 +236,5 @@ public class MainController implements Initializable {
 		} catch (URISyntaxException e) {
 		    e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Resets right side of the view so the JFXDrawer doesn't get unreachable under
-	 * the new center node
-	 */
-	private void resetRightBar() {
-		view.setRight(null);
-		view.setRight(rightBarController.getView());
 	}
 }

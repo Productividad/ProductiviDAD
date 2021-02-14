@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TaskCardComponent extends VBox implements Initializable{
+public class ProjectTaskComponent extends VBox implements Initializable{
 
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty taskRemaining=new SimpleStringProperty();
@@ -25,10 +25,10 @@ public class TaskCardComponent extends VBox implements Initializable{
 	@FXML
     private Label titleLabel,taskRemainingLabel;
 	
-    public TaskCardComponent() {
+    public ProjectTaskComponent() {
         super();
     	try { 
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskCardComponent.fxml"));
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectTaskComponent.fxml"));
     		loader.setController(this);
     		loader.setRoot(this); 
     		loader.load();
