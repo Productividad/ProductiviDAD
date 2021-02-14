@@ -13,12 +13,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
+/**
  * Class used to interact with the IncomeExpenses table in the database.
  */
 public class TableTasks {
 
-	/*
+	/**
 	 * Method to insert a new registry into the table
 	 * 
 	 * @param task The task to be inserted
@@ -62,7 +62,7 @@ public class TableTasks {
 
 	}
 
-	/*
+	/**
 	 * Method to delete an existing income or expense from the table
 	 * 
 	 * @param task The task to be deleted
@@ -82,7 +82,7 @@ public class TableTasks {
 
 	}
 
-	/*
+	/**
 	 * Method to get parent Tasks from the table
 	 * 
 	 * @param project To be used if we want to get the tasks of a project
@@ -128,7 +128,7 @@ public class TableTasks {
 		return arrayList;
 	}
 
-	/*
+	/**
 	 * Method to get child tasks from the table
 	 * 
 	 * @param parentTask The parent Task
@@ -169,7 +169,7 @@ public class TableTasks {
 		}
 	}
 
-	/*
+	/**
 	 * Method to update an existing task from the table
 	 * 
 	 * @param task The task to be updated

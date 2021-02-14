@@ -14,7 +14,7 @@ import java.util.List;
  * Class used to interact with the Projects table in the database.
  */
 public class TableProjects {
-	/*
+	/**
 	 * Method to insert a new Project into the table
 	 * 
 	 * @param project The project to be inserted
@@ -51,7 +51,7 @@ public class TableProjects {
 		}
 
 	}
-	/*
+	/**
 	 * Method to update an existing Project from the table
 	 * 
 	 * @param project The project from the registry to be updated
@@ -81,7 +81,7 @@ public class TableProjects {
 		}
 
 	}
-	/*
+	/**
 	 * Method to delete an existing project from the table
 	 * 
 	 * @param project The project to be deleted
@@ -101,7 +101,7 @@ public class TableProjects {
 
 	}
 	
-	/*
+	/**
 	 * Method to get Registries from the table
 	 * 
 	 * @param number The number of registries to be shown

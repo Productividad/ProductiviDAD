@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
 <BorderPane fx:id="view" minWidth="700.0" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="dialog-background" vgap="10.0">
@@ -20,14 +29,14 @@
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="Título del proyecto" styleClass="dialog-textFieldArea" unFocusColor="#7bc46600" GridPane.columnSpan="2">
+            <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="%title" styleClass="dialog-textFieldArea" unFocusColor="#7bc46600" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding></JFXTextField>
-            <JFXTextArea fx:id="descriptionTA" focusColor="#405aa800" prefColumnCount="10" promptText="Descripción del proyecto" styleClass="dialog-textFieldArea" unFocusColor="#4d4d4d00" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <JFXTextArea fx:id="descriptionTA" focusColor="#405aa800" prefColumnCount="10" promptText="%description" styleClass="dialog-textFieldArea" unFocusColor="#4d4d4d00" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -36,7 +45,7 @@
                </padding>
             </JFXTextArea>
             <JFXDatePicker fx:id="projectDatePicker" defaultColor="#cf0a0a00" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" styleClass="project-datepicker" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" styleClass="project-checkBox" text="Texto en blanco" unCheckedColor="BLACK" GridPane.columnIndex="2" />
+            <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" styleClass="project-checkBox" text="%white" unCheckedColor="BLACK" GridPane.columnIndex="2" />
             <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
          <BorderPane.margin>

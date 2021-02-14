@@ -16,6 +16,8 @@ import dad.productiviDAD.project.ProjectManagerController;
 import dad.productiviDAD.project.projectDetailController;
 import dad.productiviDAD.task.RightBarController;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +34,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -72,6 +75,7 @@ public class MainController implements Initializable {
 		MainController.mainController = this;
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/main"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -204,18 +208,21 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onToolsButton(ActionEvent event) {
-		
-		StringProperty stringProperty = new SimpleStringProperty("String");
+
+		ObservableList themeItems = FXCollections.observableArrayList(Arrays.asList(
+				"Dark", "Clear", "Canary"));
+		ObjectProperty themeSelection = new SimpleObjectProperty<>("Canary");
 		BooleanProperty booleanProperty = new SimpleBooleanProperty(true);
 		IntegerProperty integerProperty = new SimpleIntegerProperty(12);
 		DoubleProperty doubleProperty = new SimpleDoubleProperty(6.5);
+		IntegerProperty fontSize = new SimpleIntegerProperty(12);
 
 		PreferencesFx preferencesFx = PreferencesFx.of(App.class, // Save class (will be used to reference saved values of
 																	// Settings to)
-				Category.of("Category title 1", Setting.of("Setting title 1", stringProperty), // creates a group
+				Category.of("Customization", Setting.of("Theme", themeItems, themeSelection), // creates a group
 																								// automatically
-						Setting.of("Setting title 2", booleanProperty) // which contains both settings
-				), Category.of("Category title 2").expand() // Expand the parent category in the tree-view
+						Setting.of("Activate me", booleanProperty), Setting.of("Font Size", fontSize, 10, 36) // which contains both settings
+				), Category.of("Miscellaneous").expand() // Expand the parent category in the tree-view
 						.subCategories( // adds a subcategory to "Category title 2"
 								Category.of("Category title 3",
 										Group.of("Group title 1", Setting.of("Setting title 3", integerProperty)), Group.of( // group
