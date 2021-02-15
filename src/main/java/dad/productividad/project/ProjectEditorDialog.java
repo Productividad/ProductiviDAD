@@ -1,4 +1,4 @@
-package dad.productiviDAD.project;
+package dad.productividad.project;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,9 +11,9 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.app.App;
-import dad.productiviDAD.dataManager.TableProjects;
-import dad.productiviDAD.utils.ColorUtils;
+import dad.productividad.app.App;
+import dad.productividad.dataManager.TableProjects;
+import dad.productividad.utils.ColorUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;

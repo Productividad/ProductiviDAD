@@ -1,4 +1,4 @@
-package dad.productiviDAD.balanceManager;
+package dad.productividad.balanceManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,7 +9,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productiviDAD.dataManager.TableIncomeExpenses;
+import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ListProperty;

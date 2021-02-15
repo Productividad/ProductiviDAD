@@ -1,4 +1,4 @@
-package dad.productiviDAD.app;
+package dad.productividad.app;
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -15,17 +15,17 @@ import com.dlsc.preferencesfx.model.Setting;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
-import dad.productiviDAD.balanceManager.BalanceManagerController;
-import dad.productiviDAD.dataManager.TablePages;
-import dad.productiviDAD.home.HomeController;
-import dad.productiviDAD.note.NotesController;
-import dad.productiviDAD.page.Page;
-import dad.productiviDAD.project.Project;
-import dad.productiviDAD.project.ProjectManagerController;
-import dad.productiviDAD.project.projectDetailController;
-import dad.productiviDAD.task.RightBarController;
-import dad.productiviDAD.task.Task;
-import dad.productiviDAD.task.TaskDetailController;
+import dad.productividad.balanceManager.BalanceManagerController;
+import dad.productividad.dataManager.TablePages;
+import dad.productividad.home.HomeController;
+import dad.productividad.note.NotesController;
+import dad.productividad.page.Page;
+import dad.productividad.project.Project;
+import dad.productividad.project.ProjectManagerController;
+import dad.productividad.project.projectDetailController;
+import dad.productividad.task.RightBarController;
+import dad.productividad.task.Task;
+import dad.productividad.task.TaskDetailController;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;

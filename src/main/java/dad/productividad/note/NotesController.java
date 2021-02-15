@@ -1,8 +1,8 @@
-package dad.productiviDAD.note;
+package dad.productividad.note;
 
 import java.util.List;
 
-import dad.productiviDAD.dataManager.TableNotes;
+import dad.productividad.dataManager.TableNotes;
 import javafx.geometry.Insets;
 import javafx.scene.layout.FlowPane;
 

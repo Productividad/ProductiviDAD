@@ -1,10 +1,10 @@
-package dad.productiviDAD.task;
+package dad.productividad.task;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.app.MainController;
+import dad.productividad.app.MainController;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;

@@ -1,4 +1,4 @@
-package dad.productiviDAD.dataManager;
+package dad.productividad.dataManager;
 
 
 import java.sql.Connection;

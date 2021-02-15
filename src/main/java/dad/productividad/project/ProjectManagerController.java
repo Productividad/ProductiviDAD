@@ -1,11 +1,11 @@
-package dad.productiviDAD.project;
+package dad.productividad.project;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.dataManager.TableProjects;
+import dad.productividad.dataManager.TableProjects;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;

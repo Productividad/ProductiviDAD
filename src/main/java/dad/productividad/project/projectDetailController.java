@@ -1,4 +1,4 @@
-package dad.productiviDAD.project;
+package dad.productividad.project;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,12 +6,12 @@ import java.util.ResourceBundle;
 
 import org.controlsfx.control.SegmentedBar;
 
-import dad.productiviDAD.dataManager.TableTasks;
-import dad.productiviDAD.segmentedBarUtils.InfoLabel;
-import dad.productiviDAD.segmentedBarUtils.StatusType;
-import dad.productiviDAD.segmentedBarUtils.TypeSegment;
-import dad.productiviDAD.segmentedBarUtils.TypeSegmentView;
-import dad.productiviDAD.task.Task;
+import dad.productividad.dataManager.TableTasks;
+import dad.productividad.segmentedBarUtils.InfoLabel;
+import dad.productividad.segmentedBarUtils.StatusType;
+import dad.productividad.segmentedBarUtils.TypeSegment;
+import dad.productividad.segmentedBarUtils.TypeSegmentView;
+import dad.productividad.task.Task;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;

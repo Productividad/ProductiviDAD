@@ -1,4 +1,4 @@
-package dad.productiviDAD.segmentedBarUtils;
+package dad.productividad.segmentedBarUtils;
 
 public enum StatusType {
 	
