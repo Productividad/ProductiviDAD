@@ -1,11 +1,11 @@
-package dad.productiviDAD.project;
+package dad.productividad.project;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.segmentedBarUtils.StatusType;
-import dad.productiviDAD.task.Task;
+import dad.productividad.segmentedBarUtils.StatusType;
+import dad.productividad.task.Task;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

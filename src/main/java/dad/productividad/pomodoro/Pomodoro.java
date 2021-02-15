@@ -1,4 +1,4 @@
-package dad.productiviDAD.pomodoro;
+package dad.productividad.pomodoro;
 
 public class Pomodoro {
 

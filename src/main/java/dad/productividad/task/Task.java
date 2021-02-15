@@ -1,11 +1,11 @@
-package dad.productiviDAD.task;
+package dad.productividad.task;
 
 
 import java.time.LocalDate;
 
-import dad.productiviDAD.page.Page;
-import dad.productiviDAD.project.Project;
-import dad.productiviDAD.segmentedBarUtils.StatusType;
+import dad.productividad.page.Page;
+import dad.productividad.project.Project;
+import dad.productividad.segmentedBarUtils.StatusType;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;

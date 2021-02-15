@@ -1,4 +1,4 @@
-package dad.productiviDAD.app;
+package dad.productividad.app;
 
 public class Main {
 

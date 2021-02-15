@@ -1,4 +1,4 @@
-package dad.productiviDAD.segmentedBarUtils;
+package dad.productividad.segmentedBarUtils;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

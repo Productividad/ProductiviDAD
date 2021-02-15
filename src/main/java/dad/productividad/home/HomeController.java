@@ -1,11 +1,11 @@
-package dad.productiviDAD.home;
+package dad.productividad.home;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dad.productiviDAD.task.Task;
-import dad.productiviDAD.task.TaskComponent;
+import dad.productividad.task.Task;
+import dad.productividad.task.TaskComponent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

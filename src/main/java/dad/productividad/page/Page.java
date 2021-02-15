@@ -1,4 +1,4 @@
-package dad.productiviDAD.page;
+package dad.productividad.page;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;

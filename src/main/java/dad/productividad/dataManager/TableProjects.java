@@ -1,4 +1,4 @@
-package dad.productiviDAD.dataManager;
+package dad.productividad.dataManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productiviDAD.project.Project;
+import dad.productividad.project.Project;
 
 /*
  * Class used to interact with the Projects table in the database.
