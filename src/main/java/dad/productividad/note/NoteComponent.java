@@ -59,8 +59,9 @@ public class NoteComponent extends BorderPane implements Initializable{
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				content.set(nv.getContent());
-				
+				//content.set(nv.getContent());
+				content.bindBidirectional(nv.contentProperty());
+
 //				styleNote();
 			}
 		});
@@ -71,8 +72,8 @@ public class NoteComponent extends BorderPane implements Initializable{
 	private void styleNote() {
 		
 		String textColor="white";
-		if(!getNote().isWhite())
-			textColor="black";
+//		if(!getNote().isWhite())
+//			textColor="black";
 		
 		Map<String, String> params = new HashMap<>();
 		params.put("noteColor", getNote().getColor());

@@ -10,12 +10,10 @@ public class Note {
 	
 	//TODO Implementar color de texto y nota en la base de datos¿?
 	private StringProperty color=new SimpleStringProperty();
-	private BooleanProperty white=new SimpleBooleanProperty();
 
-	public Note(String content,String color,Boolean white) {
+	public Note(String content,String color) {
 		this.content.set(content);
 		this.color.set(color);
-		this.white.set(white);
 	}
 	public Note() {
 		
@@ -83,21 +81,8 @@ public class Note {
 		this.colorProperty().set(color);
 	}
 
-	public final BooleanProperty whiteProperty() {
-		return this.white;
-	}
 	
 
-	public final boolean isWhite() {
-		return this.whiteProperty().get();
-	}
-	
-
-	public final void setWhite(final boolean white) {
-		this.whiteProperty().set(white);
-	}
-	
-	
 	
 
 }
