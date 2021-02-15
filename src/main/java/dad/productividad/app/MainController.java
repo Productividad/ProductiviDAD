@@ -24,6 +24,8 @@ import dad.productiviDAD.project.Project;
 import dad.productiviDAD.project.ProjectManagerController;
 import dad.productiviDAD.project.projectDetailController;
 import dad.productiviDAD.task.RightBarController;
+import dad.productiviDAD.task.Task;
+import dad.productiviDAD.task.TaskDetailController;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -76,7 +78,8 @@ public class MainController implements Initializable {
 	private BalanceManagerController balanceManagerController;
 	private projectDetailController projectDetailController;	
 	private HomeController homeController;	 
-	
+	private TaskDetailController taskDetailController;
+
 	public static MainController mainController;
  
 	public MainController() {
@@ -102,6 +105,7 @@ public class MainController implements Initializable {
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
+		taskDetailController=new TaskDetailController();
 		
 		view.setCenter(homeController.getView()); 
 
@@ -119,8 +123,24 @@ public class MainController implements Initializable {
 		new FadeIn(projectDetailController.getView()).play();
 			
 		view.setCenter(projectDetailController.getView());
-		
 	}
+	
+	public void openTask(Task task) {
+		
+		if(view.getRight()==null) {
+			taskDetailController.setTask(task);
+			view.setRight(taskDetailController.getView());
+		}
+		else if(view.getRight()==taskDetailController.getView()) {
+				if(taskDetailController.getTask()==task)
+					view.setRight(null);
+				else
+					taskDetailController.setTask(task);
+		
+			}
+	}
+	
+		
 
 	public BorderPane getView() {
 		return this.view;

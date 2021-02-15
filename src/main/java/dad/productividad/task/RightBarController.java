@@ -37,7 +37,7 @@ public class RightBarController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		transiction=new HamburgerNextArrowBasicTransition(hamburger);
-		TaskManagerController taskManagerController=new TaskManagerController();
+		TaskDetailController taskManagerController=new TaskDetailController();
  
 		
 		drawer.setSidePane(taskManagerController.getView());  

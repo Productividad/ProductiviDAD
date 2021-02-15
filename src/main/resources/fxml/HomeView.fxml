@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -8,8 +9,14 @@
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
       <ScrollPane fx:id="scrollPane" prefHeight="320.0">
          <content>
-            <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0" />
+            <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" />
+               </padding></VBox>
          </content>
+         <VBox.margin>
+            <Insets right="10.0" />
+         </VBox.margin>
       </ScrollPane>
    </children>
 </VBox>

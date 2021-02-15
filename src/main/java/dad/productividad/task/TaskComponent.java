@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.productiviDAD.app.MainController;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -62,7 +63,7 @@ public class TaskComponent extends VBox implements Initializable {
 	}
 
 	private void onMouseClicked() {
-		System.out.println("Clickado || onMouseClicked()");
+    	MainController.mainController.openTask(task.get());
 	}
 	
     @FXML
