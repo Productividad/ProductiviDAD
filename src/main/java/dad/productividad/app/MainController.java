@@ -23,7 +23,6 @@ import dad.productividad.page.Page;
 import dad.productividad.project.Project;
 import dad.productividad.project.ProjectManagerController;
 import dad.productividad.project.projectDetailController;
-import dad.productividad.task.RightBarController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
 import javafx.beans.property.BooleanProperty;
@@ -71,7 +70,6 @@ public class MainController implements Initializable {
 	private ListView<String> listView;
 	
 	// Controllers
-	private RightBarController rightBarController;
 
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
@@ -99,8 +97,6 @@ public class MainController implements Initializable {
 		
 		todaysPage.setDate(LocalDate.now());
  
-		rightBarController = new RightBarController();
-
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
@@ -109,13 +105,19 @@ public class MainController implements Initializable {
 		
 		view.setCenter(homeController.getView()); 
 
-
 		if (TablePages.todaysPage())
 			TablePages.setID(todaysPage);
 		else
 			TablePages.insertPage(todaysPage);
 	} 
 
+	/**
+	 * Set the center of view with projectDetailController.getView().
+	 * The received project and stylesheet are assigned to the projectDetailController
+	 * 
+	 * @param project Project
+	 * @param styleSheetPath String
+	 */
 	public void openProject(Project project, String styleSheetPath) {
 		projectDetailController=new projectDetailController();
 		projectDetailController.setProject(project);
@@ -125,6 +127,16 @@ public class MainController implements Initializable {
 		view.setCenter(projectDetailController.getView());
 	}
 	
+	
+	/**
+	 * Set the right side of the view with taskDetailController.getView().
+	 * The received task is assigned to the taskDetailController
+	 * 
+	 * If the right side of the view is not null checks if the previus task of taskDetailController
+	 * is the same as the received. If true the right side of the view is setted null
+	 * 
+	 * @param task Task
+	 */
 	public void openTask(Task task) {
 		
 		if(view.getRight()==null) {
@@ -136,11 +148,8 @@ public class MainController implements Initializable {
 					view.setRight(null);
 				else
 					taskDetailController.setTask(task);
-		
 			}
-	}
-	
-		
+	}	
 
 	public BorderPane getView() {
 		return this.view;
