@@ -66,7 +66,7 @@ public class App extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.initStyle(StageStyle.UNDECORATED); 
 		primaryStage.show();
-		primaryStage.getIcons().add(new Image("/images/icon-64x64.png"));
+		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
 	}
 	
 	public static void main(String[] args) {
