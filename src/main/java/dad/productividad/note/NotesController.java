@@ -40,13 +40,14 @@ public class NotesController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+
 		view.setFitToWidth(true);
 		noteList = TableNotes.read(20);
     	for(Note i : noteList) {
     	NoteComponent postIt1=new NoteComponent();
     	Note note1=new Note(i.getContent(),"#708D81");
     	postIt1.setNote(note1);
-	
+	 
     	postIt1.getContentTA().focusedProperty().addListener((o,ov,nv)->{
     		
     		if (!nv) {
@@ -57,8 +58,9 @@ public class NotesController implements Initializable{
 			}
     		    });
     	taskWrapper.getChildren().addAll(postIt1);
+    	taskWrapper.setCellHeight(314.0);
+    	taskWrapper.setCellWidth(306.0);
 
-    	
     	}
  
 			

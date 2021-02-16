@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import javafx.scene.control.ScrollPane?>
 
-
 <ScrollPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <JFXMasonryPane fx:id="taskWrapper" />

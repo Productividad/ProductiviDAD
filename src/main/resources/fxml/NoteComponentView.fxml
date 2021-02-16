@@ -10,7 +10,7 @@
 
 <fx:root maxHeight="313.0" maxWidth="305.0" prefHeight="313.0" prefWidth="305.0" style="-fx-border-image-width: 0.5; -fx-border-color: black;" stylesheets="@../css/mainStyle.css" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="note-content">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: red;" styleClass="note-content">
          <children>
             <JFXTextArea fx:id="contentTA" focusColor="#ffffff00" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefColumnCount="25" prefHeight="280.0" prefWidth="305.0" styleClass="note-content" unFocusColor="#ffffff00" VBox.vgrow="ALWAYS">
                <padding>
