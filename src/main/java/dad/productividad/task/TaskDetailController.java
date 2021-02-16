@@ -41,7 +41,7 @@ public class TaskDetailController implements Initializable {
     private JFXTextArea descriptionTaskDetailTA;
     
     @FXML
-    private Button arrow;
+    private Button arrowButton;
 
 	private ObjectProperty<Task> task = new SimpleObjectProperty<>();
 
@@ -78,7 +78,7 @@ public class TaskDetailController implements Initializable {
 	}    
     
 	@FXML
-    void onArrowAction(ActionEvent event) {
+    void onArrowButton(ActionEvent event) {
    	    MainController.mainController.setRightSideNull();
     }
     
