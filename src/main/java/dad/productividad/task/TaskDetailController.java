@@ -7,22 +7,26 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import dad.productividad.app.MainController;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class TaskDetailController implements Initializable {
 
     @FXML
-    private VBox view;
+    private GridPane view;
 
     @FXML
     private CheckBox doneTaskDetailCB;
@@ -35,6 +39,9 @@ public class TaskDetailController implements Initializable {
 
     @FXML
     private JFXTextArea descriptionTaskDetailTA;
+    
+    @FXML
+    private Button arrow;
 
 	private ObjectProperty<Task> task = new SimpleObjectProperty<>();
 
@@ -67,10 +74,25 @@ public class TaskDetailController implements Initializable {
 			title.set(task.get().getTitle());
 			description.set(task.get().getDescription());
 		});
-
+ 
 	}    
-  
-	public VBox getView() { 
+    
+	@FXML
+    void onArrowAction(ActionEvent event) {
+   	    MainController.mainController.setRightSideNull();
+    }
+    
+    @FXML
+    private void onDoneClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void onFavouriteClicked(ActionEvent event) {
+
+    }
+	
+	public GridPane getView() { 
 		return this.view; 
 	}  
 

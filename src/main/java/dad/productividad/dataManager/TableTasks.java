@@ -98,7 +98,7 @@ public class TableTasks {
 		Task task;
 		try {
 			JdbcConnection.connect();
-			if (project.getId() != 0) {
+			if (project != null) {
 				pstmt = JdbcConnection.connection.prepareStatement(selectProject);
 				pstmt.setInt(1, project.getId());
 			} else {

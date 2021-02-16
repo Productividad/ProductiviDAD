@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -63,28 +64,25 @@ public class TaskComponent extends VBox implements Initializable {
 	}
 
 	private void onMouseClicked() {
-    	MainController.mainController.openTask(task.get());
+    	MainController.mainController.setTaskOnRightSide(task.get());
 	}
 	
     @FXML
-    void onDoneClicked(ActionEvent event) {
-
-    	if(done.get())
-    		System.out.println("Completed || onDoneClicked()");
-    	else
-    		System.out.println("Not completed || onDoneClicked()");
+    private void onDoneClicked(ActionEvent event) {
+    	
+    	task.get().setDone(doneCheckBox.selectedProperty().get());
+    	
+    	MainController.mainController.updateRightSide(task.get());
+    
     }
 
     @FXML
-    void onFavouriteClicked(ActionEvent event) {
-
-    	if(favourite.get())
-    		System.out.println("Favourite || onFavouriteClicked()");
-    	else
-    		System.out.println("Not favourite || onFavouriteClicked()");
+    private void onFavouriteClicked(ActionEvent event) {
+    	task.get().setFavourite(favouriteCheckBox.selectedProperty().get());
+    	MainController.mainController.updateRightSide(task.get());
     }
 	
-	public final ObjectProperty<Task> taskProperty() {
+	public final ObjectProperty<Task> taskProperty() { 
 		return this.task;
 	}
 	

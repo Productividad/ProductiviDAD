@@ -76,7 +76,6 @@ public class MainController implements Initializable {
 	private BalanceManagerController balanceManagerController;
 	private projectDetailController projectDetailController;	
 	private HomeController homeController;	 
-	private TaskDetailController taskDetailController;
 
 	public static MainController mainController;
  
@@ -95,13 +94,19 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { 
 		
+		view.centerProperty().addListener((o,ov,nv)->{
+			if(nv!=null) {
+				if(view.getRight()!=null) 
+					view.setRight(null);
+			}
+		});
+		
 		todaysPage.setDate(LocalDate.now());
  
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
-		taskDetailController=new TaskDetailController();
 		
 		view.setCenter(homeController.getView()); 
 
@@ -128,29 +133,33 @@ public class MainController implements Initializable {
 	}
 	
 	
-	/**
-	 * Set the right side of the view with taskDetailController.getView().
-	 * The received task is assigned to the taskDetailController
-	 * 
-	 * If the right side of the view is not null checks if the previus task of taskDetailController
-	 * is the same as the received. If true the right side of the view is setted null
-	 * 
-	 * @param task Task
-	 */
-	public void openTask(Task task) {
+
+	public void setTaskOnRightSide(Task task) {
+	
+		view.setRight(null);
+		TaskDetailController taskDetailController=new TaskDetailController();
+		taskDetailController.setTask(task);
+		view.setRight(taskDetailController.getView());
+	}	
+	
+	public void updateRightSide(Task task) {
 		
-		if(view.getRight()==null) {
+		if(view.getRight()!=null) {
+			TaskDetailController taskDetailController=new TaskDetailController();
 			taskDetailController.setTask(task);
+			
+			view.setRight(null);
 			view.setRight(taskDetailController.getView());
 		}
-		else if(view.getRight()==taskDetailController.getView()) {
-				if(taskDetailController.getTask()==task)
-					view.setRight(null);
-				else
-					taskDetailController.setTask(task);
-			}
-	}	
-
+	}
+	public void setRightSideNull() {
+		view.setRight(null);
+	}
+	public void updateTaskComponent(Task task) {
+		//TODO
+	}
+	
+	
 	public BorderPane getView() {
 		return this.view;
 	}
@@ -211,7 +220,6 @@ public class MainController implements Initializable {
 			new FadeIn(projectManagerController.getView()).play();
 			view.setCenter(projectManagerController.getView());
 		}
-		
 	}
 
 	@FXML
