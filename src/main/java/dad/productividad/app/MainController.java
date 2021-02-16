@@ -6,8 +6,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
+import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.Group;
@@ -250,30 +254,33 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	private void onToolsButton(ActionEvent event) {
+	private void onToolsButton(ActionEvent event) throws BackingStoreException {
+
+		//The preferences we want to config
+		ResourceBundle rbES = ResourceBundle.getBundle("i18n/preferences", new Locale("es"));
+		ResourceBundle rbEN = ResourceBundle.getBundle("i18n/preferences", new Locale("en"));
+		ResourceBundle rbFR = ResourceBundle.getBundle("i18n/preferences", new Locale("fr"));
+		ResourceBundleService rbs = new ResourceBundleService(rbEN);
 
 		ObservableList themeItems = FXCollections.observableArrayList(Arrays.asList(
 				"Dark", "Clear", "Canary"));
-		ObjectProperty themeSelection = new SimpleObjectProperty<>("Canary");
-		BooleanProperty booleanProperty = new SimpleBooleanProperty(true);
-		IntegerProperty integerProperty = new SimpleIntegerProperty(12);
-		DoubleProperty doubleProperty = new SimpleDoubleProperty(6.5);
-		IntegerProperty fontSize = new SimpleIntegerProperty(12);
-
-		PreferencesFx preferencesFx = PreferencesFx.of(App.class, // Save class (will be used to reference saved values of
-																	// Settings to)
-				Category.of("Customization", Setting.of("Theme", themeItems, themeSelection), // creates a group
-																								// automatically
-						Setting.of("Activate me", booleanProperty), Setting.of("Font Size", fontSize, 10, 36) // which contains both settings
-				), Category.of("Miscellaneous").expand() // Expand the parent category in the tree-view
-						.subCategories( // adds a subcategory to "Category title 2"
-								Category.of("Category title 3",
-										Group.of("Group title 1", Setting.of("Setting title 3", integerProperty)), Group.of( // group
-																																// without
-																																// title
-												Setting.of("Setting title 3", doubleProperty)))));
+		ObservableList<Locale> localeList = FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH);
+		BooleanProperty booleanProperty = new SimpleBooleanProperty();
+		IntegerProperty integerProperty = new SimpleIntegerProperty();
+		DoubleProperty doubleProperty = new SimpleDoubleProperty();
+		//Creation of the dialog
+		PreferencesFx preferencesFx = PreferencesFx.of(App.class,
+				Category.of("customization", Setting.of("theme", themeItems, App.themeProperty()),
+						Setting.of("language", localeList, App.localeSelectionProperty()), // creates a group
+						// automatically
+						Setting.of("activate", booleanProperty),
+						Setting.of("font_size", App.fontSizeProperty(), 10, 36) // which contains both settings
+				)).i18n(rbs).saveSettings(true);
 		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
 		preferencesFx.show(true);
+
+//		Preferences preferences = Preferences.userNodeForPackage(App.class);
+//		preferences.clear();
 	}
 
 	@FXML

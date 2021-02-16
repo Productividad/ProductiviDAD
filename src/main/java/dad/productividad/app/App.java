@@ -1,18 +1,26 @@
 package dad.productividad.app;
 
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Locale;
+
 public class App extends Application{
 
 	private double x;
 	private double y;
 	private boolean lastValueYCoodIs0;
-	
+	public static ObjectProperty<Locale> localeSelection = new SimpleObjectProperty<>();
+	public static IntegerProperty fontSize = new SimpleIntegerProperty();
+	public static ObjectProperty theme = new SimpleObjectProperty<>();
 	private MainController controller;
 	public static Stage primaryStage;
 	@Override
@@ -67,8 +75,33 @@ public class App extends Application{
 		primaryStage.initStyle(StageStyle.UNDECORATED); 
 		primaryStage.show();
 		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
+		//localeSelectionProperty().set();
 	}
-	
+
+	public static Locale getLocaleSelection() {
+		return localeSelection.get();
+	}
+
+	public static ObjectProperty<Locale> localeSelectionProperty() {
+		return localeSelection;
+	}
+
+	public static int getFontSize() {
+		return fontSize.get();
+	}
+
+	public static IntegerProperty fontSizeProperty() {
+		return fontSize;
+	}
+
+	public static Object getTheme() {
+		return theme.get();
+	}
+
+	public static ObjectProperty themeProperty() {
+		return theme;
+	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
