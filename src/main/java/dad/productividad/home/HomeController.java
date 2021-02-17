@@ -28,7 +28,9 @@ public class HomeController implements Initializable {
 	@FXML 
 	private VBox taskWrapper;  
 	 
-	private ListProperty<Task> taskList=new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Task> normalTask=new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Task> favouriteList=new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Task> doneList=new SimpleListProperty<>(FXCollections.observableArrayList());
 
 	
 	public HomeController() {  
@@ -54,20 +56,35 @@ public class HomeController implements Initializable {
  
 	public void insertTaskFromDB() {
 		
-		
-		taskList.clear();
+		favouriteList.clear();
+		doneList.clear();
+		normalTask.clear();
 		taskWrapper.getChildren().clear();
-		
-		taskList.addAll(TableTasks.readParentTasks(null));
-		
-		for(Task task:taskList) {
-			  
+				
+		for(Task task:TableTasks.readParentTasks(null)) {
+			if(!task.isDone() && task.isFavourite()) 
+				favouriteList.add(task);
+			if(task.isDone()) 
+				doneList.add(task);
+			if(!task.isDone() && !task.isFavourite())
+				normalTask.add(task);
+		}
+  
+		for(Task task:favouriteList) {
 			TaskComponent taskComponent=new TaskComponent();
 			taskComponent.setTask(task);
 			taskWrapper.getChildren().add(taskComponent);
 		}
-		
-		
+		for(Task task:normalTask) {
+			TaskComponent taskComponent=new TaskComponent();
+			taskComponent.setTask(task);
+			taskWrapper.getChildren().add(taskComponent);
+		}
+		for(Task task:doneList) {
+			TaskComponent taskComponent=new TaskComponent();
+			taskComponent.setTask(task);
+			taskWrapper.getChildren().add(taskComponent);
+		}
 	}
 
 	

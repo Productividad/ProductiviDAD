@@ -95,6 +95,10 @@ public class TaskDetailController implements Initializable {
     @FXML
     private void onFavouriteClicked(ActionEvent event) {
 
+    	task.get().setFavourite(favouriteTaskDetailCB.selectedProperty().get());
+    	TableTasks.updateHomeTask(task.get());
+    	MainController.mainController.updateTaskWrapper();
+    	
     }
 	
 	public GridPane getView() { 

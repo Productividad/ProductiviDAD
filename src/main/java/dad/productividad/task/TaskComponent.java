@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.productividad.app.MainController;
+import dad.productividad.dataManager.TableTasks;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -71,15 +72,19 @@ public class TaskComponent extends VBox implements Initializable {
     private void onDoneClicked(ActionEvent event) {
     	
     	task.get().setDone(doneCheckBox.selectedProperty().get());
-    	
     	MainController.mainController.updateRightSide(task.get());
-    
+    	TableTasks.updateHomeTask(task.get());
+    	MainController.mainController.updateTaskWrapper();
+
     }
 
     @FXML
     private void onFavouriteClicked(ActionEvent event) {
     	task.get().setFavourite(favouriteCheckBox.selectedProperty().get());
     	MainController.mainController.updateRightSide(task.get());
+    	TableTasks.updateHomeTask(task.get());
+    	MainController.mainController.updateTaskWrapper();
+
     }
 	
 	public final ObjectProperty<Task> taskProperty() { 
