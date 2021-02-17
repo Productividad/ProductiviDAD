@@ -29,7 +29,7 @@
             <RowConstraints minHeight="50.0" prefHeight="30.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="%title" styleClass="dialog-textFieldArea" unFocusColor="#7bc46600" GridPane.columnSpan="2">
+            <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="%project_title" styleClass="dialog-textFieldArea" unFocusColor="#7bc46600" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

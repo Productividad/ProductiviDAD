@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskComponent;
+import dad.productividad.task.TaskInserterController;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
 import javafx.beans.property.ListProperty;
@@ -15,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
@@ -23,6 +25,9 @@ public class HomeController implements Initializable {
 	@FXML 
 	private VBox view;
 	 
+	@FXML
+	private VBox topWrapper;
+	
 	@FXML 
 	private ScrollPane scrollPane;
 	
@@ -54,16 +59,17 @@ public class HomeController implements Initializable {
 		ThemePicker picker=new ThemePicker();
 		picker.setTheme(theme);
 		
-		
-		view.getChildren().add(picker); 
-		
+		topWrapper.getChildren().add(picker); 
 		scrollPane.setFitToWidth(true);	
 		
-
-		
 		insertTaskFromDB();
-				
-	} 
+		
+		TaskInserterController inserter=new TaskInserterController();
+		view.getChildren().add(inserter);
+		view.setPadding(new Insets(10));
+
+
+	}  
  
 	public void insertTaskFromDB() {
 		

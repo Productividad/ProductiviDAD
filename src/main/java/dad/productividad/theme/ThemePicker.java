@@ -57,7 +57,7 @@ public class ThemePicker extends GridPane implements Initializable {
 	private void onMouseClicked() {
 		
 		System.out.println("Me has pulsado");
-	}
+	} 
 
 	private void setPalette(Theme theme) {
 		

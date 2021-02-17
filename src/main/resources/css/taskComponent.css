@@ -59,3 +59,26 @@
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 5, 4, 3;
 }
+
+/*TaskInserter*/
+
+.plusButton:disabled{
+    -fx-shape:"M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z";
+    -fx-background-color:black;
+    -fx-opacity:1;
+    -fx-min-width:21;
+    -fx-min-height:30;
+}
+
+.insertTaskButton{
+    -fx-shape:"M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z";
+    -fx-background-color:black;
+    -fx-min-width:20;
+    -fx-min-height:25;
+}
+.insertTaskButton:hover{
+    -fx-background-color:derive(black,40%);
+}
+.insertTaskButton:pressed{
+    -fx-background-color:derive(black,10%);
+}

@@ -76,7 +76,7 @@ public class BalanceManagerController implements Initializable {
 	public BalanceManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/balance"));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
