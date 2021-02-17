@@ -40,7 +40,7 @@
                   <String fx:value="reader-button" />
                </styleClass>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onProyectManagerButton">
+            <Button mnemonicParsing="false" onAction="#onProjectManagerButton">
                <styleClass>
                   <String fx:value="side-custom-button" />
                   <String fx:value="project-manager-button" />

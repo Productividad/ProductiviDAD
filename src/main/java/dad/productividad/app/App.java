@@ -10,26 +10,29 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.util.Locale;
 
 public class App extends Application{
-
+	public static final String APP_NAME = "ProductiviDAD";
 	private double x;
 	private double y;
 	private boolean lastValueYCoodIs0;
-	public static ObjectProperty<Locale> localeSelection = new SimpleObjectProperty<>();
-	public static IntegerProperty fontSize = new SimpleIntegerProperty();
-	public static ObjectProperty theme = new SimpleObjectProperty<>();
+	public static Preferences preferences;
 	private MainController controller;
 	public static Stage primaryStage;
+
+	@Override
+	public void init() throws Exception {
+		preferences = Preferences.load();
+		Locale.setDefault(preferences.getLocale());
+		super.init();
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		App.primaryStage = primaryStage;
 		controller=new MainController();
-		
 		Scene scene=new Scene(controller.getView());
-		
+
 		controller.getView().setTop(controller.getTopBar());
 		
 		controller.getTopBar().setOnMouseClicked(e -> {
@@ -78,28 +81,9 @@ public class App extends Application{
 		//localeSelectionProperty().set();
 	}
 
-	public static Locale getLocaleSelection() {
-		return localeSelection.get();
-	}
-
-	public static ObjectProperty<Locale> localeSelectionProperty() {
-		return localeSelection;
-	}
-
-	public static int getFontSize() {
-		return fontSize.get();
-	}
-
-	public static IntegerProperty fontSizeProperty() {
-		return fontSize;
-	}
-
-	public static Object getTheme() {
-		return theme.get();
-	}
-
-	public static ObjectProperty themeProperty() {
-		return theme;
+	public void stop() throws Exception {
+		preferences.save();
+		super.stop();
 	}
 
 	public static void main(String[] args) {
