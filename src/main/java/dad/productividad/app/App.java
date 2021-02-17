@@ -1,10 +1,7 @@
 package dad.productividad.app;
 
+import dad.productividad.utils.Preferences;
 import javafx.application.Application;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
@@ -80,7 +77,7 @@ public class App extends Application{
 		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
 		//localeSelectionProperty().set();
 	}
-
+	@Override
 	public void stop() throws Exception {
 		preferences.save();
 		super.stop();

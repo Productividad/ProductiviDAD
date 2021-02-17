@@ -1,7 +1,7 @@
-package dad.productividad.app;
+package dad.productividad.utils;
 
 import com.google.gson.Gson;
-import dad.productividad.utils.Theme;
+import dad.productividad.app.App;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.apache.commons.io.FileUtils;
