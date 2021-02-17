@@ -14,13 +14,13 @@ public class TypeSegment extends SegmentedBar.Segment {
 
 		switch(type) {
 			case TODO:
-				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("todo"));
+				setText(ResourceBundle.getBundle("i18n/strings").getString("todo"));
 				break;
 			case IN_PROGRESS:
-				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("inprogress"));
+				setText(ResourceBundle.getBundle("i18n/strings").getString("inprogress"));
 				break;
 			case DONE:
-				setText(ResourceBundle.getBundle("i18n/segmentedbar").getString("done"));
+				setText(ResourceBundle.getBundle("i18n/strings").getString("done"));
 				break;
 		}
 	}
