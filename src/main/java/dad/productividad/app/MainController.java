@@ -2,6 +2,7 @@ package dad.productividad.app;
 
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
+import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.Setting;
@@ -254,16 +255,18 @@ public class MainController implements Initializable {
 	private void onToolsButton(ActionEvent event) throws BackingStoreException {
 		ListProperty<Theme> themes = new SimpleListProperty<>(FXCollections.observableArrayList(Theme.values()));
 		ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
+		ResourceBundle rb = ResourceBundle.getBundle("i18n/preferences", App.preferences.getLocale());
+		ResourceBundleService rbs = new ResourceBundleService(rb);
 
 		PreferencesFx preferencesFx = PreferencesFx.of(
 				App.class,
-				Category.of("Personalización",
+				Category.of("customization",
 						Setting.of("theme", themes, App.preferences.themeProperty()),
 						Setting.of("language", languages, App.preferences.localeProperty())
 				)
-		);
+		).i18n(rbs);
 		preferencesFx.saveSettings(false);
-		preferencesFx.dialogTitle("Configuración");
+		preferencesFx.dialogTitle(rb.getString("settings"));
 		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
 		preferencesFx.show(true);
 
