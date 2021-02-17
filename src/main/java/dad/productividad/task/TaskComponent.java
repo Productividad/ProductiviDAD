@@ -65,7 +65,7 @@ public class TaskComponent extends VBox implements Initializable {
 			favourite.set(task.get().isFavourite());
 		});
 		
-		setOnMouseClicked(event->onMouseClicked());
+		setOnMouseClicked(event->onMouseClicked()); 
 	}
 
 	private void onMouseClicked() {
