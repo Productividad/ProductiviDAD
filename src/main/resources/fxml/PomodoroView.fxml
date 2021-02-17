@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="view" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #e5ddff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane layoutX="134.0" layoutY="144.0" prefHeight="400.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="343.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="171.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox GridPane.columnSpan="2147483647">
+                     <GridPane.margin>
+                        <Insets left="15.0" right="15.0" top="15.0" />
+                     </GridPane.margin>
+                     <children>
+                        <JFXTextField fx:id="pomoTextField" focusColor="#51387a" labelFloat="true" prefHeight="35.0" prefWidth="372.0" promptText="Introduca el título de su pomodoro..." HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </JFXTextField>
+                        <JFXButton fx:id="pomodoroSettings" ellipsisString="" minHeight="25.0" minWidth="25.0" onAction="#onPomodoroSettingsAction" prefHeight="25.0" prefWidth="25.0" ripplerFill="#edebf000" style="-fx-shape: &quot;M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z&quot;; -fx-background-color: #8e7cc3;" text=" " HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="15.0" right="10.0" top="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8e7cc3;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" left="15.0" right="1.0" top="15.0" />
+                     </GridPane.margin>
+                     <children>
+                        <Label fx:id="minuteLabel" ellipsisString="" layoutX="180.0" layoutY="22.0" text="00" textFill="#ece9f0">
+                           <font>
+                              <Font size="76.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8e7cc3;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" left="1.0" right="15.0" top="15.0" />
+                     </GridPane.margin>
+                     <children>
+                        <Label fx:id="secondsLabel" ellipsisString="" layoutX="172.0" layoutY="22.0" text="00" textFill="#ece9f0">
+                           <font>
+                              <Font size="76.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <HBox alignment="CENTER" spacing="60.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                     <children>
+                        <JFXButton fx:id="pomodoroCancel" cancelButton="true" ellipsisString="" minHeight="40.0" minWidth="40.0" onAction="#onPomodoroCancelAction" prefHeight="40.0" prefWidth="40.0" ripplerFill="#edebf0" style="-fx-shape: &quot;M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z&quot;; -fx-background-color: #8e7cc3;" text=" " />
+                        <JFXButton fx:id="pomodoroPlay" ellipsisString="" minHeight="40.0" minWidth="40.0" onAction="#onPomodoroPlayAction" prefHeight="40.0" prefWidth="40.0" ripplerFill="#edebf0" style="-fx-shape: &quot;M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z&quot;; -fx-background-color: #8e7cc3;" text=" " />
+                        <JFXButton fx:id="pomodoroPause" ellipsisString="" minHeight="40.0" minWidth="40.0" onAction="#onPomodoroPauseAction" prefHeight="40.0" prefWidth="40.0" ripplerFill="#edebf000" style="-fx-shape: &quot;M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z&quot;; -fx-background-color: #8e7cc3;" text=" " textAlignment="CENTER" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

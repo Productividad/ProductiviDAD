@@ -24,6 +24,7 @@ import dad.productividad.dataManager.TablePages;
 import dad.productividad.home.HomeController;
 import dad.productividad.note.NotesController;
 import dad.productividad.page.Page;
+import dad.productividad.pomodoro.PomodoroController;
 import dad.productividad.project.Project;
 import dad.productividad.project.ProjectManagerController;
 import dad.productividad.project.projectDetailController;
@@ -80,6 +81,7 @@ public class MainController implements Initializable {
 	private BalanceManagerController balanceManagerController;
 	private projectDetailController projectDetailController;	
 	private HomeController homeController;	 
+	private PomodoroController pomodoroController;
 
 	public static MainController mainController;
  
@@ -111,6 +113,7 @@ public class MainController implements Initializable {
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
+		pomodoroController = new PomodoroController();
 		
 		view.setCenter(homeController.getView()); 
 
@@ -251,6 +254,12 @@ public class MainController implements Initializable {
 	@FXML
 	private void onTimePlannerButton(ActionEvent event) {
 
+		if(view.getCenter()==pomodoroController.getView())
+			new Shake(view.getCenter()).play();
+		else {
+			new FadeIn(pomodoroController.getView()).play();
+			view.setCenter(pomodoroController.getView());
+		}
 	}
 
 	@FXML
