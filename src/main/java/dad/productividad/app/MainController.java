@@ -1,24 +1,11 @@
 package dad.productividad.app;
 
-import java.awt.Desktop;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.prefs.BackingStoreException;
-import java.util.prefs.Preferences;
-
+import animatefx.animation.FadeIn;
+import animatefx.animation.Shake;
 import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
-import com.dlsc.preferencesfx.model.Group;
 import com.dlsc.preferencesfx.model.Setting;
-
-import animatefx.animation.FadeIn;
-import animatefx.animation.Shake;
 import dad.productividad.balanceManager.BalanceManagerController;
 import dad.productividad.dataManager.TablePages;
 import dad.productividad.home.HomeController;
@@ -30,16 +17,10 @@ import dad.productividad.project.ProjectManagerController;
 import dad.productividad.project.projectDetailController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import dad.productividad.utils.Theme;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,6 +31,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
 
 public class MainController implements Initializable {
 	static Page todaysPage = new Page();
@@ -75,7 +65,6 @@ public class MainController implements Initializable {
 	private ListView<String> listView;
 	
 	// Controllers
-
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
@@ -83,13 +72,14 @@ public class MainController implements Initializable {
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 
+
 	public static MainController mainController;
  
 	public MainController() {
 		MainController.mainController = this;
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/main"));
+			loader.setResources(ResourceBundle.getBundle("i18n/main", Locale.getDefault()));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -98,8 +88,7 @@ public class MainController implements Initializable {
 	}  
   
 	@Override
-	public void initialize(URL location, ResourceBundle resources) { 
-		
+	public void initialize(URL location, ResourceBundle resources) {
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -219,7 +208,7 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	private void onProyectManagerButton(ActionEvent event) {
+	private void onProjectManagerButton(ActionEvent event) {
 
 		if(view.getCenter()==projectManagerController.getView())
 			new Shake(view.getCenter()).play();
@@ -264,32 +253,23 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onToolsButton(ActionEvent event) throws BackingStoreException {
+		ListProperty<Theme> themes = new SimpleListProperty<>(FXCollections.observableArrayList(Theme.values()));
+		ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
+		ResourceBundle rb = ResourceBundle.getBundle("i18n/preferences", App.preferences.getLocale());
+		ResourceBundleService rbs = new ResourceBundleService(rb);
 
-		//The preferences we want to config
-		ResourceBundle rbES = ResourceBundle.getBundle("i18n/preferences", new Locale("es"));
-		ResourceBundle rbEN = ResourceBundle.getBundle("i18n/preferences", new Locale("en"));
-		ResourceBundle rbFR = ResourceBundle.getBundle("i18n/preferences", new Locale("fr"));
-		ResourceBundleService rbs = new ResourceBundleService(rbEN);
-
-		ObservableList themeItems = FXCollections.observableArrayList(Arrays.asList(
-				"Dark", "Clear", "Canary"));
-		ObservableList<Locale> localeList = FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH);
-		BooleanProperty booleanProperty = new SimpleBooleanProperty();
-		IntegerProperty integerProperty = new SimpleIntegerProperty();
-		DoubleProperty doubleProperty = new SimpleDoubleProperty();
-		//Creation of the dialog
-		PreferencesFx preferencesFx = PreferencesFx.of(App.class,
-				Category.of("customization", Setting.of("theme", themeItems, App.themeProperty()),
-						Setting.of("language", localeList, App.localeSelectionProperty()), // creates a group
-						// automatically
-						Setting.of("activate", booleanProperty),
-						Setting.of("font_size", App.fontSizeProperty(), 10, 36) // which contains both settings
-				)).i18n(rbs).saveSettings(true);
+		PreferencesFx preferencesFx = PreferencesFx.of(
+				App.class,
+				Category.of("customization",
+						Setting.of("theme", themes, App.preferences.themeProperty()),
+						Setting.of("language", languages, App.preferences.localeProperty())
+				)
+		).i18n(rbs);
+		preferencesFx.saveSettings(false);
+		preferencesFx.dialogTitle(rb.getString("settings"));
 		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
 		preferencesFx.show(true);
 
-//		Preferences preferences = Preferences.userNodeForPackage(App.class);
-//		preferences.clear();
 	}
 
 	@FXML
@@ -302,4 +282,5 @@ public class MainController implements Initializable {
 		    e.printStackTrace();
 		}
 	}
+
 }
