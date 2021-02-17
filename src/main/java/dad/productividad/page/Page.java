@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import java.time.LocalDate;
 
 public class Page {
+	
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
@@ -33,6 +34,11 @@ public class Page {
 
 	public final void setDate(final LocalDate date) {
 		this.dateProperty().set(date);
+	}
+
+	@Override
+	public String toString() {
+		return dateProperty().get().toString();
 	}
 
 }

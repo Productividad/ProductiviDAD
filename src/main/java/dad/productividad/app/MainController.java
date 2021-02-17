@@ -1,11 +1,23 @@
 package dad.productividad.app;
 
-import animatefx.animation.FadeIn;
-import animatefx.animation.Shake;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
+
+import org.sqlite.SQLiteException;
+
 import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.Setting;
+
+import animatefx.animation.FadeIn;
+import animatefx.animation.Shake;
 import dad.productividad.balanceManager.BalanceManagerController;
 import dad.productividad.dataManager.TablePages;
 import dad.productividad.home.HomeController;
@@ -26,28 +38,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.prefs.BackingStoreException;
-
 public class MainController implements Initializable {
-	static Page todaysPage = new Page();
-	// View
-
-	public static Page getTodaysPage() {
-		return todaysPage;
-	}
 
 	@FXML
 	private BorderPane view;
@@ -64,7 +62,8 @@ public class MainController implements Initializable {
 	@FXML
 	private ListView<String> listView;
 	
-	// Controllers
+	static Page todaysPage = new Page();
+
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
@@ -72,7 +71,10 @@ public class MainController implements Initializable {
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 
-
+	private double x;
+	private double y;
+	private boolean lastValueYCoodIs0;
+	
 	public static MainController mainController;
  
 	public MainController() {
@@ -89,6 +91,7 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -96,8 +99,6 @@ public class MainController implements Initializable {
 			}
 		});
 		
-		todaysPage.setDate(LocalDate.now());
- 
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
@@ -105,13 +106,55 @@ public class MainController implements Initializable {
 		pomodoroController = new PomodoroController();
 		
 		view.setCenter(homeController.getView()); 
+		
+		todaysPage.setDate(LocalDate.now());
+		TablePages.insertPage(todaysPage);
 
-		if (TablePages.todaysPage())
-			TablePages.setID(todaysPage);
-		else
-			TablePages.insertPage(todaysPage);
+		getTopBar().setOnMouseClicked(e -> {
+			// Double click with primary mouse button->Maximize/restore window
+			if (e.getClickCount() == 2 && e.getButton().equals(MouseButton.PRIMARY)) {
+				App.primaryStage.setMaximized(!App.primaryStage.isMaximized());
+				if (App.primaryStage.isMaximized())
+					lastValueYCoodIs0 = true;
+			}
+		});
+		getTopBar().setOnMousePressed(e -> {
+			// Click with primary mouse button -> Saves x and y coordenates of mouse
+			// position
+			if (e.getButton().equals(MouseButton.PRIMARY)) {
+				x = App.primaryStage.getX() - e.getScreenX();
+				y = App.primaryStage.getY() - e.getScreenY();
+			}
+		});
+		getTopBar().setOnMouseDragged(e -> {
+			// Drag with primary mose button -> moves window to the new coordinates
+			if (e.getButton().equals(MouseButton.PRIMARY)) {
+				App.primaryStage.setX(e.getScreenX() + x);
+				App.primaryStage.setY(e.getScreenY() + y);
+			}
+		});
+		getTopBar().setOnMouseReleased(e -> {
+			// If mouse is released when the window is on top then is maximized
+			lastValueYCoodIs0 = App.primaryStage.isMaximized();
+			if (e.getScreenY() == (double) 0) {
+				App.primaryStage.setMaximized(true);
+				lastValueYCoodIs0 = App.primaryStage.isMaximized();
+				App.primaryStage.centerOnScreen();
+			}
+			// If the window was maximized when dragged down then is restored
+			else if (lastValueYCoodIs0) {
+				App.primaryStage.setMaximized(!App.primaryStage.isMaximized());
+				lastValueYCoodIs0 = App.primaryStage.isMaximized();
+				App.primaryStage.setX(e.getScreenX() + x);
+				App.primaryStage.setY(e.getScreenY() + y);
+			}
+		});
 	} 
 
+	public static Page getTodaysPage() {
+		return todaysPage;
+	}
+	
 	/**
 	 * Set the center of view with projectDetailController.getView().
 	 * The received project and stylesheet are assigned to the projectDetailController

@@ -7,10 +7,11 @@ import java.util.ResourceBundle;
 import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskComponent;
+import dad.productividad.theme.Theme;
+import dad.productividad.theme.ThemePicker;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,6 +46,16 @@ public class HomeController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		Theme theme=new Theme();
+		theme.setTitle("Darkest night");
+		theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
+		
+		ThemePicker picker=new ThemePicker();
+		picker.setTheme(theme);
+		
+		
+		view.getChildren().add(picker); 
 		
 		scrollPane.setFitToWidth(true);	
 		

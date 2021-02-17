@@ -50,7 +50,7 @@ public class TaskComponent extends VBox implements Initializable {
 			loader.setRoot(this); 
 			loader.load();
 		} catch (IOException e) {e.printStackTrace();}
-    }
+    } 
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

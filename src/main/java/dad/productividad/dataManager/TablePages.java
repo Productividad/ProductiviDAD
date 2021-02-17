@@ -37,7 +37,7 @@ public class TablePages {
 			}
 			page.setId(id);
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		} finally {
 			JdbcConnection.close();
 		}
