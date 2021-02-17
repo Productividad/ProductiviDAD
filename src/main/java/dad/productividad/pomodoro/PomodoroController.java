@@ -79,7 +79,6 @@ public class PomodoroController implements Initializable {
 	@FXML
 	void onPomodoroSettingsAction(ActionEvent event) {
 		PomodoroEditorDialog dialog = new PomodoroEditorDialog();
-		dialog.setTitle("Configuración Pomodoro");
 		Optional<Pomodoro> result = dialog.showAndWait();		
 		if (result.isPresent()) {
 			result.get();
