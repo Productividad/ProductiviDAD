@@ -1,5 +1,6 @@
 package dad.productividad.task;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class TaskDetailController implements Initializable {
 
@@ -51,6 +53,9 @@ public class TaskDetailController implements Initializable {
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty description=new SimpleStringProperty();
 
+	private Media sound=new Media(this.getClass().getResource("/sound/29543__bennychico11__wink.mp3").toExternalForm());
+	private MediaPlayer mediaPlayer;
+	
 	public TaskDetailController() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskDetail.fxml"));
 		loader.setController(this);
@@ -86,10 +91,14 @@ public class TaskDetailController implements Initializable {
     @FXML
     private void onDoneClicked(ActionEvent event) {
 
+    	if(doneTaskDetailCB.selectedProperty().get()) {
+	    	mediaPlayer=new MediaPlayer(sound);
+	        mediaPlayer.play();
+    	}
     	task.get().setDone(doneTaskDetailCB.selectedProperty().get());
     	TableTasks.updateHomeTask(task.get());
     	MainController.mainController.updateTaskWrapper();
-    	
+
     }
 
     @FXML

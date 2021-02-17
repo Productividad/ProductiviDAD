@@ -16,10 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class TaskComponent extends VBox implements Initializable {
 
@@ -37,6 +38,9 @@ public class TaskComponent extends VBox implements Initializable {
     private StringProperty title=new SimpleStringProperty();
     private BooleanProperty done=new SimpleBooleanProperty();
     private BooleanProperty favourite=new SimpleBooleanProperty();
+    
+	private Media sound=new Media(this.getClass().getResource("/sound/29543__bennychico11__wink.mp3").toExternalForm());
+	private MediaPlayer mediaPlayer;
     
     public TaskComponent() {
 		super();
@@ -70,6 +74,11 @@ public class TaskComponent extends VBox implements Initializable {
 	
     @FXML
     private void onDoneClicked(ActionEvent event) {
+    	
+    	if(doneCheckBox.selectedProperty().get()) {
+	    	mediaPlayer=new MediaPlayer(sound);
+	        mediaPlayer.play();
+    	}
     	
     	task.get().setDone(doneCheckBox.selectedProperty().get());
     	MainController.mainController.updateRightSide(task.get());
