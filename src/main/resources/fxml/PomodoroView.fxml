@@ -38,7 +38,7 @@
                         <Insets left="15.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                      <children>
-                        <JFXTextField fx:id="pomoTextField" focusColor="#51387a" labelFloat="true" prefHeight="35.0" prefWidth="372.0" promptText="Introduca el título de su pomodoro..." HBox.hgrow="ALWAYS">
+                        <JFXTextField fx:id="pomoTextField" focusColor="#51387a" labelFloat="true" prefHeight="35.0" prefWidth="372.0" promptText="%pomoTextField" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets top="15.0" />
                            </HBox.margin>
