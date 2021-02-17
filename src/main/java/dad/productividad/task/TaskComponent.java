@@ -39,7 +39,7 @@ public class TaskComponent extends VBox implements Initializable {
     private BooleanProperty done=new SimpleBooleanProperty();
     private BooleanProperty favourite=new SimpleBooleanProperty();
     
-	private Media sound=new Media(this.getClass().getResource("/sound/29543__bennychico11__wink.mp3").toExternalForm());
+	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
     
     public TaskComponent() {

@@ -53,7 +53,7 @@ public class TaskDetailController implements Initializable {
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty description=new SimpleStringProperty();
 
-	private Media sound=new Media(this.getClass().getResource("/sound/29543__bennychico11__wink.mp3").toExternalForm());
+	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
 	
 	public TaskDetailController() {
