@@ -81,7 +81,7 @@ public class MainController implements Initializable {
 		MainController.mainController = this;
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/main", Locale.getDefault()));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings", Locale.getDefault()));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
