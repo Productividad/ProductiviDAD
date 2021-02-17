@@ -46,6 +46,18 @@ public class HomeController implements Initializable {
 		
 		scrollPane.setFitToWidth(true);	
 		
+
+		
+		insertTaskFromDB();
+				
+	} 
+ 
+	public void insertTaskFromDB() {
+		
+		
+		taskList.clear();
+		taskWrapper.getChildren().clear();
+		
 		taskList.addAll(TableTasks.readParentTasks(null));
 		
 		for(Task task:taskList) {
@@ -54,20 +66,10 @@ public class HomeController implements Initializable {
 			taskComponent.setTask(task);
 			taskWrapper.getChildren().add(taskComponent);
 		}
-				
-	} 
- 
-	public void insertTaskInWrapper(TaskComponent taskComponent) {
 		
 		
 	}
-	
-	
-	public void updateTaskComponent(Task task) {
-		
-		
-		
-	}
+
 	
 	public VBox getView() {
 		return this.view;

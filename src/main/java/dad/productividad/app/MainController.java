@@ -162,8 +162,8 @@ public class MainController implements Initializable {
 	public void setRightSideNull() {
 		view.setRight(null);
 	}
-	public void updateTaskComponent(Task task) {
-		//TODO
+	public void updateTaskWrapper() {
+		homeController.insertTaskFromDB();
 	}
 	
 	

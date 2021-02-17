@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.MainController;
+import dad.productividad.dataManager.TableTasks;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -85,6 +86,10 @@ public class TaskDetailController implements Initializable {
     @FXML
     private void onDoneClicked(ActionEvent event) {
 
+    	task.get().setDone(doneTaskDetailCB.selectedProperty().get());
+    	TableTasks.updateHomeTask(task.get());
+    	MainController.mainController.updateTaskWrapper();
+    	
     }
 
     @FXML

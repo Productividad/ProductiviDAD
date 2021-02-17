@@ -24,8 +24,8 @@ public class TableTasks {
 	 * @param task The task to be inserted
 	 */
 	public static void insert(Task task) {
-		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task, favourite_task)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
@@ -44,6 +44,7 @@ public class TableTasks {
 			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : null);
 			pstmt.setString(9, "TODO");
 			pstmt.setInt(10, (task.isWhite()) ? 1 : 0);
+			pstmt.setInt(11, (task.isFavourite()) ? 1 : 0);
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
@@ -110,6 +111,7 @@ public class TableTasks {
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
 				task.setDone((rs.getInt("completed") == 1) ? true : false);
+				task.setFavourite((rs.getInt("favourite_task")==1) ? true : false);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
@@ -119,7 +121,7 @@ public class TableTasks {
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
 				task.setWhite((rs.getInt("white_task") == 1) ? true : false);
 				arrayList.add(task);
-			}
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -150,6 +152,7 @@ public class TableTasks {
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
 				task.setDone((rs.getInt("completed") == 1) ? true : false);
+				task.setFavourite((rs.getInt("favourite_task")==1) ? true : false);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
@@ -169,6 +172,33 @@ public class TableTasks {
 		}
 	}
 
+	public static void updateHomeTask(Task task) {
+		String update = "UPDATE tasks SET title_task = ? , completed = ?, description_task = ?, "
+				+ "deadline_task = ?, status_task = ?, favourite_task = ?"
+				+ " WHERE ID_task = ?";
+		
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
+
+			pstmt.setString(1, task.getTitle());
+			pstmt.setInt(2,(task.isDone()) ? 1:0);
+			pstmt.setString(3, task.getDescription());
+			pstmt.setString(4, task.getDeadLine().toString());	
+			pstmt.setString(5, (task.getStatus().toString()));
+			pstmt.setInt(6,(task.isFavourite()) ? 1:0);
+			pstmt.setInt(7, task.getId());
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		
+	}
+	
 	/**
 	 * Method to update an existing task from the table
 	 * 
@@ -177,21 +207,24 @@ public class TableTasks {
 	 */
 	public static void update(Task task) {
 		String update = "UPDATE tasks SET title_task = ? , completed = ?, description_task = ?, color_task ?, "
-				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, status_task = ?, white_task = ?  WHERE ID_task = ?";
+				+ "deadline_task = ?, FK_ID_Parent_Task = ?, FK_ID_Project = ?, status_task = ?, white_task = ?, favourite_task = ?"
+				+ " WHERE ID_task = ?";
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
-			pstmt.setString(1, task.getTitle());
+			
+			pstmt.setString(1, task.getTitle());			
 			pstmt.setInt(2, (task.isDone()) ? 1 : 0);
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, task.getColor());
-			pstmt.setString(5, task.getDeadLine().toString());
-			pstmt.setInt(6, task.getParentTask().getId());
-			pstmt.setInt(7, task.getProject().getId());
-			pstmt.setInt(8, (task.isWhite()) ? 1 : 0);
-			pstmt.setString(9, (task.getStatus().toString()));
-
-			pstmt.setInt(10, task.getId());
+			pstmt.setString(5, task.getDeadLine().toString());	
+			pstmt.setInt(6, task.getParentTask().getId());			
+			pstmt.setInt(7, task.getProject().getId());			
+			pstmt.setInt(8, (task.isWhite()) ? 1 : 0);			
+			pstmt.setString(9, (task.getStatus().toString()));					
+			pstmt.setInt(10, (task.isFavourite()) ? 1 : 0);
+			pstmt.setInt(11, task.getId());
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
