@@ -3,17 +3,17 @@ package dad.productividad.pomodoro;
 import dad.productividad.page.Page;
 import javafx.beans.property.*;
 
-public class Pomodoro {
+public class PomodoroBD {
 
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private ObjectProperty<Page> page = new SimpleObjectProperty<>();
 	private StringProperty typeTask = new SimpleStringProperty();
 	private IntegerProperty timeSpent = new SimpleIntegerProperty();
 
-	public Pomodoro() {
+	public PomodoroBD() {
 	}
 
-	public Pomodoro(String typeTask, Integer timeSpent) {
+	public PomodoroBD(String typeTask, Integer timeSpent) {
 		this.typeTask.set(typeTask);
 		this.timeSpent.set(timeSpent);
 	}

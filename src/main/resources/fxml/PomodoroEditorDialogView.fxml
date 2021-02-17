@@ -19,7 +19,6 @@
       <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="dialog-background" vgap="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" />
-            <ColumnConstraints hgrow="ALWAYS" />
             <ColumnConstraints hgrow="NEVER" />
             <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
          </columnConstraints>
@@ -38,23 +37,23 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </JFXTextField>
-            <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" styleClass="project-checkBox" text="%whiteText" unCheckedColor="BLACK" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" styleClass="project-checkBox" text="%whiteText" unCheckedColor="BLACK" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <HBox alignment="CENTER" spacing="80.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
-                  <Label text="Pomodoro" />
+                  <Label alignment="CENTER_RIGHT" text="Pomodoro" />
                   <JFXComboBox fx:id="pomodoroBox" prefHeight="15.0" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="80.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
-                  <Label fx:id="shortLabel" text="%shortLabel" />
+                  <Label fx:id="shortLabel" alignment="CENTER_RIGHT" text="%shortLabel" />
                   <JFXComboBox fx:id="shortBreakBox" prefHeight="15.0" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="80.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <children>
-                  <Label fx:id="longLabel" text="%longLabel" />
+                  <Label fx:id="longLabel" alignment="CENTER_RIGHT" text="%longLabel" />
                   <JFXComboBox fx:id="longBreakBox" prefHeight="15.0" prefWidth="150.0" />
                </children>
             </HBox>
@@ -79,12 +78,6 @@
          <children>
             <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="saveButton" maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onSaveAction" style="-fx-shape: &quot;M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z&quot;;">
-                     <styleClass>
-                        <String fx:value="top-custom-button" />
-                        <String fx:value="exit-button" />
-                     </styleClass>
-                  </Button>
                   <Button fx:id="closeWindowButton" layoutX="352.0" layoutY="19.0" maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onCloseWindowAction">
                      <styleClass>
                         <String fx:value="top-custom-button" />
@@ -96,7 +89,7 @@
                   <Insets right="15.0" />
                </padding>
             </HBox>
-            <Label fx:id="titleTopBar" styleClass="title-label" text="%pomodoroTopBar">
+            <Label fx:id="pomodoroControllerName" styleClass="title-label" text="%pomodoroControllerName">
                <padding>
                   <Insets left="15.0" />
                </padding>
@@ -104,4 +97,5 @@
          </children>
       </GridPane>
    </top>
+   
 </BorderPane>

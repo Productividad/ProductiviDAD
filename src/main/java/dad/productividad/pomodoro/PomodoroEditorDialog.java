@@ -16,50 +16,62 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class PomodoroEditorDialog extends Dialog<Pomodoro> implements Initializable {
+public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initializable {
 
-	@FXML
-	private BorderPane view;
 
-	@FXML
-	private JFXTextField titleTF;
+    @FXML
+    private BorderPane view;
 
-	@FXML
-	private JFXCheckBox whiteText;
+    @FXML
+    private JFXTextField titleTF;
 
-	@FXML
-	private JFXColorPicker colorPicker;
+    @FXML
+    private JFXCheckBox whiteText;
 
-	@FXML
-	private JFXComboBox<Integer> pomodoroBox;
+    @FXML
+    private JFXColorPicker colorPicker;
 
-	@FXML
-	private JFXComboBox<Integer> shortBreakBox;
+    @FXML
+    private JFXComboBox<Integer> pomodoroBox;
 
-	@FXML
-	private JFXComboBox<Integer> longBreakBox;
+    @FXML
+    private Label shortLabel;
 
-	@FXML
-	private GridPane pomodoroTopBar;
+    @FXML
+    private JFXComboBox<Integer> shortBreakBox;
 
-	@FXML
-	private Label titleTopBar;
+    @FXML
+    private Label longLabel;
 
+    @FXML
+    private JFXComboBox<Integer> longBreakBox;
+
+    @FXML
+    private GridPane pomodoroTopBar;
+
+    
+    private Button saveButton;
+    
+    private Stage stage;
+    
 	public PomodoroEditorDialog() {
 		initStyle(StageStyle.UNDECORATED);
 		initModality(Modality.WINDOW_MODAL);
 		initOwner(App.primaryStage);
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroEditorDialogView.fxml"));
-			// loader.setResources(ResourceBundle.getBundle("i18n/pomodoro"));
+			loader.setResources(ResourceBundle.getBundle("i18n/pomodorodialog_es"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -80,25 +92,27 @@ public class PomodoroEditorDialog extends Dialog<Pomodoro> implements Initializa
 		
 		getDialogPane().getStyleClass().add("customDialog");
 		getDialogPane().setContent(view);
-
-		
+		getDialogPane().getButtonTypes().add(new ButtonType("Aceptar",ButtonData.OK_DONE));
+		saveButton = (Button) getDialogPane().lookupButton(getDialogPane().getButtonTypes().get(0));
+		setResultConverter(d -> onAccept(d));
 	}
 
 	@FXML
-	void onCloseWindow(ActionEvent event) {
-		Stage stage=(Stage)view.getScene().getWindow();
+	void onCloseWindowAction(ActionEvent event) {
+		stage=(Stage)view.getScene().getWindow();
     	stage.close();
 	}
 
-	@FXML
-	void onSaveAction(ActionEvent event) {
+	
+	private PomodoroSetup onAccept(ButtonType buttonType) {
+		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
+			PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(), shortBreakBox.getSelectionModel().getSelectedItem(), longBreakBox.getSelectionModel().getSelectedItem());
+			return pomodoroSetup;
+		}
 		
-		PomodoroController pc = new PomodoroController();
-		
-		
-		
+		return null;
 	}
-
+	
 	public BorderPane getView() {
 		return view;
 	}
