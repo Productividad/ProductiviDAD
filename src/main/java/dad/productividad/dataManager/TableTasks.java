@@ -156,6 +156,7 @@ public class TableTasks {
 				if (project != null)
 					task.setProject(project);
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
+				task.setCompletedDate(((rs.getString("completed_date") != null) ? LocalDate.parse(rs.getString("completed_date")) : null));
 				task.setWhite(rs.getInt("white_task") == 1);
 				arrayList.add(task);
 			} 
@@ -210,7 +211,7 @@ public class TableTasks {
 					task.setProject(parentTask.getProject());
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
 				task.setWhite(rs.getInt("white_task") == 1);
-
+				task.setCompletedDate(((rs.getString("completed_date") != null) ? LocalDate.parse(rs.getString("completed_date")) : null));
 				parentTask.getChildTasks().add(task);
 			}
 		} catch (SQLException e) {
@@ -222,7 +223,7 @@ public class TableTasks {
 
 	public static void updateHomeTask(Task task) {
 		String update = "UPDATE tasks SET title_task = ? , completed = ?, description_task = ?, "
-				+ "deadline_task = ?, status_task = ?, favourite_task = ?"
+				+ "deadline_task = ?, status_task = ?, favourite_task = ?, completed_date = ?"
 				+ " WHERE ID_task = ?";
 		
 		try {
@@ -236,7 +237,7 @@ public class TableTasks {
 			pstmt.setString(5, (task.getStatus().toString()));
 			pstmt.setInt(6,(task.isFavourite()) ? 1:0);
 			pstmt.setInt(7, task.getId());
-			
+			pstmt.setString(8,((task.getCompletedDate()) != null) ? task.getCompletedDate().toString() : null);
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
