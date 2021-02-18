@@ -24,7 +24,8 @@ public class TableTasks {
 	 * @param task The task to be inserted
 	 */
 	public static void insert(Task task) {
-		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page, FK_ID_Parent_task, FK_ID_project, status_task, white_task, favourite_task)"
+		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page," +
+				" FK_ID_Parent_task, FK_ID_project, status_task, white_task, favourite_task)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
@@ -93,6 +94,9 @@ public class TableTasks {
 	public static List<Task> readParentTasks(Project project) {
 		String selectProject = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project = ?";
 		String selectTask = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
+		String getDate = "SELECT date_page FROM pages WHERE date_page = date('now')";
+		ResultSet rsd;
+		Statement stmt;
 		ResultSet rs;
 		PreparedStatement pstmt = null;
 		ArrayList<Task> arrayList = new ArrayList<Task>();
@@ -105,21 +109,28 @@ public class TableTasks {
 			} else {
 				pstmt = JdbcConnection.connection.prepareStatement(selectTask);
 			}
+			stmt = JdbcConnection.connection.createStatement();
+			rsd = stmt.executeQuery(getDate);
+			String date = "";
+			while(rsd.next()) {
+				 date = rsd.getString("date_page");
+			}
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
-				task.setDone((rs.getInt("completed") == 1) ? true : false);
-				task.setFavourite((rs.getInt("favourite_task")==1) ? true : false);
+				task.setDone(rs.getInt("completed") == 1);
+				task.setFavourite(rs.getInt("favourite_task") == 1);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
-				task.setPage(MainController.getTodaysPage());
+				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
+				task.setPageId(rs.getInt("FK_ID_page"));
 				if (project != null)
 					task.setProject(project);
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
-				task.setWhite((rs.getInt("white_task") == 1) ? true : false);
+				task.setWhite(rs.getInt("white_task") == 1);
 				arrayList.add(task);
 			} 
 		} catch (SQLException e) {
@@ -141,27 +152,37 @@ public class TableTasks {
 	public static void readChildTasks(Task parentTask) {
 		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = ?";
 		ResultSet rs = null;
+		String getDate = "SELECT date_page FROM pages WHERE date_page = date('now')";
+		ResultSet rsd;
+		Statement stmt;
 		Task task;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
 			pstmt.setInt(1, parentTask.getId());
 			rs = pstmt.executeQuery();
+			stmt = JdbcConnection.connection.createStatement();
+			rsd = stmt.executeQuery(getDate);
+			String date = "";
+			while(rsd.next()) {
+				date = rsd.getString("date_page");
+			}
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
 				task.setTitle(rs.getString("title_task"));
-				task.setDone((rs.getInt("completed") == 1) ? true : false);
-				task.setFavourite((rs.getInt("favourite_task")==1) ? true : false);
+				task.setDone(rs.getInt("completed") == 1);
+				task.setFavourite(rs.getInt("favourite_task") == 1);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
 				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
-				task.setPage(MainController.getTodaysPage());
+				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
+				task.setPageId(rs.getInt("FK_ID_page"));
 				task.setParentTask(parentTask);
 				if (parentTask.getProject() != null)
 					task.setProject(parentTask.getProject());
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
-				task.setWhite((rs.getInt("white_task") == 1) ? true : false);
+				task.setWhite(rs.getInt("white_task") == 1);
 
 				parentTask.getChildTasks().add(task);
 			}

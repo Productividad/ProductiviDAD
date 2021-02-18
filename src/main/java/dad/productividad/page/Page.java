@@ -35,10 +35,5 @@ public class Page {
 	public final void setDate(final LocalDate date) {
 		this.dateProperty().set(date);
 	}
-
-	@Override
-	public String toString() {
-		return dateProperty().get().toString();
-	}
-
+	
 }
