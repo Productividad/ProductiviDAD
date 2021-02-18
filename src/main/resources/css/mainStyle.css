@@ -139,13 +139,13 @@
     -fx-background-radius: 5, 4, 3;
 }
 
-.arrow-button{
+.arrow-button-TaskDetail{
 	-fx-shape:"M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z";
 	-fx-background-color:black;
 	-fx-min-width:10;
 	-fx-min-height:20;
 }
-	 .arrow-button:hover{
+	 .arrow-button-TaskDetail:hover{
 	 	-fx-background-color:derive(black,40%);
 	 }
 .delete-button{
