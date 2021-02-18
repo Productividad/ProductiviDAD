@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -32,6 +33,9 @@ public class TaskComponent extends VBox implements Initializable {
 
     @FXML
     private CheckBox favouriteCheckBox;
+    
+    @FXML
+    private GridPane grid;
 
     private ObjectProperty<Task>task=new SimpleObjectProperty<>();
     

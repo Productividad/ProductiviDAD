@@ -109,6 +109,39 @@ public class TableTasks {
 
 	}
 
+	public static Task readTaskFromId(int id) {
+		
+		String selectTask="SELECT*FROM tasks INNERT JOIN pages on FK_ID_page=ID_page "
+						+ "WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL AND ID_task=?";
+		Task task = new Task();
+
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt=JdbcConnection.connection.prepareStatement(selectTask);
+			pstmt.setInt(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				task.setId(rs.getInt("ID_Task"));
+				task.setTitle(rs.getString("title_task"));
+				task.setDone(rs.getInt("completed") == 1);
+				task.setFavourite(rs.getInt("favourite_task") == 1);
+				task.setDescription(rs.getString("description_task"));
+				task.setColor(rs.getString("color_task"));
+				task.setDeadLine(((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null));
+//				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
+				task.setPageId(rs.getInt("FK_ID_page"));
+				task.setCreationDate(LocalDate.parse(rs.getString("date_page")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		
+		return task;
+	}
+	
 	/**
 	 * Method to get parent Tasks from the table
 	 * 
@@ -152,7 +185,7 @@ public class TableTasks {
 				task.setDeadLine(((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null));
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
-				task.setDate(LocalDate.parse(rs.getString("date_page")));
+				task.setCreationDate(LocalDate.parse(rs.getString("date_page")));
 				if (project != null)
 					task.setProject(project);
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
@@ -204,7 +237,7 @@ public class TableTasks {
 				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
-				task.setDate(LocalDate.parse(rs.getString("date_page")));
+				task.setCreationDate(LocalDate.parse(rs.getString("date_page")));
 				task.setParentTask(parentTask);
 				if (parentTask.getProject() != null)
 					task.setProject(parentTask.getProject());

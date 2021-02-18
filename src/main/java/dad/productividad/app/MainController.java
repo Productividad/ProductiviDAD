@@ -111,6 +111,8 @@ public class MainController implements Initializable {
 		timePlannerButton.setToggleGroup(toggleGroup);
 		toolsButton.setToggleGroup(toggleGroup);
 		
+		homeButton.selectedProperty().set(true);
+		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -225,7 +227,7 @@ public class MainController implements Initializable {
 		return this.topBar;
 	}
 
-	@FXML
+	@FXML 
 	private void onCloseWindow(ActionEvent event) {
 		Stage stage=(Stage)view.getScene().getWindow();
     	stage.close();
@@ -248,7 +250,7 @@ public class MainController implements Initializable {
 	private void onHomeButton(ActionEvent event) {
 
 		if (view.getCenter() == homeController.getView()) 
-			new Shake(view.getCenter()).play();
+			homeButton.selectedProperty().set(true);
 		else { 
 			new FadeIn(homeController.getView()).play();
 			

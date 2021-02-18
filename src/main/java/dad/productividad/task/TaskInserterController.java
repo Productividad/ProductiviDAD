@@ -18,7 +18,6 @@ import javafx.scene.layout.GridPane;
 
 public class TaskInserterController extends GridPane implements Initializable{
 
-
     @FXML
     private JFXTextField TaskTitleTF;
     
@@ -34,28 +33,27 @@ public class TaskInserterController extends GridPane implements Initializable{
 		} catch (IOException e) {e.printStackTrace();}
     }
 	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		TaskTitleTF.textProperty().bindBidirectional(title);
-		
 		setStyle("-fx-background-radius:7px;-fx-background-color:white;");
-
 	}
 	
     @FXML
     private void onEnter(ActionEvent event) {
-    	
     	insertTask();
     }
 
     @FXML
     private void onInsertTaskButton(ActionEvent event) {
- 
     	insertTask();
     }
     
+    /**
+     * Inserts a task into the database, set that task into the right 
+     * side of mainView and reset the focusProperty
+     */
     private void insertTask() {
     	
     	if(title.get()!=null) {
@@ -64,8 +62,9 @@ public class TaskInserterController extends GridPane implements Initializable{
 		    	task.setTitle(title.get());
 		    	TableTasks.insertTitleTask(task);
 		    	MainController.mainController.updateTaskWrapper();
-		    	MainController.mainController.setTaskOnRightSide(task);
+		    	MainController.mainController.setTaskOnRightSide(TableTasks.readTaskFromId(task.getId()));
 		    	title.set("");
+		    	requestFocus();
     		}
     	}
     }

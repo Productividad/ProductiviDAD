@@ -37,7 +37,7 @@ public class Task {
     private ObjectProperty<Task> parentTask = new SimpleObjectProperty<>();
     private ObjectProperty<Project> project = new SimpleObjectProperty<>();
     private ObjectProperty<StatusType> status = new SimpleObjectProperty<>();
-    private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    private ObjectProperty<LocalDate> creationDate = new SimpleObjectProperty<>();
     private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
 
     public Task() {
@@ -262,15 +262,15 @@ public class Task {
         this.pageId.set(pageId);
     }
 
-    public LocalDate getDate() {
-        return date.get();
+    public LocalDate getCreationDate() {
+        return creationDate.get();
     }
 
-    public ObjectProperty<LocalDate> dateProperty() {
-        return date;
+    public ObjectProperty<LocalDate> creationDateProperty() {
+        return creationDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date.set(date);
+    public void setCreationDate(LocalDate date) {
+        this.creationDate.set(date);
     }
 }

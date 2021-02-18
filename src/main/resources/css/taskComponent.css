@@ -5,9 +5,9 @@
 	-fx-background-radius:10px;
 	-fx-border-radius:10px;
 }
-.grid:hover{
-	-fx-background-color:#CACFD6;
-}
+	.grid:hover{
+		-fx-background-color:#CACFD6;
+	}
 
 #doneCheckBox .box {
     -fx-background-color: white;
@@ -18,18 +18,19 @@
     -fx-pref-width:22;
     -fx-pref-height:22;
 }   
+	#doneCheckBox .box:hover .mark{
+    -fx-background-color:black;
+	}
+	
 #doneCheckBox:selected .box {
     -fx-background-color: #539464;
     -fx-border-color:#539464;
     -fx-background-radius:10px;
     -fx-background-radius:50%;
 }   
-#doneCheckBox .box:hover .mark{
-    -fx-background-color:black;
-}
-#doneCheckBox:selected .box .mark{
-    -fx-background-color:white;
-}
+	#doneCheckBox:selected .box .mark{
+	    -fx-background-color:white;
+	}
 
 /*Favourite CheckBox*/
 
@@ -60,14 +61,23 @@
     -fx-background-radius: 5, 4, 3;
 }
 
+.completed-task .grid{
+	-fx-background-color:#BDEECE;
+	
+}
+	.completed-task:hover .grid{
+		-fx-background-color:#A7E8BD;
+		
+	}
+
 /*TaskInserter*/
 
 .plusButton:disabled{
     -fx-shape:"M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm6.5-11a.5.5 0 0 0-1 0V6H6a.5.5 0 0 0 0 1h1.5v1.5a.5.5 0 0 0 1 0V7H10a.5.5 0 0 0 0-1H8.5V4.5z";
     -fx-background-color:black;
     -fx-opacity:1;
-    -fx-min-width:21;
-    -fx-min-height:30;
+    -fx-min-width:20;
+    -fx-min-height:28;
 }
 
 .insertTaskButton{

@@ -39,7 +39,7 @@ public class HomeController implements Initializable {
 	private ListProperty<Task> doneList=new SimpleListProperty<>(FXCollections.observableArrayList());
 
 	
-	public HomeController() {  
+	public HomeController() {   
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HomeView.fxml"));
 			loader.setController(this);
@@ -51,15 +51,7 @@ public class HomeController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		Theme theme=new Theme();
-		theme.setTitle("Darkest night");
-		theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
-		
-		ThemePicker picker=new ThemePicker();
-		picker.setTheme(theme);
-		
-		topWrapper.getChildren().add(picker); 
+				
 		scrollPane.setFitToWidth(true);	
 		
 		insertTaskFromDB();
@@ -68,7 +60,7 @@ public class HomeController implements Initializable {
 		view.getChildren().add(inserter);
 		view.setPadding(new Insets(10));
 
-
+ 
 	}  
  
 	public void insertTaskFromDB() {
@@ -84,7 +76,7 @@ public class HomeController implements Initializable {
 			if(task.isDone()) 
 				doneList.add(task);
 			if(!task.isDone() && !task.isFavourite())
-				normalTask.add(task);
+				normalTask.add(task); 
 		}
   
 		for(Task task:favouriteList) {
@@ -100,6 +92,7 @@ public class HomeController implements Initializable {
 		for(Task task:doneList) {
 			TaskComponent taskComponent=new TaskComponent();
 			taskComponent.setTask(task);
+			taskComponent.getStyleClass().add("completed-task");
 			taskWrapper.getChildren().add(taskComponent);
 		}
 	}
