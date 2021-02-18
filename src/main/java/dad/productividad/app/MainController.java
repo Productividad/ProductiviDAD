@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
 import dad.productividad.settings.SettingsController;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import org.sqlite.SQLiteException;
 
 import com.dlsc.formsfx.model.util.ResourceBundleService;
@@ -62,7 +64,32 @@ public class MainController implements Initializable {
 
 	@FXML
 	private ListView<String> listView;
-	
+
+	@FXML
+	private ToggleButton homeButton;
+
+	@FXML
+	private ToggleButton calendarButton;
+
+	@FXML
+	private ToggleButton entryReaderButton;
+
+	@FXML
+	private ToggleButton projectManagerButton;
+
+	@FXML
+	private ToggleButton ideasButton;
+
+	@FXML
+	private ToggleButton balanceManagerButton;
+
+	@FXML
+	private ToggleButton timePlannerButton;
+
+	@FXML
+	private ToggleButton toolsButton;
+
+
 	static Page todaysPage = new Page();
 
 	private ProjectManagerController projectManagerController;
@@ -93,6 +120,15 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ToggleGroup toggleGroup = new ToggleGroup();
+		homeButton.setToggleGroup(toggleGroup);
+		calendarButton.setToggleGroup(toggleGroup);
+		entryReaderButton.setToggleGroup(toggleGroup);
+		projectManagerButton.setToggleGroup(toggleGroup);
+		ideasButton.setToggleGroup(toggleGroup);
+		balanceManagerButton.setToggleGroup(toggleGroup);
+		timePlannerButton.setToggleGroup(toggleGroup);
+		toolsButton.setToggleGroup(toggleGroup);
 		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {

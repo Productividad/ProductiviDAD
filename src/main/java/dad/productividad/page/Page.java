@@ -35,5 +35,5 @@ public class Page {
 	public final void setDate(final LocalDate date) {
 		this.dateProperty().set(date);
 	}
-	
+
 }
