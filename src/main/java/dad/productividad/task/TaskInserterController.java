@@ -2,6 +2,7 @@ package dad.productividad.task;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
@@ -60,9 +61,10 @@ public class TaskInserterController extends GridPane implements Initializable{
     		if(!title.get().isEmpty()) {
 		    	Task task=new Task();
 		    	task.setTitle(title.get());
-		    	TableTasks.insertTitleTask(task);
+		    	task.setCreationDate(LocalDate.now());
+		    	TableTasks.insert(task);
 		    	MainController.mainController.updateTaskWrapper();
-		    	MainController.mainController.setTaskOnRightSide(TableTasks.readTaskFromId(task.getId()));
+		    	MainController.mainController.setTaskOnRightSide(task);
 		    	title.set("");
 		    	requestFocus();
     		}
