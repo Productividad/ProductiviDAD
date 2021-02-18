@@ -51,7 +51,7 @@ public class TableTasks {
 	public static void insert(Task task) {
 		String insert = "INSERT INTO tasks (title_task, completed, description_task, color_task, deadline_task, FK_ID_Page," +
 				" FK_ID_Parent_task, FK_ID_project, status_task, white_task, favourite_task)"
-				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " VALUES (?, ?, ?, ?, ?, (SELECT id_page FROM pages where date_page=date('now')), ?, ?, ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
 		int id = 0;
 		try {
@@ -63,14 +63,12 @@ public class TableTasks {
 			pstmt.setInt(2, 0);
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, task.getColor());
-			pstmt.setString(5, (task.getDeadLine() != null) ? task.getDeadLine().toString() : null);
-			pstmt.setString(6, "SELECT id_page FROM pages where date_page=date('now')");
-			pstmt.setString(7,
-					(task.getParentTask().getId() != 0) ? String.valueOf(task.getParentTask().getId()) : null);
-			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : null);
-			pstmt.setString(9, "TODO");
-			pstmt.setInt(10, (task.isWhite()) ? 1 : 0);
-			pstmt.setInt(11, (task.isFavourite()) ? 1 : 0);
+			pstmt.setString(5, ((task.getDeadLine() != null) ? task.getDeadLine().toString() : null));
+			pstmt.setString(6, ((task.getParentTask() != null) ? String.valueOf(task.getParentTask().getId()) : null));
+			pstmt.setString(7, ((task.getProject() != null) ? String.valueOf(task.getProject().getId()) : null));
+			pstmt.setString(8, "TODO");
+			pstmt.setInt(9, (task.isWhite()) ? 1 : 0);
+			pstmt.setInt(10, (task.isFavourite()) ? 1 : 0);
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
@@ -111,7 +109,7 @@ public class TableTasks {
 
 	public static Task readTaskFromId(int id) {
 		
-		String selectTask="SELECT*FROM tasks INNERT JOIN pages on FK_ID_page=ID_page "
+		String selectTask="SELECT*FROM tasks INNER JOIN pages on FK_ID_page=ID_page "
 						+ "WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL AND ID_task=?";
 		Task task = new Task();
 
