@@ -9,8 +9,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
-import org.sqlite.SQLiteException;
-
 import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;

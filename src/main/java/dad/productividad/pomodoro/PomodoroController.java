@@ -8,14 +8,14 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
-import dad.productividad.project.Project;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.util.converter.NumberStringConverter;
 
 public class PomodoroController implements Initializable {
 
@@ -47,7 +47,7 @@ public class PomodoroController implements Initializable {
 	public PomodoroController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/pomodoro_es"));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -58,8 +58,11 @@ public class PomodoroController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+			pomodoroPlay.disableProperty().bind(Bindings.equal(minuteLabel.textProperty(), "00"));
+			pomodoroPause.setDisable(true);
+			pomodoroCancel.setDisable(true);
 
+			
 	}
 	@FXML
 	void onPomodoroCancelAction(ActionEvent event) {
@@ -73,16 +76,20 @@ public class PomodoroController implements Initializable {
 
 	@FXML
 	void onPomodoroPlayAction(ActionEvent event) {
-
+		
+		
+		
 	}
 
 	@FXML
 	void onPomodoroSettingsAction(ActionEvent event) {
 		PomodoroEditorDialog dialog = new PomodoroEditorDialog();
-		Optional<PomodoroSetup> result = dialog.showAndWait();		
+		Optional<PomodoroSetup> result = dialog.showAndWait();
+		
 		if (result.isPresent()) {
-			result.get();
-		}
+			PomodoroSetup ps = result.get();
+			minuteLabel.textProperty().bindBidirectional(ps.minutesProperty(),  new NumberStringConverter("00"));
+	}
 	}
 
 
