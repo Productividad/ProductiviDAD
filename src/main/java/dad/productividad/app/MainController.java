@@ -249,7 +249,7 @@ public class MainController implements Initializable {
 
 		if (view.getCenter() == homeController.getView()) 
 			new Shake(view.getCenter()).play();
-		else {
+		else { 
 			new FadeIn(homeController.getView()).play();
 			
 			view.setCenter(homeController.getView());

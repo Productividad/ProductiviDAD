@@ -1,7 +1,12 @@
 package dad.productividad.settings;
 
-import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXComboBox;
+
 import dad.productividad.app.App;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
@@ -12,12 +17,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import javafx.scene.layout.VBox;
 
 
 public class SettingsController implements Initializable {
@@ -25,10 +28,16 @@ public class SettingsController implements Initializable {
     private GridPane view;
 
     @FXML
-    private JFXButton saveButton;
+    private VBox themeWrapper;
+    
+    @FXML
+    private ScrollPane scroll;
+    
+    @FXML
+    private Button saveButton;
 
     @FXML
-    private JFXButton resetButton;
+    private Button resetButton;
 
     @FXML
     private JFXComboBox<Locale> localePicker;
@@ -42,34 +51,44 @@ public class SettingsController implements Initializable {
             localePicker.getSelectionModel().select(0);
         else
             localePicker.getSelectionModel().select(App.preferences.getLocale());
+        
+        scroll.setFitToWidth(true);	 
 
         Theme theme=new Theme();
         theme.setTitle("Darkest night");
         theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
         ThemePicker picker=new ThemePicker();
         picker.setTheme(theme);
-        view.add(picker, 0, 1);
-
+        themeWrapper.getChildren().add(picker);
+        
+        
         Theme theme1=new Theme();
         theme.setTitle("Darkest night");
         theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
         ThemePicker picker1=new ThemePicker();
         picker1.setTheme(theme);
-        view.add(picker1, 1, 1);
+        themeWrapper.getChildren().add(picker1);
 
         Theme theme2=new Theme();
         theme.setTitle("Darkest night");
         theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
         ThemePicker picker2=new ThemePicker();
         picker2.setTheme(theme);
-        view.add(picker2, 0, 2);
+        themeWrapper.getChildren().add(picker2);
 
         Theme theme3=new Theme();
         theme.setTitle("Darkest night");
         theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
         ThemePicker picker3=new ThemePicker();
         picker3.setTheme(theme);
-        view.add(picker3, 1, 2);
+        themeWrapper.getChildren().add(picker3); 
+        
+        Theme theme4=new Theme();
+        theme4.setTitle("Darkest night");
+        theme4.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
+        ThemePicker picker4=new ThemePicker();
+        picker4.setTheme(theme4);
+        themeWrapper.getChildren().add(picker4);
     }
 
     public SettingsController() {

@@ -34,7 +34,7 @@ public class ThemePicker extends GridPane implements Initializable {
 			loader.setRoot(this); 
 			loader.load();
 		} catch (IOException e) {e.printStackTrace();}
-	}
+	} 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
