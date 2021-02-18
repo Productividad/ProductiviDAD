@@ -36,9 +36,4 @@ public class Page {
 		this.dateProperty().set(date);
 	}
 
-	@Override
-	public String toString() {
-		return dateProperty().get().toString();
-	}
-
 }

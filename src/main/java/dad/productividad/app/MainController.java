@@ -9,6 +9,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
+import dad.productividad.settings.SettingsController;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import org.sqlite.SQLiteException;
+
 import com.dlsc.formsfx.model.util.ResourceBundleService;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.model.Category;
@@ -59,19 +64,25 @@ public class MainController implements Initializable {
 
 	@FXML
 	private ListView<String> listView;
-	
-	static Page todaysPage = new Page();
 
+	@FXML
+	private ToggleButton homeButton,calendarButton,entryReaderButton,projectManagerButton,ideasButton,
+						balanceManagerButton,timePlannerButton,toolsButton;
+	private ToggleGroup toggleGroup;
+
+	static Page todaysPage = new Page();
+	
+	private double x;
+	private double y;
+	private boolean lastValueYCoodIs0;
+	
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
 	private projectDetailController projectDetailController;	
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
-
-	private double x;
-	private double y;
-	private boolean lastValueYCoodIs0;
+	private SettingsController settingsController;
 	
 	public static MainController mainController;
  
@@ -90,6 +101,16 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		toggleGroup = new ToggleGroup();
+		homeButton.setToggleGroup(toggleGroup);
+		calendarButton.setToggleGroup(toggleGroup);
+		entryReaderButton.setToggleGroup(toggleGroup);
+		projectManagerButton.setToggleGroup(toggleGroup);
+		ideasButton.setToggleGroup(toggleGroup);
+		balanceManagerButton.setToggleGroup(toggleGroup);
+		timePlannerButton.setToggleGroup(toggleGroup);
+		toolsButton.setToggleGroup(toggleGroup);
+		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -102,7 +123,8 @@ public class MainController implements Initializable {
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		pomodoroController = new PomodoroController();
-		
+		settingsController = new SettingsController();
+
 		view.setCenter(homeController.getView()); 
 		
 		todaysPage.setDate(LocalDate.now());
@@ -168,8 +190,6 @@ public class MainController implements Initializable {
 			
 		view.setCenter(projectDetailController.getView());
 	}
-	
-	
 
 	public void setTaskOnRightSide(Task task) {
 	
@@ -205,7 +225,6 @@ public class MainController implements Initializable {
 		return this.topBar;
 	}
 
-	// TopBar
 	@FXML
 	private void onCloseWindow(ActionEvent event) {
 		Stage stage=(Stage)view.getScene().getWindow();
@@ -224,14 +243,13 @@ public class MainController implements Initializable {
 		stage.setIconified(true);
 	}
 
-	// LeftMenuBar
 
 	@FXML
 	private void onHomeButton(ActionEvent event) {
 
 		if (view.getCenter() == homeController.getView()) 
 			new Shake(view.getCenter()).play();
-		else {
+		else { 
 			new FadeIn(homeController.getView()).play();
 			
 			view.setCenter(homeController.getView());
@@ -294,23 +312,12 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onToolsButton(ActionEvent event) throws BackingStoreException {
-		ListProperty<Theme> themes = new SimpleListProperty<>(FXCollections.observableArrayList(Theme.values()));
-		ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
-		ResourceBundle rb = ResourceBundle.getBundle("i18n/preferences", App.preferences.getLocale());
-		ResourceBundleService rbs = new ResourceBundleService(rb);
-
-		PreferencesFx preferencesFx = PreferencesFx.of(
-				App.class,
-				Category.of("customization",
-						Setting.of("theme", themes, App.preferences.themeProperty()),
-						Setting.of("language", languages, App.preferences.localeProperty())
-				)
-		).i18n(rbs);
-		preferencesFx.saveSettings(false);
-		preferencesFx.dialogTitle(rb.getString("settings"));
-		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
-		preferencesFx.show(true);
-
+		if(view.getCenter()==settingsController.getView())
+			new Shake(view.getCenter()).play();
+		else {
+			new FadeIn(settingsController.getView()).play();
+			view.setCenter(settingsController.getView());
+		}
 	}
 
 	@FXML

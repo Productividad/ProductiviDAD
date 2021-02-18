@@ -21,235 +21,255 @@ import javafx.collections.ObservableList;
 
 public class Task {
 
-	private IntegerProperty id = new SimpleIntegerProperty();
+    private IntegerProperty id = new SimpleIntegerProperty();
 
-	private StringProperty title = new SimpleStringProperty();
-	private StringProperty description = new SimpleStringProperty();
-	private StringProperty color = new SimpleStringProperty();
+    private StringProperty title = new SimpleStringProperty();
+    private StringProperty description = new SimpleStringProperty();
+    private StringProperty color = new SimpleStringProperty();
 
-	private BooleanProperty favourite=new SimpleBooleanProperty();
-	private BooleanProperty done = new SimpleBooleanProperty();
-	private BooleanProperty white = new SimpleBooleanProperty();
-	
-	private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
-	private ObjectProperty<Page> page = new SimpleObjectProperty<>();
-	private ObjectProperty<Task> parentTask = new SimpleObjectProperty<>();
-	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
-	private ObjectProperty<StatusType> status = new SimpleObjectProperty<>();
+    private BooleanProperty favourite = new SimpleBooleanProperty();
+    private BooleanProperty done = new SimpleBooleanProperty();
+    private BooleanProperty white = new SimpleBooleanProperty();
 
-	private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
+    private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
+    private ObjectProperty<Page> page = new SimpleObjectProperty<>();
+    private IntegerProperty pageId = new SimpleIntegerProperty();
+    private ObjectProperty<Task> parentTask = new SimpleObjectProperty<>();
+    private ObjectProperty<Project> project = new SimpleObjectProperty<>();
+    private ObjectProperty<StatusType> status = new SimpleObjectProperty<>();
+    private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
 
-	public Task() {
-	}
+    public Task() {
+    }
 
-	public Task(String title, String description, boolean completed) {
-		this.title.set(title);
-		this.description.set(description);
-		this.done.set(completed);
-	}
-	
+    public Task(String title, String description, boolean completed) {
+        this.title.set(title);
+        this.description.set(description);
+        this.done.set(completed);
+    }
 
-	@Override
-	public String toString() {
-		return getTitle();
-	}
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
-	
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
-	
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
 
-	public final void setId(final int id) {
-		this.idProperty().set(id);
-	}
-	
 
-	public final StringProperty titleProperty() {
-		return this.title;
-	}
-	
+    public final int getId() {
+        return this.idProperty().get();
+    }
 
-	public final String getTitle() {
-		return this.titleProperty().get();
-	}
-	
 
-	public final void setTitle(final String title) {
-		this.titleProperty().set(title);
-	}
-	
+    public final void setId(final int id) {
+        this.idProperty().set(id);
+    }
 
-	public final StringProperty descriptionProperty() {
-		return this.description;
-	}
-	
 
-	public final String getDescription() {
-		return this.descriptionProperty().get();
-	}
-	
+    public final StringProperty titleProperty() {
+        return this.title;
+    }
 
-	public final void setDescription(final String description) {
-		this.descriptionProperty().set(description);
-	}
-	
 
-	public final StringProperty colorProperty() {
-		return this.color;
-	}
-	
+    public final String getTitle() {
+        return this.titleProperty().get();
+    }
 
-	public final String getColor() {
-		return this.colorProperty().get();
-	}
-	
 
-	public final void setColor(final String color) {
-		this.colorProperty().set(color);
-	}
-	
+    public final void setTitle(final String title) {
+        this.titleProperty().set(title);
+    }
 
-	public final BooleanProperty favouriteProperty() {
-		return this.favourite;
-	}
-	
 
-	public final boolean isFavourite() {
-		return this.favouriteProperty().get();
-	}
-	
+    public final StringProperty descriptionProperty() {
+        return this.description;
+    }
 
-	public final void setFavourite(final boolean favourite) {
-		this.favouriteProperty().set(favourite);
-	}
-	
 
-	public final BooleanProperty doneProperty() {
-		return this.done;
-	}
-	
+    public final String getDescription() {
+        return this.descriptionProperty().get();
+    }
 
-	public final boolean isDone() {
-		return this.doneProperty().get();
-	}
-	
 
-	public final void setDone(final boolean done) {
-		this.doneProperty().set(done);
-	}
-	
+    public final void setDescription(final String description) {
+        this.descriptionProperty().set(description);
+    }
 
-	public final BooleanProperty whiteProperty() {
-		return this.white;
-	}
-	
 
-	public final boolean isWhite() {
-		return this.whiteProperty().get();
-	}
-	
+    public final StringProperty colorProperty() {
+        return this.color;
+    }
 
-	public final void setWhite(final boolean white) {
-		this.whiteProperty().set(white);
-	}
-	
 
-	public final ObjectProperty<LocalDate> deadLineProperty() {
-		return this.deadLine;
-	}
-	
+    public final String getColor() {
+        return this.colorProperty().get();
+    }
 
-	public final LocalDate getDeadLine() {
-		return this.deadLineProperty().get();
-	}
-	
 
-	public final void setDeadLine(final LocalDate deadLine) {
-		this.deadLineProperty().set(deadLine);
-	}
-	
+    public final void setColor(final String color) {
+        this.colorProperty().set(color);
+    }
 
-	public final ObjectProperty<Page> pageProperty() {
-		return this.page;
-	}
-	
 
-	public final Page getPage() {
-		return this.pageProperty().get();
-	}
-	
+    public final BooleanProperty favouriteProperty() {
+        return this.favourite;
+    }
 
-	public final void setPage(final Page page) {
-		this.pageProperty().set(page);
-	}
-	
 
-	public final ObjectProperty<Task> parentTaskProperty() {
-		return this.parentTask;
-	}
-	
+    public final boolean isFavourite() {
+        return this.favouriteProperty().get();
+    }
 
-	public final Task getParentTask() {
-		return this.parentTaskProperty().get();
-	}
-	
 
-	public final void setParentTask(final Task parentTask) {
-		this.parentTaskProperty().set(parentTask);
-	}
-	
+    public final void setFavourite(final boolean favourite) {
+        this.favouriteProperty().set(favourite);
+    }
 
-	public final ObjectProperty<Project> projectProperty() {
-		return this.project;
-	}
-	
 
-	public final Project getProject() {
-		return this.projectProperty().get();
-	}
-	
+    public final BooleanProperty doneProperty() {
+        return this.done;
+    }
 
-	public final void setProject(final Project project) {
-		this.projectProperty().set(project);
-	}
-	
 
-	public final ObjectProperty<StatusType> statusProperty() {
-		return this.status;
-	}
-	
+    public final boolean isDone() {
+        return this.doneProperty().get();
+    }
 
-	public final StatusType getStatus() {
-		return this.statusProperty().get();
-	}
-	
 
-	public final void setStatus(final StatusType status) {
-		this.statusProperty().set(status);
-	}
-	
+    public final void setDone(final boolean done) {
+        this.doneProperty().set(done);
+    }
 
-	public final ListProperty<Task> childTasksProperty() {
-		return this.childTasks;
-	}
-	
 
-	public final ObservableList<Task> getChildTasks() {
-		return this.childTasksProperty().get();
-	}
-	
+    public final BooleanProperty whiteProperty() {
+        return this.white;
+    }
 
-	public final void setChildTasks(final ObservableList<Task> childTasks) {
-		this.childTasksProperty().set(childTasks);
-	}
-	
 
-	
-	
+    public final boolean isWhite() {
+        return this.whiteProperty().get();
+    }
 
+
+    public final void setWhite(final boolean white) {
+        this.whiteProperty().set(white);
+    }
+
+
+    public final ObjectProperty<LocalDate> deadLineProperty() {
+        return this.deadLine;
+    }
+
+
+    public final LocalDate getDeadLine() {
+        return this.deadLineProperty().get();
+    }
+
+
+    public final void setDeadLine(final LocalDate deadLine) {
+        this.deadLineProperty().set(deadLine);
+    }
+
+
+    public final ObjectProperty<Page> pageProperty() {
+        return this.page;
+    }
+
+
+    public final Page getPage() {
+        return this.pageProperty().get();
+    }
+
+
+    public final void setPage(final Page page) {
+        this.pageProperty().set(page);
+    }
+
+
+    public final ObjectProperty<Task> parentTaskProperty() {
+        return this.parentTask;
+    }
+
+
+    public final Task getParentTask() {
+        return this.parentTaskProperty().get();
+    }
+
+
+    public final void setParentTask(final Task parentTask) {
+        this.parentTaskProperty().set(parentTask);
+    }
+
+
+    public final ObjectProperty<Project> projectProperty() {
+        return this.project;
+    }
+
+
+    public final Project getProject() {
+        return this.projectProperty().get();
+    }
+
+
+    public final void setProject(final Project project) {
+        this.projectProperty().set(project);
+    }
+
+
+    public final ObjectProperty<StatusType> statusProperty() {
+        return this.status;
+    }
+
+
+    public final StatusType getStatus() {
+        return this.statusProperty().get();
+    }
+
+
+    public final void setStatus(final StatusType status) {
+        this.statusProperty().set(status);
+    }
+
+
+    public final ListProperty<Task> childTasksProperty() {
+        return this.childTasks;
+    }
+
+
+    public final ObservableList<Task> getChildTasks() {
+        return this.childTasksProperty().get();
+    }
+
+
+    public final void setChildTasks(final ObservableList<Task> childTasks) {
+        this.childTasksProperty().set(childTasks);
+    }
+
+    public int getPageId() {
+        return pageId.get();
+    }
+
+    public IntegerProperty pageIdProperty() {
+        return pageId;
+    }
+
+    public void setPageId(int pageId) {
+        this.pageId.set(pageId);
+    }
+
+    public LocalDate getDate() {
+        return date.get();
+    }
+
+    public ObjectProperty<LocalDate> dateProperty() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date.set(date);
+    }
 }
