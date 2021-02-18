@@ -299,9 +299,9 @@ public class TableTasks {
 			pstmt.setString(4, task.getColor());
 			pstmt.setString(5, task.getDeadLine().toString());	
 			pstmt.setInt(6, task.getParentTask().getId());			
-			pstmt.setInt(7, task.getProject().getId());			
-			pstmt.setInt(8, (task.isWhite()) ? 1 : 0);			
-			pstmt.setString(9, (task.getStatus().toString()));					
+			pstmt.setInt(7, task.getProject().getId());
+			pstmt.setString(8, (task.getStatus().toString()));
+			pstmt.setInt(9, (task.isWhite()) ? 1 : 0);
 			pstmt.setInt(10, (task.isFavourite()) ? 1 : 0);
 			pstmt.setInt(11, task.getId());
 			
