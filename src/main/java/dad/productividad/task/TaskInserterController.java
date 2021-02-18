@@ -45,18 +45,28 @@ public class TaskInserterController extends GridPane implements Initializable{
 	}
 	
     @FXML
-    void onEnter(ActionEvent event) {
+    private void onEnter(ActionEvent event) {
     	
-    	Task task=new Task();
-    	task.setTitle(title.get());
-    	TableTasks.insertTitleTask(task);
-    	MainController.mainController.updateTaskWrapper();
-//    	MainController.mainController.updateRightSide(task);
+    	insertTask();
     }
 
     @FXML
-    void onInsertTaskButton(ActionEvent event) {
-
+    private void onInsertTaskButton(ActionEvent event) {
+ 
+    	insertTask();
     }
-
+    
+    private void insertTask() {
+    	
+    	if(title.get()!=null) {
+    		if(!title.get().isEmpty()) {
+		    	Task task=new Task();
+		    	task.setTitle(title.get());
+		    	TableTasks.insertTitleTask(task);
+		    	MainController.mainController.updateTaskWrapper();
+		    	MainController.mainController.setTaskOnRightSide(task);
+		    	title.set("");
+    		}
+    	}
+    }
 }

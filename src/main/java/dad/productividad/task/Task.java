@@ -41,6 +41,7 @@ public class Task {
     private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
 
     public Task() {
+    	
     }
 
     public Task(String title, String description, boolean completed) {
