@@ -66,32 +66,16 @@ public class MainController implements Initializable {
 	private ListView<String> listView;
 
 	@FXML
-	private ToggleButton homeButton;
-
-	@FXML
-	private ToggleButton calendarButton;
-
-	@FXML
-	private ToggleButton entryReaderButton;
-
-	@FXML
-	private ToggleButton projectManagerButton;
-
-	@FXML
-	private ToggleButton ideasButton;
-
-	@FXML
-	private ToggleButton balanceManagerButton;
-
-	@FXML
-	private ToggleButton timePlannerButton;
-
-	@FXML
-	private ToggleButton toolsButton;
-
+	private ToggleButton homeButton,calendarButton,entryReaderButton,projectManagerButton,ideasButton,
+						balanceManagerButton,timePlannerButton,toolsButton;
+	private ToggleGroup toggleGroup;
 
 	static Page todaysPage = new Page();
-
+	
+	private double x;
+	private double y;
+	private boolean lastValueYCoodIs0;
+	
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
@@ -99,10 +83,6 @@ public class MainController implements Initializable {
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 	private SettingsController settingsController;
-
-	private double x;
-	private double y;
-	private boolean lastValueYCoodIs0;
 	
 	public static MainController mainController;
  
@@ -120,7 +100,8 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ToggleGroup toggleGroup = new ToggleGroup();
+		
+		toggleGroup = new ToggleGroup();
 		homeButton.setToggleGroup(toggleGroup);
 		calendarButton.setToggleGroup(toggleGroup);
 		entryReaderButton.setToggleGroup(toggleGroup);
@@ -209,8 +190,6 @@ public class MainController implements Initializable {
 			
 		view.setCenter(projectDetailController.getView());
 	}
-	
-	
 
 	public void setTaskOnRightSide(Task task) {
 	
@@ -246,7 +225,6 @@ public class MainController implements Initializable {
 		return this.topBar;
 	}
 
-	// TopBar
 	@FXML
 	private void onCloseWindow(ActionEvent event) {
 		Stage stage=(Stage)view.getScene().getWindow();
@@ -265,7 +243,6 @@ public class MainController implements Initializable {
 		stage.setIconified(true);
 	}
 
-	// LeftMenuBar
 
 	@FXML
 	private void onHomeButton(ActionEvent event) {

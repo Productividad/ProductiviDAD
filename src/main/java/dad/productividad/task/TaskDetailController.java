@@ -43,7 +43,7 @@ public class TaskDetailController implements Initializable {
     @FXML
     private JFXTextArea descriptionTaskDetailTA;
     
-    @FXML
+    @FXML 
     private Button arrowButton;
 
 	private ObjectProperty<Task> task = new SimpleObjectProperty<>();
