@@ -39,7 +39,7 @@ public class Task {
     private ObjectProperty<StatusType> status = new SimpleObjectProperty<>();
     private ObjectProperty<LocalDate> creationDate = new SimpleObjectProperty<>();
     private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
-
+    private ObjectProperty<LocalDate> completedDate = new SimpleObjectProperty<>();
     public Task() {
     	
     }
@@ -272,5 +272,17 @@ public class Task {
 
     public void setCreationDate(LocalDate date) {
         this.creationDate.set(date);
+    }
+
+    public LocalDate getCompletedDate() {
+        return completedDate.get();
+    }
+
+    public ObjectProperty<LocalDate> completedDateProperty() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(LocalDate completedDate) {
+        this.completedDate.set(completedDate);
     }
 }
