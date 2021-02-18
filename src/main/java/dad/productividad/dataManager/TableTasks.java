@@ -149,7 +149,7 @@ public class TableTasks {
 				task.setFavourite(rs.getInt("favourite_task") == 1);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
-//				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
+				task.setDeadLine(((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null));
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
 				if (project != null)
@@ -230,7 +230,7 @@ public class TableTasks {
 			pstmt.setString(1, task.getTitle());
 			pstmt.setInt(2,(task.isDone()) ? 1:0);
 			pstmt.setString(3, task.getDescription());
-			pstmt.setString(4, task.getDeadLine().toString());	
+			pstmt.setString(4, (task.getDeadLine() != null) ? task.getDeadLine().toString() : null);
 			pstmt.setString(5, (task.getStatus().toString()));
 			pstmt.setInt(6,(task.isFavourite()) ? 1:0);
 			pstmt.setInt(7, task.getId());
