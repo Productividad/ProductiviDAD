@@ -266,9 +266,9 @@ public class TableTasks {
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, (task.getDeadLine() != null) ? task.getDeadLine().toString() : null);
 			pstmt.setString(5, (task.getStatus().toString()));
-			pstmt.setInt(6,(task.isFavourite()) ? 1:0);
-			pstmt.setInt(7, task.getId());
-			pstmt.setString(8,((task.getCompletedDate()) != null) ? task.getCompletedDate().toString() : null);
+			pstmt.setInt(6,(task.isFavourite()) ? 1 : 0);
+			pstmt.setString(7,((task.getCompletedDate()) != null) ? task.getCompletedDate().toString() : null);
+			pstmt.setInt(8, task.getId());
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
