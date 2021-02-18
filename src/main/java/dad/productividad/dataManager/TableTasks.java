@@ -117,8 +117,8 @@ public class TableTasks {
 	 * @return arrayList List of registries.
 	 */
 	public static List<Task> readParentTasks(Project project) {
-		String selectProject = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project = ?";
-		String selectTask = "SELECT * FROM tasks WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
+		String selectProject = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task IS NULL AND FK_ID_project = ?";
+		String selectTask = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
 		String getDate = "SELECT date_page FROM pages WHERE date_page = date('now')";
 		ResultSet rsd;
 		Statement stmt;
@@ -152,6 +152,7 @@ public class TableTasks {
 				task.setDeadLine(((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null));
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
+				task.setDate(LocalDate.parse(rs.getString("date_page")));
 				if (project != null)
 					task.setProject(project);
 				task.setStatus(StatusType.valueOf(rs.getString("status_task")));
@@ -175,7 +176,7 @@ public class TableTasks {
 	 * 
 	 */
 	public static void readChildTasks(Task parentTask) {
-		String select = "SELECT * FROM tasks WHERE FK_ID_Parent_task = ?";
+		String select = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task = ?";
 		ResultSet rs = null;
 		String getDate = "SELECT date_page FROM pages WHERE date_page = date('now')";
 		ResultSet rsd;
@@ -203,6 +204,7 @@ public class TableTasks {
 				task.setDeadLine((rs.getString("deadline_task") != null) ? LocalDate.parse(rs.getString("deadline_task")) : null);
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
+				task.setDate(LocalDate.parse(rs.getString("date_page")));
 				task.setParentTask(parentTask);
 				if (parentTask.getProject() != null)
 					task.setProject(parentTask.getProject());
