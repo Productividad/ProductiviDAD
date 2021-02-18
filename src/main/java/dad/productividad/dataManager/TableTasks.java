@@ -18,6 +18,31 @@ import dad.productividad.task.Task;
  */
 public class TableTasks {
 
+	public static void insertTitleTask(Task task) {
+		String query="INSERT INTO tasks (title_task,FK_ID_Page) VALUES(?, (SELECT id_page FROM pages where date_page=date('now')))";
+		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='tasks'";
+		int id = 0;
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt=JdbcConnection.connection.prepareStatement(query);
+			pstmt.setString(1, task.getTitle());
+			pstmt.executeUpdate();
+			 
+			Statement stmt = JdbcConnection.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(getPkId); 
+			
+			while (rs.next()) { 
+				id = rs.getInt("seq");
+			}
+			task.setId(id);
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+	} 
+	
 	/**
 	 * Method to insert a new registry into the table
 	 * 
@@ -39,7 +64,7 @@ public class TableTasks {
 			pstmt.setString(3, task.getDescription());
 			pstmt.setString(4, task.getColor());
 			pstmt.setString(5, (task.getDeadLine() != null) ? task.getDeadLine().toString() : null);
-			pstmt.setString(6, "SELECT id_page FROM pages where page_date=date('now')");
+			pstmt.setString(6, "SELECT id_page FROM pages where date_page=date('now')");
 			pstmt.setString(7,
 					(task.getParentTask().getId() != 0) ? String.valueOf(task.getParentTask().getId()) : null);
 			pstmt.setString(8, (task.getProject().getId() != 0) ? String.valueOf(task.getProject().getId()) : null);
@@ -124,7 +149,7 @@ public class TableTasks {
 				task.setFavourite(rs.getInt("favourite_task") == 1);
 				task.setDescription(rs.getString("description_task"));
 				task.setColor(rs.getString("color_task"));
-				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
+//				task.setDeadLine(LocalDate.parse(rs.getString("deadline_task")));
 				task.setPage((MainController.getTodaysPage().toString() == date) ? MainController.getTodaysPage() : null);
 				task.setPageId(rs.getInt("FK_ID_page"));
 				if (project != null)

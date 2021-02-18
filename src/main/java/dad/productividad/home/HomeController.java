@@ -78,7 +78,7 @@ public class HomeController implements Initializable {
 		normalTask.clear();
 		taskWrapper.getChildren().clear();
 				
-		for(Task task:TableTasks.readParentTasks(null)) {
+		for(Task task:TableTasks.readParentTasks(null)) { 
 			if(!task.isDone() && task.isFavourite()) 
 				favouriteList.add(task);
 			if(task.isDone()) 
