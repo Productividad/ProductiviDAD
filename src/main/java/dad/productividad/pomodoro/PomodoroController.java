@@ -47,7 +47,7 @@ public class PomodoroController implements Initializable {
 	public PomodoroController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/pomodoro_es"));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {

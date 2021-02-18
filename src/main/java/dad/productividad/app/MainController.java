@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
+import dad.productividad.settings.SettingsController;
 import org.sqlite.SQLiteException;
 
 import com.dlsc.formsfx.model.util.ResourceBundleService;
@@ -70,6 +71,7 @@ public class MainController implements Initializable {
 	private projectDetailController projectDetailController;	
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
+	private SettingsController settingsController;
 
 	private double x;
 	private double y;
@@ -104,7 +106,8 @@ public class MainController implements Initializable {
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		pomodoroController = new PomodoroController();
-		
+		settingsController = new SettingsController();
+
 		view.setCenter(homeController.getView()); 
 		
 		todaysPage.setDate(LocalDate.now());
@@ -296,23 +299,12 @@ public class MainController implements Initializable {
 
 	@FXML
 	private void onToolsButton(ActionEvent event) throws BackingStoreException {
-		ListProperty<Theme> themes = new SimpleListProperty<>(FXCollections.observableArrayList(Theme.values()));
-		ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
-		ResourceBundle rb = ResourceBundle.getBundle("i18n/preferences", App.preferences.getLocale());
-		ResourceBundleService rbs = new ResourceBundleService(rb);
-
-		PreferencesFx preferencesFx = PreferencesFx.of(
-				App.class,
-				Category.of("customization",
-						Setting.of("theme", themes, App.preferences.themeProperty()),
-						Setting.of("language", languages, App.preferences.localeProperty())
-				)
-		).i18n(rbs);
-		preferencesFx.saveSettings(false);
-		preferencesFx.dialogTitle(rb.getString("settings"));
-		preferencesFx.dialogIcon(App.primaryStage.getIcons().get(0));
-		preferencesFx.show(true);
-
+		if(view.getCenter()==settingsController.getView())
+			new Shake(view.getCenter()).play();
+		else {
+			new FadeIn(settingsController.getView()).play();
+			view.setCenter(settingsController.getView());
+		}
 	}
 
 	@FXML
