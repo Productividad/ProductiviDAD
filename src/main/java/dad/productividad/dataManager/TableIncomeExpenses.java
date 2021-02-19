@@ -94,19 +94,23 @@ public class TableIncomeExpenses {
 	/**
 	 * Method to get Registries from the table
 	 * 
-	 * @param number The number of registries to be shown
+	 * @param date
 	 * 
 	 * @return arrayList An ArrayList of incomeExpense objects
 	 */
-	public static List<IncomeExpense> read(int number) {
-		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?";
+	public static List<IncomeExpense> read(LocalDate date) {
+//		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?, 10";
+		String select = "SELECT * FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY ID_incomeExpense DESC";
 		ResultSet rs = null;
 		ArrayList<IncomeExpense> arrayList = new ArrayList<IncomeExpense>();
 		IncomeExpense incomeExpense;
 		try {
 			JdbcConnection.connect();
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
-			pstmt.setInt(1, number);
+//			pstmt.setInt(1, ((number-1)*10));
+			pstmt.setString(1, (date.getMonthValue() < 10) ? "0"+String.valueOf(date.getMonthValue()) : String.valueOf(date.getMonthValue()));
+			pstmt.setString(2, String.valueOf(date.getYear()));
+
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
