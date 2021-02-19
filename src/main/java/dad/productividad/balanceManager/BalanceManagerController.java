@@ -134,7 +134,7 @@ public class BalanceManagerController implements Initializable {
 		positiveRB.setSelected(true);
 		negativeRB.setToggleGroup(toggleGroup);
 
-		totalAmount.set(TableIncomeExpenses.getTotal());
+		totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
 
 		amountTF.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -163,7 +163,7 @@ public class BalanceManagerController implements Initializable {
 		TableIncomeExpenses.delete(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.getItems().remove(balanceTableView.getSelectionModel().getSelectedItem());
 		balanceTableView.refresh();
-		totalAmount.set(TableIncomeExpenses.getTotal());
+		//totalAmount.set(TableIncomeExpenses.getTotal());
 	}
 
 	@FXML
@@ -175,7 +175,7 @@ public class BalanceManagerController implements Initializable {
 		incomeExpense.setDate(datePicker.getValue());
 		TableIncomeExpenses.create(incomeExpense);
 		movementsList.add(incomeExpense);
-		totalAmount.set(TableIncomeExpenses.getTotal());
+		//totalAmount.set(TableIncomeExpenses.getTotal());
 		amountTF.clear();
 	}
 
@@ -193,41 +193,38 @@ public class BalanceManagerController implements Initializable {
     private void onNextMonth(ActionEvent event) {
 		List<IncomeExpense> arrayList;
 		if(month > 1) {
-			setIndex(LocalDate.of(year, month - 1, 1));
-
-			arrayList = TableIncomeExpenses.read(getIndex());
+			arrayList = TableIncomeExpenses.read(LocalDate.of(year, month - 1, 1));
 			if (!arrayList.isEmpty()) {
 				setMonth(getMonth()-1);
+				setIndex(LocalDate.of(getYear(), getMonth(), 1));
 				movementsList.clear();
 				for (IncomeExpense i : arrayList)
 					movementsList.add(i);
 			}
 		}
 		else {
-
-			setIndex(LocalDate.of(year - 1, 12, 1));
-			arrayList = TableIncomeExpenses.read(getIndex());
-
+			arrayList = TableIncomeExpenses.read(LocalDate.of(year - 1, 12, 1));
 			if (!arrayList.isEmpty()) {
 				setMonth(12);
 				setYear(getYear()-1);
+				setIndex(LocalDate.of(getYear(), getMonth(), 1));
 				movementsList.clear();
 				for (IncomeExpense i : arrayList)
 					movementsList.add(i);
 			}
 		}
+
+		totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
     }
 
     @FXML
     private void onPreviousMonth(ActionEvent event) {
 		List<IncomeExpense> arrayList;
 		if(month < 12) {
-
-			setIndex(LocalDate.of(year, month + 1, 1));
-
-			arrayList = TableIncomeExpenses.read(getIndex());
+			arrayList = TableIncomeExpenses.read(LocalDate.of(year, month + 1, 1));
 			if (!arrayList.isEmpty()) {
 				setMonth(getMonth()+1);
+				setIndex(LocalDate.of(getYear(), getMonth(), 1));
 				movementsList.clear();
 				for (IncomeExpense i : arrayList)
 					movementsList.add(i);
@@ -235,17 +232,18 @@ public class BalanceManagerController implements Initializable {
 		}
 		else {
 
-			setIndex(LocalDate.of(year + 1, 1, 1));
-			arrayList = TableIncomeExpenses.read(getIndex());
+			arrayList = TableIncomeExpenses.read(LocalDate.of(year + 1, 1, 1));
 
 			if (!arrayList.isEmpty()) {
 				setMonth(1);
 				setYear(getYear()+1);
+				setIndex(LocalDate.of(getYear(), getMonth(), 1));
 				movementsList.clear();
 				for (IncomeExpense i : arrayList)
 					movementsList.add(i);
 			}
 		}
+		totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
     }
 
 	public LocalDate getIndex() {
