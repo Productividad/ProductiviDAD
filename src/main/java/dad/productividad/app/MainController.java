@@ -5,7 +5,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.prefs.BackingStoreException;
 
 import animatefx.animation.FadeIn;
 import dad.productividad.balanceManager.BalanceManagerController;
@@ -16,8 +15,8 @@ import dad.productividad.note.NotesController;
 import dad.productividad.page.Page;
 import dad.productividad.pomodoro.PomodoroController;
 import dad.productividad.project.Project;
+import dad.productividad.project.ProjectDetailController;
 import dad.productividad.project.ProjectManagerController;
-import dad.productividad.project.projectDetailController;
 import dad.productividad.settings.SettingsController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
@@ -59,7 +58,7 @@ public class MainController implements Initializable {
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
-	private projectDetailController projectDetailController;	
+	private ProjectDetailController projectDetailController;	
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 	private SettingsController settingsController;
@@ -155,7 +154,7 @@ public class MainController implements Initializable {
 	 * @param styleSheetPath String
 	 */
 	public void openProject(Project project, String styleSheetPath) {
-		projectDetailController=new projectDetailController();
+		projectDetailController=new ProjectDetailController();
 		projectDetailController.setProject(project);
 		
 		new FadeIn(projectDetailController.getView()).play();
@@ -239,11 +238,11 @@ public class MainController implements Initializable {
 		this.balanceManagerController = balanceManagerController;
 	}
 
-	public projectDetailController getProjectDetailController() {
+	public ProjectDetailController getProjectDetailController() {
 		return projectDetailController;
 	}
 
-	public void setProjectDetailController(projectDetailController projectDetailController) {
+	public void setProjectDetailController(ProjectDetailController projectDetailController) {
 		this.projectDetailController = projectDetailController;
 	}
 
