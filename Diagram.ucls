@@ -172,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="dad.productividad.project.projectDetailController" project="ProductiviDAD" 
+  <class id="19" language="java" name="dad.productividad.project.ProjectDetailController" project="ProductiviDAD"
     file="/ProductiviDAD/src/main/java/dad/productividad/project/projectDetailController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="405" width="250" x="3424" y="1352"/>    
