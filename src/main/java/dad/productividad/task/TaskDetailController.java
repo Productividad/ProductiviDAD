@@ -103,7 +103,7 @@ public class TaskDetailController implements Initializable {
 			if(description.get()!=null) {
 				task.get().setDescription(description.get());
 		    	TableTasks.updateHomeTask(task.get());
-			}
+			} 
 		});
 	}       
     

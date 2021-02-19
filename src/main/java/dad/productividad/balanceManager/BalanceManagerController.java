@@ -48,27 +48,19 @@ public class BalanceManagerController implements Initializable {
 	private TableColumn<IncomeExpense, Number> amountColumn;
 
 	@FXML
-	private JFXTextField conceptTF;
+    private JFXTextField conceptTF,amountTF;
 
-	@FXML
-	private JFXTextField amountTF;
+    @FXML
+    private JFXDatePicker datePicker;
 
-	@FXML
-	private JFXDatePicker datePicker;
+    @FXML
+	private JFXRadioButton positiveRB,negativeRB;
 
-	@FXML
-	private Label totalLabel;
+    @FXML
+    private Button addButton,deleteButton;
 
-	@FXML
-	private Button addButton;
-
-	@FXML
-	private Button deleteButton;
-	@FXML
-	private JFXRadioButton positiveRB;
-
-	@FXML
-	private JFXRadioButton negativeRB;
+    @FXML
+    private Label total,totalLabel,previusMonthButton,yearLabel,monthLabel,nextMonthButton;
 
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
@@ -144,4 +136,24 @@ public class BalanceManagerController implements Initializable {
 		totalAmount.set(TableIncomeExpenses.getTotal());
 		amountTF.clear();
 	}
+
+    @FXML
+    private void onFilterNegativeCheck(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void onFilterPositiveCheck(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void onNextMonth(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void onPreviusMonth(ActionEvent event) {
+
+    }
 }

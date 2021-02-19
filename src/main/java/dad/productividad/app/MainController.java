@@ -1,8 +1,6 @@
 package dad.productividad.app;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Locale;
@@ -10,10 +8,10 @@ import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
 import animatefx.animation.FadeIn;
-import animatefx.animation.Shake;
 import dad.productividad.balanceManager.BalanceManagerController;
 import dad.productividad.dataManager.TablePages;
 import dad.productividad.home.HomeController;
+import dad.productividad.menuBar.MenuBarController;
 import dad.productividad.note.NotesController;
 import dad.productividad.page.Page;
 import dad.productividad.pomodoro.PomodoroController;
@@ -27,12 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -57,11 +50,6 @@ public class MainController implements Initializable {
 	@FXML
 	private ListView<String> listView;
 
-	@FXML
-	private ToggleButton homeButton,calendarButton,entryReaderButton,projectManagerButton,ideasButton,
-						balanceManagerButton,timePlannerButton,toolsButton;
-	private ToggleGroup toggleGroup;
-
 	static Page todaysPage = new Page();
 	
 	private double x;
@@ -75,6 +63,7 @@ public class MainController implements Initializable {
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 	private SettingsController settingsController;
+	private MenuBarController menuBarController;
 	
 	public static MainController mainController;
  
@@ -93,24 +82,6 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
-        
-       
-         
-		
-		
-		toggleGroup = new ToggleGroup();
-		homeButton.setToggleGroup(toggleGroup);
-		calendarButton.setToggleGroup(toggleGroup);
-		entryReaderButton.setToggleGroup(toggleGroup);
-		projectManagerButton.setToggleGroup(toggleGroup);
-		ideasButton.setToggleGroup(toggleGroup);
-		balanceManagerButton.setToggleGroup(toggleGroup);
-		timePlannerButton.setToggleGroup(toggleGroup);
-		toolsButton.setToggleGroup(toggleGroup);
-		
-		homeButton.selectedProperty().set(true);
-		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -124,7 +95,8 @@ public class MainController implements Initializable {
 		homeController=new HomeController();
 		pomodoroController = new PomodoroController();
 		settingsController = new SettingsController();
-
+		menuBarController=new MenuBarController();
+		view.setLeft(menuBarController.getView());
 		view.setCenter(homeController.getView()); 
 		
 		todaysPage.setDate(LocalDate.now());
@@ -174,7 +146,7 @@ public class MainController implements Initializable {
 	public static Page getTodaysPage() {
 		return todaysPage;
 	}
-	
+	 
 	/**
 	 * Set the center of view with projectDetailController.getView().
 	 * The received project and stylesheet are assigned to the projectDetailController
@@ -243,92 +215,68 @@ public class MainController implements Initializable {
 		stage.setIconified(true);
 	}
 
-
-	@FXML
-	private void onHomeButton(ActionEvent event) {
-
-		if (view.getCenter() == homeController.getView()) 
-			homeButton.selectedProperty().set(true);
-		else { 
-			new FadeIn(homeController.getView()).play();
-			
-			view.setCenter(homeController.getView());
-		}
+	public ProjectManagerController getProjectManagerController() {
+		return projectManagerController;
 	}
 
-	@FXML
-	private void onCalendarButton(ActionEvent event) {
-
+	public void setProjectManagerController(ProjectManagerController projectManagerController) {
+		this.projectManagerController = projectManagerController;
 	}
 
-	@FXML
-	private void onEntryReaderButton(ActionEvent event) {
-
+	public NotesController getNotasController() {
+		return notasController;
 	}
 
-	@FXML
-	private void onProjectManagerButton(ActionEvent event) {
-
-		if(view.getCenter()==projectManagerController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(projectManagerController.getView()).play();
-			view.setCenter(projectManagerController.getView());
-		}
+	public void setNotasController(NotesController notasController) {
+		this.notasController = notasController;
 	}
 
-	@FXML
-	private void onIdeasButton(ActionEvent event) {
-
-		if (view.getCenter() == notasController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(notasController.getView()).play();
-			view.setCenter(notasController.getView());
-		}
+	public BalanceManagerController getBalanceManagerController() {
+		return balanceManagerController;
 	}
 
-	@FXML
-	private void onBalanceManagerButton(ActionEvent event) {
-
-		if (view.getCenter() == balanceManagerController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(balanceManagerController.getView()).play();
-			view.setCenter(balanceManagerController.getView());
-		}
+	public void setBalanceManagerController(BalanceManagerController balanceManagerController) {
+		this.balanceManagerController = balanceManagerController;
 	}
 
-	@FXML
-	private void onTimePlannerButton(ActionEvent event) {
-
-		if(view.getCenter()==pomodoroController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(pomodoroController.getView()).play();
-			view.setCenter(pomodoroController.getView());
-		}
+	public projectDetailController getProjectDetailController() {
+		return projectDetailController;
 	}
 
-	@FXML
-	private void onToolsButton(ActionEvent event) throws BackingStoreException {
-		if(view.getCenter()==settingsController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(settingsController.getView()).play();
-			view.setCenter(settingsController.getView());
-		}
+	public void setProjectDetailController(projectDetailController projectDetailController) {
+		this.projectDetailController = projectDetailController;
 	}
 
-	@FXML
-	private void onGithubButton(ActionEvent event) {
-		try {
-		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
-		} catch (IOException e) {
-		    e.printStackTrace();
-		} catch (URISyntaxException e) {
-		    e.printStackTrace();
-		}
+	public HomeController getHomeController() {
+		return homeController;
+	}
+
+	public void setHomeController(HomeController homeController) {
+		this.homeController = homeController;
+	}
+
+	public PomodoroController getPomodoroController() {
+		return pomodoroController;
+	}
+
+	public void setPomodoroController(PomodoroController pomodoroController) {
+		this.pomodoroController = pomodoroController;
+	}
+
+	public SettingsController getSettingsController() {
+		return settingsController;
+	}
+
+	public void setSettingsController(SettingsController settingsController) {
+		this.settingsController = settingsController;
+	}
+
+	public MenuBarController getMenuBarController() {
+		return menuBarController;
+	}
+
+	public void setMenuBarController(MenuBarController menuBarController) {
+		this.menuBarController = menuBarController;
 	}
 
 }

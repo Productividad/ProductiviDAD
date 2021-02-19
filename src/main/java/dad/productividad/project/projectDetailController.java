@@ -51,7 +51,6 @@ public class projectDetailController implements Initializable {
     private Button addTaskButton;
     
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
-
 	private ListProperty<Task> projectTasks = new SimpleListProperty<>(FXCollections.observableArrayList());
 	
 	private StringProperty title=new SimpleStringProperty();

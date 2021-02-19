@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.Locale;
@@ -25,10 +24,7 @@ public class App extends Application{
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
-
-		
-		
+			
 		App.primaryStage = primaryStage;
 		controller=new MainController();
 		Scene scene=new Scene(controller.getView());
@@ -36,10 +32,17 @@ public class App extends Application{
 		controller.getView().setTop(controller.getTopBar());
 		
 		controller.getView().getScene().addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-            if (event.getCode() == KeyCode.ALT) {
-            	controller.setRightSideNull();
-            	}
+            if (event.getCode() == KeyCode.ALT) 
+            	MainController.mainController.getMenuBarController().setHomeTag("Al1+1");
+            	
             event.consume();
+        });
+		
+		controller.getView().getScene().addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ALT) 
+            	MainController.mainController.getMenuBarController().setHomeTag("");
+            	
+            event.consume(); 
         });
 		
 		primaryStage.setTitle("ProductiviDAD");
