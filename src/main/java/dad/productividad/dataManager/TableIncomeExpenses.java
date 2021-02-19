@@ -150,6 +150,23 @@ public class TableIncomeExpenses {
 		}
 		return amount;
 	}
+	public static double getTotal() {
+		String query = "SELECT SUM(amount) FROM incomesExpenses";
+		double amount = 0;
+		try {
+			JdbcConnection.connect();
+			Statement stmt = JdbcConnection.connection.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+				amount = rs.getDouble("SUM(amount)");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		return amount;
+	}
 
 	public static boolean readContiguous(LocalDate date){
 		String select = "SELECT ID_incomeExpense FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY ID_incomeExpense DESC";
