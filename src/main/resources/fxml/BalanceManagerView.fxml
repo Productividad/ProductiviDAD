@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +17,8 @@
 
 <GridPane fx:id="view" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefWidth="900.0" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="NEVER" minWidth="200.0" prefWidth="200.0" />
   </columnConstraints>
   <rowConstraints>
@@ -25,7 +27,7 @@
       <RowConstraints minHeight="-Infinity" prefHeight="50.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <TableView fx:id="balanceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <TableView fx:id="balanceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <columns>
           <TableColumn fx:id="conceptColumn" editable="false" prefWidth="590.0" sortable="false" style="-fx-padding: 0 0 0 10; -fx-alignment: CENTER-LEFT;" text="%conceptColumn" />
           <TableColumn fx:id="dateColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" sortable="false" style="-fx-alignment: CENTER;" text="%dateColumn" />
@@ -35,7 +37,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox alignment="CENTER" spacing="10.0" GridPane.columnSpan="2">
+      <HBox alignment="CENTER" spacing="10.0" GridPane.columnSpan="3">
          <children>
             <JFXTextField fx:id="conceptTF" labelFloat="true" promptText="%conceptColumn" styleClass="balance-manager-textField" unFocusColor="#4d4d4d00" />
             <JFXTextField fx:id="amountTF" labelFloat="true" promptText="%importe" styleClass="balance-manager-textField" unFocusColor="#4d4d4d00" />
@@ -49,7 +51,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
             <Label fx:id="total" styleClass="balance-manager-label" text="%total">
                <font>
@@ -57,6 +59,20 @@
                </font>
             </Label>
             <Label fx:id="totalLabel" styleClass="balance-manager-label" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="previusMonthButton" mnemonicParsing="false" onAction="#onPreviusMonth" />
+            <Label fx:id="yearLabel" text="Año" />
+            <Label fx:id="monthLabel" text="Mes" />
+            <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onNextMonth" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <CheckBox mnemonicParsing="false" onAction="#onFilterNegativeCheck" text="negativo" />
+            <CheckBox mnemonicParsing="false" onAction="#onFilterPositiveCheck" text="positivo" />
          </children>
       </HBox>
    </children>
