@@ -54,11 +54,11 @@ public class BalanceManagerController implements Initializable {
 	private JFXRadioButton positiveRB,negativeRB;
 
     @FXML
-    private Button addButton,deleteButton;
+    private Button addButton,deleteButton,previusMonthButton,nextMonthButton;
 
     @FXML
-    private Label total,totalLabel,previusMonthButton,yearLabel,monthLabel,nextMonthButton;
-
+    private Label total,totalLabel,yearLabel,monthLabel;
+    
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
 
