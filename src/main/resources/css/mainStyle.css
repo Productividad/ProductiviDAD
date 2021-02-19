@@ -1,16 +1,16 @@
 @import "leftBorderPane.css";
 @import "topBar.css";  
-@import "scrollBar.css";  
+@import "scrollBar.css";   
 @import "balanceManager.css";     
-@import "projectManager.css";    
+@import "projectManager.css";     
 @import "createProjectDialog.css";     
-                
+                 
 .title-label{ 
 	-fx-text-fill:white; 
 }            
-.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, #scrollPane .viewport
+.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, #scrollPane .viewport 
 {         
-	-fx-background-color:#F7BFB4; 
+	-fx-background-color:#F7BFB4;  
 }
 .secondary-color 
 {  

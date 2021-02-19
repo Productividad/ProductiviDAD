@@ -33,14 +33,14 @@ public class App extends Application{
 		
 		controller.getView().getScene().addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
             if (event.getCode() == KeyCode.ALT) 
-            	MainController.mainController.getMenuBarController().setHomeTag("Al1+1");
+//            	MainController.mainController.getMenuBarController().setHomeTag("Al1+1");
             	
             event.consume();
         });
 		
 		controller.getView().getScene().addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
             if (event.getCode() == KeyCode.ALT) 
-            	MainController.mainController.getMenuBarController().setHomeTag("");
+//            	MainController.mainController.getMenuBarController().setHomeTag("");
             	
             event.consume(); 
         });

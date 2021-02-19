@@ -29,9 +29,13 @@ public class MenuBarController implements Initializable {
 						balanceManagerButton,timePlannerButton,toolsButton;
 	private ToggleGroup toggleGroup;
 
-	@FXML
-	private Label homeLabel;
-	private StringProperty homeTag=new SimpleStringProperty();
+    @FXML
+    private Label homeTag,homeShortcut,calendarTag,calendarShortCut,entryReaderTag,
+    			  entryReaderShortCut,projectManagerTag,projectManagerShortcut,
+    			  ideasTag,ideasShortcut,balanceManagerTag,balanceManagerShortcut,
+    			  timePlannerTag,timePlannerShortcut,toolsTag,toolsShortcut,
+    			  githubTag,githubShortcut;
+
 	
 	public MenuBarController() {
 		try {
@@ -45,7 +49,6 @@ public class MenuBarController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		homeLabel.textProperty().bind(homeTag);
 		
 		toggleGroup = new ToggleGroup();
 		homeButton.setToggleGroup(toggleGroup);
@@ -146,19 +149,6 @@ public class MenuBarController implements Initializable {
 		return view;
 	}
 
-	public final StringProperty homeTagProperty() {
-		return this.homeTag;
-	}
-	
-
-	public final String getHomeTag() {
-		return this.homeTagProperty().get();
-	}
-	
-
-	public final void setHomeTag(final String homeTag) {
-		this.homeTagProperty().set(homeTag);
-	}
 	
 
 }
