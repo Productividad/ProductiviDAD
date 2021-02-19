@@ -60,24 +60,17 @@ public class NoteComponent extends BorderPane implements Initializable{
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				//content.set(nv.getContent());
 				content.set(nv.contentProperty().get());
-
-//				styleNote();
 			}
 		});
 
-		getContentTA().focusedProperty().addListener((o,ov,nv)->{
-
-			if (!nv) {
-				//cuando pierde el foco
-				//postIt1.setNote(i);
-				note.get().setContent(contentTA.textProperty().get());
+		contentTA.focusedProperty().addListener((o,ov,nv)->{
+			if(contentTA.textProperty().get()!=null) {
+				note.get().setContent(content.get());
 				TableNotes.update(note.get());
 			}
 		});
 		
-//		contentTA.textProperty().bindBidirectional(content);
 	}
 
 	private void styleNote() {

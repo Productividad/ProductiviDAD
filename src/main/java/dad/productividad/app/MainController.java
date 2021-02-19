@@ -171,7 +171,7 @@ public class MainController implements Initializable {
 	}	
 	
 	public void updateRightSide(Task task) {
-		
+		 
 		if(view.getRight()!=null) {
 			TaskDetailController taskDetailController=new TaskDetailController();
 			taskDetailController.setTask(task);

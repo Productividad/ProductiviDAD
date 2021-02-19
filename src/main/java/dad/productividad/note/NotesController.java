@@ -53,26 +53,21 @@ public class NotesController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-
 		scrollpane.setFitToWidth(true);
-		noteList = TableNotes.read(20);
-    	for(Note i : noteList) {
-    	NoteComponent postIt1=new NoteComponent();
-    	Note note1=new Note(i.getContent(),"#708D81");
-    	postIt1.setNote(note1);
-	 
+		readNotes();
 
-    	notesWrapper.getChildren().addAll(postIt1);
-    	notesWrapper.setCellHeight(314.0);
-    	notesWrapper.setCellWidth(306.0);
-
-    	}
- 
-			
-			
 	}
 
-
+	private void readNotes() {
+    	for(Note note : TableNotes.read(20)) {
+	    	NoteComponent component=new NoteComponent();
+	    	component.setNote(note);
+	
+	    	notesWrapper.getChildren().addAll(component);
+	    	notesWrapper.setCellHeight(314.0);
+	    	notesWrapper.setCellWidth(306.0);
+    	}	
+	}
 
     @FXML
     void onAddNoteAction(ActionEvent event) {
@@ -84,7 +79,7 @@ public class NotesController implements Initializable{
 		TableNotes.insertNote(note1);
 		HBox.setHgrow(postIt1, Priority.ALWAYS);
 
-	}
+	} 
 
 
 	public VBox getView() {
