@@ -130,14 +130,17 @@ public class TableIncomeExpenses {
 		return arrayList;
 	}
 	
-	public static double getTotal() {
-		String query = "SELECT SUM(amount) FROM incomesExpenses";
+	public static double getTotal(LocalDate date) {
+		String query = "SELECT SUM(amount) FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ?";
 		double amount = 0;
 		try {
 			JdbcConnection.connect();
-			Statement stmt = JdbcConnection.connection.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next())
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(query);
+			pstmt.setString(1, (date.getMonthValue() < 10) ? "0"+String.valueOf(date.getMonthValue()) : String.valueOf(date.getMonthValue()));
+			pstmt.setString(2, String.valueOf(date.getYear()));
+
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next())
 				amount = rs.getDouble("SUM(amount)");
 			
 		} catch (SQLException e) {
