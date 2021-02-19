@@ -105,8 +105,8 @@ public class BalanceManagerController implements Initializable {
 		amountTF.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (!newValue.matches("\\d*")) {
-					amountTF.setText(newValue.replaceAll("[^\\d]", ""));
+				if (!newValue.matches("\\d*(\\.\\d{0,2})?")) {
+					amountTF.setText(oldValue);
 				}
 			}
 		}); 
