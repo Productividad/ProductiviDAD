@@ -4,6 +4,8 @@ import dad.productividad.utils.Preferences;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,11 +26,21 @@ public class App extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
+
+		
+		
 		App.primaryStage = primaryStage;
 		controller=new MainController();
 		Scene scene=new Scene(controller.getView());
 
 		controller.getView().setTop(controller.getTopBar());
+		
+		controller.getView().getScene().addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ALT) {
+            	controller.setRightSideNull();
+            	}
+            event.consume();
+        });
 		
 		primaryStage.setTitle("ProductiviDAD");
 		primaryStage.setScene(scene);

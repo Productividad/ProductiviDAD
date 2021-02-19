@@ -9,16 +9,6 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
-import dad.productividad.settings.SettingsController;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import org.sqlite.SQLiteException;
-
-import com.dlsc.formsfx.model.util.ResourceBundleService;
-import com.dlsc.preferencesfx.PreferencesFx;
-import com.dlsc.preferencesfx.model.Category;
-import com.dlsc.preferencesfx.model.Setting;
-
 import animatefx.animation.FadeIn;
 import animatefx.animation.Shake;
 import dad.productividad.balanceManager.BalanceManagerController;
@@ -30,17 +20,19 @@ import dad.productividad.pomodoro.PomodoroController;
 import dad.productividad.project.Project;
 import dad.productividad.project.ProjectManagerController;
 import dad.productividad.project.projectDetailController;
+import dad.productividad.settings.SettingsController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
-import dad.productividad.utils.Theme;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -100,6 +92,12 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+        
+       
+         
+		
 		
 		toggleGroup = new ToggleGroup();
 		homeButton.setToggleGroup(toggleGroup);
