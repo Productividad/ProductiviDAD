@@ -11,10 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -65,6 +62,11 @@ public class BalanceManagerController implements Initializable {
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
 
+	/**TODO button right -> index + 1 | if read List is null or Size < 10, disable
+	 * TODO button left -> index - 1 | if index = 1, disable left button
+	 */
+
+
 	public BalanceManagerController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
@@ -78,7 +80,7 @@ public class BalanceManagerController implements Initializable {
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		for (IncomeExpense i : TableIncomeExpenses.read(20)) 
+		for (IncomeExpense i : TableIncomeExpenses.read(LocalDate.now()))
 			movementsList.add(i);
 
 		balanceTableView.itemsProperty().bindBidirectional(movementsList); 
@@ -156,4 +158,5 @@ public class BalanceManagerController implements Initializable {
     private void onPreviusMonth(ActionEvent event) {
 
     }
+
 }
