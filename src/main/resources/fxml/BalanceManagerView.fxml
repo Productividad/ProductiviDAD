@@ -63,7 +63,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="previusMonthButton" mnemonicParsing="false" onAction="#onPreviusMonth" />
+            <Button fx:id="previousMonthButton" mnemonicParsing="false" onAction="#onPreviousMonth" />
             <Label fx:id="yearLabel" text="Año" />
             <Label fx:id="monthLabel" text="Mes" />
             <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onNextMonth" />

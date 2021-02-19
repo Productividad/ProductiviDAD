@@ -61,6 +61,7 @@ public class BalanceManagerController implements Initializable {
     
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
+	private ObjectProperty<LocalDate> index = new SimpleObjectProperty<>(LocalDate.now());
 
 	/**TODO button right -> index + 1 | if read List is null or Size < 10, disable
 	 * TODO button left -> index - 1 | if index = 1, disable left button
@@ -80,8 +81,15 @@ public class BalanceManagerController implements Initializable {
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
-		for (IncomeExpense i : TableIncomeExpenses.read(LocalDate.now()))
+		for (IncomeExpense i : TableIncomeExpenses.read(index.get()))
 			movementsList.add(i);
+		previousMonthButton.setDisable(true);
+		index.addListener((observable, oldValue, newValue) -> {
+			if(newValue.getMonthValue() != index.get().getMonthValue())
+				previousMonthButton.setDisable(false);
+			else
+				previousMonthButton.setDisable(true);
+		});
 
 		balanceTableView.itemsProperty().bindBidirectional(movementsList); 
 
@@ -158,5 +166,6 @@ public class BalanceManagerController implements Initializable {
     private void onPreviusMonth(ActionEvent event) {
 
     }
+
 
 }
