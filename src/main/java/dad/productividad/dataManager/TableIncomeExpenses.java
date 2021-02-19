@@ -147,4 +147,28 @@ public class TableIncomeExpenses {
 		}
 		return amount;
 	}
+
+	public static boolean readContiguous(LocalDate date){
+		String select = "SELECT ID_incomeExpense FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY ID_incomeExpense DESC";
+		ResultSet rs = null;
+		int id = 0;
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
+			pstmt.setString(1, (date.getMonthValue() < 10) ? "0"+String.valueOf(date.getMonthValue()) : String.valueOf(date.getMonthValue()));
+			pstmt.setString(2, String.valueOf(date.getYear()));
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				id = rs.getInt("ID_incomeExpense");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		if(id != 0)
+			return true;
+		else
+			return false;
+	}
 }
