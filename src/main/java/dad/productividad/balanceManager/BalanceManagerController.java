@@ -91,8 +91,8 @@ public class BalanceManagerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //TODO Set typeCoinLabel from enum and settings
-        typeCoinLabel.textProperty().set("€");
+        //TODO Set typeCoinLabel from dad.productividad.balance.CurrencyType, and settings
+    	typeCoinLabel.textProperty().set("€");
         movementsList.addAll(TableIncomeExpenses.read(getIndex(), 0));
 
         previousMonthButton.setDisable(true);

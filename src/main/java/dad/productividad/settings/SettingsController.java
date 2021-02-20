@@ -82,7 +82,7 @@ public class SettingsController implements Initializable {
     } 
  
     @FXML 
-    void onResetAction(ActionEvent event) {
+    private void onResetAction(ActionEvent event) {
         localePicker.getSelectionModel().select(Locale.ENGLISH);
         if(App.preferences.localeProperty().get() != localePicker.getValue()) {
             App.preferences.localeProperty().set(localePicker.getValue());
@@ -95,7 +95,7 @@ public class SettingsController implements Initializable {
     } 
 
     @FXML
-    void onSaveAction(ActionEvent event) {
+    private void onSaveAction(ActionEvent event) {
         if(App.preferences.localeProperty().get() != localePicker.getValue()) {
             App.preferences.localeProperty().set(localePicker.getValue());
             try {
