@@ -56,7 +56,7 @@ public class MenuBarController implements Initializable {
 	 
 	} 
 	 
-	private void onHomeManagerSection() {
+	public void onHomeManagerSection() {
 		if (MainController.mainController.getView().getCenter() == MainController.mainController.getHomeController().getView()) 
 			System.out.println("TODO");
 		else {
@@ -66,15 +66,15 @@ public class MenuBarController implements Initializable {
 		}
     } 
 	
-    private void onCalendarManagerSection() {
+	public void onCalendarManagerSection() {
 
     }
     
-    private void onEntryManagerSection() {
+	public void onEntryManagerSection() {
 
     } 
     
-    private void onProjectManagerSection() {
+	public void onProjectManagerSection() {
 		if(MainController.mainController.getView().getCenter()==MainController.mainController.getProjectManagerController().getView())
 				System.out.println("TODO");
 		else {
@@ -83,7 +83,7 @@ public class MenuBarController implements Initializable {
 		}
     }
     
-    private void onNotesManagerSection() {
+	public void onNotesManagerSection() {
 		if (MainController.mainController.getView().getCenter() == MainController.mainController.getNotasController().getView())
 			System.out.println("TODO");
 		else {
@@ -92,7 +92,7 @@ public class MenuBarController implements Initializable {
 		}
     }
     
-    private void onBalanceManagerSection() {
+	public void onBalanceManagerSection() {
 		if (MainController.mainController.getView().getCenter() == MainController.mainController.getBalanceManagerController().getView())
 			System.out.println("TODO");
 		else {
@@ -101,7 +101,7 @@ public class MenuBarController implements Initializable {
 		}
     }
 
-    private void onPomodoroManagerSection() {
+	public void onPomodoroManagerSection() {
 		if(MainController.mainController.getView().getCenter()==MainController.mainController.getPomodoroController().getView())
 			System.out.println("TODO");
 		else {
@@ -110,7 +110,7 @@ public class MenuBarController implements Initializable {
 		}
     }
 
-    private void onSettingsManagerSection() {
+	public void onSettingsManagerSection() {
 		if(MainController.mainController.getView().getCenter()==MainController.mainController.getSettingsController().getView())
 			System.out.println("TODO");
 		else {

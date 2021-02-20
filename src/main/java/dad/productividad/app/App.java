@@ -4,8 +4,6 @@ import dad.productividad.utils.Preferences;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.Locale;
@@ -30,20 +28,6 @@ public class App extends Application{
 		Scene scene=new Scene(controller.getView());
 
 		controller.getView().setTop(controller.getTopBar());
-		
-		controller.getView().getScene().addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {
-            if (event.getCode() == KeyCode.ALT) {
-            	MainController.mainController.getMenuBarController().showTag();
-            	MainController.mainController.getMenuBarController().showShortcut();
-            }
-        });
-		
-		controller.getView().getScene().addEventFilter(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
-            if (event.getCode() == KeyCode.ALT) {
-            	MainController.mainController.getMenuBarController().showTag();
-            	MainController.mainController.getMenuBarController().showShortcut();
-            }
-        });
 		
 		primaryStage.setTitle("ProductiviDAD");
 		primaryStage.setScene(scene);
