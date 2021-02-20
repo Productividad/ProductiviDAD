@@ -93,7 +93,7 @@ public class BalanceManagerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        datePicker.setValue(getIndex());
         //TODO Set typeCoinLabel from dad.productividad.balance.CurrencyType, and settings
     	typeCoinLabel.textProperty().set("€");
         movementsList.addAll(TableIncomeExpenses.read(getIndex(), 0));
