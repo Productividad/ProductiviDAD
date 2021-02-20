@@ -1,6 +1,5 @@
 package dad.productividad.task;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -42,9 +42,12 @@ public class TaskDetailController implements Initializable {
 
     @FXML
     private JFXTextArea descriptionTaskDetailTA;
-    
+     
     @FXML 
     private Button arrowButton;
+    
+    @FXML
+    private Label creationDateLabel;
 
 	private ObjectProperty<Task> task = new SimpleObjectProperty<>();
 
@@ -52,6 +55,7 @@ public class TaskDetailController implements Initializable {
 	private BooleanProperty favourite=new SimpleBooleanProperty();
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty description=new SimpleStringProperty();
+	private StringProperty creationDate=new SimpleStringProperty();
 
 	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
@@ -73,21 +77,46 @@ public class TaskDetailController implements Initializable {
 		favouriteTaskDetailCB.selectedProperty().bindBidirectional(favourite);
 		titleTaskDetailTF.textProperty().bindBidirectional(title);
 		descriptionTaskDetailTA.textProperty().bindBidirectional(description);
+		creationDateLabel.textProperty().bindBidirectional(creationDate);
 		
 		task.addListener((o,oc,nv)->{
 			done.set(task.get().isDone());
 			favourite.set(task.get().isFavourite());
 			title.set(task.get().getTitle());
 			description.set(task.get().getDescription());
+			
+			if(task.get().getCreationDate()!=null)
+				creationDate.set(task.get().getCreationDate().toString());
 		});
  
-	}    
+		titleTaskDetailTF.focusedProperty().addListener((o,ov,nv)->{
+			if(title.get().isEmpty())
+				title.set(task.get().getTitle());
+			else{
+				if(task.get().getTitle()!=title.get()) {
+					task.get().setTitle(title.get());
+					updateTaskAndWrapper();
+				}
+			}
+		});
+		descriptionTaskDetailTA.focusedProperty().addListener((o,ov,nv)->{
+			if(description.get()!=null) {
+				task.get().setDescription(description.get());
+		    	TableTasks.updateHomeTask(task.get());
+			} 
+		});
+	}       
     
 	@FXML
     void onArrowButton(ActionEvent event) {
    	    MainController.mainController.setRightSideNull();
     }
     
+	@FXML
+	private void onTitleTaskDetailTF(ActionEvent event) {
+		view.requestFocus();
+	}
+	
     @FXML
     private void onDoneClicked(ActionEvent event) {
 
@@ -96,24 +125,33 @@ public class TaskDetailController implements Initializable {
 	        mediaPlayer.play();
     	}
     	task.get().setDone(doneTaskDetailCB.selectedProperty().get());
-    	TableTasks.updateHomeTask(task.get());
-    	MainController.mainController.updateTaskWrapper();
-
+    	updateTaskAndWrapper();
     }
 
     @FXML
     private void onFavouriteClicked(ActionEvent event) {
 
     	task.get().setFavourite(favouriteTaskDetailCB.selectedProperty().get());
+    	updateTaskAndWrapper();
+    } 
+    
+    private void updateTaskAndWrapper() {
     	TableTasks.updateHomeTask(task.get());
     	MainController.mainController.updateTaskWrapper();
-    	
     }
-	
+    
+    @FXML
+    private void onDeleteTask(ActionEvent event) {
+    	System.out.println("TODO Implementar un dialogo");
+    	TableTasks.delete(task.get());
+   	    MainController.mainController.setRightSideNull();
+    	MainController.mainController.updateTaskWrapper();
+    }
+    
 	public GridPane getView() { 
 		return this.view; 
 	}  
-
+ 
 	public final ObjectProperty<Task> taskProperty() {
 		return this.task;
 	}

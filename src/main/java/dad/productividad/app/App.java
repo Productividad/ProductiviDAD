@@ -4,7 +4,6 @@ import dad.productividad.utils.Preferences;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.Locale;
@@ -23,7 +22,7 @@ public class App extends Application{
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+			
 		App.primaryStage = primaryStage;
 		controller=new MainController();
 		Scene scene=new Scene(controller.getView());

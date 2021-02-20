@@ -1,78 +1,53 @@
-
-/*RadioButtons */
-#positiveRB{
+/**
+ * 
+ *	Balance Manager tab
+ * 
+ */
+ 
+#monthLabel,#yearLabel, .jfx-radio-button .text,.jfx-toggle-button .text{
+	-fx-font-weight:bold;
+}
+ 
+#positiveRB,#positiveFilter{ 
 	-jfx-selected-color:#138A36;
 }
-#negativeRB{
+
+#negativeRB,#negativeFilter{ 
 	-jfx-selected-color:#F76C5E;
 }
-/*DatePicker */
-#datePicker{
-	-jfx-default-color:#205084;
-}
-	#datePicker .date-picker-display-node{
-		-jfx-unfocus-color:transparent;
-	}
-	#datePicker:hover .date-picker-display-node{
-		-jfx-unfocus-color:#205084;
-	}
-/*Botones */
-.balance-manager-button{
-	-fx-background-radius:20;
-	-fx-background-color:#205084;
-	-fx-text-fill:white;
-	-fx-min-height:30;
-}
-	.balance-manager-button:hover{
-		-fx-background-color:derive(#205084,30.0%);
-	}
-	.balance-manager-button:pressed{
-		-fx-background-color:derive(#205084,5.0%);
-	}
-/*TextFields */
-.balance-manager-textField{
-	-jfx-focus-color:#466E99;
-}
-	.balance-manager-textField:hover{
-		-jfx-unfocus-color:derive(#466E99,30.0%);
-	}
-	.balance-manager-textField:focused{
-		-fx-background-color:derive(#466E99,80.0%);
-	}
-/*Label */
-.balance-manager-label{
-	-fx-font-size:20;
-	-fx-text-fill:#205084;
-}
-/*Tabla, columna y rows */
-.table-column .label .text{
-	-fx-fill:white;
+
+#allFilter{
+	-jfx-selected-color:#094D92;
 }
 
-.table-view .column-header, .table-view .filler {
+#datePicker .date-picker-display-node{ /*DatePicker*/
+	-jfx-unfocus-color:transparent;
+}
+
+.balance-manager-button{ /*Buttons of Balance Manager*/
+	-fx-background-radius:20;
+	-fx-min-height:30;
+}
+
+.table-balance .column-header, .table-view .filler { /*Parte superior de la tabla de balance*/
     -fx-size: 45;
     -fx-border-color: -fx-box-border;
     -fx-border-width: 0 1 3 0;
     -fx-border-insets: 0;
 }
 
-.table-view .column-header, .column-header-background .filler{
-	-fx-background-color:#205084;
+.table-balance .cell{ /*Alto de las celdas de la tabla de balance*/
+	-fx-cell-size:40;
 }
 
-.table-view .cell{
-	-fx-cell-size:35;
+#previousMonthWrapper .button{
+	-fx-shape:"M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z";
+	-fx-opacity:1;
 }
-
-.table-row-cell:hover{
-	-fx-background-color: #6586AA;
+#nextMonthWrapper .button{
+	-fx-shape:"M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z";
+	-fx-opacity:1;
 }
-	.table-row-cell:hover .text{
-		-fx-fill:white;
-	}
-.table-row-cell:focused{
-	-fx-background-color: #466E99;	
+#previousMonthWrapper:disabled .button, #nextMonthWrapper:disabled .button{
+	-fx-opacity: 0.4
 }
-	.table-row-cell:focused .text{
-		-fx-fill:white;
-	}

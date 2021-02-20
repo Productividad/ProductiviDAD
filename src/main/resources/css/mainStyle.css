@@ -1,149 +1,270 @@
-@import "leftBorderPane.css";
+     
 @import "topBar.css";  
-@import "scrollBar.css";  
-@import "balanceManager.css";     
-@import "projectManager.css";    
-@import "createProjectDialog.css";     
-                
-.title-label{ 
-	-fx-text-fill:white; 
-}            
-.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, #scrollPane .viewport
-{         
-	-fx-background-color:#F7BFB4; 
-}
-.secondary-color 
-{  
-    -fx-background-color:#083D77;     
-}  
-.sideBars-color, .list-cell
-{ 
-	-fx-background-color:#F4D35E; 
-} 
-.top-menu-bar 
-{ 
-	-fx-border-color: transparent transparent derive(#083D77, 40.0%) transparent;
-	-fx-border-width: 2px;
-} 
-.side-menu-bar
-{
-	-fx-border-color: transparent #F4D35E transparent transparent;
-	-fx-border-width: 2px;
-} 
-.border-section
-{
-	-fx-border-color:transparent, transparent, black, transparent;
-	-fx-border-width:0 0 2 0;
-}
-.customDialog .content {
-    -fx-padding: 0; 
-}
+@import "leftBorderPane.css";
+@import "scrollBar.css";   
+@import "balanceManager.css";
+@import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
+@import "taskComponentInserterDetail.css";
+   
+           
+   
 
+   
+/**
+ * <PENDIENTE DE BORRADO> 
+ */
+	.customDialog .content { 
+	    -fx-padding: 0;  
+	}
+/*------ </PENDIENTE DE BORRADO> ------*/
+		
+/**
+ * <Revisar por separado>
+ */
+ 	/**
+ 	 * Color de los botones de la izquierda cuando te encuentras en la pestaña que le corresponde 
+ 	 */
+ 	  	#homeManagerSection:disabled .home-button,
+		#calendarManagerSection:disabled .calendar-button,
+		#entryManagerSection:disabled .reader-button,
+		#projectManagerSection:disabled .project-manager-button,
+		#notesManagerSection:disabled .notes-button,
+		#balanceManagerSection:disabled .expenses-button,
+		#pomodoroManagerSection:disabled .clock-button,
+		#settingsManagerSection:disabled .option-button{ 
+			-fx-opacity: 0.4
+		}
+
+
+ 	/**
+ 	 * Label "Total" de balance manager. Labels de mes y año de balance manager. Labels de radioButton y toggleButton.
+ 	 * Colores del toggleButton de balanceManager
+ 	 * En temas claros se pone negro y en temas oscuros blanco
+ 	 */
+ 	 
+		.balance-manager-label,#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text{  
+			-fx-text-fill:black;
+			-fx-fill:black;
+		}
+		
+		#totalToggle{
+			-jfx-toggle-color:black;
+			-jfx-toggle-line-color:derive(black,60%);	
+		}
+	
+	 
+		/*TASK-INSERTER */ 
+			.task-inserter{/*Color de fondo*/
+				-fx-background-color:white;
+			}
+			.task-inserter-button{/*Color botones*/
+				-fx-background-color:black;	
+			}
+				.insertTaskButton:hover{
+				    -fx-background-color:derive(black,40%);
+				}
+				.insertTaskButton:pressed{
+				    -fx-background-color:derive(black,10%);
+				}
+				 
+		/*TASK-COMPONENT*/   
+			.task-component{/*Inner wrapper of the taskComponent*/
+				-fx-background-color:white;
+			}
+				.task-component:hover{
+					-fx-background-color:derive(#E0DBDF,10%);
+				}
+
+			.completed-task .task-component{/*TaskComponent when completed*/
+				-fx-background-color:#BDEECE;
+			}
+				.completed-task:hover .task-component{
+					-fx-background-color:#A7E8BD;
+				}
+				
+		/*TASK-DETAIL*/
+			.arrow-button-TaskDetail,.delete-button{
+				-fx-background-color:black;
+			}
+				 .arrow-button-TaskDetail:hover{
+				 	-fx-background-color:derive(black,40%);
+				}
+				 .delete-button:hover{
+					-fx-background-color:#5D061E;
+				}
+/*------ </Revisar por separado> ------*/
+
+/**
+ * <Color del centro del borderPane>
+ * También de los elementos que necesitan camuflarse hasta que se les haga hover,
+ * como el fondo de las celdas de las tablas
+ */
+	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
+		-fx-background-color:#E0DBDF;    
+	}
+/*------ </Color del centro del borderPane> ------*/
+
+/**
+ * <Barra superior, tablas, columnas, scrollBar y botones>
+ * Color de fondo y color de texto
+ */
+ 
+	.top-menu-bar {/*Borde inferior de la barra superior*/
+		-fx-border-color: transparent transparent derive(black, 40.0%) transparent;
+		-fx-border-width: 2px;
+	}  
+	
+	.top-custom-button{/*Color de los botones de la topBar*/
+	-fx-background-color:white;		
+	}
+	
+ 	#datePicker{/*DatePicker de BalanceManager*/
+		-jfx-default-color:black;
+	}
+	.balance-manager-textField{/*TextField de BalanceManager*/
+		-jfx-focus-color:black;
+	}
+		#datePicker:hover .date-picker-display-node,.balance-manager-textField:hover{
+			-jfx-unfocus-color:derive(black,60.0%);
+		}
+	
+	/*SCROLL-BAR DEFAULT */
+		.scroll-bar:horizontal .track, .scroll-bar:vertical .track{/*Track*/
+		    -fx-background-color :derive(black,60%);
+		}
+		.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {/*Arrastrable*/
+			-fx-background-color:black;
+		}
+		.scroll-bar:horizontal .thumb:hover, .scroll-bar:vertical .thumb:hover {/*Arrastrable :hover*/
+		    -fx-background-color :derive(black,25%);
+	    }
+
+	/*:NORMAL*/
+		.title-label, .table-column .label .text, .balance-manager-button,
+		.project-button,.settings-button{/*Texto de botones,columnas,topBar,...*/
+			-fx-text-fill:white;   
+			-fx-fill:white; 
+		}  
+		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button {   
+		    -fx-background-color:black;     
+		}  
+	
+	/*:HOVER*/
+		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button{
+			-fx-background-color: derive(black, 60%); 
+		}
+		.table-row-cell:hover .text{
+			-fx-fill:white;
+		}
+
+	/*:FOCUSED*/
+		.table-row-cell:focused{
+			-fx-background-color: derive(black, 40%);
+		}
+		.table-row-cell:focused .text{
+			-fx-fill:white;
+		}
+		
+	/*:PRESSED*/
+		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button{
+		-fx-background-color:derive(black,20%);
+	}
+/*------ </Barra superior, tablas, scrollBar y columnas> ------*/
+
+/**
+ * </Botonera del borderPane lado izquierdo>
+ */
+	.sideBars-color{ 
+		-fx-background-color:white; 
+	}
+	.side-custom-button{
+		-fx-background-color:black;
+	} 
+ 
+	.wrapperMenuItem:hover{
+		-fx-background-color:derive(#DBD3D8,40%);
+	}
+		.wrapperMenuItem:pressed{
+			-fx-background-color:derive(#DBD3D8,10%);
+		}
+		
+	.wrapperMenuItem:hover .side-custom-button{
+		-fx-background-color:derive(black,50.0%);
+	}
+		.wrapperMenuItem:pressed .side-custom-button{
+			-fx-background-color:derive(black,20.0%);
+		}
+	.wrapperMenuItem:hover .label{
+		-fx-text-fill:derive(black,50.0%);
+	}
+		.wrapperMenuItem:pressed .label{
+			-fx-text-fill:derive(black,20.0%);
+		}
+
+/*------ </Botonera del borderPane lado izquierdo> ------*/
+
+/**
+ * Miscelanea 
+ */
+ 	.project-button{/*Radio de los botones de ProjectManager */
+ 		-fx-background-radius:20;
+ 	}
+	.scroll-pane {/*Trasparencia scrollPane de homeView */
+	    -fx-background-color:transparent;
+	}
+	.settings-button{/*Botones de Settings */
+	-fx-background-radius:20;
+	-fx-min-height:30;
+	-fx-min-width:150;
+}
+/**
+ * TODO MODULAR A OTRAS HOJAS DE ESTILOS Y EXTRAER LOS COLORES
+ */
 /* Note */
 
 .note-fav-button{
 	-fx-shape:"M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z";
-	-fx-background-color:#696969;	/* 2 */
+	-fx-background-color:#696969;	
 }
 	.note-fav-button:hover{
 		-fx-shape:"M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z";
-		-fx-background-color:derive(#696969, 50.0%);	/* 2 */
+		-fx-background-color:derive(#696969, 50.0%);	
 	}
 	
 	
 .note-check{
 	-fx-shape:"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z";
-	-fx-background-color:#696969;	/* 2 */
+	-fx-background-color:#696969;	
 }
 
 .note-menu{
 	-fx-shape:"M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z";
-	-fx-background-color:#696969;	/* 2 */
+	-fx-background-color:#696969;	
 }
 	.note-menu:hover{
-			-fx-background-color:derive(#696969, 50.0%);	/* 2 */
+			-fx-background-color:derive(#696969, 50.0%);	
 	}
 	
 .note-delete{
 	-fx-shape:"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z";
-	-fx-background-color:#696969;	/* 2 */
+	-fx-background-color:#696969;	
 }
 	.note-delete:hover{
-			-fx-background-color:derive(#696969, 50.0%);	/* 2 */
+			-fx-background-color:derive(#696969, 50.0%);	
 	}
 	
 	
 .note-header{
-	-fx-background-color:#494745;	/* 1 */
+	-fx-background-color:#494745;	
 }
 
 .note-content{
- 	-fx-background-color:#696969;	/* 2 */
+ 	-fx-background-color:#696969;	
 	-fx-text-fill:white;
 	-fx-background-radius:0;
-}
-
-/* HomeView */
-.scroll-pane {
-    -fx-background-color:transparent;
-}
-
-/* TaskDetail */
-	/*DoneCB*/
-#doneTaskDetailCB .box {
-    -fx-background-color: white;
-    -fx-border-color:black;
-    -fx-border-width:1.5px;
-    -fx-border-radius:50%; 
-    -fx-background-radius:50%;
-    -fx-pref-width:22;
-    -fx-pref-height:22;
-}   
-#doneTaskDetailCB:selected .box {
-    -fx-background-color: #539464;
-    -fx-border-color:#539464;
-    -fx-background-radius:10px;
-    -fx-background-radius:50%;
-}   
-#doneTaskDetailCB .box:hover .mark{
-    -fx-background-color:black;
-}
-#doneTaskDetailCB:selected .box .mark{
-    -fx-background-color:white;
-}
-	/*FavouriteCB*/
-#favouriteTaskDetailCB .box{
-    -fx-background-color: black;
-	-fx-shape:"M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z";
-    -fx-pref-width:22;
-    -fx-pref-height:22;
-}
-    #favouriteTaskDetailCB:hover .box{
-        -fx-background-color:derive(black, 40%);
-        -fx-shape:"M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z";
-    }
-#favouriteTaskDetailCB:selected .box{
-    -fx-background-color: #FBB02D;
-    -fx-shape:"M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z";
-}
-    #favouriteTaskDetailCB:selected:hover .box{
-        -fx-background-color:derive(black, 40%);
-    }
-
-#favouriteTaskDetailCB:selected .box .mark{
-    -fx-background-color:transparent;
-}
-
-#doneTaskDetailCB:focused .box .mark, #favouriteTaskDetailCB:focused .box .mark{
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 5, 4, 3;
-}
-
-#arrowButton{
-	-fx-shape:"M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z";
-	-fx-background-color:black;
-	-fx-min-width:10;
-	-fx-min-height:20;
 }
 
 /*Notes Manager*/
@@ -155,18 +276,3 @@
 }
 
 
-/*SettingsView */
-
-.settings-button{
-	-fx-background-radius:20;
-	-fx-background-color:#205084;
-	-fx-text-fill:white;
-	-fx-min-height:30;
-	-fx-min-width:150;
-}
-	.settings-button:hover{
-		-fx-background-color:derive(#205084,30.0%);
-	}
-	.settings-button:pressed{
-		-fx-background-color:derive(#205084,5.0%);
-	}

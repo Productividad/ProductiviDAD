@@ -1,46 +1,35 @@
 package dad.productividad.app;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.prefs.BackingStoreException;
-
-import dad.productividad.settings.SettingsController;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import org.sqlite.SQLiteException;
-
-import com.dlsc.formsfx.model.util.ResourceBundleService;
-import com.dlsc.preferencesfx.PreferencesFx;
-import com.dlsc.preferencesfx.model.Category;
-import com.dlsc.preferencesfx.model.Setting;
 
 import animatefx.animation.FadeIn;
-import animatefx.animation.Shake;
 import dad.productividad.balanceManager.BalanceManagerController;
 import dad.productividad.dataManager.TablePages;
 import dad.productividad.home.HomeController;
+import dad.productividad.menuBar.MenuBarController;
 import dad.productividad.note.NotesController;
 import dad.productividad.page.Page;
 import dad.productividad.pomodoro.PomodoroController;
 import dad.productividad.project.Project;
+import dad.productividad.project.ProjectDetailController;
 import dad.productividad.project.ProjectManagerController;
-import dad.productividad.project.projectDetailController;
+import dad.productividad.settings.SettingsController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
-import dad.productividad.utils.Theme;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -65,27 +54,32 @@ public class MainController implements Initializable {
 	@FXML
 	private ListView<String> listView;
 
-	@FXML
-	private ToggleButton homeButton,calendarButton,entryReaderButton,projectManagerButton,ideasButton,
-						balanceManagerButton,timePlannerButton,toolsButton;
-	private ToggleGroup toggleGroup;
-
 	static Page todaysPage = new Page();
 	
 	private double x;
-	private double y;
+	private double y; 
 	private boolean lastValueYCoodIs0;
+ 
+	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
+	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
+	private final KeyCombination entryShortcut=new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+	private final KeyCombination projectManagerShortcut=new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+	private final KeyCombination notesShortcut=new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
+	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.ALT_DOWN);	
 	
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
 	private BalanceManagerController balanceManagerController;
-	private projectDetailController projectDetailController;	
+	private ProjectDetailController projectDetailController;	
 	private HomeController homeController;	 
 	private PomodoroController pomodoroController;
 	private SettingsController settingsController;
+	private MenuBarController menuBarController;
+
+	public static MainController mainController; 
 	
-	public static MainController mainController;
- 
 	public MainController() {
 		MainController.mainController = this;
 		try {
@@ -101,16 +95,6 @@ public class MainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		toggleGroup = new ToggleGroup();
-		homeButton.setToggleGroup(toggleGroup);
-		calendarButton.setToggleGroup(toggleGroup);
-		entryReaderButton.setToggleGroup(toggleGroup);
-		projectManagerButton.setToggleGroup(toggleGroup);
-		ideasButton.setToggleGroup(toggleGroup);
-		balanceManagerButton.setToggleGroup(toggleGroup);
-		timePlannerButton.setToggleGroup(toggleGroup);
-		toolsButton.setToggleGroup(toggleGroup);
-		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
@@ -118,15 +102,50 @@ public class MainController implements Initializable {
 			}
 		});
 		
+		view.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent e) {
+				if (e.getCode() == KeyCode.ALT) 
+	            	MainController.mainController.getMenuBarController().showTagShortcut();
+	            
+	            if(homeShortcut.match(e)) 
+	            	menuBarController.onHomeManagerSection();
+	            if(calendarShortcut.match(e))
+	            	menuBarController.onCalendarManagerSection();
+	            if(entryShortcut.match(e))
+	            	menuBarController.onEntryManagerSection();
+	            if(projectManagerShortcut.match(e))
+	            	menuBarController.onProjectManagerSection();
+	            if(balanceShortcut.match(e))
+	            	menuBarController.onBalanceManagerSection();
+	            if(notesShortcut.match(e))
+	            	menuBarController.onNotesManagerSection();
+	            if(pomodoroShortcut.match(e))
+	            	menuBarController.onPomodoroManagerSection();
+	            if(settingsShortcut.match(e))
+	            	menuBarController.onSettingsManagerSection();
+			}
+		});  
+		 
+		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent e) {
+				if (e.getCode() == KeyCode.ALT) 
+		           	MainController.mainController.getMenuBarController().hideTagShortcut();
+		        
+			}
+		}); 
+		
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		pomodoroController = new PomodoroController();
 		settingsController = new SettingsController();
-
-		view.setCenter(homeController.getView()); 
-		
+		menuBarController=new MenuBarController();
+		view.setLeft(menuBarController.getView());
+		view.setCenter(homeController.getView());  
+		  
 		todaysPage.setDate(LocalDate.now());
 		TablePages.insertPage(todaysPage);
 
@@ -174,7 +193,7 @@ public class MainController implements Initializable {
 	public static Page getTodaysPage() {
 		return todaysPage;
 	}
-	
+	 
 	/**
 	 * Set the center of view with projectDetailController.getView().
 	 * The received project and stylesheet are assigned to the projectDetailController
@@ -183,7 +202,7 @@ public class MainController implements Initializable {
 	 * @param styleSheetPath String
 	 */
 	public void openProject(Project project, String styleSheetPath) {
-		projectDetailController=new projectDetailController();
+		projectDetailController=new ProjectDetailController();
 		projectDetailController.setProject(project);
 		
 		new FadeIn(projectDetailController.getView()).play();
@@ -200,7 +219,7 @@ public class MainController implements Initializable {
 	}	
 	
 	public void updateRightSide(Task task) {
-		
+		 
 		if(view.getRight()!=null) {
 			TaskDetailController taskDetailController=new TaskDetailController();
 			taskDetailController.setTask(task);
@@ -225,7 +244,7 @@ public class MainController implements Initializable {
 		return this.topBar;
 	}
 
-	@FXML
+	@FXML 
 	private void onCloseWindow(ActionEvent event) {
 		Stage stage=(Stage)view.getScene().getWindow();
     	stage.close();
@@ -243,92 +262,68 @@ public class MainController implements Initializable {
 		stage.setIconified(true);
 	}
 
-
-	@FXML
-	private void onHomeButton(ActionEvent event) {
-
-		if (view.getCenter() == homeController.getView()) 
-			new Shake(view.getCenter()).play();
-		else { 
-			new FadeIn(homeController.getView()).play();
-			
-			view.setCenter(homeController.getView());
-		}
+	public ProjectManagerController getProjectManagerController() {
+		return projectManagerController;
 	}
 
-	@FXML
-	private void onCalendarButton(ActionEvent event) {
-
+	public void setProjectManagerController(ProjectManagerController projectManagerController) {
+		this.projectManagerController = projectManagerController;
 	}
 
-	@FXML
-	private void onEntryReaderButton(ActionEvent event) {
-
+	public NotesController getNotasController() {
+		return notasController;
 	}
 
-	@FXML
-	private void onProjectManagerButton(ActionEvent event) {
-
-		if(view.getCenter()==projectManagerController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(projectManagerController.getView()).play();
-			view.setCenter(projectManagerController.getView());
-		}
+	public void setNotasController(NotesController notasController) {
+		this.notasController = notasController;
 	}
 
-	@FXML
-	private void onIdeasButton(ActionEvent event) {
-
-		if (view.getCenter() == notasController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(notasController.getView()).play();
-			view.setCenter(notasController.getView());
-		}
+	public BalanceManagerController getBalanceManagerController() {
+		return balanceManagerController;
 	}
 
-	@FXML
-	private void onBalanceManagerButton(ActionEvent event) {
-
-		if (view.getCenter() == balanceManagerController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(balanceManagerController.getView()).play();
-			view.setCenter(balanceManagerController.getView());
-		}
+	public void setBalanceManagerController(BalanceManagerController balanceManagerController) {
+		this.balanceManagerController = balanceManagerController;
 	}
 
-	@FXML
-	private void onTimePlannerButton(ActionEvent event) {
-
-		if(view.getCenter()==pomodoroController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(pomodoroController.getView()).play();
-			view.setCenter(pomodoroController.getView());
-		}
+	public ProjectDetailController getProjectDetailController() {
+		return projectDetailController;
 	}
 
-	@FXML
-	private void onToolsButton(ActionEvent event) throws BackingStoreException {
-		if(view.getCenter()==settingsController.getView())
-			new Shake(view.getCenter()).play();
-		else {
-			new FadeIn(settingsController.getView()).play();
-			view.setCenter(settingsController.getView());
-		}
+	public void setProjectDetailController(ProjectDetailController projectDetailController) {
+		this.projectDetailController = projectDetailController;
 	}
 
-	@FXML
-	private void onGithubButton(ActionEvent event) {
-		try {
-		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
-		} catch (IOException e) {
-		    e.printStackTrace();
-		} catch (URISyntaxException e) {
-		    e.printStackTrace();
-		}
+	public HomeController getHomeController() {
+		return homeController;
+	}
+
+	public void setHomeController(HomeController homeController) {
+		this.homeController = homeController;
+	}
+
+	public PomodoroController getPomodoroController() {
+		return pomodoroController;
+	}
+
+	public void setPomodoroController(PomodoroController pomodoroController) {
+		this.pomodoroController = pomodoroController;
+	}
+
+	public SettingsController getSettingsController() {
+		return settingsController;
+	}
+
+	public void setSettingsController(SettingsController settingsController) {
+		this.settingsController = settingsController;
+	}
+
+	public MenuBarController getMenuBarController() {
+		return menuBarController;
+	}
+
+	public void setMenuBarController(MenuBarController menuBarController) {
+		this.menuBarController = menuBarController;
 	}
 
 }

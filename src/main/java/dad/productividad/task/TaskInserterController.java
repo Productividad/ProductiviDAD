@@ -2,25 +2,26 @@ package dad.productividad.task;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableTasks;
+import dad.productividad.segmentedBarUtils.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-public class TaskInserterController extends GridPane implements Initializable{
-
+public class TaskInserterController extends HBox implements Initializable{
 
     @FXML
-    private JFXTextField TaskTitleTF;
+    private JFXTextField titleTF;
     
     private StringProperty title=new SimpleStringProperty();
     
@@ -34,29 +35,41 @@ public class TaskInserterController extends GridPane implements Initializable{
 		} catch (IOException e) {e.printStackTrace();}
     }
 	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		TaskTitleTF.textProperty().bindBidirectional(title);
-		
-		setStyle("-fx-background-radius:7px;-fx-background-color:white;");
-
-	}
-	
+		titleTF.textProperty().bindBidirectional(title);
+	}  
+	 
     @FXML
-    void onEnter(ActionEvent event) {
+    private void onEnter(ActionEvent event) {
+    	System.out.println("bnij");
+    	insertTask();
+    }
+
+    @FXML
+    private void onInsertTaskButton(ActionEvent event) {
+    	insertTask();
+    }
+    
+    /**
+     * Inserts a task into the database, set that task into the right 
+     * side of mainView and reset the focusProperty
+     */
+    private void insertTask() {
     	
-    	Task task=new Task();
-    	task.setTitle(title.get());
-    	TableTasks.insertTitleTask(task);
-    	MainController.mainController.updateTaskWrapper();
-//    	MainController.mainController.updateRightSide(task);
+    	if(title.get()!=null) {
+    		if(!title.get().isEmpty()) {
+		    	Task task=new Task();
+		    	task.setTitle(title.get());
+		    	task.setCreationDate(LocalDate.now());
+		    	task.setStatus(StatusType.TODO);
+		    	TableTasks.insert(task);
+		    	MainController.mainController.updateTaskWrapper();
+		    	MainController.mainController.setTaskOnRightSide(task);
+		    	title.set("");
+		    	requestFocus();
+    		}
+    	}
     }
-
-    @FXML
-    void onInsertTaskButton(ActionEvent event) {
-
-    }
-
 }

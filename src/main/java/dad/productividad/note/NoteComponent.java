@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
 
+import dad.productividad.dataManager.TableNotes;
 import dad.productividad.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -59,14 +60,17 @@ public class NoteComponent extends BorderPane implements Initializable{
 		
 		note.addListener((o,ov,nv)->{
 			if(nv!=null) {
-				//content.set(nv.getContent());
-				content.bindBidirectional(nv.contentProperty());
+				content.set(nv.contentProperty().get());
+			}
+		});
 
-//				styleNote();
+		contentTA.focusedProperty().addListener((o,ov,nv)->{
+			if(contentTA.textProperty().get()!=null) {
+				note.get().setContent(content.get());
+				TableNotes.update(note.get());
 			}
 		});
 		
-//		contentTA.textProperty().bindBidirectional(content);
 	}
 
 	private void styleNote() {
