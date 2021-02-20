@@ -98,15 +98,29 @@ public class TableIncomeExpenses {
 	 * 
 	 * @return arrayList An ArrayList of incomeExpense objects
 	 */
-	public static List<IncomeExpense> read(LocalDate date) {
+	public static List<IncomeExpense> read(LocalDate date, int filter) {
 //		String select = "SELECT * FROM incomesExpenses ORDER BY ID_incomeExpense DESC LIMIT ?, 10";
-		String select = "SELECT * FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY ID_incomeExpense DESC";
+		String selectNeg = "SELECT * FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? AND amount < 0 ORDER BY date(date_incomeExpense) DESC";
+		String selectPos = "SELECT * FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? AND amount > 0 ORDER BY date(date_incomeExpense) DESC";
+		String select = "SELECT * FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY date(date_incomeExpense) DESC";
 		ResultSet rs = null;
 		ArrayList<IncomeExpense> arrayList = new ArrayList<IncomeExpense>();
 		IncomeExpense incomeExpense;
 		try {
 			JdbcConnection.connect();
-			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
+			PreparedStatement pstmt = null;
+			switch (filter){
+				case 0:
+					pstmt = JdbcConnection.connection.prepareStatement(select);
+					break;
+				case 1:
+					 pstmt= JdbcConnection.connection.prepareStatement(selectPos);
+					break;
+				case 2:
+					pstmt= JdbcConnection.connection.prepareStatement(selectNeg);
+					break;
+			}
+
 //			pstmt.setInt(1, ((number-1)*10));
 			pstmt.setString(1, (date.getMonthValue() < 10) ? "0"+String.valueOf(date.getMonthValue()) : String.valueOf(date.getMonthValue()));
 			pstmt.setString(2, String.valueOf(date.getYear()));
@@ -190,5 +204,25 @@ public class TableIncomeExpenses {
 			return true;
 		else
 			return false;
+	}
+//TODO use this method to find a month that isn't contiguous
+	public static LocalDate findNext(IncomeExpense incomeExpense){
+		String query = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
+		ResultSet rs = null;
+		LocalDate date = null;
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(query);
+			pstmt.setString(1, incomeExpense.getDate().toString());
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				date = LocalDate.parse(rs.getString("date_incomeExpense"));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		return date;
 	}
 }
