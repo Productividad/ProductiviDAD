@@ -206,8 +206,8 @@ public class TableIncomeExpenses {
 			return false;
 	}
 //TODO use this method to find a month that isn't contiguous
-	public static LocalDate findNext(IncomeExpense incomeExpense){
-		String query = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
+	public static LocalDate findNext(IncomeExpense incomeExpense, String filter){
+		String query = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) " + filter + " strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
 		ResultSet rs = null;
 		LocalDate date = null;
 		try {
