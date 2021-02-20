@@ -105,10 +105,9 @@ public class MainController implements Initializable {
 		view.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent e) {
-				if (e.getCode() == KeyCode.ALT) {
-	            	MainController.mainController.getMenuBarController().showTag();
-	            	MainController.mainController.getMenuBarController().showShortcut();
-	            }
+				if (e.getCode() == KeyCode.ALT) 
+	            	MainController.mainController.getMenuBarController().showTagShortcut();
+	            
 	            if(homeShortcut.match(e)) 
 	            	menuBarController.onHomeManagerSection();
 	            if(calendarShortcut.match(e))
@@ -131,10 +130,9 @@ public class MainController implements Initializable {
 		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent e) {
-				if (e.getCode() == KeyCode.ALT) {
-		          	MainController.mainController.getMenuBarController().showTag();
-		           	MainController.mainController.getMenuBarController().showShortcut();
-		        }
+				if (e.getCode() == KeyCode.ALT) 
+		           	MainController.mainController.getMenuBarController().hideTagShortcut();
+		        
 			}
 		}); 
 		

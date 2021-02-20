@@ -66,7 +66,7 @@ public class SettingsController implements Initializable {
 	        theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
 	        ThemePicker picker=new ThemePicker();
 	        picker.setTheme(theme);
-	        themeWrapper.getChildren().add(picker);
+	        themeWrapper.getChildren().add(picker); 
         }   
     }
 
