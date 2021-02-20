@@ -146,7 +146,7 @@ public class BalanceManagerController implements Initializable {
         totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 
         balanceTableView.getSelectionModel().clearSelection();
-        addButton.disableProperty().bind(Bindings.isEmpty(amountTF.textProperty()).or(Bindings.isNull(datePicker.valueProperty())));
+        addButton.disableProperty().bind(Bindings.isEmpty(amountTF.textProperty()).or(Bindings.isNull(datePicker.valueProperty())).or(Bindings.isEmpty(conceptTF.textProperty())));
         deleteButton.disableProperty().bind(balanceTableView.getSelectionModel().selectedItemProperty().isNull());
 
     }
@@ -174,6 +174,12 @@ public class BalanceManagerController implements Initializable {
         if (incomeExpense.getDate().getMonth() == movementsList.get(0).getDate().getMonth()
                 && incomeExpense.getDate().getYear() == movementsList.get(0).getDate().getYear())
             movementsList.add(incomeExpense);
+        else {
+            movementsList.clear();
+            movementsList.addAll(TableIncomeExpenses.read(incomeExpense.getDate(), 0));
+            setYearAndMonth();
+            balanceTableView.getSelectionModel().clearSelection();
+        }
         amountTF.clear();
         conceptTF.clear();
     }
