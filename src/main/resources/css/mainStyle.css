@@ -12,7 +12,7 @@
  * <PENDIENTE DE BORRADO>
  */
 	.customDialog .content {
-	    -fx-padding: 0; 
+	    -fx-padding: 0;  
 	}
 /*------ </PENDIENTE DE BORRADO> ------*/
 		
@@ -34,8 +34,8 @@
 			-jfx-toggle-line-color:derive(black,60%);	
 		}
 	
-	
-		/*TASK-INSERTER */
+	 
+		/*TASK-INSERTER */ 
 			.task-inserter{/*Color de fondo*/
 				-fx-background-color:white;
 			}
@@ -48,8 +48,8 @@
 				.insertTaskButton:pressed{
 				    -fx-background-color:derive(black,10%);
 				}
-				
-		/*TASK-COMPONENT*/
+				 
+		/*TASK-COMPONENT*/   
 			.task-component{/*Inner wrapper of the taskComponent*/
 				-fx-background-color:white;
 			}
@@ -82,7 +82,7 @@
  * como el fondo de las celdas de las tablas
  */
 	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
-		-fx-background-color:#E0DBDF;  
+		-fx-background-color:#E0DBDF;    
 	}
 /*------ </Color del centro del borderPane> ------*/
 
@@ -128,13 +128,13 @@
 			-fx-fill:white; 
 		}  
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
-		.project-button,.settings-button, .month-button-balance {   
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button {   
 		    -fx-background-color:black;     
 		}  
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
-		.month-button-balance:hover{
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button{
 			-fx-background-color: derive(black, 60%); 
 		}
 		.table-row-cell:hover .text{
@@ -150,7 +150,8 @@
 		}
 		
 	/*:PRESSED*/
-		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,.month-button-balance:pressed{
+		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button{
 		-fx-background-color:derive(black,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/
@@ -257,13 +258,3 @@
 }
 
 
-/* Balance Manager */
-
-
-
-#nextMonthButton{
-	-fx-shape:"M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z";
-}
-#previousMonthButton{
-	-fx-shape:"M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z";
-}

@@ -148,7 +148,7 @@ public class MainController implements Initializable {
 		view.setLeft(menuBarController.getView());
 		view.setCenter(homeController.getView());  
 		  
-		todaysPage.setDate(LocalDate.now()); 
+		todaysPage.setDate(LocalDate.now());
 		TablePages.insertPage(todaysPage);
 
 		getTopBar().setOnMouseClicked(e -> {

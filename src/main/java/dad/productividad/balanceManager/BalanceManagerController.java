@@ -9,8 +9,8 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-
 import com.jfoenix.controls.JFXToggleButton;
+
 import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
@@ -30,9 +30,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.util.converter.NumberStringConverter;
 
 public class BalanceManagerController implements Initializable {
@@ -62,13 +62,16 @@ public class BalanceManagerController implements Initializable {
     private JFXRadioButton positiveRB, negativeRB, positiveFilter, negativeFilter, allFilter;
 
     @FXML
-    private Button addButton, deleteButton, previousMonthButton, nextMonthButton;
+    private Button addButton, deleteButton;
 
     @FXML
     private Label total, totalLabel, typeCoinLabel, yearLabel, monthLabel;
 
     @FXML
-    private JFXToggleButton totalToggle;
+    private JFXToggleButton totalToggle; 
+    
+    @FXML
+    private VBox previousMonthWrapper,nextMonthWrapper;
 
     private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
     private DoubleProperty totalAmount = new SimpleDoubleProperty();
@@ -95,13 +98,17 @@ public class BalanceManagerController implements Initializable {
     	typeCoinLabel.textProperty().set("€");
         movementsList.addAll(TableIncomeExpenses.read(getIndex(), 0));
 
-        previousMonthButton.setDisable(true);
+        previousMonthWrapper.setOnMouseClicked(e->onPreviousMonth());
+        nextMonthWrapper.setOnMouseClicked(e->onNextMonth());
+
+        nextMonthWrapper.setDisable(true);
+        
         setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0), 0));
         index.addListener((observable, oldValue, newValue) -> {
             if (newValue.getMonthValue() != getIndex().getMonthValue())
-                previousMonthButton.setDisable(true);
+            	nextMonthWrapper.setDisable(true);
             else
-                previousMonthButton.setDisable(false);
+            	nextMonthWrapper.setDisable(false);
         });
 
         setYearAndMonth();
@@ -113,13 +120,13 @@ public class BalanceManagerController implements Initializable {
                 setPreviousIndex(TableIncomeExpenses.findNext(newValue.get(0), 1));
 
                 if (getPreviousIndex() == null)
-                    previousMonthButton.setDisable(true);
+                	nextMonthWrapper.setDisable(true);
                 else
-                    previousMonthButton.setDisable(false);
+                	nextMonthWrapper.setDisable(false);
                 if (getNextIndex() == null)
-                    nextMonthButton.setDisable(true);
+                	previousMonthWrapper.setDisable(true);
                 else
-                    nextMonthButton.setDisable(false);
+                	previousMonthWrapper.setDisable(false);
                 filter();
             }
         });
@@ -128,7 +135,7 @@ public class BalanceManagerController implements Initializable {
 
         dateColumn.setCellValueFactory(v -> v.getValue().dateProperty());
         conceptColumn.setCellValueFactory(v -> v.getValue().conceptProperty());
-        amountColumn.setCellValueFactory(v -> v.getValue().amountProperty());
+        amountColumn.setCellValueFactory(v -> v.getValue().amountProperty()); 
 
         final ToggleGroup toggleGroupTop = new ToggleGroup();
         positiveRB.setToggleGroup(toggleGroupTop);
@@ -230,8 +237,7 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.getSelectionModel().clearSelection();
     }
 
-    @FXML
-    private void onNextMonth(ActionEvent event) {
+    private void onPreviousMonth() {
         List<IncomeExpense> arrayList;
         arrayList = TableIncomeExpenses.read(getNextIndex(), 0);
         movementsList.clear();
@@ -241,8 +247,7 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.getSelectionModel().clearSelection();
     }
 
-    @FXML
-    private void onPreviousMonth(ActionEvent event) {
+    private void onNextMonth() {
         List<IncomeExpense> arrayList;
         arrayList = TableIncomeExpenses.read(getPreviousIndex(), 0);
         movementsList.clear();

@@ -13,12 +13,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <GridPane fx:id="view" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefWidth="900.0" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="NEVER" maxWidth="251.0" minWidth="10.0" prefWidth="251.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="504.0" minWidth="10.0" prefWidth="459.0" />
       <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
   </columnConstraints>
   <rowConstraints>
@@ -96,8 +97,16 @@
                   <Label fx:id="yearLabel" />
                </children>
             </HBox>
-            <Button fx:id="nextMonthButton" mnemonicParsing="false" onAction="#onNextMonth" styleClass="month-button-balance" />
-            <Button fx:id="previousMonthButton" mnemonicParsing="false" onAction="#onPreviousMonth" styleClass="month-button-balance" GridPane.columnIndex="2" />
+            <VBox fx:id="previousMonthWrapper" alignment="CENTER" minWidth="50.0">
+               <children>
+                  <Button disable="true" mnemonicParsing="false" styleClass="month-button-balance" />
+               </children>
+            </VBox>
+            <VBox fx:id="nextMonthWrapper" alignment="CENTER" minWidth="50.0" GridPane.columnIndex="2">
+               <children>
+                  <Button disable="true" mnemonicParsing="false" styleClass="month-button-balance" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </children>
