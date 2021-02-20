@@ -21,10 +21,15 @@ import dad.productividad.settings.SettingsController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -52,7 +57,7 @@ public class MainController implements Initializable {
 	static Page todaysPage = new Page();
 	
 	private double x;
-	private double y;
+	private double y; 
 	private boolean lastValueYCoodIs0;
 	
 	private ProjectManagerController projectManagerController;
@@ -66,6 +71,15 @@ public class MainController implements Initializable {
 	
 	public static MainController mainController;
  
+	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
+	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
+	private final KeyCombination entryShortcut=new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+	private final KeyCombination projectManagerShortcut=new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+	private final KeyCombination notesShortcut=new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
+	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.ALT_DOWN);	
+	
 	public MainController() {
 		MainController.mainController = this;
 		try {
@@ -85,6 +99,42 @@ public class MainController implements Initializable {
 			if(nv!=null) {
 				if(view.getRight()!=null) 
 					view.setRight(null);
+			}
+		});
+		
+		view.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent e) {
+				if (e.getCode() == KeyCode.ALT) {
+	            	MainController.mainController.getMenuBarController().showTag();
+	            	MainController.mainController.getMenuBarController().showShortcut();
+	            }
+	            if(homeShortcut.match(e)) 
+	            	menuBarController.onHomeManagerSection();
+	            if(calendarShortcut.match(e))
+	            	menuBarController.onCalendarManagerSection();
+	            if(entryShortcut.match(e))
+	            	menuBarController.onEntryManagerSection();
+	            if(projectManagerShortcut.match(e))
+	            	menuBarController.onProjectManagerSection();
+	            if(balanceShortcut.match(e))
+	            	menuBarController.onBalanceManagerSection();
+	            if(notesShortcut.match(e))
+	            	menuBarController.onNotesManagerSection();
+	            if(pomodoroShortcut.match(e))
+	            	menuBarController.onPomodoroManagerSection();
+	            if(settingsShortcut.match(e))
+	            	menuBarController.onSettingsManagerSection();
+			}
+		});
+		
+		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent e) {
+				if (e.getCode() == KeyCode.ALT) {
+		          	MainController.mainController.getMenuBarController().showTag();
+		           	MainController.mainController.getMenuBarController().showShortcut();
+		        }
 			}
 		});
 		
