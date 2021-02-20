@@ -3,10 +3,8 @@ package dad.productividad.balanceManager;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
@@ -14,7 +12,12 @@ import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,6 +29,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.util.converter.NumberStringConverter;
@@ -62,6 +66,9 @@ public class BalanceManagerController implements Initializable {
     @FXML
     private Label total, totalLabel, typeCoinLabel, yearLabel, monthLabel;
 
+    @FXML
+    private ToggleButton totalToggle,monthTotalToggle;
+    
     private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
     private DoubleProperty totalAmount = new SimpleDoubleProperty();
     private ObjectProperty<LocalDate> index = new SimpleObjectProperty<>(LocalDate.now()); //My actual index
@@ -236,6 +243,16 @@ public class BalanceManagerController implements Initializable {
         setYearAndMonth();
         totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
         balanceTableView.getSelectionModel().clearSelection();
+    }
+    
+    @FXML
+    private void onMonthTotal(ActionEvent event) {
+    	
+    }
+    
+    @FXML
+    private void onTotal(ActionEvent event) { 
+    	
     }
 
     public LocalDate getIndex() {

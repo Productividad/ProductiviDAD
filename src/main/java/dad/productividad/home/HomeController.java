@@ -75,14 +75,14 @@ public class HomeController implements Initializable {
 				doneList.add(task);
 			if(!task.isDone() && !task.isFavourite())
 				normalTask.add(task); 
-		}
+		} 
   
 		for(Task task:favouriteList) {
 			TaskComponent taskComponent=new TaskComponent();
 			taskComponent.setTask(task);
 			taskWrapper.getChildren().add(taskComponent);
 		}
-		for(Task task:normalTask) {
+		for(Task task:normalTask) { 
 			TaskComponent taskComponent=new TaskComponent();
 			taskComponent.setTask(task);
 			taskWrapper.getChildren().add(taskComponent);

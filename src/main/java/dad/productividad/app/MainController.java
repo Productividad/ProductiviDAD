@@ -59,17 +59,6 @@ public class MainController implements Initializable {
 	private double x;
 	private double y; 
 	private boolean lastValueYCoodIs0;
-	
-	private ProjectManagerController projectManagerController;
-	private NotesController notasController;
-	private BalanceManagerController balanceManagerController;
-	private ProjectDetailController projectDetailController;	
-	private HomeController homeController;	 
-	private PomodoroController pomodoroController;
-	private SettingsController settingsController;
-	private MenuBarController menuBarController;
-	
-	public static MainController mainController;
  
 	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
 	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
@@ -79,6 +68,17 @@ public class MainController implements Initializable {
 	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
 	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
 	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.ALT_DOWN);	
+	
+	private ProjectManagerController projectManagerController;
+	private NotesController notasController;
+	private BalanceManagerController balanceManagerController;
+	private ProjectDetailController projectDetailController;	
+	private HomeController homeController;	 
+	private PomodoroController pomodoroController;
+	private SettingsController settingsController;
+	private MenuBarController menuBarController;
+
+	public static MainController mainController; 
 	
 	public MainController() {
 		MainController.mainController = this;
