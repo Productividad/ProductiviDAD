@@ -206,13 +206,18 @@ public class TableIncomeExpenses {
 			return false;
 	}
 //TODO use this method to find a month that isn't contiguous
-	public static LocalDate findNext(IncomeExpense incomeExpense, String filter){
-		String query = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) " + filter + " strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
+	public static LocalDate findNext(IncomeExpense incomeExpense, int filter){
+		String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
+		String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
 		ResultSet rs = null;
 		LocalDate date = null;
+		PreparedStatement pstmt;
 		try {
 			JdbcConnection.connect();
-			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(query);
+			if(filter == 0)
+				pstmt = JdbcConnection.connection.prepareStatement(queryNext);
+			else
+				pstmt = JdbcConnection.connection.prepareStatement(queryPrevious);
 			pstmt.setString(1, incomeExpense.getDate().toString());
 			rs = pstmt.executeQuery();
 			if (rs.next())
