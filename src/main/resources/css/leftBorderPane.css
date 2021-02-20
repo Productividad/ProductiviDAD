@@ -3,17 +3,6 @@
  *	Button menu on left side of main view borderpane
  * 
  */
- 
-#homeManagerSection:disabled .home-button,
-#calendarManagerSection:disabled .calendar-button,
-#entryManagerSection:disabled .reader-button,
-#projectManagerSection:disabled .project-manager-button,
-#notesManagerSection:disabled .notes-button,
-#balanceManagerSection:disabled .expenses-button,
-#pomodoroManagerSection:disabled .clock-button,
-#settingsManagerSection:disabled .option-button{ 
-	-fx-opacity: 0.4
-}
    
 .side-custom-button{ /*Size of the buttons of the menuBar*/
 	-fx-pref-height: 30px;

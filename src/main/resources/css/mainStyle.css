@@ -22,10 +22,26 @@
  * <Revisar por separado>
  */
  	/**
+ 	 * Color de los botones de la izquierda cuando te encuentras en la pestaña que le corresponde 
+ 	 */
+ 	  	#homeManagerSection:disabled .home-button,
+		#calendarManagerSection:disabled .calendar-button,
+		#entryManagerSection:disabled .reader-button,
+		#projectManagerSection:disabled .project-manager-button,
+		#notesManagerSection:disabled .notes-button,
+		#balanceManagerSection:disabled .expenses-button,
+		#pomodoroManagerSection:disabled .clock-button,
+		#settingsManagerSection:disabled .option-button{ 
+			-fx-opacity: 0.4
+		}
+
+
+ 	/**
  	 * Label "Total" de balance manager. Labels de mes y año de balance manager. Labels de radioButton y toggleButton.
  	 * Colores del toggleButton de balanceManager
  	 * En temas claros se pone negro y en temas oscuros blanco
  	 */
+ 	 
 		.balance-manager-label,#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text{  
 			-fx-text-fill:black;
 			-fx-fill:black;
