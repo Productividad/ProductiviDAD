@@ -8,8 +8,6 @@ import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskComponent;
 import dad.productividad.task.TaskInserterController;
-import dad.productividad.theme.Theme;
-import dad.productividad.theme.ThemePicker;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;

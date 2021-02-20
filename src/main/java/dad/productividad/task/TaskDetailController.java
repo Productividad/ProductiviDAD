@@ -142,7 +142,7 @@ public class TaskDetailController implements Initializable {
     
     @FXML
     private void onDeleteTask(ActionEvent event) {
-    	System.out.println("Implementar un dialogo");
+    	System.out.println("TODO Implementar un dialogo");
     	TableTasks.delete(task.get());
    	    MainController.mainController.setRightSideNull();
     	MainController.mainController.updateTaskWrapper();

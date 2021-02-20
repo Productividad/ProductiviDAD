@@ -9,18 +9,19 @@ import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableTasks;
+import dad.productividad.segmentedBarUtils.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-public class TaskInserterController extends GridPane implements Initializable{
+public class TaskInserterController extends HBox implements Initializable{
 
     @FXML
-    private JFXTextField TaskTitleTF;
+    private JFXTextField titleTF;
     
     private StringProperty title=new SimpleStringProperty();
     
@@ -37,12 +38,12 @@ public class TaskInserterController extends GridPane implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		TaskTitleTF.textProperty().bindBidirectional(title);
-		setStyle("-fx-background-radius:7px;-fx-background-color:white;");
-	}
-	
+		titleTF.textProperty().bindBidirectional(title);
+	}  
+	 
     @FXML
     private void onEnter(ActionEvent event) {
+    	System.out.println("bnij");
     	insertTask();
     }
 
@@ -62,6 +63,7 @@ public class TaskInserterController extends GridPane implements Initializable{
 		    	Task task=new Task();
 		    	task.setTitle(title.get());
 		    	task.setCreationDate(LocalDate.now());
+		    	task.setStatus(StatusType.TODO);
 		    	TableTasks.insert(task);
 		    	MainController.mainController.updateTaskWrapper();
 		    	MainController.mainController.setTaskOnRightSide(task);

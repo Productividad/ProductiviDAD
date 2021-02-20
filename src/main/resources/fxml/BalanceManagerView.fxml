@@ -19,7 +19,7 @@
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="200.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="NEVER" minWidth="200.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="NEVER" minWidth="150.0" prefWidth="150.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="50.0" minHeight="50.0" />
@@ -27,7 +27,7 @@
       <RowConstraints minHeight="-Infinity" prefHeight="50.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <TableView fx:id="balanceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <TableView fx:id="balanceTableView" prefHeight="200.0" prefWidth="200.0" styleClass="table-balance" GridPane.columnSpan="3" GridPane.rowIndex="1">
         <columns>
           <TableColumn fx:id="conceptColumn" editable="false" prefWidth="590.0" sortable="false" style="-fx-padding: 0 0 0 10; -fx-alignment: CENTER-LEFT;" text="%conceptColumn" />
           <TableColumn fx:id="dateColumn" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" sortable="false" style="-fx-alignment: CENTER;" text="%dateColumn" />
@@ -51,15 +51,26 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
             <Label fx:id="total" styleClass="balance-manager-label" text="%total">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="totalLabel" styleClass="balance-manager-label" />
+            <Label fx:id="totalLabel" styleClass="balance-manager-label">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label fx:id="typeCoinLabel" styleClass="balance-manager-label">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="2">
          <children>

@@ -164,11 +164,11 @@ public class TableTasks {
 				pstmt.setInt(1, project.getId());
 			} else {
 				pstmt = JdbcConnection.connection.prepareStatement(selectTask);
-			}
+			} 
 			stmt = JdbcConnection.connection.createStatement();
 			rsd = stmt.executeQuery(getDate);
 			String date = "";
-			while(rsd.next()) {
+			while(rsd.next()) { 
 				 date = rsd.getString("date_page");
 			}
 			rs = pstmt.executeQuery();

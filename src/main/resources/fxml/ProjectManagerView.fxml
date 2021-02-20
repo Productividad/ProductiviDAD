@@ -28,8 +28,8 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="addProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAddProject" text="%addProject" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="SeeOldProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onSeeOldProjects" text="%seeOld" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="addProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAddProject" styleClass="project-button" text="%addProject" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="SeeOldProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onSeeOldProjects" styleClass="project-button" text="%seeOld" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
          <VBox.margin>
             <Insets />

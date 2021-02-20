@@ -9,14 +9,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="view" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1000.0" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <GridPane fx:id="topBar" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="NEVER" maxWidth="477.0" minWidth="10.0" prefWidth="32.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="225.0" minWidth="215.0" prefWidth="225.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="849.0" minWidth="215.0" prefWidth="849.0" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="115.0" prefWidth="115.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
@@ -47,7 +48,10 @@
                   <Insets right="15.0" />
                </padding>
             </HBox>
-            <Label styleClass="title-label" text="%title" GridPane.columnIndex="1" />
+            <Label styleClass="title-label" text="%title" GridPane.columnIndex="1">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
          <styleClass>
             <String fx:value="secondary-color" />

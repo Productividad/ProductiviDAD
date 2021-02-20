@@ -59,7 +59,7 @@ public class BalanceManagerController implements Initializable {
     private Button addButton,deleteButton,previousMonthButton,nextMonthButton;
 
     @FXML
-    private Label total,totalLabel,yearLabel,monthLabel;
+    private Label total,totalLabel,typeCoinLabel,yearLabel,monthLabel;
     
 	private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private DoubleProperty totalAmount = new SimpleDoubleProperty();
@@ -84,6 +84,10 @@ public class BalanceManagerController implements Initializable {
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		//TODO Set typeCoinLabel from enum and settings
+		typeCoinLabel.textProperty().set("€");
+		
 		for (IncomeExpense i : TableIncomeExpenses.read(getIndex()))
 			movementsList.add(i);
 

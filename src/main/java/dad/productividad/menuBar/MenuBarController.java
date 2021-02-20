@@ -8,15 +8,11 @@ import java.util.ResourceBundle;
 
 import animatefx.animation.FadeIn;
 import dad.productividad.app.MainController;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class MenuBarController implements Initializable {
@@ -24,19 +20,18 @@ public class MenuBarController implements Initializable {
 	@FXML
     private VBox view;
 
-	@FXML
-	private ToggleButton homeButton,calendarButton,entryReaderButton,projectManagerButton,ideasButton,
-						balanceManagerButton,timePlannerButton,toolsButton;
-	private ToggleGroup toggleGroup;
+    @FXML
+    private GridPane homeManagerSection,calendarManagerSection,entryManagerSection,projectManagerSection,
+    				 notesManagerSection,balanceManagerSection,pomodoroManagerSection,settingsManagerSection,
+    				 githubSection;
 
     @FXML
-    private Label homeTag,homeShortcut,calendarTag,calendarShortCut,entryReaderTag,
-    			  entryReaderShortCut,projectManagerTag,projectManagerShortcut,
-    			  ideasTag,ideasShortcut,balanceManagerTag,balanceManagerShortcut,
-    			  timePlannerTag,timePlannerShortcut,toolsTag,toolsShortcut,
-    			  githubTag,githubShortcut;
+    private Label homeTag, calendarTag, entryReaderTag, projectManagerTag, ideasTag,
+    			  balanceManagerTag, timePlannerTag, toolsTag, githubTag;
+    @FXML
+    private Label homeShortcut,calendarShortCut,entryReaderShortCut,projectManagerShortcut,
+    			  ideasShortcut,balanceManagerShortcut, timePlannerShortcut,toolsShortcut;
 
-	
 	public MenuBarController() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/LeftBarView.fxml"));
@@ -49,42 +44,82 @@ public class MenuBarController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
-		toggleGroup = new ToggleGroup();
-		homeButton.setToggleGroup(toggleGroup);
-		calendarButton.setToggleGroup(toggleGroup);
-		entryReaderButton.setToggleGroup(toggleGroup);
-		projectManagerButton.setToggleGroup(toggleGroup);
-		ideasButton.setToggleGroup(toggleGroup);
-		balanceManagerButton.setToggleGroup(toggleGroup);
-		timePlannerButton.setToggleGroup(toggleGroup);
-		toolsButton.setToggleGroup(toggleGroup);
-		
-		homeButton.selectedProperty().set(true);		
-	}
+		homeManagerSection.setOnMouseClicked(event->onHomeManagerSection());
+		calendarManagerSection.setOnMouseClicked(event->onCalendarManagerSection());
+		entryManagerSection.setOnMouseClicked(event->onEntryManagerSection());
+		projectManagerSection.setOnMouseClicked(event->onProjectManagerSection());
+		notesManagerSection.setOnMouseClicked(event->onNotesManagerSection());
+		balanceManagerSection.setOnMouseClicked(event->onBalanceManagerSection());
+		pomodoroManagerSection.setOnMouseClicked(event->onPomodoroManagerSection());
+		settingsManagerSection.setOnMouseClicked(event->onSettingsManagerSection());
+		githubSection.setOnMouseClicked(event->onGithubSection());
+	 
+	} 
+	 
+	private void onHomeManagerSection() {
+		if (MainController.mainController.getView().getCenter() == MainController.mainController.getHomeController().getView()) 
+			System.out.println("TODO");
+		else {
+			new FadeIn(MainController.mainController.getHomeController().getView()).play();
+			
+			MainController.mainController.getView().setCenter(MainController.mainController.getHomeController().getView());
+		}
+    } 
 	
-    @FXML
-    void onBalanceManagerButton(ActionEvent event) {
+    private void onCalendarManagerSection() {
+
+    }
+    
+    private void onEntryManagerSection() {
+
+    } 
+    
+    private void onProjectManagerSection() {
+		if(MainController.mainController.getView().getCenter()==MainController.mainController.getProjectManagerController().getView())
+				System.out.println("TODO");
+		else {
+			new FadeIn(MainController.mainController.getProjectManagerController().getView()).play();
+			MainController.mainController.getView().setCenter(MainController.mainController.getProjectManagerController().getView());
+		}
+    }
+    
+    private void onNotesManagerSection() {
+		if (MainController.mainController.getView().getCenter() == MainController.mainController.getNotasController().getView())
+			System.out.println("TODO");
+		else {
+			new FadeIn(MainController.mainController.getNotasController().getView()).play();
+			MainController.mainController.getView().setCenter(MainController.mainController.getNotasController().getView());
+		}
+    }
+    
+    private void onBalanceManagerSection() {
 		if (MainController.mainController.getView().getCenter() == MainController.mainController.getBalanceManagerController().getView())
-			balanceManagerButton.selectedProperty().set(true);
+			System.out.println("TODO");
 		else {
 			new FadeIn(MainController.mainController.getBalanceManagerController().getView()).play();
 			MainController.mainController.getView().setCenter(MainController.mainController.getBalanceManagerController().getView());
 		}
     }
 
-    @FXML
-    void onCalendarButton(ActionEvent event) {
-
+    private void onPomodoroManagerSection() {
+		if(MainController.mainController.getView().getCenter()==MainController.mainController.getPomodoroController().getView())
+			System.out.println("TODO");
+		else {
+			new FadeIn(MainController.mainController.getPomodoroController().getView()).play();
+			MainController.mainController.getView().setCenter(MainController.mainController.getPomodoroController().getView());
+		}
     }
 
-    @FXML
-    void onEntryReaderButton(ActionEvent event) {
-
+    private void onSettingsManagerSection() {
+		if(MainController.mainController.getView().getCenter()==MainController.mainController.getSettingsController().getView())
+			System.out.println("TODO");
+		else {
+			new FadeIn(MainController.mainController.getSettingsController().getView()).play();
+			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());
+		}
     }
 
-    @FXML
-    void onGithubButton(ActionEvent event) {
+    private void onGithubSection() {
 		try {
 		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
 		} catch (IOException e) {
@@ -93,62 +128,54 @@ public class MenuBarController implements Initializable {
 		    e.printStackTrace();
 		}
     }
-
-    @FXML
-    void onHomeButton(ActionEvent event) {
-		if (MainController.mainController.getView().getCenter() == MainController.mainController.getHomeController().getView()) 
-			homeButton.selectedProperty().set(true);
-		else { 
-			new FadeIn(MainController.mainController.getHomeController().getView()).play();
-			
-			MainController.mainController.getView().setCenter(MainController.mainController.getHomeController().getView());
-		}
+  
+    public void showTag() {
+    	if(homeTag.textProperty().get().isEmpty()) {
+    		homeTag.textProperty().set("Inicio");
+    		calendarTag.textProperty().set("Calendario");
+    		entryReaderTag.textProperty().set("Entradas");
+    		projectManagerTag.textProperty().set("Proyectos");
+    		ideasTag.textProperty().set("Notas");
+    		balanceManagerTag.textProperty().set("Balance");
+    		timePlannerTag.textProperty().set("Pomodoro");
+    		toolsTag.textProperty().set("Opciones");
+    		githubTag.textProperty().set("Github");
+    	}else{
+    		homeTag.textProperty().set("");
+    		calendarTag.textProperty().set("");
+    		entryReaderTag.textProperty().set("");
+    		projectManagerTag.textProperty().set("");
+    		ideasTag.textProperty().set("");
+    		balanceManagerTag.textProperty().set("");
+    		timePlannerTag.textProperty().set("");
+    		toolsTag.textProperty().set("");
+    		githubTag.textProperty().set("");
+    	}
     }
-
-    @FXML
-    void onIdeasButton(ActionEvent event) {
-		if (MainController.mainController.getView().getCenter() == MainController.mainController.getNotasController().getView())
-			ideasButton.selectedProperty().set(true);
-		else {
-			new FadeIn(MainController.mainController.getNotasController().getView()).play();
-			MainController.mainController.getView().setCenter(MainController.mainController.getNotasController().getView());
-		}
+    
+    public void showShortcut() {
+    	if(homeShortcut.textProperty().get().isEmpty()) {
+    		homeShortcut.textProperty().set("Alt+1");
+    		calendarShortCut.textProperty().set("Alt+2");
+    		entryReaderShortCut.textProperty().set("Alt+3");
+    		projectManagerShortcut.textProperty().set("Alt+4");
+    		ideasShortcut.textProperty().set("Alt+5");
+    		balanceManagerShortcut.textProperty().set("Alt+6");
+    		timePlannerShortcut.textProperty().set("Alt+7");
+    		toolsShortcut.textProperty().set("Alt+8");
+    	}else {
+    		homeShortcut.textProperty().set(""); 
+    		calendarShortCut.textProperty().set(""); 
+    		entryReaderShortCut.textProperty().set("");
+    		projectManagerShortcut.textProperty().set(""); 
+    		ideasShortcut.textProperty().set("");
+    		balanceManagerShortcut.textProperty().set("");
+    		timePlannerShortcut.textProperty().set("");
+    		toolsShortcut.textProperty().set("");
+    	}
     }
-
-    @FXML
-    void onProjectManagerButton(ActionEvent event) {
-		if(MainController.mainController.getView().getCenter()==MainController.mainController.getProjectManagerController().getView())
-			projectManagerButton.selectedProperty().set(true);
-		else {
-			new FadeIn(MainController.mainController.getProjectManagerController().getView()).play();
-			MainController.mainController.getView().setCenter(MainController.mainController.getProjectManagerController().getView());
-		}
-    }
-
-    @FXML
-    void onTimePlannerButton(ActionEvent event) {
-		if(MainController.mainController.getView().getCenter()==MainController.mainController.getPomodoroController().getView())
-			timePlannerButton.selectedProperty().set(true);
-		else {
-			new FadeIn(MainController.mainController.getPomodoroController().getView()).play();
-			MainController.mainController.getView().setCenter(MainController.mainController.getPomodoroController().getView());
-		}
-    }
-
-    @FXML
-    void onToolsButton(ActionEvent event) {
-		if(MainController.mainController.getView().getCenter()==MainController.mainController.getSettingsController().getView())
-			toolsButton.selectedProperty().set(true);
-		else {
-			new FadeIn(MainController.mainController.getSettingsController().getView()).play();
-			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());
-		}
-    }
-
-	public VBox getView() {
+     
+	public VBox getView() { 
 		return view;
 	}
-
-	
-
 }
