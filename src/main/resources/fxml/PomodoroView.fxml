@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -55,7 +56,7 @@
                         <Insets bottom="15.0" left="15.0" right="1.0" top="15.0" />
                      </GridPane.margin>
                      <children>
-                        <Label fx:id="minuteLabel" ellipsisString="" layoutX="180.0" layoutY="22.0" text="00" textFill="#ece9f0">
+                        <Label fx:id="minuteLabel" alignment="CENTER" ellipsisString="" layoutX="180.0" layoutY="22.0" prefHeight="155.0" prefWidth="426.0" text="00" textFill="#ece9f0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="76.0" />
                            </font>
@@ -67,7 +68,7 @@
                         <Insets bottom="15.0" left="1.0" right="15.0" top="15.0" />
                      </GridPane.margin>
                      <children>
-                        <Label fx:id="secondsLabel" ellipsisString="" layoutX="172.0" layoutY="22.0" text="00" textFill="#ece9f0">
+                        <Label fx:id="secondsLabel" alignment="CENTER" ellipsisString="" layoutX="180.0" layoutY="22.0" prefHeight="155.0" prefWidth="426.0" text="00" textFill="#ece9f0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="76.0" />
                            </font>
@@ -83,6 +84,12 @@
                   </HBox>
                </children>
             </GridPane>
+            <HBox fx:id="progressBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.rowIndex="1">
+               <children>
+                  <Label alignment="CENTER" text="%pomoProgress" />
+                  <JFXProgressBar fx:id="pomoProgressBar" progress="0.48" />
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </children>

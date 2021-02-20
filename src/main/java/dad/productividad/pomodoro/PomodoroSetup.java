@@ -8,11 +8,13 @@ public class PomodoroSetup {
 	private IntegerProperty minutes = new SimpleIntegerProperty();
 	private IntegerProperty shortBreak = new SimpleIntegerProperty();
 	private IntegerProperty longBreak = new SimpleIntegerProperty();
+	private IntegerProperty pomoLength = new SimpleIntegerProperty();
 
-	public PomodoroSetup(int minutes, int shortBreak, int longBreak) {
+	public PomodoroSetup(int minutes, int shortBreak, int longBreak, int pomoLength) {
 		this.minutes.set(minutes);
 		this.shortBreak.set(shortBreak);
 		this.longBreak.set(longBreak);
+		this.pomoLength.set(pomoLength);
 	}
 
 	public final IntegerProperty minutesProperty() {
@@ -49,6 +51,18 @@ public class PomodoroSetup {
 
 	public final void setLongBreak(final int longBreak) {
 		this.longBreakProperty().set(longBreak);
+	}
+
+	public final IntegerProperty pomoLengthProperty() {
+		return this.pomoLength;
+	}
+
+	public final int getPomoLength() {
+		return this.pomoLengthProperty().get();
+	}
+
+	public final void setPomoLength(final int pomoLength) {
+		this.pomoLengthProperty().set(pomoLength);
 	}
 
 	@Override

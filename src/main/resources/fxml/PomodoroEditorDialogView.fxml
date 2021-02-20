@@ -74,7 +74,7 @@
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Slider fx:id="pomogLengthSlider" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="1.0" minorTickCount="10" prefHeight="8.0" prefWidth="2.0" showTickLabels="true" showTickMarks="true" VBox.vgrow="NEVER" />
+                  <Slider fx:id="pomogLengthSlider" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="1.0" minorTickCount="10" onDragDetected="#onPomoLengthDrag" prefHeight="8.0" prefWidth="2.0" showTickLabels="true" showTickMarks="true" VBox.vgrow="NEVER" />
                </children>
             </VBox>
          </children>
