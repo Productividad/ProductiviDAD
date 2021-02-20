@@ -49,7 +49,7 @@ public class SettingsController implements Initializable {
     
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
 
-    @Override
+    @Override 
     public void initialize(URL location, ResourceBundle resources) {
     	
         localePicker.setItems(languages);

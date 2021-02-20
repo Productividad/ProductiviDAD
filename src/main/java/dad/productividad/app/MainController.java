@@ -126,8 +126,8 @@ public class MainController implements Initializable {
 	            if(settingsShortcut.match(e))
 	            	menuBarController.onSettingsManagerSection();
 			}
-		});
-		
+		});  
+		 
 		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent e) {
@@ -136,7 +136,7 @@ public class MainController implements Initializable {
 		           	MainController.mainController.getMenuBarController().showShortcut();
 		        }
 			}
-		});
+		}); 
 		
 		projectManagerController = new ProjectManagerController();
 		notasController = new NotesController();
@@ -146,9 +146,9 @@ public class MainController implements Initializable {
 		settingsController = new SettingsController();
 		menuBarController=new MenuBarController();
 		view.setLeft(menuBarController.getView());
-		view.setCenter(homeController.getView()); 
-		
-		todaysPage.setDate(LocalDate.now());
+		view.setCenter(homeController.getView());  
+		  
+		todaysPage.setDate(LocalDate.now()); 
 		TablePages.insertPage(todaysPage);
 
 		getTopBar().setOnMouseClicked(e -> {
