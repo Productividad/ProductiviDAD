@@ -117,8 +117,8 @@ public class MenuBarController implements Initializable {
 			new FadeIn(MainController.mainController.getSettingsController().getView()).play();
 			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());
 		}
-    }
-
+    } 
+ 
     private void onGithubSection() {
 		try {
 		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());

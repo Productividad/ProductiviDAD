@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,39 +10,55 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="view" alignment="TOP_CENTER" gridLinesVisible="true" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/mainStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="view" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="25.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
   <columnConstraints>
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+    <ColumnConstraints hgrow="NEVER" />
+      <ColumnConstraints hgrow="SOMETIMES" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints fillHeight="false" vgrow="NEVER" />
-    <RowConstraints fillHeight="false" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints vgrow="NEVER" />
+      <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
+      <RowConstraints minHeight="20.0" vgrow="NEVER" />
+      <RowConstraints minHeight="20.0" vgrow="NEVER" />
+      <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" spacing="5.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" />
+      <Label text="Seleccione un idioma:  ">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label text="Seleccione una moneda:  " GridPane.rowIndex="1">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <Label text="%language" />
-            <JFXComboBox fx:id="localePicker" />
-         </children>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </HBox>
-      <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-         <children>
-            <Button fx:id="saveButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%save" />
-            <Button fx:id="resetButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="Aceptar" />
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="Reset" />
          </children>
       </HBox>
-      <ScrollPane fx:id="scroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1">
+      <Label text="Seleccione un tema:" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="scroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="transparent-scrollPane" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <content>
-            <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+            <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="3.0">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
          </content>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </ScrollPane>
    </children>
    <padding>

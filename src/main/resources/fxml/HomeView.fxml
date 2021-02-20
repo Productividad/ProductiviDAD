@@ -7,7 +7,7 @@
 <VBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="topWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-      <ScrollPane fx:id="scrollPane" prefHeight="320.0">
+      <ScrollPane fx:id="scrollPane" prefHeight="320.0" styleClass="transparent-scrollPane">
          <content>
             <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
                <padding>

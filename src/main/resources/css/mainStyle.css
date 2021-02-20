@@ -1,10 +1,12 @@
-@import "leftBorderPane.css";
+     
 @import "topBar.css";  
+@import "leftBorderPane.css";
 @import "scrollBar.css";   
-@import "balanceManager.css";     
-@import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/  
+@import "balanceManager.css";
+@import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
 @import "taskComponentInserterDetail.css";
-                 
+   
+           
    
 /**
  * <PENDIENTE DE BORRADO>
@@ -71,8 +73,7 @@
  * También de los elementos que necesitan camuflarse hasta que se les haga hover,
  * como el fondo de las celdas de las tablas
  */
-	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, #scrollPane .viewport 
-	{         
+	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
 		-fx-background-color:#E0DBDF;  
 	}
 /*------ </Color del centro del borderPane> ------*/
@@ -114,17 +115,17 @@
 
 	/*:NORMAL*/
 		.title-label, .table-column .label .text, .balance-manager-button,
-		.project-button{/*Texto de botones,columnas,topBar,...*/
+		.project-button,.settings-button{/*Texto de botones,columnas,topBar,...*/
 			-fx-text-fill:white;   
 			-fx-fill:white; 
 		}  
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
-		.project-button {   
+		.project-button,.settings-button {   
 		    -fx-background-color:black;     
 		}  
 	
 	/*:HOVER*/
-		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover{
+		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover{
 			-fx-background-color: derive(black, 60%); 
 		}
 		.table-row-cell:hover .text{
@@ -140,7 +141,7 @@
 		}
 		
 	/*:PRESSED*/
-		.balance-manager-button:pressed, .project-button:pressed{
+		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed{
 		-fx-background-color:derive(black,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/
@@ -186,8 +187,11 @@
 	.scroll-pane {/*Trasparencia scrollPane de homeView */
 	    -fx-background-color:transparent;
 	}
-
-
+	.settings-button{/*Botones de Settings */
+	-fx-background-radius:20;
+	-fx-min-height:30;
+	-fx-min-width:150;
+}
 /**
  * TODO MODULAR A OTRAS HOJAS DE ESTILOS Y EXTRAER LOS COLORES
  */
@@ -244,18 +248,6 @@
 }
 
 
-/*SettingsView */
 
-.settings-button{
-	-fx-background-radius:20;
-	-fx-background-color:#205084;
-	-fx-text-fill:white;
-	-fx-min-height:30;
-	-fx-min-width:150;
-}
-	.settings-button:hover{
-		-fx-background-color:derive(#205084,30.0%);
-	}
-	.settings-button:pressed{
-		-fx-background-color:derive(#205084,5.0%);
-	}
+
+
