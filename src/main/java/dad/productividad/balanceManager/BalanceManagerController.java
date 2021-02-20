@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import com.jfoenix.controls.JFXToggleButton;
 import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
@@ -67,7 +68,7 @@ public class BalanceManagerController implements Initializable {
     private Label total, totalLabel, typeCoinLabel, yearLabel, monthLabel;
 
     @FXML
-    private ToggleButton totalToggle,monthTotalToggle;
+    private JFXToggleButton totalToggle;
     
     private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
     private DoubleProperty totalAmount = new SimpleDoubleProperty();
@@ -152,6 +153,14 @@ public class BalanceManagerController implements Initializable {
 
         totalLabel.textProperty().bindBidirectional(totalAmount, new NumberStringConverter("0.##"));
 
+        totalToggle.setSelected(true);
+
+        totalToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue)
+                totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+            else
+                totalAmount.set(TableIncomeExpenses.getTotal());
+        });
         balanceTableView.getSelectionModel().clearSelection();
         addButton.disableProperty().bind(Bindings.isEmpty(amountTF.textProperty()).or(Bindings.isNull(datePicker.valueProperty())).or(Bindings.isEmpty(conceptTF.textProperty())));
         deleteButton.disableProperty().bind(balanceTableView.getSelectionModel().selectedItemProperty().isNull());
@@ -187,6 +196,12 @@ public class BalanceManagerController implements Initializable {
             setYearAndMonth();
             balanceTableView.getSelectionModel().clearSelection();
         }
+        if (totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+        } else {
+            totalAmount.set(TableIncomeExpenses.getTotal());
+        }
+
         amountTF.clear();
         conceptTF.clear();
     }
@@ -228,7 +243,10 @@ public class BalanceManagerController implements Initializable {
 
         setYearAndMonth();
         allFilter.setSelected(true);
-        totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+        if(totalToggle.isSelected())
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+        else
+            totalAmount.set(TableIncomeExpenses.getTotal());
         balanceTableView.getSelectionModel().clearSelection();
     }
 
@@ -241,18 +259,11 @@ public class BalanceManagerController implements Initializable {
 
         allFilter.setSelected(true);
         setYearAndMonth();
-        totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+        if(totalToggle.isSelected())
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex()));
+        else
+            totalAmount.set(TableIncomeExpenses.getTotal());
         balanceTableView.getSelectionModel().clearSelection();
-    }
-    
-    @FXML
-    private void onMonthTotal(ActionEvent event) {
-    	
-    }
-    
-    @FXML
-    private void onTotal(ActionEvent event) { 
-    	
     }
 
     public LocalDate getIndex() {
