@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
@@ -55,7 +56,9 @@ public class NotesController implements Initializable{
 
 		scrollpane.setFitToWidth(true);
 		readNotes();
-
+		//notesWrapper.centerShapeProperty();
+		notesWrapper.clearLayout();
+		notesWrapper.setPadding(new Insets(0, 30, 30, 140));
 	}
 
 	private void readNotes() {
