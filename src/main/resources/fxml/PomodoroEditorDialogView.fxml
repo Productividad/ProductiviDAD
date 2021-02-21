@@ -28,7 +28,7 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="50.0" vgrow="NEVER" />
-            <RowConstraints minHeight="36.0" vgrow="NEVER" />
+            <RowConstraints minHeight="53.0" vgrow="NEVER" />
             <RowConstraints minHeight="53.0" vgrow="NEVER" />
             <RowConstraints minHeight="53.0" vgrow="NEVER" />
             <RowConstraints minHeight="36.0" prefHeight="30.0" vgrow="NEVER" />
@@ -51,17 +51,12 @@
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin></JFXColorPicker>
-            <Label alignment="CENTER_RIGHT" text="Pomodoro" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Pomodoro" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Label>
             <JFXComboBox fx:id="pomodoroBox" focusColor="#51387a" prefHeight="15.0" prefWidth="150.0" unFocusColor="#51387a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label fx:id="shortLabel" alignment="CENTER_RIGHT" text="%shortLabel" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin></Label>
-            <JFXComboBox fx:id="shortBreakBox" focusColor="#51387a" prefHeight="15.0" prefWidth="150.0" unFocusColor="#51387a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Label fx:id="longLabel" alignment="CENTER_RIGHT" text="%longLabel" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
@@ -77,6 +72,8 @@
                   <Slider fx:id="pomogLengthSlider" blockIncrement="1.0" majorTickUnit="10.0" max="10.0" min="1.0" minorTickCount="10" onDragDetected="#onPomoLengthDrag" prefHeight="8.0" prefWidth="2.0" showTickLabels="true" showTickMarks="true" VBox.vgrow="NEVER" />
                </children>
             </VBox>
+            <Label fx:id="shortLabel" alignment="CENTER_RIGHT" text="%shortLabel" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <JFXComboBox fx:id="shortBreakBox" focusColor="#51387a" prefHeight="15.0" prefWidth="150.0" unFocusColor="#51387a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          </children>
          <BorderPane.margin>
             <Insets />
