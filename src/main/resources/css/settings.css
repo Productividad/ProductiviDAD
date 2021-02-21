@@ -1,0 +1,10 @@
+.settings-combo .scroll-bar:horizontal .thumb, .settings-combo .scroll-bar:vertical .thumb,
+.settings-combo .scroll-bar:horizontal .track, .settings-combo .scroll-bar:vertical .track{
+	-fx-background-radius : 0;
+	-fx-border-radius :0;	
+	-fx-background-insets : 0;
+} 
+.settings-combo .scroll-bar:horizontal .thumb:hover, .settings-combo .scroll-bar:vertical .thumb:hover {/*Arrastrable :hover*/
+    -fx-background-insets : 0;
+}
+ 

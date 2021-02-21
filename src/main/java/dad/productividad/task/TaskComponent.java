@@ -29,16 +29,12 @@ public class TaskComponent extends VBox implements Initializable {
     private Label taskTitleLabel;
 
     @FXML
-    private CheckBox doneCheckBox;
-
-    @FXML
-    private CheckBox favouriteCheckBox;
+    private CheckBox doneCheckBox,favouriteCheckBox;
     
     @FXML
     private GridPane grid;
 
     private ObjectProperty<Task>task=new SimpleObjectProperty<>();
-    
     private StringProperty title=new SimpleStringProperty();
     private BooleanProperty done=new SimpleBooleanProperty();
     private BooleanProperty favourite=new SimpleBooleanProperty();
@@ -58,7 +54,7 @@ public class TaskComponent extends VBox implements Initializable {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-				
+		
 		taskTitleLabel.textProperty().bindBidirectional(title);
 		doneCheckBox.selectedProperty().bindBidirectional(done);
 		favouriteCheckBox.selectedProperty().bindBidirectional(favourite);
@@ -77,8 +73,7 @@ public class TaskComponent extends VBox implements Initializable {
 	}
 	
     @FXML
-    private void onDoneClicked(ActionEvent event) {
-    	
+    private void onDoneClicked(ActionEvent event) {   	
     	if(doneCheckBox.selectedProperty().get()) {
 	    	mediaPlayer=new MediaPlayer(sound);
 	        mediaPlayer.play();
@@ -88,7 +83,6 @@ public class TaskComponent extends VBox implements Initializable {
     	MainController.mainController.updateRightSide(task.get());
     	TableTasks.updateHomeTask(task.get());
     	MainController.mainController.updateTaskWrapper();
-
     }
 
     @FXML
@@ -97,7 +91,6 @@ public class TaskComponent extends VBox implements Initializable {
     	MainController.mainController.updateRightSide(task.get());
     	TableTasks.updateHomeTask(task.get());
     	MainController.mainController.updateTaskWrapper();
-
     }
 	
 	public final ObjectProperty<Task> taskProperty() { 

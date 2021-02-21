@@ -61,7 +61,7 @@ public class HomeController implements Initializable {
  
 	}  
  
-	public void insertTaskFromDB() {
+	public void insertTaskFromDB() { 
 		
 		favouriteList.clear();
 		doneList.clear();
@@ -73,7 +73,7 @@ public class HomeController implements Initializable {
 				favouriteList.add(task);
 			if(task.isDone()) 
 				doneList.add(task);
-			if(!task.isDone() && !task.isFavourite())
+			if(!task.isDone() && !task.isFavourite()) 
 				normalTask.add(task); 
 		} 
   
@@ -91,6 +91,7 @@ public class HomeController implements Initializable {
 			TaskComponent taskComponent=new TaskComponent();
 			taskComponent.setTask(task);
 			taskComponent.getStyleClass().add("completed-task");
+			
 			taskWrapper.getChildren().add(taskComponent);
 		}
 	}

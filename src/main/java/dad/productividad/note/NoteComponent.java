@@ -32,6 +32,8 @@ public class NoteComponent extends BorderPane implements Initializable{
     @FXML
     private JFXTextArea contentTA;
     
+//    private NoteComponentColorPicker colorPicker;
+    
 	private StringProperty content=new SimpleStringProperty();
 
     
@@ -47,14 +49,12 @@ public class NoteComponent extends BorderPane implements Initializable{
 			loader.load();
 		} catch (IOException e) {e.printStackTrace();}
 	}
-	
-	public NoteComponent(StringProperty content) {
-		super();
-		this.content = content;
-	}
-	
+	 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+//		colorPicker=new NoteComponentColorPicker();
+//		setBottom(colorPicker);
 		
 		contentTA.textProperty().bindBidirectional(content);
 		
@@ -69,7 +69,7 @@ public class NoteComponent extends BorderPane implements Initializable{
 				note.get().setContent(content.get());
 				TableNotes.update(note.get());
 			}
-		});
+		}); 
 		
 	}
 

@@ -25,7 +25,7 @@
       <RowConstraints vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" promptText="Description" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" prefHeight="255.0" prefWidth="340.0" promptText="Description" styleClass="jfxTextFieldTextArea" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <font>
             <Font size="14.0" />
          </font>
@@ -36,7 +36,7 @@
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnSpan="3">
          <children>
             <CheckBox fx:id="doneTaskDetailCB" mnemonicParsing="false" onAction="#onDoneClicked" />
-            <JFXTextField fx:id="titleTaskDetailTF" onAction="#onTitleTaskDetailTF" promptText="Title" unFocusColor="#4d4d4d00" HBox.hgrow="ALWAYS">
+            <JFXTextField fx:id="titleTaskDetailTF" onAction="#onTitleTaskDetailTF" promptText="Title" styleClass="jfxTextFieldTextArea" unFocusColor="#4d4d4d00" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

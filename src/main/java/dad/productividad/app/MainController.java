@@ -232,7 +232,7 @@ public class MainController implements Initializable {
 		view.setRight(null);
 	}
 	public void updateTaskWrapper() {
-		homeController.insertTaskFromDB();
+		homeController.insertTaskFromDB(); 
 	}
 	
 	

@@ -5,10 +5,8 @@
 @import "balanceManager.css";
 @import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
 @import "taskComponentInserterDetail.css";
+@import "settings.css";
    
-           
-   
-
    
 /**
  * <PENDIENTE DE BORRADO> 
@@ -52,6 +50,19 @@
 			-jfx-toggle-line-color:derive(black,60%);	
 		}
 	
+	/**
+	 *
+	 * Lines of jfxTextField and jfxTextArea  
+	 * 
+	 */
+		.jfxTextFieldTextArea{
+   			-jfx-focus-color:black;
+   		}
+   			.jfxTextFieldTextArea:hover{
+   				-jfx-unfocus-color:derive(black,60.0%);
+   			}
+	
+	
 	 
 		/*TASK-INSERTER */ 
 			.task-inserter{/*Color de fondo*/
@@ -75,12 +86,12 @@
 					-fx-background-color:derive(#E0DBDF,10%);
 				}
 
-			.completed-task .task-component{/*TaskComponent when completed*/
-				-fx-background-color:#BDEECE;
+			.completed-task .text{
+				-fx-strikethrough: true ;
 			}
-				.completed-task:hover .task-component{
-					-fx-background-color:#A7E8BD;
-				}
+			.uncompleted-task .text{
+				-fx-strikethrough: false ;
+			}
 				
 		/*TASK-DETAIL*/
 			.arrow-button-TaskDetail,.delete-button{
@@ -207,6 +218,29 @@
 /*------ </Botonera del borderPane lado izquierdo> ------*/
 
 /**
+ * <comboBox de settings>
+ */
+	.settings-combo, .settings-combo .list-view{
+		-fx-background-color:black;
+	}
+	.settings-combo .list-cell{
+		-fx-background-color:derive(black, 60%);
+	}
+		.settings-combo .list-cell:hover{
+			-fx-background-color:derive(black, 40%);
+		}
+		.settings-combo .list-cell:focused{
+			-fx-background-color:derive(black, 20%);
+		}	 
+	.settings-combo .text{
+		-fx-fill:white;
+	}
+	.settings-combo .arrow-button .arrow{
+		-fx-background-color:white;
+	}
+/*------ </comboBox de settings> ------*/
+
+/**
  * Miscelanea 
  */
  	.project-button{/*Radio de los botones de ProjectManager */
@@ -223,8 +257,8 @@
 /**
  * TODO MODULAR A OTRAS HOJAS DE ESTILOS Y EXTRAER LOS COLORES
  */
-/* Note */
-
+ 
+/*Notes Component*/
 .note-fav-button{
 	-fx-shape:"M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z";
 	-fx-background-color:#696969;	
@@ -266,13 +300,24 @@
 	-fx-text-fill:white;
 	-fx-background-radius:0;
 }
-
-/*Notes Manager*/
+/*Note manager */
 .note-button {
 	-fx-background-color:black;
 	-fx-min-width:30px;
 	-fx-min-height:30px;
 	-fx-shape:"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z";
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

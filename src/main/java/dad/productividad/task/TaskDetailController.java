@@ -79,6 +79,14 @@ public class TaskDetailController implements Initializable {
 		descriptionTaskDetailTA.textProperty().bindBidirectional(description);
 		creationDateLabel.textProperty().bindBidirectional(creationDate);
 		
+		doneTaskDetailCB.selectedProperty().addListener((o,ov,nv)->{
+			if(doneTaskDetailCB.selectedProperty().get()==true)
+				titleTaskDetailTF.getStyleClass().add("completed-task");
+			else {
+				titleTaskDetailTF.getStyleClass().add("uncompleted-task");
+			}
+		});
+		
 		task.addListener((o,oc,nv)->{
 			done.set(task.get().isDone());
 			favourite.set(task.get().isFavourite());
@@ -138,6 +146,7 @@ public class TaskDetailController implements Initializable {
     private void updateTaskAndWrapper() {
     	TableTasks.updateHomeTask(task.get());
     	MainController.mainController.updateTaskWrapper();
+    	MainController.mainController.updateRightSide(task.get());
     }
     
     @FXML

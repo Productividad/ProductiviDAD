@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="view" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="25.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<GridPane fx:id="view" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="25.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="SOMETIMES" />
@@ -25,7 +25,7 @@
       <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
-      <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" />
+      <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
       <Label text="Seleccione un idioma:  ">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="Aceptar" />
