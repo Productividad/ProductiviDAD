@@ -152,18 +152,18 @@
 
 	/*:NORMAL*/
 		.title-label, .table-column .label .text, .balance-manager-button,
-		.project-button,.settings-button{/*Texto de botones,columnas,topBar,...*/
+		.project-button,.settings-button,.stack-dialog .button{/*Texto de botones,columnas,topBar,...*/
 			-fx-text-fill:white;   
 			-fx-fill:white; 
 		}  
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
-		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button {   
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .button {   
 		    -fx-background-color:black;     
 		}  
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
-		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button{
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .button:hover{
 			-fx-background-color: derive(black, 60%); 
 		}
 		.table-row-cell:hover .text{
@@ -180,7 +180,7 @@
 		
 	/*:PRESSED*/
 		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
-		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button{
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .button:pressed{
 		-fx-background-color:derive(black,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/
@@ -250,10 +250,10 @@
 	    -fx-background-color:transparent;
 	}
 	.settings-button{/*Botones de Settings */
-	-fx-background-radius:20;
-	-fx-min-height:30;
-	-fx-min-width:150;
-}
+		-fx-background-radius:20;
+		-fx-min-height:30;
+		-fx-min-width:150;
+	}
 /**
  * TODO MODULAR A OTRAS HOJAS DE ESTILOS Y EXTRAER LOS COLORES
  */
@@ -308,16 +308,21 @@
 	-fx-shape:"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z";
 }
 
+.stack-dialog{
+	-fx-background-color:white;
+	-fx-border-radius:10;
+	-fx-background-radius:10;
+	-fx-effect: dropshadow(two-pass-box , black, 20, 0.0, 0, 0);
+}
+.stack-dialog .label .text{
+	-fx-fill:black;	
+}
+.stack-dialog .button{
+	-fx-background-radius:20;
+	-fx-min-height:30;
+		-fx-min-width:130;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.dialog-background{
+	 -fx-background-color:rgba(0,0,0,0.5);
+}

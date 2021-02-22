@@ -58,13 +58,13 @@ public class NotesController implements Initializable{
 		readNotes();
 		//notesWrapper.centerShapeProperty();
 		notesWrapper.clearLayout();
-		notesWrapper.setPadding(new Insets(0, 30, 30, 140));
+//		notesWrapper.setPadding(new Insets(0, 30, 30, 140));
 	}
 
 	private void readNotes() {
     	for(Note note : TableNotes.read(20)) {
 	    	NoteComponent component=new NoteComponent();
-	    	component.setNote(note);
+	    	component.setNote(note); 
 	
 	    	notesWrapper.getChildren().addAll(component);
 	    	notesWrapper.setCellHeight(314.0);

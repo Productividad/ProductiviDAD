@@ -1,22 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<StackPane fx:id="view" stylesheets="@../css/mainStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="topWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-      <ScrollPane fx:id="scrollPane" prefHeight="320.0" styleClass="transparent-scrollPane">
-         <content>
-            <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
+      <VBox fx:id="bottomPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color">
+         <children>
+            <VBox fx:id="topWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+            <ScrollPane fx:id="scrollPane" prefHeight="320.0" styleClass="transparent-scrollPane">
+               <content>
+                  <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+               <VBox.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </VBox.margin>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <GridPane fx:id="dialogPane" alignment="CENTER" styleClass="dialog-background">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <GridPane prefWidth="300.0" styleClass="stack-dialog" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints prefHeight="40.0" vgrow="NEVER" />
+                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" text="Este proceso no es reversible.  ¿Desea continuar?" GridPane.rowIndex="1" />
+                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="acceptButton" cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" text="Aceptar" />
+                        <Button fx:id="cancelButton" cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialog" text="Cancelar" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" text="Va a eliminar una tarea">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
                <padding>
-                  <Insets left="15.0" right="15.0" />
-               </padding></VBox>
-         </content>
-         <VBox.margin>
-            <Insets bottom="15.0" right="10.0" />
-         </VBox.margin>
-      </ScrollPane>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </GridPane>
    </children>
-</VBox>
+</StackPane>

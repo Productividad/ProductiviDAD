@@ -64,6 +64,8 @@ public class MenuBarController implements Initializable {
 			setSectionsDisableFalse();
 			homeManagerSection.setDisable(true);
 
+			MainController.mainController.getHomeController().hideDialog();
+			
 			new FadeIn(MainController.mainController.getHomeController().getView()).play();
 			MainController.mainController.getView().setCenter(MainController.mainController.getHomeController().getView());
 		}
@@ -126,6 +128,8 @@ public class MenuBarController implements Initializable {
 			
 			setSectionsDisableFalse();
 			settingsManagerSection.setDisable(true);
+			
+			MainController.mainController.getSettingsController().hideDialog();
 
 			new FadeIn(MainController.mainController.getSettingsController().getView()).play();
 			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());

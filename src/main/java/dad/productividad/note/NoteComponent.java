@@ -25,7 +25,7 @@ public class NoteComponent extends BorderPane implements Initializable{
 
     @FXML
     private Button favouriteButton;
-
+    
     @FXML
     private Button checkButton;
     
@@ -39,7 +39,7 @@ public class NoteComponent extends BorderPane implements Initializable{
     
 	private ObjectProperty<Note>note=new SimpleObjectProperty<>();
 
-
+ 
 	public NoteComponent() {
 		super();
 		try {
@@ -54,7 +54,7 @@ public class NoteComponent extends BorderPane implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 //		colorPicker=new NoteComponentColorPicker();
-//		setBottom(colorPicker);
+//		border.setTop(colorPicker);
 		
 		contentTA.textProperty().bindBidirectional(content);
 		

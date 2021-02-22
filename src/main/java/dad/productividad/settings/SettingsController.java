@@ -6,6 +6,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import dad.productividad.app.App;
+import dad.productividad.app.MainController;
+import dad.productividad.task.Task;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
 import javafx.beans.property.ListProperty;
@@ -19,13 +21,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 
 public class SettingsController implements Initializable {
 	
+	@FXML
+	private StackPane view;
+	
     @FXML
-    private GridPane view;
+    private GridPane bottomPane, dialogPane;
 
     @FXML
     private VBox themeWrapper;
@@ -34,14 +40,10 @@ public class SettingsController implements Initializable {
     private ScrollPane scroll;
     
     @FXML
-    private Button saveButton;
-
-    @FXML
-    private Button resetButton;
+    private Button saveButton, resetButton;
 
     @FXML
     private ComboBox<Locale> localePicker; 
-
 
     @FXML
     private ComboBox<String> currencyPicker;
@@ -53,6 +55,7 @@ public class SettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     	
         localePicker.setItems(languages);
+        
         if(App.preferences.getLocale() == null)
             localePicker.getSelectionModel().select(0);
         else
@@ -68,6 +71,9 @@ public class SettingsController implements Initializable {
 	        picker.setTheme(theme);
 	        themeWrapper.getChildren().add(picker); 
         }   
+        
+        bottomPane.disableProperty().bind(dialogPane.visibleProperty());
+        dialogPane.setVisible(false);
     }
 
     public SettingsController() {
@@ -104,9 +110,20 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
+        dialogPane.setVisible(true);
     }
 
-    public GridPane getView() {
+    @FXML
+    private void onAcceptDialog() {
+    	dialogPane.setVisible(false);
+    	MainController.mainController.getMenuBarController().onHomeManagerSection(); 
+    }
+    
+	public void hideDialog() {
+		dialogPane.setVisible(false);
+	}
+    
+    public StackPane getView() {
         return view;
     }
 }

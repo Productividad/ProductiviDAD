@@ -4,24 +4,31 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskComponent;
 import dad.productividad.task.TaskInserterController;
 import javafx.beans.property.ListProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class HomeController implements Initializable {
  
 	@FXML 
-	private VBox view;
+	private StackPane view;
 	 
 	@FXML
 	private VBox topWrapper;
@@ -31,11 +38,23 @@ public class HomeController implements Initializable {
 	
 	@FXML 
 	private VBox taskWrapper;  
-	 
+	
+	//Borrar
+	
+	@FXML
+	private VBox bottomPane;
+	
+	@FXML 
+	private GridPane dialogPane;
+	
+	@FXML
+	private Button acceptButton, cancelButton;
+	
 	private ListProperty<Task> normalTask=new SimpleListProperty<>(FXCollections.observableArrayList());
 	private ListProperty<Task> favouriteList=new SimpleListProperty<>(FXCollections.observableArrayList());
 	private ListProperty<Task> doneList=new SimpleListProperty<>(FXCollections.observableArrayList());
 
+	private ObjectProperty<Task> dialogTask=new SimpleObjectProperty<>();
 	
 	public HomeController() {   
 		try {
@@ -55,12 +74,36 @@ public class HomeController implements Initializable {
 		insertTaskFromDB();
 		
 		TaskInserterController inserter=new TaskInserterController();
-		view.getChildren().add(inserter);
-		view.setPadding(new Insets(10));
+		bottomPane.getChildren().add(inserter);
+		bottomPane.setPadding(new Insets(10));
 
- 
+		//Borrar
+		
+		bottomPane.disableProperty().bind(dialogPane.visibleProperty());
+		dialogPane.setVisible(false);
+		
 	}  
  
+	@FXML
+	private void onAcceptDialog(ActionEvent e) {
+    	TableTasks.delete(dialogTask.get());
+    	MainController.mainController.updateTaskWrapper();
+		dialogPane.setVisible(false);
+	}
+	@FXML
+	private void onCancelDialog(ActionEvent e) {
+		hideDialog();
+	}
+	
+	public void showDialog(Task task) {
+		dialogPane.setVisible(true);
+		dialogTask.set(task);
+	}
+	
+	public void hideDialog() {
+		dialogPane.setVisible(false);
+	}
+	
 	public void insertTaskFromDB() { 
 		
 		favouriteList.clear();
@@ -97,7 +140,8 @@ public class HomeController implements Initializable {
 	}
 
 	
-	public VBox getView() {
+	
+	public StackPane getView() {
 		return this.view;
 	}
 	

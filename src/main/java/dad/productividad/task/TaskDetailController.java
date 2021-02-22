@@ -151,10 +151,11 @@ public class TaskDetailController implements Initializable {
     
     @FXML
     private void onDeleteTask(ActionEvent event) {
-    	System.out.println("TODO Implementar un dialogo");
-    	TableTasks.delete(task.get());
+
+    	MainController.mainController.getHomeController().showDialog(task.get()); 
    	    MainController.mainController.setRightSideNull();
-    	MainController.mainController.updateTaskWrapper();
+   	    
+
     }
     
 	public GridPane getView() { 

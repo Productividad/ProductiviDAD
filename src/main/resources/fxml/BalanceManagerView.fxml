@@ -19,8 +19,8 @@
 <GridPane fx:id="view" hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" maxWidth="251.0" minWidth="10.0" prefWidth="251.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
-      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="150.0" prefWidth="150.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="458.0" minWidth="395.0" prefWidth="395.0" />
+      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="218.0" minWidth="155.0" prefWidth="218.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="50.0" minHeight="50.0" />
