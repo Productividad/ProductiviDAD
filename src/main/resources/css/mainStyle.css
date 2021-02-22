@@ -6,7 +6,7 @@
 @import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
 @import "taskComponentInserterDetail.css";
 @import "settings.css";
-   
+@import "stackDialog.css";
    
 /**
  * <PENDIENTE DE BORRADO> 
@@ -306,23 +306,4 @@
 	-fx-min-width:30px;
 	-fx-min-height:30px;
 	-fx-shape:"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z";
-}
-
-.stack-dialog{
-	-fx-background-color:white;
-	-fx-border-radius:10;
-	-fx-background-radius:10;
-	-fx-effect: dropshadow(two-pass-box , black, 20, 0.0, 0, 0);
-}
-.stack-dialog .label .text{
-	-fx-fill:black;	
-}
-.stack-dialog .button{
-	-fx-background-radius:20;
-	-fx-min-height:30;
-		-fx-min-width:130;
-}
-
-.dialog-background{
-	 -fx-background-color:rgba(0,0,0,0.5);
 }
