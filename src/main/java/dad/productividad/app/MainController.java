@@ -80,7 +80,7 @@ public class MainController implements Initializable {
 
 	public static MainController mainController; 
 	
-	public MainController() {
+	public MainController() { 
 		MainController.mainController = this;
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
@@ -89,11 +89,14 @@ public class MainController implements Initializable {
 			loader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
-	}  
+		}
+	}
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 		
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {

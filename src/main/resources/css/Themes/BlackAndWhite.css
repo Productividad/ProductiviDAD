@@ -1,12 +1,12 @@
      
-@import "topBar.css";  
-@import "leftBorderPane.css";
-@import "scrollBar.css";   
-@import "balanceManager.css";
-@import "createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
-@import "taskComponentInserterDetail.css";
-@import "settings.css";
-@import "stackDialog.css";
+@import "../topBar.css";  
+@import "../leftBorderPane.css";
+@import "../scrollBar.css";   
+@import "../balanceManager.css";
+@import "../createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
+@import "../taskComponentInserterDetail.css";
+@import "../settings.css";
+@import "../stackDialog.css";
    
 /**
  * <PENDIENTE DE BORRADO> 

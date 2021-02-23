@@ -1,12 +1,5 @@
 package dad.productividad.utils;
 
-import com.google.gson.Gson;
-import dad.productividad.app.App;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import org.apache.commons.io.FileUtils;
-import org.hildan.fxgson.FxGson;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,8 +7,23 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
+import org.apache.commons.io.FileUtils;
+import org.hildan.fxgson.FxGson;
+
+import com.google.gson.Gson;
+
+import dad.productividad.app.App;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Preferences {
 
+    private StringProperty theme=new SimpleStringProperty();
+    
+    private ObjectProperty<Locale> locale = new SimpleObjectProperty<>();
+	
     private static Gson GSON = FxGson
             .fullBuilder()
             .setPrettyPrinting()
@@ -37,23 +45,8 @@ public class Preferences {
     }
 
     public Preferences() {
-        setTheme(Theme.DARK);
         setLocale(Locale.getDefault());
-    }
-
-    private ObjectProperty<Theme> theme = new SimpleObjectProperty<>();
-    private ObjectProperty<Locale> locale = new SimpleObjectProperty<>();
-
-    public Theme getTheme() {
-        return theme.get();
-    }
-
-    public ObjectProperty<Theme> themeProperty() {
-        return theme;
-    }
-
-    public void setTheme(Theme theme) {
-        this.theme.set(theme);
+        setTheme("/css/Stylesheets/mainStyle.css");
     }
 
     public Locale getLocale() {
@@ -67,4 +60,19 @@ public class Preferences {
     public void setLocale(Locale locale) {
         this.locale.set(locale);
     }
+
+	public final StringProperty themeProperty() {
+		return this.theme;
+	}
+	
+
+	public final String getTheme() {
+		return this.themeProperty().get();
+	}
+	
+
+	public final void setTheme(final String theme) {
+		this.themeProperty().set(theme);
+	}
+	
 }

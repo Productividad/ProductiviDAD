@@ -37,11 +37,4 @@ public class ResourceUtils {
 	public static void copyResourceToFile(String resource,File dest)throws Exception{
 		copyInputStreamToFile(FileUtils.class.getResourceAsStream(resource),dest);
 	}
-//	
-//	public static void main(String[] args) {
-//		String css=getResourceAsString("/css/ProjectCardStyle.txt");
-//		css=css.replaceAll("\\$cardColor", "#E2B6CF");
-//		css=css.replaceAll("\\$textColor", "white");
-//		System.out.println(css);
-//	}
 }

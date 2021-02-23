@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 
+import dad.productividad.app.App;
 import dad.productividad.dataManager.TableIncomeExpenses;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
@@ -93,6 +94,7 @@ public class BalanceManagerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	   	    	
         datePicker.setValue(getIndex());
         //TODO Set typeCoinLabel from dad.productividad.balance.CurrencyType, and settings
     	typeCoinLabel.textProperty().set("€");
