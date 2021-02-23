@@ -19,8 +19,8 @@
 <GridPane fx:id="view" hgap="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" styleClass="main-color" stylesheets="@../css/mainStyle.css" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" maxWidth="251.0" minWidth="10.0" prefWidth="251.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="458.0" minWidth="395.0" prefWidth="395.0" />
-      <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="218.0" minWidth="155.0" prefWidth="218.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="395.0" prefWidth="447.0" />
+      <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="155.0" prefWidth="166.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="50.0" minHeight="50.0" />
@@ -52,7 +52,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="100.0" spacing="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+      <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <children>
             <Label fx:id="total" styleClass="balance-manager-label" text="%total">
                <font>
@@ -74,12 +74,12 @@
             <Insets right="15.0" />
          </GridPane.margin>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+      <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
          <children>
-            <JFXRadioButton fx:id="negativeFilter" mnemonicParsing="false" onAction="#onFilterNegativeCheck" text="%negative" />
-            <JFXRadioButton fx:id="positiveFilter" mnemonicParsing="false" onAction="#onFilterPositiveCheck" text="%positive" />
-             <JFXRadioButton fx:id="allFilter" mnemonicParsing="false" onAction="#onNoFilterCheck" text="%all" />
-            <JFXToggleButton fx:id="totalToggle" text="%allmonth" />
+            <JFXRadioButton fx:id="negativeFilter" mnemonicParsing="false" onAction="#onFilterNegativeCheck" text="%negative" HBox.hgrow="ALWAYS" />
+            <JFXRadioButton fx:id="positiveFilter" mnemonicParsing="false" onAction="#onFilterPositiveCheck" text="%positive" HBox.hgrow="ALWAYS" />
+             <JFXRadioButton fx:id="allFilter" mnemonicParsing="false" onAction="#onNoFilterCheck" text="%all" HBox.hgrow="ALWAYS" />
+            <JFXToggleButton fx:id="totalToggle" text="%allmonth" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
       <GridPane GridPane.rowIndex="2">
@@ -92,7 +92,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1">
                <children>
                   <Label fx:id="monthLabel" />
                   <Label fx:id="yearLabel" />

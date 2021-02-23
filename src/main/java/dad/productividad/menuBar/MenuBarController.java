@@ -58,7 +58,7 @@ public class MenuBarController implements Initializable {
 	 
 	} 
 	
-	public void onHomeManagerSection() {
+	public void onHomeManagerSection() { 
 		if (MainController.mainController.getView().getCenter() != MainController.mainController.getHomeController().getView()) {
 			
 			setSectionsDisableFalse();
@@ -70,14 +70,14 @@ public class MenuBarController implements Initializable {
 			MainController.mainController.getView().setCenter(MainController.mainController.getHomeController().getView());
 		}
     } 
-	
-	public void onCalendarManagerSection() {
+	 
+	public void onCalendarManagerSection() { 
 
     }
-    
-	public void onEntryManagerSection() {
-
-    } 
+       
+	public void onEntryManagerSection() { 
+ 
+    }  
     
 	public void onProjectManagerSection() {
 		if(MainController.mainController.getView().getCenter() !=MainController.mainController.getProjectManagerController().getView()) {
