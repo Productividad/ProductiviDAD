@@ -54,11 +54,11 @@ public class NotesController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		scrollpane.setFitToWidth(true);
-		readNotes();
-		//notesWrapper.centerShapeProperty();
-		notesWrapper.clearLayout();
-//		notesWrapper.setPadding(new Insets(0, 30, 30, 140));
+//		scrollpane.setFitToWidth(true);
+//		readNotes();
+//		//notesWrapper.centerShapeProperty();
+//		notesWrapper.clearLayout();
+////		notesWrapper.setPadding(new Insets(0, 30, 30, 140));
 	}
 
 	private void readNotes() {

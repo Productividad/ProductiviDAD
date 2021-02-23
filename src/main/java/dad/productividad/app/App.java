@@ -17,9 +17,6 @@ public class App extends Application{
 	@Override
 	public void init() throws Exception {
 		preferences = Preferences.load();
-		System.out.println(preferences.getTheme());
-		System.out.println(preferences.getLocale());
-
 		Locale.setDefault(preferences.getLocale());
 		super.init();
 	}

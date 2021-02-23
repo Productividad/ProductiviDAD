@@ -94,8 +94,7 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+		 
 		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 		
 		view.centerProperty().addListener((o,ov,nv)->{
@@ -110,7 +109,6 @@ public class MainController implements Initializable {
 			public void handle(KeyEvent e) {
 				if (e.getCode() == KeyCode.ALT) 
 	            	MainController.mainController.getMenuBarController().showTagShortcut();
-	            
 	            if(homeShortcut.match(e)) 
 	            	menuBarController.onHomeManagerSection();
 	            if(calendarShortcut.match(e))

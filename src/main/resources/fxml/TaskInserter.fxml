@@ -10,10 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <fx:root maxWidth="1.7976931348623157E308" type="HBox" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane hgap="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="task-inserter" stylesheets="@../css/mainStyle.css" HBox.hgrow="ALWAYS">
+      <GridPane hgap="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="task-inserter" HBox.hgrow="ALWAYS">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />

@@ -92,7 +92,6 @@ public class ProjectManagerController implements Initializable {
 			getProjectsList().add(result.get());
 			addProjectCard(result.get());
 		}
-
 	}
 
 	@FXML
