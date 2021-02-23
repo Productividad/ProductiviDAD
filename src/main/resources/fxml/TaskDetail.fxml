@@ -50,12 +50,12 @@
       <Button mnemonicParsing="false" onAction="#onArrowButton" styleClass="arrow-button-TaskDetail" GridPane.rowIndex="3" />
       <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label text="Tarea creada el">
+            <Label styleClass="task-detail" text="Tarea creada el">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="creationDateLabel">
+            <Label fx:id="creationDateLabel" styleClass="task-detail">
                <font>
                   <Font size="13.0" />
                </font>

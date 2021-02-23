@@ -94,15 +94,17 @@ public class MainController implements Initializable {
   
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		 
-		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 		
+		view.getStylesheets().add(getClass().getResource("/css/Themes/PrincessBubblegum.css").toExternalForm());		
+
+//		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
+				
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null) 
 					view.setRight(null);
 			}
-		});
+		}); 
 		
 		view.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -117,7 +119,7 @@ public class MainController implements Initializable {
 	            	menuBarController.onEntryManagerSection();
 	            if(projectManagerShortcut.match(e))
 	            	menuBarController.onProjectManagerSection();
-	            if(balanceShortcut.match(e))
+	            if(balanceShortcut.match(e)) 
 	            	menuBarController.onBalanceManagerSection();
 	            if(notesShortcut.match(e))
 	            	menuBarController.onNotesManagerSection();
