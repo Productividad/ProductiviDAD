@@ -20,6 +20,7 @@ public class App extends Application{
 		Locale.setDefault(preferences.getLocale());
 		super.init();
 	}
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 			
@@ -35,6 +36,7 @@ public class App extends Application{
 		primaryStage.show();
 		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
 	}
+	
 	@Override
 	public void stop() throws Exception {
 		super.stop();

@@ -31,7 +31,7 @@ public class SettingsController implements Initializable {
 	private StackPane view;
 	
     @FXML
-    private GridPane bottomPane, dialogPane;
+    private GridPane bottomPane, dialogAccept, dialogReset;
 
     @FXML
     private VBox themeWrapper;
@@ -72,8 +72,9 @@ public class SettingsController implements Initializable {
 	        themeWrapper.getChildren().add(picker); 
         }   
         
-        bottomPane.disableProperty().bind(dialogPane.visibleProperty());
-        dialogPane.setVisible(false);
+        bottomPane.disableProperty().bind(dialogAccept.visibleProperty());
+        dialogAccept.setVisible(false);
+        dialogReset.setVisible(false);
     }
 
     public SettingsController() {
@@ -89,15 +90,7 @@ public class SettingsController implements Initializable {
  
     @FXML 
     private void onResetAction(ActionEvent event) {
-        localePicker.getSelectionModel().select(Locale.ENGLISH);
-        if(App.preferences.localeProperty().get() != localePicker.getValue()) {
-            App.preferences.localeProperty().set(localePicker.getValue());
-            try {
-                App.preferences.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        dialogReset.setVisible(true);
     } 
 
     @FXML
@@ -110,17 +103,37 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
-        dialogPane.setVisible(true);
+        dialogAccept.setVisible(true);
     }
 
     @FXML
     private void onAcceptDialog() {
-    	dialogPane.setVisible(false);
+    	dialogAccept.setVisible(false);
     	MainController.mainController.getMenuBarController().onHomeManagerSection(); 
     }
     
+    @FXML
+    private void onAcceptDialogReset() {
+        localePicker.getSelectionModel().select(Locale.ENGLISH);
+        if(App.preferences.localeProperty().get() != localePicker.getValue()) {
+            App.preferences.localeProperty().set(localePicker.getValue());
+            try {
+                App.preferences.save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        dialogReset.setVisible(false);
+    }
+    
+    @FXML
+    private void onCancelDialogReset() {
+    	hideDialog();
+    }
+    
 	public void hideDialog() {
-		dialogPane.setVisible(false);
+		dialogAccept.setVisible(false);
+        dialogReset.setVisible(false);
 	}
     
     public StackPane getView() {
