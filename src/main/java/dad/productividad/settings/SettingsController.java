@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import dad.productividad.app.App;
 import dad.productividad.app.MainController;
-import dad.productividad.task.Task;
+import dad.productividad.balanceManager.CurrencyType;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
 import javafx.beans.property.ListProperty;
@@ -26,34 +26,34 @@ import javafx.scene.layout.VBox;
 
 
 public class SettingsController implements Initializable {
-	
-	@FXML
-	private StackPane view;
-	
+
+    @FXML
+    private StackPane view;
+
     @FXML
     private GridPane bottomPane, dialogAccept, dialogReset;
 
     @FXML
     private VBox themeWrapper;
-    
+
     @FXML
     private ScrollPane scroll;
-    
+
     @FXML
     private Button saveButton, resetButton;
 
     @FXML
-    private ComboBox<Locale> localePicker; 
+    private ComboBox<Locale> localePicker;
 
     @FXML
-    private ComboBox<String> currencyPicker;
+    private ComboBox<CurrencyType> currencyPicker;
 
-    
+    private ListProperty<CurrencyType> currencies = new SimpleListProperty<>(FXCollections.observableArrayList(CurrencyType.values()));
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
 
-    @Override 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	
+
         localePicker.setItems(languages);
         
         if(App.preferences.getLocale() == null)
@@ -71,8 +71,25 @@ public class SettingsController implements Initializable {
 	        picker.setTheme(theme);
 	        themeWrapper.getChildren().add(picker); 
         }   
-        
-        bottomPane.disableProperty().bind(dialogAccept.visibleProperty());
+     
+        currencyPicker.setItems(currencies);
+
+        localePicker.getSelectionModel().select(App.preferences.getLocale());
+
+        currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
+
+        scroll.setFitToWidth(true);
+
+        for (int i = 0; i <= 15; i++) {
+            Theme theme = new Theme();
+            theme.setTitle("Darkest night");
+            theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
+            ThemePicker picker = new ThemePicker();
+            picker.setTheme(theme);
+            themeWrapper.getChildren().add(picker);
+        }
+
+        bottomPane.disableProperty().bind(dialogAccept.visibleProperty());//TODO
         dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
     }
@@ -86,16 +103,16 @@ public class SettingsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    } 
- 
-    @FXML 
+    }
+
+    @FXML
     private void onResetAction(ActionEvent event) {
         dialogReset.setVisible(true);
     } 
 
     @FXML
     private void onSaveAction(ActionEvent event) {
-        if(App.preferences.localeProperty().get() != localePicker.getValue()) {
+    	if (App.preferences.localeProperty().get() != localePicker.getValue()) {
             App.preferences.localeProperty().set(localePicker.getValue());
             try {
                 App.preferences.save();
@@ -108,14 +125,14 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void onAcceptDialog() {
+    	MainController.mainController.getMenuBarController().onHomeManagerSection();
     	dialogAccept.setVisible(false);
-    	MainController.mainController.getMenuBarController().onHomeManagerSection(); 
     }
     
     @FXML
     private void onAcceptDialogReset() {
-        localePicker.getSelectionModel().select(Locale.ENGLISH);
-        if(App.preferences.localeProperty().get() != localePicker.getValue()) {
+    	localePicker.getSelectionModel().select(Locale.ENGLISH);
+        if (App.preferences.localeProperty().get() != localePicker.getValue()) {
             App.preferences.localeProperty().set(localePicker.getValue());
             try {
                 App.preferences.save();
@@ -125,7 +142,7 @@ public class SettingsController implements Initializable {
         }
         dialogReset.setVisible(false);
     }
-    
+
     @FXML
     private void onCancelDialogReset() {
     	hideDialog();

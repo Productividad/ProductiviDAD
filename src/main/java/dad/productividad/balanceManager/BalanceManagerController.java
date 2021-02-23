@@ -96,8 +96,7 @@ public class BalanceManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     	   	    	
         datePicker.setValue(getIndex());
-        //TODO Set typeCoinLabel from dad.productividad.balance.CurrencyType, and settings
-    	typeCoinLabel.textProperty().set("€");
+    	typeCoinLabel.textProperty().set(App.preferences.getCurrency().toString());
         movementsList.addAll(TableIncomeExpenses.read(getIndex(), 0));
 
         previousMonthWrapper.setOnMouseClicked(e->onPreviousMonth());

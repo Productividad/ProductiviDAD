@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
+import dad.productividad.balanceManager.CurrencyType;
 import org.apache.commons.io.FileUtils;
 import org.hildan.fxgson.FxGson;
 
@@ -20,10 +21,10 @@ import javafx.beans.property.StringProperty;
 
 public class Preferences {
 
-    private StringProperty theme=new SimpleStringProperty();
-    
+    private StringProperty theme = new SimpleStringProperty();
     private ObjectProperty<Locale> locale = new SimpleObjectProperty<>();
-	
+    private ObjectProperty<CurrencyType> currency = new SimpleObjectProperty<>();
+
     private static Gson GSON = FxGson
             .fullBuilder()
             .setPrettyPrinting()
@@ -46,7 +47,8 @@ public class Preferences {
 
     public Preferences() {
         setLocale(Locale.getDefault());
-        setTheme("/css/Stylesheets/mainStyle.css");
+        setTheme("/css/Themes/BlackAndWhite.css");
+        setCurrency(CurrencyType.EURO);
     }
 
     public Locale getLocale() {
@@ -61,18 +63,29 @@ public class Preferences {
         this.locale.set(locale);
     }
 
-	public final StringProperty themeProperty() {
-		return this.theme;
-	}
-	
+    public final StringProperty themeProperty() {
+        return this.theme;
+    }
 
-	public final String getTheme() {
-		return this.themeProperty().get();
-	}
-	
 
-	public final void setTheme(final String theme) {
-		this.themeProperty().set(theme);
-	}
-	
+    public final String getTheme() {
+        return this.themeProperty().get();
+    }
+
+
+    public final void setTheme(final String theme) {
+        this.themeProperty().set(theme);
+    }
+
+    public CurrencyType getCurrency() {
+        return currency.get();
+    }
+
+    public ObjectProperty<CurrencyType> currencyProperty() {
+        return currency;
+    }
+
+    public void setCurrency(CurrencyType currency) {
+        this.currency.set(currency);
+    }
 }
