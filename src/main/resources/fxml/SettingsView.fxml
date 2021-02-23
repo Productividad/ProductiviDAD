@@ -29,12 +29,12 @@
         </rowConstraints>
          <children>
             <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
-            <Label text="Seleccione un idioma:  ">
+            <Label text="%picklang">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label text="Seleccione una moneda:  " GridPane.rowIndex="1">
+            <Label text="%pickcurr" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -42,11 +42,11 @@
             <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="Aceptar" />
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="Reset" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%accept" />
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
                </children>
             </HBox>
-            <Label text="Seleccione un tema:" GridPane.rowIndex="2">
+            <Label text="%picktheme" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -86,13 +86,13 @@
                   <RowConstraints prefHeight="50.0" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER" text="Algunos cambios no se aplicarán hasta que reinicie la aplicación" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" text="%mustrestart" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" text="Aceptar" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" text="%accept" />
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" text="Ha modificado los ajustes">
+                  <Label alignment="CENTER" text="%modified">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -122,14 +122,14 @@
                   <RowConstraints prefHeight="50.0" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER" text="Se reestablecerán los ajustes por defecto" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" text="%willreset" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset" text="Aceptar" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset" text="Cancelar" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset" text="%accept" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset" text="%cancel" />
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" text="¿Desea reestablecer los ajustes?">
+                  <Label alignment="CENTER" text="%wantmodify">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

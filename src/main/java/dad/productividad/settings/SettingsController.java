@@ -10,6 +10,7 @@ import dad.productividad.app.MainController;
 import dad.productividad.balanceManager.CurrencyType;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -55,12 +56,7 @@ public class SettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         localePicker.setItems(languages);
-        
-        if(App.preferences.getLocale() == null)
-            localePicker.getSelectionModel().select(0);
-        else
-            localePicker.getSelectionModel().select(App.preferences.getLocale());
-         
+
         scroll.setFitToWidth(true);	 
 
         for(int i=0;i<=15;i++) {
@@ -70,13 +66,18 @@ public class SettingsController implements Initializable {
 	        ThemePicker picker=new ThemePicker();
 	        picker.setTheme(theme);
 	        themeWrapper.getChildren().add(picker); 
-        }   
-     
+        }
+
+
+
         currencyPicker.setItems(currencies);
 
         localePicker.getSelectionModel().select(App.preferences.getLocale());
 
         currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
+
+        saveButton.disableProperty().bind(Bindings.equal(localePicker.getSelectionModel().getSelectedItem(), App.preferences.localeProperty())
+        );
 
         scroll.setFitToWidth(true);
 
@@ -92,6 +93,8 @@ public class SettingsController implements Initializable {
         bottomPane.disableProperty().bind(dialogAccept.visibleProperty());//TODO
         dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
+
+
     }
 
     public SettingsController() {
