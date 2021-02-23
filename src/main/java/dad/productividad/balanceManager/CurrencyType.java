@@ -2,7 +2,7 @@ package dad.productividad.balanceManager;
 
 public enum CurrencyType {
 
-    EURO("€"), POUND("£"), DOLAR("$"), YEN("¥"), SWISS_FRANC("₣"), YUAN("¥");
+    EURO("€"), POUND("£"), DOLAR("$"), YEN("¥"), SWISS_FRANC("₣");
     private final String text;
 
     CurrencyType(final String text) {
