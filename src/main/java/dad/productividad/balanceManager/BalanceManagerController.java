@@ -105,6 +105,7 @@ public class BalanceManagerController implements Initializable {
         nextMonthWrapper.setDisable(true);
         
         setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0), 0));
+        
         index.addListener((observable, oldValue, newValue) -> {
             if (newValue.getMonthValue() != getIndex().getMonthValue())
             	nextMonthWrapper.setDisable(true);

@@ -32,10 +32,7 @@
 
 /*CardComponent*/
 
-#cardSection{
-	-fx-border-color:black, transparent, transparent, transparent;
-	-fx-border-width:2 0 0 0;
-}
+
 #cardSection:hover #textSection{
     -fx-background-color:$cardColor;   
 }

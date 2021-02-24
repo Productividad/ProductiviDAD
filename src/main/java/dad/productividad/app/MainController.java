@@ -79,15 +79,15 @@ public class MainController implements Initializable {
 	private MenuBarController menuBarController;
 
 	public static MainController mainController; 
-	
+	 
 	public MainController() { 
-		MainController.mainController = this;
+		MainController.mainController = this; 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
 			loader.setResources(ResourceBundle.getBundle("i18n/strings", Locale.getDefault()));
 			loader.setController(this);
 			loader.load();
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 		}
 	}
@@ -96,17 +96,17 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		view.getStylesheets().add(getClass().getResource("/css/Themes/PrincessBubblegum.css").toExternalForm());		
-
+ 
 //		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 				
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
-				if(view.getRight()!=null) 
+				if(view.getRight()!=null)  
 					view.setRight(null);
 			}
 		}); 
 		
-		view.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		view.setOnKeyPressed(new EventHandler<KeyEvent>() { 
 			@Override
 			public void handle(KeyEvent e) {
 				if (e.getCode() == KeyCode.ALT) 

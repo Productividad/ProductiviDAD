@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -25,21 +26,29 @@
       <RowConstraints vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" prefHeight="255.0" prefWidth="340.0" promptText="Description" styleClass="jfxTextFieldTextArea" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" prefHeight="255.0" prefWidth="340.0" promptText="Description" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
+         <styleClass>
+            <String fx:value="jfxTextFieldTextArea" />
+            <String fx:value="text-color" />
+         </styleClass>
       </JFXTextArea>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" GridPane.columnSpan="3">
          <children>
             <CheckBox fx:id="doneTaskDetailCB" mnemonicParsing="false" onAction="#onDoneClicked" />
-            <JFXTextField fx:id="titleTaskDetailTF" onAction="#onTitleTaskDetailTF" promptText="Title" styleClass="jfxTextFieldTextArea" unFocusColor="#4d4d4d00" HBox.hgrow="ALWAYS">
+            <JFXTextField fx:id="titleTaskDetailTF" onAction="#onTitleTaskDetailTF" promptText="Title" unFocusColor="#4d4d4d00" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
+               <styleClass>
+                  <String fx:value="jfxTextFieldTextArea" />
+                  <String fx:value="text-color" />
+               </styleClass>
             </JFXTextField>
             <CheckBox fx:id="favouriteTaskDetailCB" mnemonicParsing="false" onAction="#onFavouriteClicked" />
          </children>
@@ -50,12 +59,12 @@
       <Button mnemonicParsing="false" onAction="#onArrowButton" styleClass="arrow-button-TaskDetail" GridPane.rowIndex="3" />
       <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label styleClass="task-detail" text="Tarea creada el">
+            <Label styleClass="text-color" text="Tarea creada el">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="creationDateLabel" styleClass="task-detail">
+            <Label fx:id="creationDateLabel" styleClass="text-color">
                <font>
                   <Font size="13.0" />
                </font>

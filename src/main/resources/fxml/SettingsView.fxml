@@ -29,12 +29,12 @@
         </rowConstraints>
          <children>
             <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
-            <Label text="%picklang">
+            <Label styleClass="text-color" text="%picklang">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label text="%pickcurr" GridPane.rowIndex="1">
+            <Label styleClass="text-color" text="%pickcurr" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -46,7 +46,7 @@
                   <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
                </children>
             </HBox>
-            <Label text="%picktheme" GridPane.rowIndex="2">
+            <Label styleClass="text-color" text="%picktheme" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

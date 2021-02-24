@@ -43,7 +43,6 @@ public class TaskInserterController extends HBox implements Initializable{
 	 
     @FXML
     private void onEnter(ActionEvent event) {
-    	System.out.println("bnij");
     	insertTask();
     }
 

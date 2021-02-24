@@ -7,18 +7,6 @@
 #monthLabel,#yearLabel, .jfx-radio-button .text,.jfx-toggle-button .text{
 	-fx-font-weight:bold;
 }
- 
-#positiveRB,#positiveFilter{ 
-	-jfx-selected-color:#138A36;
-}
-
-#negativeRB,#negativeFilter{ 
-	-jfx-selected-color:#F76C5E;
-}
-
-#allFilter{
-	-jfx-selected-color:#094D92;
-}
 
 #datePicker .date-picker-display-node{ /*DatePicker*/
 	-jfx-unfocus-color:transparent;

@@ -23,7 +23,7 @@
           <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="%projectManager" GridPane.columnSpan="2">
+            <Label styleClass="text-color" text="%projectManager" GridPane.columnSpan="2">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

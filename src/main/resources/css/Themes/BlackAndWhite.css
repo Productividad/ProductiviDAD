@@ -48,6 +48,25 @@
 		#totalToggle{
 			-jfx-toggle-color:black;
 			-jfx-toggle-line-color:derive(black,60%);	
+			
+			-jfx-untoggle-color:black;
+			-jfx-untoggle-line-color:derive(black,60%);	
+		}
+
+	/** 
+	 * Colores de los radioButton y los toggleButton de balance 
+	 */	
+	
+		#positiveRB,#positiveFilter{ /* RadioButtons positivos */
+		-jfx-selected-color:#008148;
+		}
+		
+		#negativeRB,#negativeFilter{ /* RadioButtons negativos */
+			-jfx-selected-color:#F76C5E;
+		}
+		
+		#allFilter{/* RadioButton para ver todos los gastos, tanto positivos como negativos */
+			-jfx-selected-color:#094D92;
 		}
 	
 	/**
