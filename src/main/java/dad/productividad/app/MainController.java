@@ -62,12 +62,11 @@ public class MainController implements Initializable {
  
 	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
 	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
-	private final KeyCombination entryShortcut=new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
-	private final KeyCombination projectManagerShortcut=new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
-	private final KeyCombination notesShortcut=new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
-	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
-	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
-	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT8, KeyCombination.ALT_DOWN);	
+	private final KeyCombination projectManagerShortcut=new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+	private final KeyCombination notesShortcut=new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
 	
 	private ProjectManagerController projectManagerController;
 	private NotesController notasController;
@@ -112,9 +111,7 @@ public class MainController implements Initializable {
 	            if(homeShortcut.match(e)) 
 	            	menuBarController.onHomeManagerSection();
 	            if(calendarShortcut.match(e))
-	            	menuBarController.onCalendarManagerSection();
-	            if(entryShortcut.match(e))
-	            	menuBarController.onEntryManagerSection();
+	            	menuBarController.onTimePlannerManagerSection();
 	            if(projectManagerShortcut.match(e))
 	            	menuBarController.onProjectManagerSection();
 	            if(balanceShortcut.match(e)) 
@@ -137,7 +134,7 @@ public class MainController implements Initializable {
 			}
 		}); 
 		
-		projectManagerController = new ProjectManagerController();
+		projectManagerController = new ProjectManagerController(); 
 		notasController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();

@@ -78,7 +78,6 @@ public class SettingsController implements Initializable {
 
         hideDialog();
 
-
     }
 
     public SettingsController() {

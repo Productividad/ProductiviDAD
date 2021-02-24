@@ -23,16 +23,16 @@ public class MenuBarController implements Initializable {
     private VBox view;
 
     @FXML
-    private GridPane homeManagerSection,calendarManagerSection,entryManagerSection,projectManagerSection,
+    private GridPane homeManagerSection,timePlannerManagerSection,projectManagerSection,
     				 notesManagerSection,balanceManagerSection,pomodoroManagerSection,settingsManagerSection,
     				 githubSection;
 
     @FXML
-    private Label homeTag, calendarTag, entryReaderTag, projectManagerTag, ideasTag,
-    			  balanceManagerTag, timePlannerTag, toolsTag, githubTag;
+    private Label homeTag, timePlannerTag, projectManagerTag, ideasTag, 
+    			  balanceManagerTag, pomodoroTag, toolsTag, githubTag;
     @FXML
-    private Label homeShortcut,calendarShortCut,entryReaderShortCut,projectManagerShortcut,
-    			  ideasShortcut,balanceManagerShortcut, timePlannerShortcut,toolsShortcut;
+    private Label homeShortcut,timePlannerShortCut,projectManagerShortcut,
+    			  ideasShortcut,balanceManagerShortcut, pomodoroShortcut,toolsShortcut;
 
 	public MenuBarController() {
 		try {
@@ -49,8 +49,7 @@ public class MenuBarController implements Initializable {
 		homeManagerSection.setDisable(true);  
 		
 		homeManagerSection.setOnMouseClicked(event->onHomeManagerSection());
-		calendarManagerSection.setOnMouseClicked(event->onCalendarManagerSection());
-		entryManagerSection.setOnMouseClicked(event->onEntryManagerSection());
+		timePlannerManagerSection.setOnMouseClicked(event->onTimePlannerManagerSection());
 		projectManagerSection.setOnMouseClicked(event->onProjectManagerSection());
 		notesManagerSection.setOnMouseClicked(event->onNotesManagerSection());
 		balanceManagerSection.setOnMouseClicked(event->onBalanceManagerSection());
@@ -73,13 +72,10 @@ public class MenuBarController implements Initializable {
 		}
     } 
 	 
-	public void onCalendarManagerSection() { 
+	public void onTimePlannerManagerSection() { 
 
     }
        
-	public void onEntryManagerSection() { 
- 
-    }  
     
 	public void onProjectManagerSection() {
 		if(MainController.mainController.getView().getCenter() !=MainController.mainController.getProjectManagerController().getView()) {
@@ -140,7 +136,7 @@ public class MenuBarController implements Initializable {
 			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());
 		}
     } 
-  
+   
     private void onGithubSection() {
 		try {
 		    Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
@@ -154,50 +150,45 @@ public class MenuBarController implements Initializable {
     
     public void showTagShortcut() {
 		homeTag.textProperty().set("Inicio");
-		calendarTag.textProperty().set("Calendario");
-		entryReaderTag.textProperty().set("Entradas");
+		timePlannerTag.textProperty().set("Planificador");
 		projectManagerTag.textProperty().set("Proyectos");
 		ideasTag.textProperty().set("Notas");
 		balanceManagerTag.textProperty().set("Balance");
-		timePlannerTag.textProperty().set("Pomodoro");
+		pomodoroTag.textProperty().set("Pomodoro");
 		toolsTag.textProperty().set("Opciones");
 		githubTag.textProperty().set("Github");
     	
     	homeShortcut.textProperty().set("Alt+1");
-    	calendarShortCut.textProperty().set("Alt+2");
-    	entryReaderShortCut.textProperty().set("Alt+3");
-    	projectManagerShortcut.textProperty().set("Alt+4");
-    	ideasShortcut.textProperty().set("Alt+5");
-    	balanceManagerShortcut.textProperty().set("Alt+6");
-    	timePlannerShortcut.textProperty().set("Alt+7");
-    	toolsShortcut.textProperty().set("Alt+8");
+    	timePlannerShortCut.textProperty().set("Alt+2");
+    	projectManagerShortcut.textProperty().set("Alt+3");
+    	ideasShortcut.textProperty().set("Alt+4");
+    	balanceManagerShortcut.textProperty().set("Alt+5");
+    	pomodoroShortcut.textProperty().set("Alt+6");
+    	toolsShortcut.textProperty().set("Alt+7");
     }
     public void hideTagShortcut() {
 		homeTag.textProperty().set("");
-		calendarTag.textProperty().set("");
-		entryReaderTag.textProperty().set("");
+		timePlannerTag.textProperty().set("");
 		projectManagerTag.textProperty().set("");
 		ideasTag.textProperty().set("");
 		balanceManagerTag.textProperty().set("");
-		timePlannerTag.textProperty().set("");
+		pomodoroTag.textProperty().set("");
 		toolsTag.textProperty().set("");
 		githubTag.textProperty().set("");
     	
 		homeShortcut.textProperty().set(""); 
-		calendarShortCut.textProperty().set(""); 
-		entryReaderShortCut.textProperty().set("");
+		timePlannerShortCut.textProperty().set(""); 
 		projectManagerShortcut.textProperty().set(""); 
 		ideasShortcut.textProperty().set("");
 		balanceManagerShortcut.textProperty().set("");
-		timePlannerShortcut.textProperty().set("");
+		pomodoroShortcut.textProperty().set("");
 		toolsShortcut.textProperty().set("");
     }
      
 	private void setSectionsDisableFalse() {
 		
 		homeManagerSection.setDisable(false);  
-		calendarManagerSection.setDisable(false);  
-		entryManagerSection.setDisable(false);  
+		timePlannerManagerSection.setDisable(false);  
 		projectManagerSection.setDisable(false);  
 		projectManagerSection.setDisable(false);  
 		notesManagerSection.setDisable(false);   
