@@ -110,7 +110,7 @@ public class TaskDetailController implements Initializable {
 		descriptionTaskDetailTA.focusedProperty().addListener((o,ov,nv)->{
 			if(description.get()!=null) {
 				task.get().setDescription(description.get());
-		    	TableTasks.updateHomeTask(task.get());
+		    	TableTasks.update(task.get());
 			} 
 		});
 	}       
@@ -144,7 +144,7 @@ public class TaskDetailController implements Initializable {
     } 
     
     private void updateTaskAndWrapper() {
-    	TableTasks.updateHomeTask(task.get());
+    	TableTasks.update(task.get());
     	MainController.mainController.updateTaskWrapper();
     	MainController.mainController.updateRightSide(task.get());
     }

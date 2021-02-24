@@ -81,7 +81,7 @@ public class TaskComponent extends VBox implements Initializable {
     	
     	task.get().setDone(doneCheckBox.selectedProperty().get());
     	MainController.mainController.updateRightSide(task.get());
-    	TableTasks.updateHomeTask(task.get());
+    	TableTasks.update(task.get());
     	MainController.mainController.updateTaskWrapper();
     }
 
@@ -89,7 +89,7 @@ public class TaskComponent extends VBox implements Initializable {
     private void onFavouriteClicked(ActionEvent event) {
     	task.get().setFavourite(favouriteCheckBox.selectedProperty().get());
     	MainController.mainController.updateRightSide(task.get());
-    	TableTasks.updateHomeTask(task.get());
+    	TableTasks.update(task.get());
     	MainController.mainController.updateTaskWrapper();
     }
 	
