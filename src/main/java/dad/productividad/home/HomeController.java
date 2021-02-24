@@ -59,6 +59,7 @@ public class HomeController implements Initializable {
 	public HomeController() {   
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HomeView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 			loader.setController(this);
 			loader.load(); 
 		} catch (IOException e) {   
