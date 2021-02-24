@@ -7,7 +7,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import animatefx.animation.FadeIn;
+import dad.productividad.app.App;
 import dad.productividad.app.MainController;
+import dad.productividad.settings.SettingsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -130,6 +132,9 @@ public class MenuBarController implements Initializable {
 			settingsManagerSection.setDisable(true);
 			
 			MainController.mainController.getSettingsController().hideDialog();
+			SettingsController.selectedTheme=App.preferences.getTheme();
+			MainController.mainController.getSettingsController().setAllThemesDisableFalse();
+			MainController.mainController.getSettingsController().setSelectedThemeFromJSON();
 
 			new FadeIn(MainController.mainController.getSettingsController().getView()).play();
 			MainController.mainController.getView().setCenter(MainController.mainController.getSettingsController().getView());

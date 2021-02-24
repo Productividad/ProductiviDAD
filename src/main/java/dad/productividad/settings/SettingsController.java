@@ -174,7 +174,7 @@ public class SettingsController implements Initializable {
         themeWrapper.getChildren().addAll(pickerBW,pickerPB);
 	}
 	
-	private void setSelectedThemeFromJSON() {
+	public void setSelectedThemeFromJSON() {
 			
 		if(pickerBW.getTheme().getPath().equals(App.preferences.getTheme())) 
 			pickerBW.setDisable(true);
