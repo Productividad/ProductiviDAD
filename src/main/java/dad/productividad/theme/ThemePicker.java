@@ -40,8 +40,6 @@ public class ThemePicker extends GridPane implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		themeTitle.textProperty().bindBidirectional(title);		
-		setStyle("-fx-background-radius:5px; -fx-background-color:#222222;");
-		themeTitle.setStyle("-fx-text-fill:white;");
 		
 		theme.addListener((o,ov,nv)->{
 			

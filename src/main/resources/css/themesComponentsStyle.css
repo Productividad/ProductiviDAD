@@ -1,0 +1,12 @@
+
+.theme-component{
+	-fx-background-radius:5px;
+}
+
+.black-and-white-theme{
+	-fx-background-color:black;
+}
+	.black-and-white-theme .text{
+		-fx-fill:white;
+	}
+

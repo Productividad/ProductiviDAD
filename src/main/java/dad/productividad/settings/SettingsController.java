@@ -59,35 +59,13 @@ public class SettingsController implements Initializable {
 
         scroll.setFitToWidth(true);	 
 
-        for(int i=0;i<=15;i++) {
-	        Theme theme=new Theme();
-	        theme.setTitle("Darkest night");
-	        theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
-	        ThemePicker picker=new ThemePicker();
-	        picker.setTheme(theme);
-	        themeWrapper.getChildren().add(picker); 
-        }
-
-
-
         currencyPicker.setItems(currencies);
 
         localePicker.getSelectionModel().select(App.preferences.getLocale());
 
         currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
 
-
-
-        scroll.setFitToWidth(true);
-
-        for (int i = 0; i <= 15; i++) {
-            Theme theme = new Theme();
-            theme.setTitle("Darkest night");
-            theme.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
-            ThemePicker picker = new ThemePicker();
-            picker.setTheme(theme);
-            themeWrapper.getChildren().add(picker);
-        }
+        setThemes();
 
         bottomPane.disableProperty().bind(dialogAccept.visibleProperty());//TODO
         dialogAccept.setVisible(false);
@@ -155,6 +133,26 @@ public class SettingsController implements Initializable {
         dialogReset.setVisible(false);
 	}
     
+	private void setThemes() {
+		
+        Theme blackAndWhite = new Theme();
+        blackAndWhite.setTitle("Black and white");
+        blackAndWhite.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
+        ThemePicker pickerBW = new ThemePicker();
+        pickerBW.setTheme(blackAndWhite);
+        pickerBW.getStyleClass().addAll("theme-component","black-and-white-theme");
+        
+        Theme princessBubblegum = new Theme();
+        princessBubblegum.setTitle("Princess Bubblegum");
+        princessBubblegum.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
+        ThemePicker pickerPB = new ThemePicker();
+        pickerPB.setTheme(princessBubblegum);
+        
+        themeWrapper.getChildren().addAll(pickerBW,pickerPB);
+		
+
+	}
+	
     public StackPane getView() {
         return view;
     }
