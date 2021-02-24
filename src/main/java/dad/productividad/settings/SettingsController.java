@@ -134,6 +134,15 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
+        
+        if(!App.preferences.currencyProperty().get().equals(currencyPicker.getValue())) {
+        	App.preferences.currencyProperty().set(currencyPicker.getValue());
+        	try {
+        		App.preferences.save();
+        	}catch (IOException e) {
+                e.printStackTrace();
+			}
+        }
     	dialogAccept.setVisible(false);
     	MainController.mainController.changeTheme();
     	MainController.mainController.getMenuBarController().onHomeManagerSection();

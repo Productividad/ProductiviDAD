@@ -146,7 +146,6 @@ public class MenuBarController implements Initializable {
 		    e.printStackTrace();
 		}
     }
-  
     
     public void showTagShortcut() {
 		homeTag.textProperty().set("Inicio");
