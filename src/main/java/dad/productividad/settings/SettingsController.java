@@ -76,10 +76,7 @@ public class SettingsController implements Initializable {
 
         currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
 
-
-        bottomPane.disableProperty().bind(dialogAccept.visibleProperty());//TODO
-        dialogAccept.setVisible(false);
-        dialogReset.setVisible(false);
+        hideDialog();
 
 
     }
@@ -95,28 +92,33 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * Reset button of bottomPane. Set dialogReset visible
+     * @param event
+     */
     @FXML
     private void onResetAction(ActionEvent event) {
         dialogReset.setVisible(true);
     } 
-
+    
+    /**
+     * Accept button of bottomPane. Set dialogAccept visible
+     * @param event
+     */
     @FXML
     private void onSaveAction(ActionEvent event) {
-    	if (App.preferences.localeProperty().get() != localePicker.getValue()) {
-            App.preferences.localeProperty().set(localePicker.getValue());
-            try {
-                App.preferences.save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         dialogAccept.setVisible(true);
     }
-
+    
+    /**
+     * Accept button on acceptDialog. 
+     * Checks if any preferences are updated and change the JSON preferences file and
+     * change the center of mainController borderPane to homeController view
+     */
     @FXML
     private void onAcceptDialog() {
-    	localePicker.getSelectionModel().select(Locale.ENGLISH);
-        if (App.preferences.localeProperty().get() != localePicker.getValue()) {
+    	
+    	if (!App.preferences.localeProperty().get().equals(localePicker.getValue())) {
             App.preferences.localeProperty().set(localePicker.getValue());
             try {
                 App.preferences.save();
@@ -124,6 +126,7 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
+    	
         if(!App.preferences.themeProperty().get().equals(selectedTheme)) {
         	App.preferences.themeProperty().set(selectedTheme);
             try {
@@ -137,22 +140,34 @@ public class SettingsController implements Initializable {
     	MainController.mainController.getMenuBarController().onHomeManagerSection();
     }
     
+    /**
+     * Accept button in reset dialog
+     */
     @FXML
     private void onAcceptDialogReset() {
     	//TODO Resetear las cosas de resetear
         dialogReset.setVisible(false);
     }
 
+    /**
+     * Cancel button in reset dialog
+     */
     @FXML
     private void onCancelDialogReset() {
     	hideDialog();
     }
     
+    /**
+     * Hide dialogAccept and DialogReset
+     */
 	public void hideDialog() {
 		dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
 	}
     
+	/**
+	 * Set the themes availables on themeWrapper
+	 */
 	private void setThemes() {
 		
 		//Black and White
@@ -174,6 +189,9 @@ public class SettingsController implements Initializable {
         themeWrapper.getChildren().addAll(pickerBW,pickerPB);
 	}
 	
+	/**
+	 * Set the selected themePicker on themeWrapper from the preferences JSON
+	 */
 	public void setSelectedThemeFromJSON() {
 			
 		if(pickerBW.getTheme().getPath().equals(App.preferences.getTheme())) 
@@ -184,11 +202,18 @@ public class SettingsController implements Initializable {
 		
 	}
 	
+	/**
+	 * Set all the themePickers on themeWrapper disable(false)
+	 */
 	public void setAllThemesDisableFalse() {
 		pickerBW.setDisable(false);
 		pickerPB.setDisable(false);
 	}
 	
+	/**
+	 * Return the view of this controller
+	 * @return StackPane
+	 */
     public StackPane getView() {
         return view;
     }
