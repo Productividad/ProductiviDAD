@@ -103,12 +103,13 @@ public class BalanceManagerController implements Initializable {
         nextMonthWrapper.setOnMouseClicked(e -> onNextMonth());
 
         nextMonthWrapper.setDisable(true);
-        if (getNextIndex() == null)
-            previousMonthWrapper.setDisable(true);
 
         if (!movementsList.isEmpty())
             setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0), 0));
 
+        if (getNextIndex() == null)
+            previousMonthWrapper.setDisable(true);
+        
         index.addListener((observable, oldValue, newValue) -> {
             if (newValue.getMonthValue() != getIndex().getMonthValue())
                 nextMonthWrapper.setDisable(true);
