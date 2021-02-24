@@ -14,6 +14,8 @@ public class Theme {
 	private StringProperty color4=new SimpleStringProperty();
 	private StringProperty color5=new SimpleStringProperty();
 
+	private StringProperty path=new SimpleStringProperty();
+	
 	public Theme() {
 		
 	}
@@ -122,7 +124,20 @@ public class Theme {
 		this.color5Property().set(color5);
 	}
 	
+	public final StringProperty pathProperty() {
+		return this.path;
+	}
+	
 
+	public final String getPath() {
+		return this.pathProperty().get();
+	}
+	
+
+	public final void setPath(final String path) {
+		this.pathProperty().set(path);
+	}
+	
 	public void setPalette(String color0,String color1,String color2, String color3, String color4, String color5) {
 		
 		this.color0.set(color0);
@@ -132,6 +147,5 @@ public class Theme {
 		this.color4.set(color4);
 		this.color5.set(color5);
 	}
-	
-	
+
 }

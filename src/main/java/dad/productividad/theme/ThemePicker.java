@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dad.productividad.app.MainController;
+import dad.productividad.settings.SettingsController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -40,10 +42,10 @@ public class ThemePicker extends GridPane implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		themeTitle.textProperty().bindBidirectional(title);		
-		
+		 
 		theme.addListener((o,ov,nv)->{
 			
-			setPalette(theme.get());
+			setPalette(theme.get()); 
 			title.set(theme.get().getTitle());
 			
 		});
@@ -53,8 +55,9 @@ public class ThemePicker extends GridPane implements Initializable {
 	}
 
 	private void onMouseClicked() {
-		
-		System.out.println("Me has pulsado");
+		MainController.mainController.getSettingsController().setAllThemesDisableFalse();
+		setDisable(true);
+		SettingsController.selectedTheme=getTheme().getPath();
 	} 
 
 	private void setPalette(Theme theme) {

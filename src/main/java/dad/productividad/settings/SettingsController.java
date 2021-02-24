@@ -52,9 +52,20 @@ public class SettingsController implements Initializable {
     private ListProperty<CurrencyType> currencies = new SimpleListProperty<>(FXCollections.observableArrayList(CurrencyType.values()));
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
 
+    public static String selectedTheme;
+    
+    private ThemePicker pickerBW = new ThemePicker();
+    private ThemePicker pickerPB = new ThemePicker();
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    	selectedTheme=App.preferences.getTheme();
+    	
+        setThemes();
+
+        setSelectedThemeFromJSON();
+    	
         localePicker.setItems(languages);
 
         scroll.setFitToWidth(true);	 
@@ -65,7 +76,6 @@ public class SettingsController implements Initializable {
 
         currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
 
-        setThemes();
 
         bottomPane.disableProperty().bind(dialogAccept.visibleProperty());//TODO
         dialogAccept.setVisible(false);
@@ -105,12 +115,6 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void onAcceptDialog() {
-    	MainController.mainController.getMenuBarController().onHomeManagerSection();
-    	dialogAccept.setVisible(false);
-    }
-    
-    @FXML
-    private void onAcceptDialogReset() {
     	localePicker.getSelectionModel().select(Locale.ENGLISH);
         if (App.preferences.localeProperty().get() != localePicker.getValue()) {
             App.preferences.localeProperty().set(localePicker.getValue());
@@ -120,6 +124,22 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
+        if(!App.preferences.themeProperty().get().equals(selectedTheme)) {
+        	App.preferences.themeProperty().set(selectedTheme);
+            try {
+                App.preferences.save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    	dialogAccept.setVisible(false);
+    	MainController.mainController.changeTheme();
+    	MainController.mainController.getMenuBarController().onHomeManagerSection();
+    }
+    
+    @FXML
+    private void onAcceptDialogReset() {
+    	//TODO Resetear las cosas de resetear
         dialogReset.setVisible(false);
     }
 
@@ -135,22 +155,38 @@ public class SettingsController implements Initializable {
     
 	private void setThemes() {
 		
+		//Black and White
         Theme blackAndWhite = new Theme();
         blackAndWhite.setTitle("Black and white");
-        blackAndWhite.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
-        ThemePicker pickerBW = new ThemePicker();
+        blackAndWhite.setPalette("transparent", "transparent", "transparent", "#FFFFFF", "#E0DBDF", "#4C4C4C");
+        blackAndWhite.setPath("/css/Themes/BlackAndWhite.css");
         pickerBW.setTheme(blackAndWhite);
         pickerBW.getStyleClass().addAll("theme-component","black-and-white-theme");
         
+        //Princess Bubblegum
         Theme princessBubblegum = new Theme();
         princessBubblegum.setTitle("Princess Bubblegum");
-        princessBubblegum.setPalette("#B3B689", "#93C763", "#4E87BF", "#8CBBAD", "#EC7600", "#7CCADD");
-        ThemePicker pickerPB = new ThemePicker();
+        princessBubblegum.setPalette("transparent", "transparent", "transparent", "#E4E0E4", "#F5D8DA", "#EBB3B4");
+        princessBubblegum.setPath("/css/Themes/PrincessBubblegum.css");
         pickerPB.setTheme(princessBubblegum);
+        pickerPB.getStyleClass().addAll("theme-component","princess-bubblegum-theme");
         
         themeWrapper.getChildren().addAll(pickerBW,pickerPB);
+	}
+	
+	private void setSelectedThemeFromJSON() {
+			
+		if(pickerBW.getTheme().getPath().equals(App.preferences.getTheme())) 
+			pickerBW.setDisable(true);
 		
-
+		if(pickerPB.getTheme().getPath().equals(App.preferences.getTheme()))
+			pickerPB.setDisable(true);
+		
+	}
+	
+	public void setAllThemesDisableFalse() {
+		pickerBW.setDisable(false);
+		pickerPB.setDisable(false);
 	}
 	
     public StackPane getView() {

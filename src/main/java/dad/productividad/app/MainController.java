@@ -91,13 +91,11 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-  
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		view.getStylesheets().add(getClass().getResource("/css/Themes/PrincessBubblegum.css").toExternalForm());		
- 
-//		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
+		 
+		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 				
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
@@ -263,6 +261,12 @@ public class MainController implements Initializable {
 	private void onMinimizeWindow(ActionEvent event) {
 		Stage stage = (Stage) view.getScene().getWindow();
 		stage.setIconified(true);
+	}
+	
+	public void changeTheme() {
+		view.getStylesheets().clear();
+		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
+
 	}
 
 	public ProjectManagerController getProjectManagerController() {

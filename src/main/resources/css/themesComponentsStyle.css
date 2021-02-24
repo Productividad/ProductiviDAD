@@ -2,11 +2,28 @@
 .theme-component{
 	-fx-background-radius:5px;
 }
+.theme-component:disabled,.theme-component:disabled >*{
+	-fx-opacity:1;
+}
 
+/* Black and white */
 .black-and-white-theme{
 	-fx-background-color:black;
 }
+	.black-and-white-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
+	}
 	.black-and-white-theme .text{
 		-fx-fill:white;
 	}
-
+	
+/* Princess Bubblegum */
+.princess-bubblegum-theme{
+	-fx-background-color:#BB5358;
+}
+	.princess-bubblegum-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
+	}
+	.princess-bubblegum-theme .text{
+		-fx-fill:white;
+	}

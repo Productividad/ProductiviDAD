@@ -53,9 +53,9 @@
             </Label>
             <ScrollPane fx:id="scroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="transparent-scrollPane" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <content>
-                  <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="3.0">
+                  <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="7.0">
                      <padding>
-                        <Insets right="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </VBox>
                </content>
