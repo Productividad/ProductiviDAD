@@ -76,8 +76,7 @@ public class SettingsController implements Initializable {
 
         currencyPicker.getSelectionModel().select(App.preferences.getCurrency());
 
-        saveButton.disableProperty().bind(Bindings.equal(localePicker.getSelectionModel().getSelectedItem(), App.preferences.localeProperty())
-        );
+
 
         scroll.setFitToWidth(true);
 
