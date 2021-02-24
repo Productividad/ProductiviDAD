@@ -94,6 +94,7 @@ public class TableIncomeExpenses {
      * Method to get Registries from the table
      *
      * @param date
+     * @param filter 0 for all registries, 1 for positive registries, 2 for negative registries
      * @return arrayList An ArrayList of incomeExpense objects
      */
     public static List<IncomeExpense> read(LocalDate date, int filter) {
@@ -142,6 +143,12 @@ public class TableIncomeExpenses {
         return arrayList;
     }
 
+    /**
+     * Method to get month balance
+     * @param date A date from the month
+     * @param filter 0 for all registries, 1 for positive registries, 2 for negative registries
+     * @return Balance
+     */
     public static double getTotal(LocalDate date, int filter) {
         String queryAll = "SELECT SUM(amount) FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ?";
         String queryNeg = "SELECT SUM(amount) FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? AND amount < 0";
@@ -175,7 +182,11 @@ public class TableIncomeExpenses {
         }
         return amount;
     }
-
+    /**
+     * Method to get overall balance
+     * @param filter 0 for all registries, 1 for positive registries, 2 for negative registries
+     * @return Balance
+     */
     public static double getTotal(int filter) {
         String queryAll = "SELECT SUM(amount) FROM incomesExpenses";
         String queryNeg = "SELECT SUM(amount) FROM incomesExpenses WHERE amount < 0";
@@ -209,34 +220,15 @@ public class TableIncomeExpenses {
         return amount;
     }
 
-    public static boolean readContiguous(LocalDate date) {
-        String select = "SELECT ID_incomeExpense FROM incomesExpenses WHERE strftime('%m', date_incomeExpense) = ? AND strftime('%Y', date_incomeExpense) = ? ORDER BY ID_incomeExpense DESC";
-        ResultSet rs = null;
-        int id = 0;
-        try {
-            JdbcConnection.connect();
-            PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
-            pstmt.setString(1, (date.getMonthValue() < 10) ? "0" + String.valueOf(date.getMonthValue()) : String.valueOf(date.getMonthValue()));
-            pstmt.setString(2, String.valueOf(date.getYear()));
-            rs = pstmt.executeQuery();
-            if (rs.next())
-                id = rs.getInt("ID_incomeExpense");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            JdbcConnection.close();
-        }
-        if (id != 0)
-            return true;
-        else
-            return false;
-    }
-
-    //TODO use this method to find a month that isn't contiguous
-    public static LocalDate findNext(IncomeExpense incomeExpense, int filter) {
-        String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
-        String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
+    /**
+     * Method to find the next or previous Month with registries
+     * @param indexDate A date of reference
+     * @param filter 0 for next, 1 for previous
+     * @return
+     */
+    public static LocalDate findNext(LocalDate indexDate, int filter) {
+        String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
+        String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
         ResultSet rs = null;
         LocalDate date = null;
         PreparedStatement pstmt;
@@ -246,7 +238,7 @@ public class TableIncomeExpenses {
                 pstmt = JdbcConnection.connection.prepareStatement(queryNext);
             else
                 pstmt = JdbcConnection.connection.prepareStatement(queryPrevious);
-            pstmt.setString(1, incomeExpense.getDate().toString());
+            pstmt.setString(1, indexDate.toString());
             rs = pstmt.executeQuery();
             if (rs.next())
                 date = LocalDate.parse(rs.getString("date_incomeExpense"));

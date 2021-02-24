@@ -104,10 +104,16 @@ public class BalanceManagerController implements Initializable {
 
         nextMonthWrapper.setDisable(true);
 
-        if (!movementsList.isEmpty())
-            setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0), 0));
+        if (!movementsList.isEmpty()) {
+            setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0).getDate(), 0));
+            setPreviousIndex(TableIncomeExpenses.findNext(movementsList.get(0).getDate(), 1));
+        }
+        else{
+            setNextIndex(TableIncomeExpenses.findNext(getIndex(), 0));
+            setPreviousIndex(TableIncomeExpenses.findNext(getIndex(), 1));
+        }
 
-        if (getNextIndex() == null)
+        if (getPreviousIndex() == null)
             previousMonthWrapper.setDisable(true);
         
         index.addListener((observable, oldValue, newValue) -> {
@@ -122,17 +128,17 @@ public class BalanceManagerController implements Initializable {
         movementsList.addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 setIndex(newValue.get(0).getDate());
-                setNextIndex(TableIncomeExpenses.findNext(newValue.get(0), 0));
-                setPreviousIndex(TableIncomeExpenses.findNext(newValue.get(0), 1));
+                setNextIndex(TableIncomeExpenses.findNext(newValue.get(0).getDate(), 0));
+                setPreviousIndex(TableIncomeExpenses.findNext(newValue.get(0).getDate(), 1));
 
                 if (getPreviousIndex() == null)
-                    nextMonthWrapper.setDisable(true);
-                else
-                    nextMonthWrapper.setDisable(false);
-                if (getNextIndex() == null)
                     previousMonthWrapper.setDisable(true);
                 else
                     previousMonthWrapper.setDisable(false);
+                if (getNextIndex() == null)
+                    nextMonthWrapper.setDisable(true);
+                else
+                    nextMonthWrapper.setDisable(false);
                 filter();
             }
         });
@@ -250,7 +256,7 @@ public class BalanceManagerController implements Initializable {
 
     private void onPreviousMonth() {
         List<IncomeExpense> arrayList;
-        arrayList = TableIncomeExpenses.read(getNextIndex(), 0);
+        arrayList = TableIncomeExpenses.read(getPreviousIndex(), 0);
         movementsList.clear();
         movementsList.addAll(arrayList);
 
@@ -260,7 +266,7 @@ public class BalanceManagerController implements Initializable {
 
     private void onNextMonth() {
         List<IncomeExpense> arrayList;
-        arrayList = TableIncomeExpenses.read(getPreviousIndex(), 0);
+        arrayList = TableIncomeExpenses.read(getNextIndex(), 0);
         movementsList.clear();
         movementsList.addAll(arrayList);
 
