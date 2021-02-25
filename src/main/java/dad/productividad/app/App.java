@@ -45,30 +45,6 @@ public class App extends Application{
 		stage.setHeight(850);
 		stage.getIcons().add(new Image("/images/pdad_192px.png"));
 		stage.showAndAdjust();
-		
-//		App.primaryStage = primaryStage;
-//		controller=new MainController();
-//		
-//		primaryStage.setMinHeight(450);	
-//		primaryStage.setMinWidth(550);
-//		
-////		primaryStage.setMinHeight(750);	
-////		primaryStage.setMinWidth(850);
-//		BorderlessScene scene=new BorderlessScene(primaryStage, StageStyle.UNDECORATED, controller.getView());
-//
-//		scene.setMoveControl(controller.getTopBar());
-//		scene.removeDefaultCSS();
-//		
-//
-//		
-//		controller.getView().setTop(controller.getTopBar());
-//		
-//		primaryStage.setTitle("ProductiviDAD");
-//		primaryStage.setScene(scene);
-////		primaryStage.initStyle(StageStyle.UNDECORATED); 
-//		primaryStage.show();
-//		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
-
 	}
 	
 	@Override
