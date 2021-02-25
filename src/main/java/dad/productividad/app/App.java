@@ -1,6 +1,7 @@
 package dad.productividad.app;
 
 import dad.productividad.utils.Preferences;
+import dad.productividad.utils.ResizeHelper;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -35,6 +36,8 @@ public class App extends Application{
 		primaryStage.initStyle(StageStyle.UNDECORATED); 
 		primaryStage.show();
 		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
+		ResizeHelper.addResizeListener(primaryStage);
+
 	}
 	
 	@Override
