@@ -18,7 +18,7 @@ import javafx.stage.Stage;
      * Util class to handle window resizing when a stage style set to StageStyle.UNDECORATED.
      * Created on 8/15/17.
      *
-     * Czipperz improved Evgenii Kanivets who also improved  Alexander.Berg code https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage
+     * Czipperz improved Evgenii Kanivets who also improved original Alexander.Berg code https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage
      */
     public class ResizeHelper {
         static boolean isScrollbar = false;
