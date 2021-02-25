@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,37 +13,106 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="view" styleClass="main-color" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane hgap="10.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="NEVER" />
-          <ColumnConstraints hgrow="NEVER" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <VBox styleClass="main-color">
          <children>
-            <Label styleClass="text-color" text="%projectManager" GridPane.columnSpan="2">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="addProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAddProject" styleClass="project-button" text="%addProject" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="SeeOldProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onSeeOldProjects" styleClass="project-button" text="%seeOld" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <GridPane hgap="10.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints hgrow="NEVER" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label styleClass="text-color" text="%projectManager" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addProjectButton" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#onAddProject" styleClass="project-button" text="%addProject" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+            <HBox fx:id="projectCardContainer" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" VBox.vgrow="ALWAYS" />
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      </VBox>
+      <GridPane fx:id="dialogProject" alignment="CENTER" styleClass="dialog-background">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <GridPane hgap="15.0" minHeight="300.0" prefWidth="600.0" styleClass="stack-dialog" vgap="15.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints vgrow="ALWAYS" />
+                  <RowConstraints vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" spacing="15.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                     <children>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="Aceptar" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialog" styleClass="custom-button" text="Cancelar" />
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="titleTF" focusColor="#ffffff00" maxWidth="1.7976931348623157E308" minHeight="35.0" promptText="%project_title" unFocusColor="#7bc46600" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="jfxTextFieldTextArea" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                  </JFXTextField>
+                  <JFXTextArea fx:id="descriptionTA" focusColor="#405aa800" prefColumnCount="10" promptText="%description" unFocusColor="#4d4d4d00" GridPane.rowIndex="2" GridPane.rowSpan="2">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="jfxTextFieldTextArea" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                  </JFXTextArea>
+                  <JFXCheckBox fx:id="whiteText" checkedColor="#171717" minWidth="120.0" text="%white" unCheckedColor="BLACK" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <styleClass>
+                        <String fx:value="project-checkBox" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                  </JFXCheckBox>
+                  <JFXColorPicker fx:id="colorPicker" minWidth="120.0" styleClass="text-color" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXDatePicker fx:id="datePicker" defaultColor="#cf0a0a00" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" styleClass="text-color" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label styleClass="text-color" text="Configure su proyecto" GridPane.columnSpan="2">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
       </GridPane>
-      <HBox fx:id="projectCardContainer" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" VBox.vgrow="ALWAYS" />
    </children>
-</VBox>
+</StackPane>

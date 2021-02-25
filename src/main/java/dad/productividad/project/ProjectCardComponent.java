@@ -32,7 +32,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
     private Label projectTitleLabel;
 
     @FXML
-    private Label percentageLabel;  
+    private Label percentageLabel;   
   
     public ProjectCardComponent() {
     	super();
@@ -54,7 +54,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
 				progress.bind(nv.progressProperty().asString());
 				styleProjectCard();
 			}
-			
+			 
 		}); 
 		 
 		projectTitleLabel.textProperty().bindBidirectional(title); 

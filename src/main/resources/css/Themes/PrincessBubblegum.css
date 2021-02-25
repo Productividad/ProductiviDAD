@@ -3,7 +3,7 @@
 @import "../leftBorderPane.css";
 @import "../scrollBar.css";   
 @import "../balanceManager.css";
-@import "../createProjectDialog.css";/*TODO rehacer dialogo y decidir si importarlo o no*/
+@import "../ProjectManager.css";
 @import "../taskComponentInserterDetail.css";
 @import "../settings.css";
 @import "../stackDialog.css";
@@ -72,15 +72,23 @@
 	
 		.text-color, .text-color .date-picker-display-node,.balance-manager-label,
 		#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text,
-		.table-balance:row-selection:constrained-resize .placeholder .label .text{
+		.table-balance:row-selection:constrained-resize .placeholder .label .text,
+		#colorPicker .color-label .text{
 			-fx-fill:#BB5358;
 			-fx-text-fill:#BB5358;
 			-fx-prompt-text-fill:derive(#BB5358,30%);
 		}
 
 	
-	
-	 
+		/** 
+		 * Checkbox del dialogo de projectManager
+		 */
+		 	
+			.project-checkBox:determinate{
+				-jfx-unchecked-color:#BB5358;
+				-jfx-checked-color:#BB5358;
+			}
+			 
 		/*TASK-INSERTER */ 
 			.task-inserter{/*Color de fondo*/
 				-fx-background-color:white;
@@ -194,12 +202,12 @@
 
 	/*:NORMAL*/
 		.title-label, .table-column .label .text, .balance-manager-button,
-		.project-button,.settings-button,.stack-dialog .button{/*Texto de botones,columnas,topBar,...*/
+		.project-button,.settings-button,.stack-dialog .custom-button{/*Texto de botones,columnas,topBar,...*/
 			-fx-text-fill:white;   
-			-fx-fill:white; 
+			-fx-fill:white;  
 		}  
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
-		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .button {   
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button {   
 		    -fx-background-color:#BB5358;     
 		}  
 		.jfx-radio-button{
@@ -208,7 +216,7 @@
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
-		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .button:hover{
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover{
 			-fx-background-color: derive(#BB5358, 60%); 
 		}
 		.table-row-cell .text{
@@ -228,7 +236,7 @@
 		
 	/*:PRESSED*/
 		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
-		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .button:pressed{
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed{
 		-fx-background-color:derive(#BB5358,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/

@@ -226,9 +226,11 @@ public class MainController implements Initializable {
 			view.setRight(taskDetailController.getView());
 		}
 	}
+	
 	public void setRightSideNull() {
 		view.setRight(null);
 	}
+	
 	public void updateTaskWrapper() {
 		homeController.insertTaskFromDB(); 
 	}

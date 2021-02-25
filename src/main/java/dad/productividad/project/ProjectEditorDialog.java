@@ -90,12 +90,12 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 		acceptButton = (Button) getDialogPane().lookupButton(getDialogPane().getButtonTypes().get(0));
 		styleButton("white", "#000000");
 		setResultConverter(d -> onAccept(d));
-		
+		 
 		ButtonBar buttonBar=(ButtonBar)getDialogPane().lookup(".button-bar");
 		buttonBar.setStyle("-fx-background-color:derive(white, 20.00%)");
 		buttonBar.setPadding(new Insets(0,10,0,0));
-		 
-		colorPicker.setValue(new Color(0, 0, 0, 1));
+		  
+		colorPicker.setValue(new Color(0, 0, 0, 1)); 
 		
 		whiteText.selectedProperty().set(true);
 		
@@ -112,7 +112,7 @@ public class ProjectEditorDialog extends Dialog<Project> implements Initializabl
 		});
 		
 		colorPicker.valueProperty().addListener((o,ov,nv)->{
-			
+			  
 			if(whiteText.selectedProperty().get()) 
 				styleButton("white", ColorUtils.getHexString(colorPicker.getValue()));
 			else 
