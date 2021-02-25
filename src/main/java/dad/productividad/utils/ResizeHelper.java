@@ -148,7 +148,7 @@ import javafx.stage.Stage;
                     if (!Cursor.DEFAULT.equals(cursorEvent)) {
                         resizing = true;
                         if (!Cursor.W_RESIZE.equals(cursorEvent) && !Cursor.E_RESIZE.equals(cursorEvent)) {
-                            double minHeight = stage.getMinHeight() > (border * 2) ? stage.getMinHeight() : (border * 2);
+                            double minHeight = 850;
                             if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.N_RESIZE.equals(cursorEvent)
                                     || Cursor.NE_RESIZE.equals(cursorEvent)) {
                                 if (stage.getHeight() > minHeight || mouseEventY < 0) {
@@ -163,7 +163,7 @@ import javafx.stage.Stage;
                         }
 
                         if (!Cursor.N_RESIZE.equals(cursorEvent) && !Cursor.S_RESIZE.equals(cursorEvent)) {
-                            double minWidth = stage.getMinWidth() > (border * 2) ? stage.getMinWidth() : (border * 2);
+                            double minWidth = 1000;
                             if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.W_RESIZE.equals(cursorEvent)
                                     || Cursor.SW_RESIZE.equals(cursorEvent)) {
                                 if (stage.getWidth() > minWidth || mouseEventX < 0) {
