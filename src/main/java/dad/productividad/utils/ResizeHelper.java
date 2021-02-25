@@ -7,6 +7,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -17,12 +18,13 @@ import javafx.stage.Stage;
      * Util class to handle window resizing when a stage style set to StageStyle.UNDECORATED.
      * Created on 8/15/17.
      *
-     * @author Evgenii Kanivets, improving Alexander.Berg code https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage
+     * Czipperz improved Evgenii Kanivets who also improved  Alexander.Berg code https://stackoverflow.com/questions/19455059/allow-user-to-resize-an-undecorated-stage
      */
     public class ResizeHelper {
+        static boolean isScrollbar = false;
 
         public static void addResizeListener(Stage stage) {
-            addResizeListener(stage, 0, 0, Double.MAX_VALUE, Double.MAX_VALUE);
+            addResizeListener(stage, 1, 1, Double.MAX_VALUE, Double.MAX_VALUE);
         }
 
         public static void addResizeListener(Stage stage, double minWidth, double minHeight, double maxWidth, double maxHeight) {
@@ -38,9 +40,15 @@ import javafx.stage.Stage;
             resizeListener.setMaxWidth(maxWidth);
             resizeListener.setMaxHeight(maxHeight);
 
+
             ObservableList<Node> children = stage.getScene().getRoot().getChildrenUnmodifiable();
             for (Node child : children) {
-                addListenerDeeply(child, resizeListener);
+                if (child instanceof ScrollBar) {
+                    isScrollbar = true;
+                } else if (!(child instanceof ScrollBar)) {
+                    isScrollbar = false;
+                    addListenerDeeply(child, resizeListener);
+                }
             }
         }
 
@@ -54,7 +62,12 @@ import javafx.stage.Stage;
                 Parent parent = (Parent) node;
                 ObservableList<Node> children = parent.getChildrenUnmodifiable();
                 for (Node child : children) {
-                    addListenerDeeply(child, listener);
+                    if (child instanceof ScrollBar) {
+                        isScrollbar = true;
+                    } else if (!(child instanceof ScrollBar)) {
+                        isScrollbar = false;
+                        addListenerDeeply(child, listener);
+                    }
                 }
             }
         }
@@ -62,9 +75,12 @@ import javafx.stage.Stage;
         static class ResizeListener implements EventHandler<MouseEvent> {
             private Stage stage;
             private Cursor cursorEvent = Cursor.DEFAULT;
+            private boolean resizing = true;
             private int border = 4;
             private double startX = 0;
             private double startY = 0;
+            private double screenOffsetX = 0;
+            private double screenOffsetY = 0;
 
             // Max and min sizes for controlled stage
             private double minWidth;
@@ -102,7 +118,7 @@ import javafx.stage.Stage;
                         sceneWidth = scene.getWidth(),
                         sceneHeight = scene.getHeight();
 
-                if (MouseEvent.MOUSE_MOVED.equals(mouseEventType)) {
+                if (MouseEvent.MOUSE_MOVED.equals(mouseEventType) && stage.isMaximized() == false ) {
                     if (mouseEventX < border && mouseEventY < border) {
                         cursorEvent = Cursor.NW_RESIZE;
                     } else if (mouseEventX < border && mouseEventY > sceneHeight - border) {
@@ -130,13 +146,14 @@ import javafx.stage.Stage;
                     startY = stage.getHeight() - mouseEventY;
                 } else if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType)) {
                     if (!Cursor.DEFAULT.equals(cursorEvent)) {
+                        resizing = true;
                         if (!Cursor.W_RESIZE.equals(cursorEvent) && !Cursor.E_RESIZE.equals(cursorEvent)) {
                             double minHeight = stage.getMinHeight() > (border * 2) ? stage.getMinHeight() : (border * 2);
                             if (Cursor.NW_RESIZE.equals(cursorEvent) || Cursor.N_RESIZE.equals(cursorEvent)
                                     || Cursor.NE_RESIZE.equals(cursorEvent)) {
                                 if (stage.getHeight() > minHeight || mouseEventY < 0) {
                                     setStageHeight(stage.getY() - mouseEvent.getScreenY() + stage.getHeight());
-                                    stage.setY(mouseEvent.getScreenY());
+                                    stage.setY(mouseEvent.getScreenY() );
                                 }
                             } else {
                                 if (stage.getHeight() > minHeight || mouseEventY + startY - stage.getHeight() > 0) {
@@ -159,9 +176,23 @@ import javafx.stage.Stage;
                                 }
                             }
                         }
+                        resizing = false;
                     }
+                }
+
+                if (MouseEvent.MOUSE_PRESSED.equals(mouseEventType) && Cursor.DEFAULT.equals(cursorEvent) ) {
+                    resizing = false;
+                    screenOffsetX = stage.getX() - mouseEvent.getScreenX();
+                    screenOffsetY = stage.getY() - mouseEvent.getScreenY();
 
                 }
+
+                if (MouseEvent.MOUSE_DRAGGED.equals(mouseEventType) && Cursor.DEFAULT.equals(cursorEvent) && resizing == false) {
+                    stage.setX(mouseEvent.getScreenX() + screenOffsetX);
+                    stage.setY(mouseEvent.getScreenY() + screenOffsetY);
+
+                }
+
             }
 
             private void setStageWidth(double width) {
@@ -177,4 +208,5 @@ import javafx.stage.Stage;
             }
 
         }
+
     }
