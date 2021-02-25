@@ -14,7 +14,18 @@
 		<maven.compiler.source>14</maven.compiler.source>
 		<exec.mainClass>dad.productividad.app.Main</exec.mainClass>
 	</properties>
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<dependencies>
+		<dependency>
+		  <groupId>com.github.goxr3plus</groupId>
+		  <artifactId>FX-BorderlessScene</artifactId>
+		  <version>4.4.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>

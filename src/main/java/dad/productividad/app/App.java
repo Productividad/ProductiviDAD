@@ -1,20 +1,23 @@
 package dad.productividad.app;
 
 import dad.productividad.utils.Preferences;
-import dad.productividad.utils.ResizeHelper;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.util.Locale;
+
+import com.goxr3plus.fxborderlessscene.borderless.BorderlessScene;
+import com.goxr3plus.fxborderlessscene.borderless.CustomStage;
 
 public class App extends Application{
 	public static final String APP_NAME = "ProductiviDAD";
 	public static Preferences preferences;
 	private MainController controller;
 	public static Stage primaryStage;
-
+	
+	static BorderlessScene borderLessScene;
+	
 	@Override
 	public void init() throws Exception {
 		preferences = Preferences.load();
@@ -22,21 +25,49 @@ public class App extends Application{
 		super.init();
 	}
 	
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-			
-		App.primaryStage = primaryStage;
-		controller=new MainController();
-		Scene scene=new Scene(controller.getView());
 
-		controller.getView().setTop(controller.getTopBar());
+		controller=new MainController();
+
+		CustomStage stage=new CustomStage(StageStyle.UNDECORATED);
+		App.primaryStage = stage;
+		borderLessScene=stage.craftBorderlessScene(controller.getView());
 		
-		primaryStage.setTitle("ProductiviDAD");
-		primaryStage.setScene(scene);
-		primaryStage.initStyle(StageStyle.UNDECORATED); 
-		primaryStage.show();
-		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
-		ResizeHelper.addResizeListener(primaryStage);
+		controller.initActions();
+		
+		stage.setTitle("ProductiviDAD");
+		stage.setScene(borderLessScene);
+		stage.setMinWidth(750);
+		stage.setMinHeight(650);
+		stage.setWidth(950);
+		stage.setHeight(850);
+		stage.getIcons().add(new Image("/images/pdad_192px.png"));
+		stage.showAndAdjust();
+		
+//		App.primaryStage = primaryStage;
+//		controller=new MainController();
+//		
+//		primaryStage.setMinHeight(450);	
+//		primaryStage.setMinWidth(550);
+//		
+////		primaryStage.setMinHeight(750);	
+////		primaryStage.setMinWidth(850);
+//		BorderlessScene scene=new BorderlessScene(primaryStage, StageStyle.UNDECORATED, controller.getView());
+//
+//		scene.setMoveControl(controller.getTopBar());
+//		scene.removeDefaultCSS();
+//		
+//
+//		
+//		controller.getView().setTop(controller.getTopBar());
+//		
+//		primaryStage.setTitle("ProductiviDAD");
+//		primaryStage.setScene(scene);
+////		primaryStage.initStyle(StageStyle.UNDECORATED); 
+//		primaryStage.show();
+//		primaryStage.getIcons().add(new Image("/images/pdad_192px.png"));
 
 	}
 	

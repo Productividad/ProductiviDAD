@@ -25,12 +25,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -54,6 +54,9 @@ public class MainController implements Initializable {
 	@FXML
 	private ListView<String> listView;
 
+	@FXML
+	private Button closeButton, maximizeButton, minimizeButton;
+	
 	static Page todaysPage = new Page();
 	
 	private double x;
@@ -146,46 +149,6 @@ public class MainController implements Initializable {
 		  
 		todaysPage.setDate(LocalDate.now());
 		TablePages.insertPage(todaysPage);
-
-		getTopBar().setOnMouseClicked(e -> {
-			// Double click with primary mouse button->Maximize/restore window
-			if (e.getClickCount() == 2 && e.getButton().equals(MouseButton.PRIMARY)) {
-				App.primaryStage.setMaximized(!App.primaryStage.isMaximized());
-				if (App.primaryStage.isMaximized())
-					lastValueYCoodIs0 = true;
-			}
-		});
-		getTopBar().setOnMousePressed(e -> {
-			// Click with primary mouse button -> Saves x and y coordenates of mouse
-			// position
-			if (e.getButton().equals(MouseButton.PRIMARY)) {
-				x = App.primaryStage.getX() - e.getScreenX();
-				y = App.primaryStage.getY() - e.getScreenY();
-			}
-		});
-		getTopBar().setOnMouseDragged(e -> {
-			// Drag with primary mose button -> moves window to the new coordinates
-			if (e.getButton().equals(MouseButton.PRIMARY)) {
-				App.primaryStage.setX(e.getScreenX() + x);
-				App.primaryStage.setY(e.getScreenY() + y);
-			}
-		});
-		getTopBar().setOnMouseReleased(e -> {
-			// If mouse is released when the window is on top then is maximized
-			lastValueYCoodIs0 = App.primaryStage.isMaximized();
-			if (e.getScreenY() == (double) 0) {
-				App.primaryStage.setMaximized(true);
-				lastValueYCoodIs0 = App.primaryStage.isMaximized();
-				App.primaryStage.centerOnScreen();
-			}
-			// If the window was maximized when dragged down then is restored
-			else if (lastValueYCoodIs0) {
-				App.primaryStage.setMaximized(!App.primaryStage.isMaximized());
-				lastValueYCoodIs0 = App.primaryStage.isMaximized();
-				App.primaryStage.setX(e.getScreenX() + x);
-				App.primaryStage.setY(e.getScreenY() + y);
-			}
-		});
 	} 
 
 	public static Page getTodaysPage() {
@@ -243,23 +206,14 @@ public class MainController implements Initializable {
 	public GridPane getTopBar() {
 		return this.topBar;
 	}
-
-	@FXML 
-	private void onCloseWindow(ActionEvent event) {
-		Stage stage=(Stage)view.getScene().getWindow();
-    	stage.close();
-	}
-
-	@FXML
-	private void onMaximizeButton(ActionEvent event) {
-		Stage stage = (Stage) view.getScene().getWindow();
-		stage.setMaximized(!stage.isMaximized());
-	}
-
-	@FXML
-	private void onMinimizeWindow(ActionEvent event) {
-		Stage stage = (Stage) view.getScene().getWindow();
-		stage.setIconified(true);
+	
+	public void initActions() {
+		
+		App.borderLessScene.setMoveControl(getTopBar());
+		App.borderLessScene.removeDefaultCSS();
+		closeButton.setOnAction(a -> App.primaryStage.close());
+		minimizeButton.setOnAction(a -> App.primaryStage.setIconified(true));
+		maximizeButton.setOnAction(a -> App.borderLessScene.maximizeStage());
 	}
 	
 	public void changeTheme() {
@@ -330,6 +284,30 @@ public class MainController implements Initializable {
 
 	public void setMenuBarController(MenuBarController menuBarController) {
 		this.menuBarController = menuBarController;
+	}
+
+	public Button getCloseButton() {
+		return closeButton;
+	}
+
+	public void setCloseButton(Button closeButton) {
+		this.closeButton = closeButton;
+	}
+
+	public Button getMaximizeButton() {
+		return maximizeButton;
+	}
+
+	public void setMaximizeButton(Button maximizeButton) {
+		this.maximizeButton = maximizeButton;
+	}
+
+	public Button getMinimizeButton() {
+		return minimizeButton;
+	}
+
+	public void setMinimizeButton(Button minimizeButton) {
+		this.minimizeButton = minimizeButton;
 	}
 
 }

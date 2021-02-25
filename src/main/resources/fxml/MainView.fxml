@@ -11,33 +11,32 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="view" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="view" minHeight="450.0" minWidth="550.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <GridPane fx:id="topBar" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="NEVER" maxWidth="477.0" minWidth="10.0" prefWidth="32.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="849.0" minWidth="215.0" prefWidth="849.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="115.0" prefWidth="115.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="430.0" minWidth="247.0" prefWidth="430.0" />
+          <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="115.0" prefWidth="120.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="15.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
                <children>
-                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onMinimizeWindow">
+                  <Button fx:id="minimizeButton" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-fullscreen-button" />
                      </styleClass>
                   </Button>
-                  <Button maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onMaximizeButton">
+                  <Button fx:id="maximizeButton" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="fullscreen-button" />
                      </styleClass>
                   </Button>
-                  <Button maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#onCloseWindow">
+                  <Button fx:id="closeButton" maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-button" />
@@ -48,10 +47,13 @@
                   <Insets right="15.0" />
                </padding>
             </HBox>
-            <Label styleClass="title-label" text="%title" GridPane.columnIndex="1">
+            <Label styleClass="title-label" text="%title">
                <font>
                   <Font size="13.0" />
-               </font></Label>
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding></Label>
          </children>
          <styleClass>
             <String fx:value="secondary-color" />
