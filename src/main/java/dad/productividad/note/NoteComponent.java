@@ -2,14 +2,14 @@ package dad.productividad.note;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
 
+import dad.productividad.app.App;
+import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableNotes;
-import dad.productividad.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,39 +22,34 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 public class NoteComponent extends BorderPane implements Initializable{
-
-    @FXML
-    private Button favouriteButton;
     
     @FXML
     private Button checkButton;
     
     @FXML
     private JFXTextArea contentTA;
-    
-//    private NoteComponentColorPicker colorPicker;
-    
+        
 	private StringProperty content=new SimpleStringProperty();
-
-    
 	private ObjectProperty<Note>note=new SimpleObjectProperty<>();
-
  
 	public NoteComponent() {
 		super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NoteComponentView.fxml"));
 			loader.setController(this);
-			loader.setRoot(this); 
+			loader.setRoot(this);  
 			loader.load();
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-//		colorPicker=new NoteComponentColorPicker();
-//		border.setTop(colorPicker);
+
+		note.addListener((o,ov,nv)->{
+			getStylesheets().clear();
+			getStylesheets().add(getClass().getResource(note.get().getColor()).toExternalForm());		
+
+		});
 		
 		contentTA.textProperty().bindBidirectional(content);
 		
@@ -70,38 +65,20 @@ public class NoteComponent extends BorderPane implements Initializable{
 				TableNotes.update(note.get());
 			}
 		}); 
-		
+		 
 	}
-
-	private void styleNote() {
-		
-		String textColor="white";
-//		if(!getNote().isWhite())
-//			textColor="black";
-		
-		Map<String, String> params = new HashMap<>();
-		params.put("noteColor", getNote().getColor());
-		params.put("textColor", textColor);
-		
-		this.getStylesheets().setAll(CSSUtils.generateCss("/css/noteComponent.txt", params));
-	}
-
-    @FXML
-    void OnFavoritePressed(ActionEvent event) {
-
-    }
 
     @FXML
     void onDeleteNote(ActionEvent event) {
-//    	TableNotes.delete(getNote());
-    	System.out.println("Borrado");
-    	System.out.println(getNote().getId());
+    	
+    	TableNotes.delete(note.get());
+    	MainController.mainController.getNotasController().readNotes();
 
     }
 
     @FXML
     void onOpenOptions(ActionEvent event) {
-
+    	MainController.mainController.getNotasController().showDialogPane(note.get());
     }
 
 	public final ObjectProperty<Note> noteProperty() {

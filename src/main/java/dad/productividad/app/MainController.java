@@ -123,7 +123,7 @@ public class MainController implements Initializable {
 	            if(settingsShortcut.match(e))
 	            	menuBarController.onSettingsManagerSection();
 			}
-		});  
+		});   
 		 
 		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
 			@Override

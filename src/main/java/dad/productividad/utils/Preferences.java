@@ -25,8 +25,8 @@ public class Preferences {
     private ObjectProperty<Locale> locale = new SimpleObjectProperty<>();
     private ObjectProperty<CurrencyType> currency = new SimpleObjectProperty<>();
 
-    private static Gson GSON = FxGson
-            .fullBuilder()
+    private static Gson GSON = FxGson 
+            .fullBuilder() 
             .setPrettyPrinting()
             .create();
 

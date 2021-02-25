@@ -19,7 +19,7 @@ public class TableNotes {
 	 * @param note The note to be inserted
 	 */
 	public static int insertNote(Note note) {
-		String insert = "INSERT INTO notes (content_note, FK_ID_page) VALUES ( ?, ?)";
+		String insert = "INSERT INTO notes (content_note, FK_ID_page, color_note) VALUES ( ?, ?, ?)";
 		String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='notes'";
 		int id = 0;
 		try {
@@ -27,6 +27,7 @@ public class TableNotes {
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
 			pstmt.setString(1, note.getContent());
 			pstmt.setInt(2, note.getIdPage());
+			pstmt.setString(3, "/css/notes/noteComponent1.css");
 			pstmt.executeUpdate();
 
 			Statement stmt = JdbcConnection.connection.createStatement();
@@ -43,7 +44,28 @@ public class TableNotes {
 		}
 
 		return id;
+	}
+	
+	public static String returnColor(int id) {
+		String query = "SELECT color_note FROM notes WHERE ID_note=?";
+		String color="";
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(query);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
 
+			while (rs.next()) {
+				color=rs.getString("color_note");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+		
+		return color;
 	}
 
 	/**
@@ -66,9 +88,29 @@ public class TableNotes {
 		} finally {
 			JdbcConnection.close();
 		}
-
 	}
 
+	/**
+	 * Method to update an existing note from the table
+	 * 
+	 * @param note The note from the registry to be updated
+	 * 
+	 */
+	public static void updateColor(Note note) {
+		String update = "UPDATE notes SET  color_note = ? WHERE ID_note = ?";
+		try {
+			JdbcConnection.connect();
+			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
+			pstmt.setString(1, note.getColor());
+			pstmt.setInt(2, note.getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcConnection.close();
+		}
+	}
+	
 	/**
 	 * Method to delete an existing note from the table
 	 * 
@@ -112,6 +154,7 @@ public class TableNotes {
 				note.setId(rs.getInt("ID_note"));
 				note.setContent(rs.getString("content_note"));
 				note.setIdPage(rs.getInt("FK_ID_page"));
+				note.setColor(rs.getString("color_note"));
 
 				arrayList.add(note);
 			}

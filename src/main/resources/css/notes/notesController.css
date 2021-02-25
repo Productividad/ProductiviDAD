@@ -1,0 +1,59 @@
+.note-button {
+	-fx-background-color:black;
+	-fx-min-width:30px;
+	-fx-min-height:30px;
+	-fx-shape:"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z";
+}
+
+ .color-square{
+ 	-fx-background-radius:50%;
+ }
+ 
+ #colorPick1{
+ 	 -fx-background-color:#D56062;	
+ }
+ 	#colorPick1:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 
+ #colorPick2{
+ 	 -fx-background-color:#DBAD6A;
+ }
+  	#colorPick2:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 	
+ #colorPick3{
+ 	 -fx-background-color:#4C9865;
+ }
+  	#colorPick3:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 	
+ #colorPick4{
+ 	 -fx-background-color:#E4B8D9;
+ }
+  	#colorPick4:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 	
+ #colorPick5{
+ 	 -fx-background-color:#A4A8D1;
+ }
+  	#colorPick5:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 	
+ #colorPick6{
+ 	 -fx-background-color:#93A3BC;
+ }
+  	#colorPick6:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}
+ 	
+ #colorPick7{
+ 	 -fx-background-color:#6494AA;
+ }
+  	#colorPick7:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 10, 0.0, 0, 0);
+ 	}

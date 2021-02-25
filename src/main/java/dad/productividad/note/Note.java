@@ -11,16 +11,9 @@ public class Note {
 	//TODO Implementar color de texto y nota en la base de datos¿?
 	private StringProperty color=new SimpleStringProperty();
 
-	public Note(String content,String color) {
-		this.content.set(content);
-		this.color.set(color);
-	}
 	public Note() {
 		
 	}
-
-	
-	
 
 	public final StringProperty contentProperty() {
 		return this.content;
