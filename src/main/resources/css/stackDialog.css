@@ -4,7 +4,7 @@
 	-fx-background-radius:10;
 	-fx-effect: dropshadow(two-pass-box , black, 20, 0.0, 0, 0);
 }
-.stack-dialog .label .text{
+.stack-dialog .custom-label .text{
 	-fx-fill:black;	
 }
 .stack-dialog .custom-button{

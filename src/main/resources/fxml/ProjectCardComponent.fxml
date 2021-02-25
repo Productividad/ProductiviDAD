@@ -28,7 +28,7 @@
                      </font></Button>
                </children>
             </VBox>
-            <VBox fx:id="textSection" alignment="CENTER" VBox.vgrow="SOMETIMES">
+            <VBox fx:id="textSection" alignment="CENTER" prefWidth="1.0" VBox.vgrow="SOMETIMES">
                <children>
                   <Label fx:id="projectTitleLabel" text="gsrsr">
                      <padding>

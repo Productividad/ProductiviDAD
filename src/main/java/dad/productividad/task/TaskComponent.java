@@ -61,18 +61,18 @@ public class TaskComponent extends VBox implements Initializable {
 		
 		task.addListener((o,ov,nv)->{
 			title.set(task.get().getTitle());
-			done.set(task.get().isDone());
+			done.set(task.get().isDone()); 
 			favourite.set(task.get().isFavourite());
-		});
+		}); 
 		
-		setOnMouseClicked(event->onMouseClicked()); 
+		setOnMouseClicked(event->onMouseClicked());  
 	}
 
 	private void onMouseClicked() {
     	MainController.mainController.setTaskOnRightSide(task.get());
 	}
 	
-    @FXML
+    @FXML 
     private void onDoneClicked(ActionEvent event) {   	
     	if(doneCheckBox.selectedProperty().get()) {
 	    	mediaPlayer=new MediaPlayer(sound);

@@ -58,7 +58,7 @@ public class TableProjects {
 	 * 
 	 */
 	public static void update(Project project) {
-		String update = "UPDATE project SET "
+		String update = "UPDATE projects SET "
 				+ "title_project = ?, progress = ?, description_project = ?,"
 				+ " completed_project = ?, deadline_project = ?, color_project = ?, whitetext_project = ? "
 				+ "WHERE ID_project = ?";

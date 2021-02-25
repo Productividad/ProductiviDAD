@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 
+
 public class ProjectCardComponent extends VBox implements Initializable {
 
 	private StringProperty title=new SimpleStringProperty();
@@ -67,14 +68,13 @@ public class ProjectCardComponent extends VBox implements Initializable {
     }
 
     @FXML
-    private void onDeleteProject(ActionEvent event) {
-    	TableProjects.delete(getProject());
-    	
+    private void onDeleteProject(ActionEvent event) {	
+    	MainController.mainController.getProjectManagerController().showDeleteDialog(project.get());
     } 
  
     @FXML
     private void onEditProject(ActionEvent event) {
-
+    	MainController.mainController.getProjectManagerController().showModifyDialog(project.get());
     }
 	/**
 	 * Check the color values from a project and applies it to a projectCard

@@ -74,7 +74,7 @@
                         <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialog" styleClass="custom-button" text="Cancelar" />
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" text="Selecciona un color:">
+                  <Label alignment="CENTER" styleClass="custom-label" text="Selecciona un color:">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
