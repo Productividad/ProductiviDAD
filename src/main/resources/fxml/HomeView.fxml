@@ -14,6 +14,23 @@
 
 <StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <VBox fx:id="bottomPane" styleClass="main-color">
+         <children>
+            <VBox fx:id="topWrapper" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
+            <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" styleClass="transparent-scrollPane">
+               <content>
+                  <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+               <VBox.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </VBox.margin>
+            </ScrollPane>
+         </children>
+      </VBox>
       <GridPane fx:id="dialogPane" alignment="CENTER" styleClass="dialog-background">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
@@ -51,22 +68,5 @@
             </GridPane>
          </children>
       </GridPane>
-      <VBox fx:id="bottomPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="main-color">
-         <children>
-            <VBox fx:id="topWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
-            <ScrollPane fx:id="scrollPane" styleClass="transparent-scrollPane">
-               <content>
-                  <VBox fx:id="taskWrapper" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="3.0">
-                     <padding>
-                        <Insets left="15.0" right="15.0" />
-                     </padding>
-                  </VBox>
-               </content>
-               <VBox.margin>
-                  <Insets bottom="15.0" right="10.0" />
-               </VBox.margin>
-            </ScrollPane>
-         </children>
-      </VBox>
    </children>
 </StackPane>

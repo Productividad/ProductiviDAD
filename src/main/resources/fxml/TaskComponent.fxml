@@ -13,14 +13,14 @@
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="task-component">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" prefWidth="1.0" />
             <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="50.0" prefWidth="50.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="NEVER" />
          </rowConstraints>
          <children>
-            <Label fx:id="taskTitleLabel" styleClass="text-color" text="Label" GridPane.columnIndex="1">
+            <Label fx:id="taskTitleLabel" styleClass="text-color" text="label" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

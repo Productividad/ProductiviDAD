@@ -42,21 +42,21 @@ public class TaskComponent extends VBox implements Initializable {
 	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
     
-    public TaskComponent() {
+    public TaskComponent() { 
 		super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskComponent.fxml"));
 			loader.setController(this);
 			loader.setRoot(this); 
 			loader.load();
-		} catch (IOException e) {e.printStackTrace();}
+		} catch (IOException e) {e.printStackTrace();}  
     } 
     
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		taskTitleLabel.textProperty().bindBidirectional(title);
-		doneCheckBox.selectedProperty().bindBidirectional(done);
+	public void initialize(URL location, ResourceBundle resources) { 
+		  
+		taskTitleLabel.textProperty().bindBidirectional(title);         
+		doneCheckBox.selectedProperty().bindBidirectional(done);    
 		favouriteCheckBox.selectedProperty().bindBidirectional(favourite);
 		
 		task.addListener((o,ov,nv)->{
