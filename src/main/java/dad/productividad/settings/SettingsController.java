@@ -41,7 +41,7 @@ public class SettingsController implements Initializable {
     private ScrollPane scroll;
 
     @FXML
-    private Button saveButton, resetButton;
+    private Button saveButton, resetButton, exportButton, importButton;
 
     @FXML
     private ComboBox<Locale> localePicker;
@@ -108,6 +108,15 @@ public class SettingsController implements Initializable {
     private void onSaveAction(ActionEvent event) {
         dialogAccept.setVisible(true);
     }
+
+    @FXML
+    private void onExportAction () {
+
+    }
+    @FXML
+    private void onImportAction () {
+
+    }
     
     /**
      * Accept button on acceptDialog. 
@@ -172,6 +181,8 @@ public class SettingsController implements Initializable {
 		dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
 	}
+
+
     
 	/**
 	 * Set the themes availables on themeWrapper
