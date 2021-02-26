@@ -26,21 +26,21 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 # Uso de la aplicación ProductiviDAD
 
-## Pestaña de Home <img src="/github_images/house-door-fill.svg " width="70" />
+## <img src="/github_images/house-door-fill.svg " width="60" />Pestaña de Home 
 
-## Pestaña de Tareas <img src="/github_images/clock-fill.svg " width="70" />
+## <img src="/github_images/clock-fill.svg " width="60" />Pestaña de Tareas 
 
-## Pestaña de Proyectos <img src="/github_images/columns-gap.svg " width="70" />
+## <img src="/github_images/columns-gap.svg " width="60" />Pestaña de Proyectos 
 
-## Pestaña de Balance <img src="/github_images/wallet2.svg " width="70" />
+## <img src="/github_images/wallet2.svg " width="60" />Pestaña de Balance 
 
-## Pestaña de Notas <img src="/github_images/lightbulb.svg " width="70"/>
+## <img src="/github_images/lightbulb.svg " width="60"/>Pestaña de Notas 
 
-## Pestaña Pomodoro <img src="/github_images/tomato.svg"  width="70 "/>
+## <img src="/github_images/tomato.svg"  width="60"/>Pestaña Pomodoro 
 
-## Pestaña de Ajustes<img src="/github_images/gear-wide-connected.svg " width="70" />
+## <img src="/github_images/gear-wide-connected.svg " width="60" />Pestaña de Ajustes
 
-## Pestaña de GitHub<img src="/github_images/github.svg " width="70" />
+## <img src="/github_images/github.svg " width="60" />Pestaña de GitHub
 
 
 
