@@ -17,7 +17,9 @@ public class App extends Application{
 	public static Stage primaryStage;
 	
 	static BorderlessScene borderLessScene;
-	
+	/*TODO check if DB exists in user home
+		USE copyResourceToFile from ResourceUtils
+	 */
 	@Override
 	public void init() throws Exception {
 		preferences = Preferences.load();
