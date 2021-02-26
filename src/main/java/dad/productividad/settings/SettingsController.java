@@ -1,15 +1,19 @@
 package dad.productividad.settings;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import dad.productividad.app.App;
 import dad.productividad.app.MainController;
 import dad.productividad.balanceManager.CurrencyType;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
+import dad.productividad.utils.Preferences;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -24,6 +28,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
 
 public class SettingsController implements Initializable {
@@ -53,22 +58,22 @@ public class SettingsController implements Initializable {
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
 
     public static String selectedTheme;
-    
+
     private ThemePicker pickerBW = new ThemePicker();
     private ThemePicker pickerPB = new ThemePicker();
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-    	selectedTheme=App.preferences.getTheme();
-    	
+        selectedTheme = App.preferences.getTheme();
+
         setThemes();
 
         setSelectedThemeFromJSON();
-    	
+
         localePicker.setItems(languages);
 
-        scroll.setFitToWidth(true);	 
+        scroll.setFitToWidth(true);
 
         currencyPicker.setItems(currencies);
 
@@ -93,15 +98,17 @@ public class SettingsController implements Initializable {
 
     /**
      * Reset button of bottomPane. Set dialogReset visible
+     *
      * @param event
      */
     @FXML
     private void onResetAction(ActionEvent event) {
         dialogReset.setVisible(true);
-    } 
-    
+    }
+
     /**
      * Accept button of bottomPane. Set dialogAccept visible
+     *
      * @param event
      */
     @FXML
@@ -110,23 +117,89 @@ public class SettingsController implements Initializable {
     }
 
     @FXML
-    private void onExportAction () {
-
+    private void onExportAction() throws IOException {
+        FileChooser saveDialog = new FileChooser();
+        saveDialog.setInitialDirectory(new File("."));
+        saveDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
+        File file = saveDialog.showSaveDialog(App.getPrimaryStage());
+        if (file != null) {
+            FileOutputStream fos = new FileOutputStream(file);
+            ZipOutputStream zipOut = new ZipOutputStream(fos);
+            File fileToZip = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/preferences.json");
+            FileInputStream fis = new FileInputStream(fileToZip);
+            ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
+            zipOut.putNextEntry(zipEntry);
+            byte[] bytes = new byte[1024];
+            int length;
+            while((length = fis.read(bytes)) >= 0) {
+                zipOut.write(bytes, 0, length);
+            }
+            zipOut.close();
+            fis.close();
+            fos.close();
+        }
     }
+
     @FXML
-    private void onImportAction () {
+    private void onImportAction() {
+        try {
+            FileChooser importDialog = new FileChooser();
+            importDialog.setInitialDirectory(new File("."));
+            importDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
+            File file = importDialog.showOpenDialog(App.getPrimaryStage());
+            if (file != null) {
+                File destDir = new File(System.getProperty("user.home"), "." + App.APP_NAME);
+                byte[] buffer = new byte[1024];
+                ZipInputStream zis = new ZipInputStream(new FileInputStream(file));
+                ZipEntry zipEntry = zis.getNextEntry();
+                while (zipEntry != null) {
+                    File newFile = new File(destDir, String.valueOf(zipEntry));
+                    if (zipEntry.isDirectory()) {
+                        if (!newFile.isDirectory() && !newFile.mkdirs()) {
+                            throw new IOException("Failed to create directory " + newFile);
+                        }
+                    } else {
+                        // fix for Windows-created archives
+                        File parent = newFile.getParentFile();
+                        if (!parent.isDirectory() && !parent.mkdirs()) {
+                            throw new IOException("Failed to create directory " + parent);
+                        }
 
+                        // write file content
+                        FileOutputStream fos = new FileOutputStream(newFile);
+                        int len;
+                        while ((len = zis.read(buffer)) > 0) {
+                            fos.write(buffer, 0, len);
+                        }
+                        fos.close();
+                    }
+                    zipEntry = zis.getNextEntry();
+                }
+                zis.closeEntry();
+                zis.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Preferences.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
+
     /**
-     * Accept button on acceptDialog. 
+     * Accept button on acceptDialog.
      * Checks if any preferences are updated and change the JSON preferences file and
      * change the center of mainController borderPane to homeController view
      */
     @FXML
     private void onAcceptDialog() {
-    	
-    	if (!App.preferences.localeProperty().get().equals(localePicker.getValue())) {
+
+        if (!App.preferences.localeProperty().get().equals(localePicker.getValue())) {
             App.preferences.localeProperty().set(localePicker.getValue());
             try {
                 App.preferences.save();
@@ -134,35 +207,35 @@ public class SettingsController implements Initializable {
                 e.printStackTrace();
             }
         }
-    	
-        if(!App.preferences.themeProperty().get().equals(selectedTheme)) {
-        	App.preferences.themeProperty().set(selectedTheme);
+
+        if (!App.preferences.themeProperty().get().equals(selectedTheme)) {
+            App.preferences.themeProperty().set(selectedTheme);
             try {
                 App.preferences.save();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        
-        if(!App.preferences.currencyProperty().get().equals(currencyPicker.getValue())) {
-        	App.preferences.currencyProperty().set(currencyPicker.getValue());
-        	try {
-        		App.preferences.save();
-        	}catch (IOException e) {
+
+        if (!App.preferences.currencyProperty().get().equals(currencyPicker.getValue())) {
+            App.preferences.currencyProperty().set(currencyPicker.getValue());
+            try {
+                App.preferences.save();
+            } catch (IOException e) {
                 e.printStackTrace();
-			}
+            }
         }
-    	dialogAccept.setVisible(false);
-    	MainController.mainController.changeTheme();
-    	MainController.mainController.getMenuBarController().onHomeManagerSection();
+        dialogAccept.setVisible(false);
+        MainController.mainController.changeTheme();
+        MainController.mainController.getMenuBarController().onHomeManagerSection();
     }
-    
+
     /**
      * Accept button in reset dialog
      */
     @FXML
     private void onAcceptDialogReset() {
-    	//TODO Resetear las cosas de resetear
+        //TODO Resetear las cosas de resetear
         dialogReset.setVisible(false);
     }
 
@@ -171,68 +244,97 @@ public class SettingsController implements Initializable {
      */
     @FXML
     private void onCancelDialogReset() {
-    	hideDialog();
+        hideDialog();
     }
-    
+
     /**
      * Hide dialogAccept and DialogReset
      */
-	public void hideDialog() {
-		dialogAccept.setVisible(false);
+    public void hideDialog() {
+        dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
-	}
+    }
+
+    private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
+        if (fileToZip.isHidden()) {
+            return;
+        }
+        if (fileToZip.isDirectory()) {
+            if (fileName.endsWith("/")) {
+                zipOut.putNextEntry(new ZipEntry(fileName));
+                zipOut.closeEntry();
+            } else {
+                zipOut.putNextEntry(new ZipEntry(fileName + "/"));
+                zipOut.closeEntry();
+            }
+            File[] children = fileToZip.listFiles();
+            for (File childFile : children) {
+                zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
+            }
+            return;
+        }
+        FileInputStream fis = new FileInputStream(fileToZip);
+        ZipEntry zipEntry = new ZipEntry(fileName);
+        zipOut.putNextEntry(zipEntry);
+        byte[] bytes = new byte[1024];
+        int length;
+        while ((length = fis.read(bytes)) >= 0) {
+            zipOut.write(bytes, 0, length);
+        }
+        fis.close();
+    }
 
 
-    
-	/**
-	 * Set the themes availables on themeWrapper
-	 */
-	private void setThemes() {
-		
-		//Black and White
+    /**
+     * Set the themes availables on themeWrapper
+     */
+    private void setThemes() {
+
+        //Black and White
         Theme blackAndWhite = new Theme();
         blackAndWhite.setTitle("Black and white");
         blackAndWhite.setPalette("transparent", "transparent", "transparent", "#FFFFFF", "#E0DBDF", "#4C4C4C");
         blackAndWhite.setPath("/css/Themes/BlackAndWhite.css");
         pickerBW.setTheme(blackAndWhite);
-        pickerBW.getStyleClass().addAll("theme-component","black-and-white-theme");
-        
+        pickerBW.getStyleClass().addAll("theme-component", "black-and-white-theme");
+
         //Princess Bubblegum
         Theme princessBubblegum = new Theme();
         princessBubblegum.setTitle("Princess Bubblegum");
         princessBubblegum.setPalette("transparent", "transparent", "transparent", "#E4E0E4", "#F5D8DA", "#EBB3B4");
         princessBubblegum.setPath("/css/Themes/PrincessBubblegum.css");
         pickerPB.setTheme(princessBubblegum);
-        pickerPB.getStyleClass().addAll("theme-component","princess-bubblegum-theme");
-        
-        themeWrapper.getChildren().addAll(pickerBW,pickerPB);
-	}
-	
-	/**
-	 * Set the selected themePicker on themeWrapper from the preferences JSON
-	 */
-	public void setSelectedThemeFromJSON() {
-			
-		if(pickerBW.getTheme().getPath().equals(App.preferences.getTheme())) 
-			pickerBW.setDisable(true);
-		
-		if(pickerPB.getTheme().getPath().equals(App.preferences.getTheme()))
-			pickerPB.setDisable(true);
-		
-	}
-	
-	/**
-	 * Set all the themePickers on themeWrapper disable(false)
-	 */
-	public void setAllThemesDisableFalse() {
-		pickerBW.setDisable(false);
-		pickerPB.setDisable(false);
-	}
-	
-	/**
-	 * Return the view of this controller
-	 * @return StackPane
-	 */
+        pickerPB.getStyleClass().addAll("theme-component", "princess-bubblegum-theme");
+
+        themeWrapper.getChildren().addAll(pickerBW, pickerPB);
+    }
+
+    /**
+     * Set the selected themePicker on themeWrapper from the preferences JSON
+     */
+    public void setSelectedThemeFromJSON() {
+
+        if (pickerBW.getTheme().getPath().equals(App.preferences.getTheme()))
+            pickerBW.setDisable(true);
+
+        if (pickerPB.getTheme().getPath().equals(App.preferences.getTheme()))
+            pickerPB.setDisable(true);
+
+    }
+
+    /**
+     * Set all the themePickers on themeWrapper disable(false)
+     */
+    public void setAllThemesDisableFalse() {
+        pickerBW.setDisable(false);
+        pickerPB.setDisable(false);
+    }
+
+    /**
+     * Return the view of this controller
+     *
+     * @return StackPane
+     */
     public StackPane getView() {
         return view;
     }

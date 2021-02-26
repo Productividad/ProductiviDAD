@@ -56,4 +56,7 @@ public class App extends Application{
 		launch(args);
 	}
 
+	public static Stage getPrimaryStage() {
+		return primaryStage;
+	}
 }
