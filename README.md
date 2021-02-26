@@ -28,13 +28,33 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## <img src="/github_images/house-door-fill.svg " width="60" />Pestaña de Home 
 
+
+
+
+
+
+
+
+
 ## <img src="/github_images/clock-fill.svg " width="60" />Pestaña de Tareas 
 
 ## <img src="/github_images/columns-gap.svg " width="60" />Pestaña de Proyectos 
 
 ## <img src="/github_images/wallet2.svg " width="60" />Pestaña de Balance 
 
-## <img src="/github_images/lightbulb.svg " width="60"/>Pestaña de Notas 
+## <img src="/github_images/lightbulb.svg " width="60"/>Pestaña de Notas
+
+​	Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón **+** 	ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con 	clicar en el área central de la nota y usar el teclado.
+
+​		[gif]
+
+​	Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
+
+​		[gif]
+
+​	Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha.
+
+​		[gif] 
 
 ## <img src="/github_images/tomato.svg"  width="60"/>Pestaña Pomodoro 
 
