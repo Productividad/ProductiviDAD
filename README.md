@@ -1,4 +1,4 @@
-![](/github_images/header.png)
+![](/github_images/header.png =100x20)
 
 Aplicación de gestión de tareas (productividad)
 
@@ -22,7 +22,7 @@ Los desarrolladores de APP (y realmente cualquier trabajador), si realizan un se
 
 # Uso de la aplicación ProductiviDAD
 
-## Pestaña de Home <img src="https://github.com/dam-dad/ProductiviDAD/blob/main/github_images/clock-fill.svg style="width: 4%;" />
+## Pestaña de Home <img src="\github_images\house-door-fill.svg " style="width: 4%;" />
 
 ## Pestaña de Tareas <img src="\github_images\clock-fill.svg " style="width: 4%;" />
 
