@@ -28,7 +28,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## Pestaña de Home <img src="/github_images/house-door-fill.svg " style="width: 7%;" />
 
-## Pestaña de Tareas <img src="/github_images/clock-fill.svg " style="width: 7%;" />
+## Pestaña de Tareas <img src="/github_images/clock-fill.svg " width="200" />
 
 ## Pestaña de Proyectos <img src="/github_images/columns-gap.svg " style="width: 8%;" />
 
@@ -36,7 +36,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## Pestaña de Notas <img src="/github_images/lightbulb.svg " style="width: 8%;" />
 
-## Pestaña Pomodoro <img src="/github_images/tomato.svg" style="width: 8%;" />
+## Pestaña Pomodoro <img src="/github_images/tomato.svg"  width="200 "/>
 
 ## Pestaña de Ajustes<img src="/github_images/gear-wide-connected.svg " style="width: 8%;" />
 
