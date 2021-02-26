@@ -7,8 +7,6 @@ public class Note {
 	private StringProperty content = new SimpleStringProperty();
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private IntegerProperty idPage = new SimpleIntegerProperty();
-	
-	//TODO Implementar color de texto y nota en la base de datos¿?
 	private StringProperty color=new SimpleStringProperty();
 
 	public Note() {
