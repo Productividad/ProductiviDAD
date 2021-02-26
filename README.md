@@ -26,9 +26,9 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 # Uso de la aplicación ProductiviDAD
 
-## Pestaña de Home ![](C:\Users\jesus\eclipse-workspace-2dam\ProductiviDAD\github_images\house-door-fill.svg)
+## Pestaña de Home ![](\github_images\house-door-fill.svg)
 
-## Pestaña de Tareas <img src="\github_images\clock-fill.svg " style="width: 4%;" />
+## Pestaña de Tareas <img src="/github_images/clock-fill.svg " style="width: 4%;" />
 
 ## Pestaña de Proyectos <img src="\github_images\columns-gap.svg " style="width: 4%;" />
 
