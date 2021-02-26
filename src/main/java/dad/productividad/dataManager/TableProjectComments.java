@@ -78,7 +78,7 @@ public class TableProjectComments {
      * @param projectComments The projectComment to be deleted
      */
     public static void delete(ProjectComments projectComments) {
-        String delete = "DELETE FROM notes WHERE ID_note = ?";
+        String delete = "DELETE FROM project_comments WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
