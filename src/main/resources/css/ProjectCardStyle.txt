@@ -1,37 +1,12 @@
-#view, #scroll, #taskContainer, .scroll-pane .viewport{
-    -fx-background-color:derive($cardColor,70.0%);
+.project-detail-header{
+    -fx-background-color:$cardColor;   
 }
-.scroll-bar:horizontal .track,
-.scroll-bar:vertical .track{
-    -fx-background-color :derive($cardColor,40.0%);					
+.text-color-card{
+    -fx-text-fill: $textColor;
+    -fx-fill: $textColor;
+    -fx-font-weight:bold;
+    -fx-font-size:16;
 }
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
-    -fx-background-color:$cardColor;
-}
-
-#addTaskButton
-{
-	-fx-background-radius:20;
-	-fx-background-color:$cardColor;		
-	-fx-text-fill:$textColor;	
-}
-#addTaskButton:hover
-{
-	-fx-background-color:derive($cardColor,30.0%);		
-}
-#addTaskButton:pressed
-{
-	-fx-background-color:derive($cardColor,20.0%);		
-}
-
-.scroll-bar:horizontal .thumb:hover,
-.scroll-bar:vertical .thumb:hover {
-        -fx-background-color :derive($cardColor,10.0%);	
-}
-
-/*CardComponent*/
-
 
 #cardSection:hover #textSection{
     -fx-background-color:$cardColor;   
@@ -53,3 +28,4 @@
 #buttonSection:hover #accessButton,#buttonSection:hover #editButton,#buttonSection:hover #deleteButton,#textSection .label{
     -fx-text-fill: $textColor;
 }
+ 

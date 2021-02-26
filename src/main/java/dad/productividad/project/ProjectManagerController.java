@@ -46,10 +46,13 @@ public class ProjectManagerController implements Initializable {
     private GridPane dialogProject,dialogDelete;
 
     @FXML
-    private JFXTextField titleTF;
-
-    @FXML
     private HBox projectCardContainer;
+
+	@FXML
+	private Button addProjectButton, acceptDialogProject;
+    
+    @FXML
+    private JFXTextField titleTF;
     
     @FXML
     private JFXTextArea descriptionTA;
@@ -62,15 +65,10 @@ public class ProjectManagerController implements Initializable {
 
     @FXML
     private JFXDatePicker datePicker;
-
-	@FXML
-	private Button addProjectButton, acceptDialogProject;
-	 
-	private ListProperty<Project> projectsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	
+	private ListProperty<Project> projectsList = new SimpleListProperty<>(FXCollections.observableArrayList());
 	private ObjectProperty<Project> projectToDelete=new SimpleObjectProperty<>();
 	private ObjectProperty<Project> projectToModify=new SimpleObjectProperty<>();
-	
 	private BooleanProperty dialogCreating=new SimpleBooleanProperty();
 	
 	public ProjectManagerController() {
@@ -139,13 +137,47 @@ public class ProjectManagerController implements Initializable {
 		projectCardContainer.getChildren().add(card);
 		HBox.setHgrow(card, Priority.ALWAYS);
 	} 
-
+	
+	/**
+	 * Set dialogProject Visible and set the boolean dialogCreating to true
+	 * @param event
+	 */
 	@FXML
 	void onAddProject(ActionEvent event) {
 		dialogProject.setVisible(true);
 		dialogCreating.set(true);;
 	}
 	
+    /**
+     * Set dialogCreating boolean to false.
+     * Set the project received from parameter to the projectToModify
+     * ObjectProperty.
+     * Inserts the values from the received project inside the projectDialog 
+     * formulary.
+     * 
+     * @param project Project
+     */
+    public void showModifyDialog(Project project) {
+    	dialogCreating.set(false);
+    	projectToModify.set(project);
+    	titleTF.textProperty().set(project.getTitle());
+    	descriptionTA.textProperty().set(project.getDescription());
+    	whiteText.selectedProperty().set(project.isWhite());
+    	datePicker.setValue(project.getDeadLine());
+    	
+    	dialogProject.setVisible(true);
+    }
+	
+	/**
+	 * Accept button on dialogProject.
+	 * 
+	 * If the boolean dialogCreating is true a Project object is created from
+	 * the formulary in the dialog and inserted into the db.
+	 * If dialogCreating is false then the Project inside of projectToModify
+	 * will be modified from the formulary in the dialog and updapted in the db.
+	 * 
+	 * @param event
+	 */
     @FXML
     private void onAcceptDialog(ActionEvent event) {
     	
@@ -174,13 +206,23 @@ public class ProjectManagerController implements Initializable {
 	    readProjects();
 		hideDialogs();
     }
-
+    
+    /**
+     * Cancel button on dialogProject.
+     * 
+     * Reset the dialogProject and hide dialogProject and dialogDelete
+     * @param event
+     */
     @FXML
     private void onCancelDialog(ActionEvent event) {
     	resetDialogProject();
 		hideDialogs();
     }
     
+    /**
+     * Reset the formulary inside projectDialog
+     * 
+     */
     private void resetDialogProject() {
     	titleTF.clear();
     	descriptionTA.clear();
@@ -189,22 +231,24 @@ public class ProjectManagerController implements Initializable {
 		datePicker.setValue(null);
     }
     
-    public void showModifyDialog(Project project) {
-    	dialogCreating.set(false);
-    	projectToModify.set(project);
-    	titleTF.textProperty().set(project.getTitle());
-    	descriptionTA.textProperty().set(project.getDescription());
-    	whiteText.selectedProperty().set(project.isWhite());
-    	datePicker.setValue(project.getDeadLine());
-    	
-    	dialogProject.setVisible(true);
-    }
-    
+    /**
+     * Sets dialogDelete visible.
+     * Sets the project received from parameter to the projectToDelete
+     * ObjectProperty.
+     * @param project Project
+     */
     public void showDeleteDialog(Project project) {
-    	projectToDelete.set(project);
+    	projectToDelete.set(project); 
     	dialogDelete.setVisible(true);
     }
     
+    /**
+     * Delete the project from projectToDelete ObjectProperty from the db.
+     * Reset. the projectCardContainer.
+     * Hide dialogDelete.
+     *     
+     * @param event
+     */
     @FXML
     private void onAcceptDeleteDialog(ActionEvent event) {
     	TableProjects.delete(projectToDelete.get());
@@ -212,12 +256,21 @@ public class ProjectManagerController implements Initializable {
     	hideDialogs();
     }
     
+    /**
+     * Set the projectToDelete ObjectProperty to null.
+     * HideDialogDelete
+     * @param event
+     */
     @FXML
     private void onCancelDeleteDialog(ActionEvent event) {
     	projectToDelete.set(null);
     	hideDialogs();
     }
     
+    /**
+     * Hide dialogDelete and dialogProject
+     * 
+     */
     public void hideDialogs() {
     	dialogProject.setVisible(false);
     	dialogDelete.setVisible(false); 

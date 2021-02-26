@@ -24,7 +24,7 @@ public class ResourceUtils {
 			return IOUtils.toString(ResourceUtils.class.getResourceAsStream(resourcePath),StandardCharsets.UTF_8);
 		}catch(IOException e) {
 			return null;
-		} 
+		}  
 	}
 	
 	/**
@@ -38,3 +38,4 @@ public class ResourceUtils {
 		copyInputStreamToFile(FileUtils.class.getResourceAsStream(resource),dest);
 	}
 }
+  

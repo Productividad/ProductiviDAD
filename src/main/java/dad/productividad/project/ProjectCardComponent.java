@@ -1,7 +1,6 @@
 package dad.productividad.project;
 
 import dad.productividad.app.MainController;
-import dad.productividad.dataManager.TableProjects;
 import dad.productividad.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,8 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-
-
+/**
+ * Class of projectCardComponent used on projectManagerController
+ *
+ */
 public class ProjectCardComponent extends VBox implements Initializable {
 
 	private StringProperty title=new SimpleStringProperty();
@@ -30,10 +31,7 @@ public class ProjectCardComponent extends VBox implements Initializable {
 	private StringProperty styleSheetPath=new SimpleStringProperty();
 	 
     @FXML
-    private Label projectTitleLabel;
-
-    @FXML
-    private Label percentageLabel;   
+    private Label projectTitleLabel,percentageLabel;
   
     public ProjectCardComponent() {
     	super();
@@ -54,28 +52,40 @@ public class ProjectCardComponent extends VBox implements Initializable {
 				title.bindBidirectional(nv.titleProperty());
 				progress.bind(nv.progressProperty().asString());
 				styleProjectCard();
-			}
-			 
+			}	 
 		}); 
 		 
 		projectTitleLabel.textProperty().bindBidirectional(title); 
 		percentageLabel.textProperty().bind(progress);		
 	}
 	
+	/**
+	 * Open the projectDetailController with this project and his styleSheet
+	 * @param event
+	 */
     @FXML
     private void onAccessProject(ActionEvent event) {
     	MainController.mainController.openProject(project.get(),styleSheetPath.get());
     }
 
+    /**
+     * Opens dialogDelete with this project.get()
+     * @param event
+     */
     @FXML
     private void onDeleteProject(ActionEvent event) {	
     	MainController.mainController.getProjectManagerController().showDeleteDialog(project.get());
     } 
- 
+    
+    /**
+     * Opens dialogProject with this project.get()
+     * @param event 
+     */
     @FXML
     private void onEditProject(ActionEvent event) {
     	MainController.mainController.getProjectManagerController().showModifyDialog(project.get());
     }
+    
 	/**
 	 * Check the color values from a project and applies it to a projectCard
 	 * @param project 
@@ -100,15 +110,11 @@ public class ProjectCardComponent extends VBox implements Initializable {
 		return this.project;
 	}
 	
-
 	public final Project getProject() {
 		return this.projectProperty().get();
 	}
 	
-
 	public final void setProject(final Project project) {
 		this.projectProperty().set(project);
 	}
-	
-
 }

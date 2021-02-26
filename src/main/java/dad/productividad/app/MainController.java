@@ -20,7 +20,6 @@ import dad.productividad.project.ProjectManagerController;
 import dad.productividad.settings.SettingsController;
 import dad.productividad.task.Task;
 import dad.productividad.task.TaskDetailController;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,8 +34,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
+/**
+ * Main controller class of the program
+ *
+ */
 public class MainController implements Initializable {
 
 	@FXML
@@ -58,10 +60,6 @@ public class MainController implements Initializable {
 	private Button closeButton, maximizeButton, minimizeButton;
 	
 	static Page todaysPage = new Page();
-	
-	private double x;
-	private double y; 
-	private boolean lastValueYCoodIs0;
  
 	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
 	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
@@ -102,7 +100,7 @@ public class MainController implements Initializable {
 		view.centerProperty().addListener((o,ov,nv)->{
 			if(nv!=null) {
 				if(view.getRight()!=null)  
-					view.setRight(null);
+					view.setRight(null); 
 			}
 		}); 
 		
@@ -145,7 +143,8 @@ public class MainController implements Initializable {
 		settingsController = new SettingsController();
 		menuBarController=new MenuBarController();
 		view.setLeft(menuBarController.getView());
-		view.setCenter(homeController.getView());  
+//		view.setCenter(homeController.getView());  TODO TODO TODO TODO
+		view.setCenter(projectManagerController.getView());
 		  
 		todaysPage.setDate(LocalDate.now());
 		TablePages.insertPage(todaysPage);
@@ -154,8 +153,8 @@ public class MainController implements Initializable {
 	public static Page getTodaysPage() {
 		return todaysPage;
 	}
-	 
-	/**
+	    
+	/** 
 	 * Set the center of view with projectDetailController.getView().
 	 * The received project and stylesheet are assigned to the projectDetailController
 	 * 
@@ -193,7 +192,7 @@ public class MainController implements Initializable {
 	public void setRightSideNull() {
 		view.setRight(null);
 	}
-	
+	 
 	public void updateTaskWrapper() {
 		homeController.insertTaskFromDB(); 
 	}
@@ -207,8 +206,11 @@ public class MainController implements Initializable {
 		return this.topBar;
 	}
 	
+	
+	/**
+	 * Init actions of fxBorderlessScene
+	 */
 	public void initActions() {
-		
 		App.borderLessScene.setMoveControl(getTopBar());
 		App.borderLessScene.removeDefaultCSS();
 		closeButton.setOnAction(a -> App.primaryStage.close());
@@ -227,7 +229,7 @@ public class MainController implements Initializable {
 	}
 
 	public void setProjectManagerController(ProjectManagerController projectManagerController) {
-		this.projectManagerController = projectManagerController;
+		this.projectManagerController = projectManagerController; 
 	}
 
 	public NotesController getNotasController() {

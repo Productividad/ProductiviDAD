@@ -22,7 +22,7 @@
           <RowConstraints minHeight="60.0" valignment="CENTER" vgrow="NEVER" />
         </rowConstraints>
          <children>
-            <JFXTextField fx:id="titleTF" focusColor="#405aa800" onAction="#onEnter" promptText="Agregar una tarea" styleClass="text-color" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
+            <JFXTextField fx:id="titleTF" focusColor="#405aa800" onAction="#onEnter" prefWidth="1.0" promptText="Agregar una tarea" styleClass="text-color" unFocusColor="#4d4d4d00" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

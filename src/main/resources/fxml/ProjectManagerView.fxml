@@ -101,7 +101,7 @@
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints prefHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints vgrow="NEVER" />
                   <RowConstraints vgrow="ALWAYS" />
                   <RowConstraints vgrow="NEVER" />
                </rowConstraints>
@@ -136,8 +136,18 @@
                         <String fx:value="text-color" />
                      </styleClass>
                   </JFXCheckBox>
-                  <JFXColorPicker fx:id="colorPicker" minWidth="120.0" styleClass="text-color" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXDatePicker fx:id="datePicker" defaultColor="#cf0a0a00" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" styleClass="text-color" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <VBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label styleClass="text-color" text="Color:" />
+                        <JFXColorPicker fx:id="colorPicker" minWidth="120.0" styleClass="text-color" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label styleClass="text-color" text="Fecha límite" />
+                        <JFXDatePicker fx:id="datePicker" defaultColor="#cf0a0a00" maxWidth="120.0" minWidth="120.0" promptText="DD/MM/YYYY" styleClass="text-color" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

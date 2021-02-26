@@ -33,7 +33,7 @@ public class NotesController implements Initializable{
 	private Button addNotebutton;
 
 	@FXML
-	private ScrollPane scrollpane;
+	private ScrollPane scrollPane;
 
 	@FXML
 	private GridPane dialogColor;
@@ -47,21 +47,21 @@ public class NotesController implements Initializable{
 	private StringProperty selectedColor=new SimpleStringProperty();
 	
 	private ObjectProperty<Note> note=new SimpleObjectProperty<>();
-	
+	 
 	public NotesController() {  
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NotesManagerView.fxml"));
 			loader.setController(this);
 			loader.load(); 
-		} catch (IOException e) {   
+		} catch (IOException e) {    
 			e.printStackTrace();   
-		}  
+		}   
 	}   
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		scrollpane.setFitToWidth(true);
+		scrollPane.setFitToWidth(true);
 		readNotes();
 		notesWrapper.clearLayout();
 		notesWrapper.setPadding(new Insets(15));

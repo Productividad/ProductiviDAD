@@ -24,111 +24,144 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ProjectDetailController implements Initializable {
 
 	@FXML
-	private VBox view;
+	private GridPane view;
 
 	@FXML
 	private SegmentedBar<TypeSegment> segmentedBar = new SegmentedBar<>();
 
+	@FXML 
+	private VBox taskContainer;
+	 
 	@FXML
-	private HBox taskContainer;
+	private HBox addProjectSection;
+	
+	@FXML 
+	private ScrollPane scrollPane;
 	
 	@FXML
-	private ScrollPane scroll;
-	
-	@FXML
-	private Label titleProject,descriptionProject;
-	
-    @FXML
-    private Button addTaskButton;
+	private Label titleProject; 
     
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
-	private ListProperty<Task> projectTasks = new SimpleListProperty<>(FXCollections.observableArrayList());
+
+	private ListProperty<Task> toDoTasksLP = new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Task> inProgressTasksLP = new SimpleListProperty<>(FXCollections.observableArrayList());
+	private ListProperty<Task> doneTasksLP = new SimpleListProperty<>(FXCollections.observableArrayList());
+
 	
 	private StringProperty title=new SimpleStringProperty();
 	private StringProperty description=new SimpleStringProperty();
 	
-	private IntegerProperty toDoTasks=new SimpleIntegerProperty(0);
-	private IntegerProperty inProgressTasks=new SimpleIntegerProperty(0);
-	private IntegerProperty doneTasks=new SimpleIntegerProperty(0); 
+	private IntegerProperty toDoTaskCounter=new SimpleIntegerProperty(0);
+	private IntegerProperty inProgressTaskCounter=new SimpleIntegerProperty(0);
+	private IntegerProperty doneTaskCounter=new SimpleIntegerProperty(0); 
 	   
-	public ProjectDetailController() {
-		try {   
+	public ProjectDetailController() { 
+		try {    
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
 			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 			loader.setController(this);
 			loader.load();    
 		} catch (IOException e) {  
-			e.printStackTrace();  
+			e.printStackTrace();   
 		}
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { 
  				
+		scrollPane.setFitToWidth(true);
+ 
 		titleProject.textProperty().bind(title);
-		descriptionProject.textProperty().bind(description);
 		
 		segmentedBar.setSegmentViewFactory(TypeSegmentView::new);
 		segmentedBar.setInfoNodeFactory(segment -> new InfoLabel((int) segment.getValue() + " Tareas"));
 	
-		project.addListener((o, ov, nv) -> {
-			
-			if (nv != null) { 
-				
+		project.addListener((o, ov, nv) -> {	
+			if (nv != null) {  
 				view.getStylesheets().setAll(nv.getStyleSheet());
 				title.set(nv.getTitle());
 				description.set(nv.getDescription()); 
-				 
-				for (Task parentTask : TableTasks.readParentTasks(project.get())) {
-					TableTasks.readChildTasks(parentTask);
-					ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
-					taskCard.setTask(parentTask); 
-					taskCard.styleTaskCard();   
-					projectTasks.add(parentTask); 
-					taskContainer.getChildren().add(taskCard);
-				}
- 
-				for (Task task : projectTasks) { 
-					if(task.getStatus().equals(StatusType.TODO)) 
-						toDoTasks.set(toDoTasks.get()+1);
-					if(task.getStatus().equals(StatusType.IN_PROGRESS)) 
-						inProgressTasks.set(inProgressTasks.get()+1);   
-					if(task.getStatus().equals(StatusType.DONE))     
-						doneTasks.set(doneTasks.get()+1);       
-				}       
+				setTasksOnTaskContainer();
 			}            
 			  
 			segmentedBar.getSegments().addAll(   
-					new TypeSegment(toDoTasks.get(), StatusType.TODO),
-					new TypeSegment(inProgressTasks.get(), StatusType.IN_PROGRESS),
-					new TypeSegment(doneTasks.get(), StatusType.DONE)
+					new TypeSegment(toDoTaskCounter.get(), StatusType.TODO),
+					new TypeSegment(inProgressTaskCounter.get(), StatusType.IN_PROGRESS),
+					new TypeSegment(doneTaskCounter.get(), StatusType.DONE)
 			);
 		});  
 
-	}   
+		addProjectSection.setOnMouseClicked(event->onAddProjectSectionClicked());
+		
+	}    
 
-	public VBox getView() {
+	private void onAddProjectSectionClicked() {
+		System.out.println("clicked");
+	}
+	
+	public void setTasksOnTaskContainer(){
+		taskContainer.getChildren().clear();
+		
+		for (Task parentTask : TableTasks.readParentTasks(project.get())) {
+			TableTasks.readChildTasks(parentTask);    
+			     
+			if (parentTask.getStatus().equals(StatusType.TODO)) {  
+				toDoTasksLP.add(parentTask);
+				toDoTaskCounter.set(toDoTaskCounter.get()+1);
+			}
+			if(parentTask.getStatus().equals(StatusType.IN_PROGRESS)) {
+				inProgressTasksLP.add(parentTask);
+				inProgressTaskCounter.set(inProgressTaskCounter.get()+1);   
+			}
+			if(parentTask.getStatus().equals(StatusType.DONE)) {
+				doneTasksLP.add(parentTask);
+				doneTaskCounter.set(doneTaskCounter.get()+1);  
+			} 
+		}   
+		
+		for(Task toDoTask:toDoTasksLP) {
+			ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
+			taskCard.setTask(toDoTask); 
+			taskContainer.getChildren().add(taskCard);
+		}
+//		
+//		for(Task inProgressTask:inProgressTasksLP) {
+//			ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
+//			taskCard.setTask(inProgressTask); 
+//			taskCard.styleTaskCard(); 
+//			taskContainer.getChildren().add(taskCard);
+//		}
+//		
+//		for(Task doneTask:doneTasksLP) {
+//			ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
+//			taskCard.setTask(doneTask); 
+//			taskCard.styleTaskCard(); 
+//			taskContainer.getChildren().add(taskCard);
+//		}
+	}
+	
+	public GridPane getView() {
 		return this.view;
 	}
 
 	public final ObjectProperty<Project> projectProperty() {
-		return this.project;
-	}
-
-	public final Project getProject() {
+		return this.project;    
+	} 
+  
+	public final Project getProject() { 
 		return this.projectProperty().get();
 	}
-
-	public final void setProject(final Project project) {
+ 
+	public final void setProject(final Project project) { 
 		this.projectProperty().set(project);
 	}
 
