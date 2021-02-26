@@ -21,7 +21,7 @@ public class TableProjectComments {
      * @param projectComments The note to be inserted
      */
     public static int insertProjectComments(ProjectComments projectComments) {
-        String insert = "INSERT INTO project_comments (content_projects_comments, FK_ID_project) VALUES ( ?, ?)";
+        String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_project) VALUES ( ?, ?)";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
         int id = 0;
         try {
