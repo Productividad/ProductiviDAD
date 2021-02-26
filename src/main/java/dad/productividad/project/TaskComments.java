@@ -5,10 +5,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class ProjectComments {
+public class TaskComments {
     private StringProperty content = new SimpleStringProperty();
     private IntegerProperty id = new SimpleIntegerProperty();
-    private IntegerProperty idProject = new SimpleIntegerProperty();
+    private IntegerProperty idTask = new SimpleIntegerProperty();
 
     public StringProperty contentProperty() {return this.content;}
 
@@ -22,9 +22,9 @@ public class ProjectComments {
 
     public void setId(int id) { this.idProperty().set(id);}
 
-    public IntegerProperty idProjectProperty() { return this.idProject; }
+    public IntegerProperty idTaskProperty() { return this.idTask; }
 
-    public int getIdProject() { return this.idProjectProperty().get(); }
+    public int getIdTask() { return this.idTaskProperty().get(); }
 
-    public void setIdProject(final int idProject) { this.idProjectProperty().set(idProject);}
+    public void setIdTask(final int idTask) { this.idTaskProperty().set(idTask);}
 }

@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productividad.project.ProjectComments;
+import dad.productividad.project.TaskComments;
 
 /**
  * Class used to interact with the Notes table in the database.
@@ -18,17 +18,17 @@ public class TableProjectComments {
     /**
      * Method to insert a new note in the database
      *
-     * @param projectComments The note to be inserted
+     * @param taskComments The note to be inserted
      */
-    public static int insertProjectComments(ProjectComments projectComments) {
-        String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_project) VALUES ( ?, ?)";
+    public static int insertProjectComments(TaskComments taskComments) {
+        String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_task) VALUES ( ?, ?)";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
         int id = 0;
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
-            pstmt.setString(1, projectComments.getContent());
-            pstmt.setInt(2, projectComments.getIdProject());
+            pstmt.setString(1, taskComments.getContent());
+            pstmt.setInt(2, taskComments.getIdTask());
             pstmt.executeUpdate();
 
             Statement stmt = JdbcConnection.connection.createStatement();
@@ -37,7 +37,7 @@ public class TableProjectComments {
             while (rs.next()) {
                 id = rs.getInt("seq");
             }
-            projectComments.setId(id);
+            taskComments.setId(id);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -51,17 +51,17 @@ public class TableProjectComments {
     /**
      * Method to update an existing projectComment from the table
      *
-     * @param projectComments The projectComments from the registry to be updated
+     * @param taskComments The projectComments from the registry to be updated
      *
      */
-    public static void update(ProjectComments projectComments) {
-        String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_project = ? WHERE ID_project_comments = ?";
+    public static void update(TaskComments taskComments) {
+        String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_task = ? WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
-            pstmt.setString(1, projectComments.getContent());
-            pstmt.setInt(2, projectComments.getIdProject());
-            pstmt.setInt(3, projectComments.getId());
+            pstmt.setString(1, taskComments.getContent());
+            pstmt.setInt(2, taskComments.getIdTask());
+            pstmt.setInt(3, taskComments.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,14 +75,14 @@ public class TableProjectComments {
     /**
      * Method to delete an existing projectComment from the table
      *
-     * @param projectComments The projectComment to be deleted
+     * @param taskComments The projectComment to be deleted
      */
-    public static void delete(ProjectComments projectComments) {
+    public static void delete(TaskComments taskComments) {
         String delete = "DELETE FROM project_comments WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
-            pstmt.setInt(1, projectComments.getId());
+            pstmt.setInt(1, taskComments.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,11 +99,11 @@ public class TableProjectComments {
      *
      * @return arrayList An ArrayList of projectComments objects
      */
-    public static List<ProjectComments> read(int number) {
+    public static List<TaskComments> read(int number) {
         String select = "SELECT * FROM project_comments ORDER BY ID_project_comments DESC LIMIT ?";
         ResultSet rs = null;
-        ArrayList<ProjectComments> arrayList = new ArrayList<ProjectComments>();
-        ProjectComments projectComments;
+        ArrayList<TaskComments> arrayList = new ArrayList<TaskComments>();
+        TaskComments taskComments;
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -111,13 +111,13 @@ public class TableProjectComments {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                projectComments = new ProjectComments();
-                projectComments.setId(rs.getInt("ID_project_comments"));
-                projectComments.setContent(rs.getString("content_project_comments"));
-                projectComments.setIdProject(rs.getInt("FK_ID_project"));
+                taskComments = new TaskComments();
+                taskComments.setId(rs.getInt("ID_project_comments"));
+                taskComments.setContent(rs.getString("content_project_comments"));
+                taskComments.setIdTask(rs.getInt("FK_ID_task"));
 
 
-                arrayList.add(projectComments);
+                arrayList.add(taskComments);
             }
 
         } catch (SQLException e) {
