@@ -2,6 +2,8 @@ package dad.productividad.home;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.MessageFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import dad.productividad.app.MainController;
@@ -20,6 +22,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -49,6 +52,9 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private Button acceptButton, cancelButton;
+
+	@FXML
+	private Label date;
 	
 	private ListProperty<Task> normalTask=new SimpleListProperty<>(FXCollections.observableArrayList());
 	private ListProperty<Task> favouriteList=new SimpleListProperty<>(FXCollections.observableArrayList());
@@ -82,9 +88,20 @@ public class HomeController implements Initializable {
 		
 		bottomPane.disableProperty().bind(dialogPane.visibleProperty());
 		dialogPane.setVisible(false);
-		
-	}  
- 
+		setLabel();
+	}
+
+	private void setLabel() {
+		ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
+		String str = rb.getString("dateformat");
+		MessageFormat format = new MessageFormat(str);
+		Object arguments[] = {rb.getString(LocalDate.now().getDayOfWeek().toString()), LocalDate.now().getDayOfMonth(),
+				rb.getString(LocalDate.now().getMonth().toString()), String.valueOf(LocalDate.now().getYear())};
+		format.applyPattern(str);
+
+		date.textProperty().set(format.format(arguments));
+	}
+
 	@FXML
 	private void onAcceptDialog(ActionEvent e) {
     	TableTasks.delete(dialogTask.get());
