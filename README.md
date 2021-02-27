@@ -70,7 +70,7 @@ Para borrar un movimiento hay que seleccionar de la lista el que se desea elimin
 
 
 
-Para navegar por los meses en los que existen movimientos, en la parte inferior de la ventana hay botones que permite al usuario moverse por los meses en los que hay movimientos, también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
+Para navegar por los meses en los que hay movimiento, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo , también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
 
 
 
