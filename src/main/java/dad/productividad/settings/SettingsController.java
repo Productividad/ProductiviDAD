@@ -64,6 +64,12 @@ public class SettingsController implements Initializable {
     private ThemePicker pickerBW = new ThemePicker();
     private ThemePicker pickerPB = new ThemePicker();
 
+    /**
+     * Settings view initialization
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -87,6 +93,9 @@ public class SettingsController implements Initializable {
 
     }
 
+    /**
+     * SettingsController constructor
+     */
     public SettingsController() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
         loader.setResources(ResourceBundle.getBundle("i18n/strings"));
@@ -121,6 +130,7 @@ public class SettingsController implements Initializable {
     /**
      * Export your Settings and your Database as a .db file (zip)
      * https://www.baeldung.com/java-compress-and-uncompress
+     *
      * @throws IOException
      */
     @FXML
@@ -133,7 +143,7 @@ public class SettingsController implements Initializable {
             List<String> srcFiles = Arrays.asList("preferences.json", "productiviDAD.db");
             FileOutputStream fos = new FileOutputStream(file);
             ZipOutputStream zipOut = new ZipOutputStream(fos);
-            for(String srcFile : srcFiles) {
+            for (String srcFile : srcFiles) {
                 File fileToZip = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/" + srcFile);
                 FileInputStream fis = new FileInputStream(fileToZip);
                 ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
