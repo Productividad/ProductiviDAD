@@ -1,4 +1,4 @@
-![](/github_images/header.png)
+< p align="center"><img src="/github_images/header.png" width=""/></p>
 
 <p align="center">Aplicación de gestión de tareas (productividad)</p>
 
@@ -62,21 +62,21 @@ Para navegar por los meses en los que existen movimientos, en la parte inferior 
 
 
 
-<p align="center">< img src="https://i.imgur.com/1cauxX1.gif" alt="animated" /></p>
+![](https://i.imgur.com/1cauxX1.gif)
 
 ## <p align="center"><img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas</p>
 
 Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
 
-​	<p align="center"><img src="/github_images/nota.png " width="" /></p>
+​	<img src="/github_images/nota.png " width="" />
 
 Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
 
-​	<p align="center"><img src="/github_images/notadelete.png " width="" /></p>
+<img src="/github_images/notadelete.png " width=""/>
 
 Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores a elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
 
-​	<p align="center"><img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" /></p>
+<img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" />
 
 
 
