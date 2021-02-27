@@ -4,76 +4,107 @@ import javafx.beans.property.*;
 
 public class Note {
 
-	private StringProperty content = new SimpleStringProperty();
-	private IntegerProperty id = new SimpleIntegerProperty();
-	private IntegerProperty idPage = new SimpleIntegerProperty();
-	private StringProperty color=new SimpleStringProperty();
+    private StringProperty content = new SimpleStringProperty();
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private IntegerProperty idPage = new SimpleIntegerProperty();
+    private StringProperty color = new SimpleStringProperty();
 
-	public Note() {
-		
-	}
+    /**
+     * Note default constructor
+     */
+    public Note() {
 
-	public final StringProperty contentProperty() {
-		return this.content;
-	}
-	
+    }
 
-	public final String getContent() {
-		return this.contentProperty().get();
-	}
-	
+    /**
+     * @return StringProperty of the content
+     */
+    public final StringProperty contentProperty() {
+        return this.content;
+    }
 
-	public final void setContent(final String content) {
-		this.contentProperty().set(content);
-	}
-	
+    /**
+     * @return String of the content
+     */
+    public final String getContent() {
+        return this.contentProperty().get();
+    }
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
-	
+    /**
+     * Sets the content of the note
+     *
+     * @param content
+     */
+    public final void setContent(final String content) {
+        this.contentProperty().set(content);
+    }
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
-	
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
 
-	public final void setId(final int id) {
-		this.idProperty().set(id);
-	}
-	
+    /**
+     * @return int of the id
+     */
+    public final int getId() {
+        return this.idProperty().get();
+    }
 
-	public final IntegerProperty idPageProperty() {
-		return this.idPage;
-	}
-	
+    /**
+     * Sets a new id
+     *
+     * @param id
+     */
+    public final void setId(final int id) {
+        this.idProperty().set(id);
+    }
 
-	public final int getIdPage() {
-		return this.idPageProperty().get();
-	}
-	
+    /**
+     * @return IntegerProperty of page
+     */
+    public final IntegerProperty idPageProperty() {
+        return this.idPage;
+    }
 
-	public final void setIdPage(final int idPage) {
-		this.idPageProperty().set(idPage);
-	}
-	
+    /**
+     * @return int of the page
+     */
+    public final int getIdPage() {
+        return this.idPageProperty().get();
+    }
 
-	public final StringProperty colorProperty() {
-		return this.color;
-	}
-	
+    /**
+     * Sets a new id
+     */
+    public final void setIdPage(final int idPage) {
+        this.idPageProperty().set(idPage);
+    }
 
-	public final String getColor() {
-		return this.colorProperty().get();
-	}
-	
+    /**
+     * @return StringProperty of color
+     */
+    public final StringProperty colorProperty() {
+        return this.color;
+    }
 
-	public final void setColor(final String color) {
-		this.colorProperty().set(color);
-	}
+    /**
+     * @return String of color
+     */
+    public final String getColor() {
+        return this.colorProperty().get();
+    }
 
-	
+    /**
+     * Sets a new color
+     *
+     * @param color
+     */
+    public final void setColor(final String color) {
+        this.colorProperty().set(color);
+    }
 
-	
 
 }

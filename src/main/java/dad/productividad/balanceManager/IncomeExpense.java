@@ -5,79 +5,124 @@ import javafx.beans.property.*;
 import java.time.LocalDate;
 
 public class IncomeExpense {
-	private IntegerProperty id = new SimpleIntegerProperty(); 
-	private ObjectProperty<LocalDate> date=new SimpleObjectProperty<>();
-	private StringProperty concept=new SimpleStringProperty();
-	private DoubleProperty amount=new SimpleDoubleProperty();
-	
-	public IncomeExpense(LocalDate date, String concept, double amount) {
-		this.date.set(date);
-		this.concept.set(concept);
-		this.amount.set(amount);
-	}
-	public IncomeExpense() {
-		
-	}
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    private StringProperty concept = new SimpleStringProperty();
+    private DoubleProperty amount = new SimpleDoubleProperty();
 
-	public final ObjectProperty<LocalDate> dateProperty() {
-		return this.date;
-	}
-	
+    /**
+     * IncomeExpense Constructor with parameters
+     *
+     * @param date    Date of the movement
+     * @param concept Concept of the movement
+     * @param amount  Amount of the movement
+     */
+    public IncomeExpense(LocalDate date, String concept, double amount) {
+        this.date.set(date);
+        this.concept.set(concept);
+        this.amount.set(amount);
+    }
 
-	public final LocalDate getDate() {
-		return this.dateProperty().get();
-	}
-	
+    /**
+     * IncomeExpense empty constructor
+     */
+    public IncomeExpense() {
 
-	public final void setDate(final LocalDate date) {
-		this.dateProperty().set(date);
-	}
-	
+    }
 
-	public final StringProperty conceptProperty() {
-		return this.concept;
-	}
-	
+    /**
+     * @return ObjectProperty of date
+     */
+    public final ObjectProperty<LocalDate> dateProperty() {
+        return this.date;
+    }
 
-	public final String getConcept() {
-		return this.conceptProperty().get();
-	}
-	
+    /**
+     * @return LocalDate of date
+     */
+    public final LocalDate getDate() {
+        return this.dateProperty().get();
+    }
 
-	public final void setConcept(final String concept) {
-		this.conceptProperty().set(concept);
-	}
-	
+    /**
+     * Set a new date
+     *
+     * @param date
+     */
+    public final void setDate(final LocalDate date) {
+        this.dateProperty().set(date);
+    }
 
-	public final DoubleProperty amountProperty() {
-		return this.amount;
-	}
-	
+    /**
+     * @return StringProperty of concept
+     */
+    public final StringProperty conceptProperty() {
+        return this.concept;
+    }
 
-	public final double getAmount() {
-		return this.amountProperty().get();
-	}
-	
+    /**
+     * @return String of concept
+     */
+    public final String getConcept() {
+        return this.conceptProperty().get();
+    }
 
-	public final void setAmount(final double amount) {
-		this.amountProperty().set(amount);
-	}
+    /**
+     * Set a new concept
+     *
+     * @param concept
+     */
+    public final void setConcept(final String concept) {
+        this.conceptProperty().set(concept);
+    }
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
-	
+    /**
+     * @return DoubleProperty of amount
+     */
+    public final DoubleProperty amountProperty() {
+        return this.amount;
+    }
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
-	
+    /**
+     * @return double of amount
+     */
+    public final double getAmount() {
+        return this.amountProperty().get();
+    }
 
-	public final void setId(final int id) {
-		this.idProperty().set(id);
-	}
-		
-	
+    /**
+     * Set a new amount
+     *
+     * @param amount
+     */
+    public final void setAmount(final double amount) {
+        this.amountProperty().set(amount);
+    }
+
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
+
+    /**
+     * @return integer of id
+     */
+    public final int getId() {
+        return this.idProperty().get();
+    }
+
+    /**
+     * Set a new id
+     *
+     * @param id
+     */
+    public final void setId(final int id) {
+        this.idProperty().set(id);
+    }
+
+
 }
 
 

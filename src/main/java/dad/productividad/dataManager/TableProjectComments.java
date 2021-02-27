@@ -1,7 +1,5 @@
 package dad.productividad.dataManager;
 
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,26 +7,30 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productividad.project.ProjectComments;
+import dad.productividad.project.ProjectComment;
+
 
 /**
- * Class used to interact with the Notes table in the database.
+ * Class used to interact with the Project_comments table in the database.
  */
 public class TableProjectComments {
+
+
     /**
-     * Method to insert a new note in the database
+     * Insert a project Comment in DB
      *
-     * @param projectComments The note to be inserted
+     * @param projectComment
+     * @return the id of the inserted comment
      */
-    public static int insertProjectComments(ProjectComments projectComments) {
-        String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_project) VALUES ( ?, ?)";
+    public static int insertProjectComments(ProjectComment projectComment) {
+        String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_task) VALUES ( ?, ?)";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
         int id = 0;
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
-            pstmt.setString(1, projectComments.getContent());
-            pstmt.setInt(2, projectComments.getIdProject());
+            pstmt.setString(1, projectComment.getContent());
+            pstmt.setInt(2, projectComment.getIdTask());
             pstmt.executeUpdate();
 
             Statement stmt = JdbcConnection.connection.createStatement();
@@ -37,7 +39,7 @@ public class TableProjectComments {
             while (rs.next()) {
                 id = rs.getInt("seq");
             }
-            projectComments.setId(id);
+            projectComment.setId(id);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -49,19 +51,18 @@ public class TableProjectComments {
 
 
     /**
-     * Method to update an existing projectComment from the table
+     * Updates a comment in DB
      *
-     * @param projectComments The projectComments from the registry to be updated
-     *
+     * @param projectComment to be updated
      */
-    public static void update(ProjectComments projectComments) {
-        String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_project = ? WHERE ID_project_comments = ?";
+    public static void update(ProjectComment projectComment) {
+        String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_task = ? WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(update);
-            pstmt.setString(1, projectComments.getContent());
-            pstmt.setInt(2, projectComments.getIdProject());
-            pstmt.setInt(3, projectComments.getId());
+            pstmt.setString(1, projectComment.getContent());
+            pstmt.setInt(2, projectComment.getIdTask());
+            pstmt.setInt(3, projectComment.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,19 +71,18 @@ public class TableProjectComments {
         }
     }
 
-
-
     /**
-     * Method to delete an existing projectComment from the table
+     * Delete a project comment in the DB
      *
-     * @param projectComments The projectComment to be deleted
+     * @param projectComment
      */
-    public static void delete(ProjectComments projectComments) {
+    public static void delete(ProjectComment projectComment) {
+
         String delete = "DELETE FROM project_comments WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(delete);
-            pstmt.setInt(1, projectComments.getId());
+            pstmt.setInt(1, projectComment.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,18 +92,17 @@ public class TableProjectComments {
 
     }
 
+
     /**
-     * Method to get Registries from the table
-     *
-     * @param number The number of registries to be shown
-     *
-     * @return arrayList An ArrayList of projectComments objects
+     * @param number of comments to be read
+     * @return A list of project comments
      */
-    public static List<ProjectComments> read(int number) {
+    public static List<ProjectComment> read(int number) {
         String select = "SELECT * FROM project_comments ORDER BY ID_project_comments DESC LIMIT ?";
         ResultSet rs = null;
-        ArrayList<ProjectComments> arrayList = new ArrayList<ProjectComments>();
-        ProjectComments projectComments;
+        ArrayList<ProjectComment> arrayList = new ArrayList<ProjectComment>();
+        ProjectComment projectComment;
+
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -111,13 +110,12 @@ public class TableProjectComments {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                projectComments = new ProjectComments();
-                projectComments.setId(rs.getInt("ID_project_comments"));
-                projectComments.setContent(rs.getString("content_project_comments"));
-                projectComments.setIdProject(rs.getInt("FK_ID_project"));
+                projectComment = new ProjectComment();
+                projectComment.setId(rs.getInt("ID_project_comments"));
+                projectComment.setContent(rs.getString("content_project_comments"));
+                projectComment.setIdTask(rs.getInt("FK_ID_project"));
 
-
-                arrayList.add(projectComments);
+                arrayList.add(projectComment);
             }
 
         } catch (SQLException e) {

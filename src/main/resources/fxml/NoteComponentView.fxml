@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<fx:root maxHeight="313.0" maxWidth="305.0" prefHeight="313.0" prefWidth="305.0" style="-fx-border-image-width: 0.5;" styleClass="note-component" type="BorderPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="313.0" maxWidth="305.0" prefHeight="313.0" prefWidth="305.0" style="-fx-border-image-width: 0.5;" styleClass="note-component" type="BorderPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="note-content">
          <children>
@@ -28,11 +26,6 @@
          <children>
             <HBox alignment="CENTER_RIGHT" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="checkButton" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="note-check">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
                   <Button minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#onOpenOptions" prefHeight="20.0" prefWidth="20.0" styleClass="note-menu" />
                   <Button minHeight="17.0" minWidth="17.0" mnemonicParsing="false" onAction="#onDeleteNote" prefHeight="17.0" prefWidth="17.0" styleClass="note-delete" />
                </children>

@@ -81,6 +81,9 @@ public class BalanceManagerController implements Initializable {
     private ObjectProperty<LocalDate> nextIndex = new SimpleObjectProperty<>(); //My next index
     private int year = LocalDate.now().getYear(), month = LocalDate.now().getMonthValue();
 
+    /**
+     * Class constructor
+     */
     public BalanceManagerController() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/BalanceManagerView.fxml"));
@@ -92,6 +95,12 @@ public class BalanceManagerController implements Initializable {
         }
     }
 
+    /**
+     * Initialization of the components, and the logic of this view.
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -105,17 +114,16 @@ public class BalanceManagerController implements Initializable {
         nextMonthWrapper.setDisable(true);
 
         if (!movementsList.isEmpty()) {
-            setNextIndex(TableIncomeExpenses.findNext(movementsList.get(0).getDate(), 0));
-            setPreviousIndex(TableIncomeExpenses.findNext(movementsList.get(0).getDate(), 1));
-        }
-        else{
-            setNextIndex(TableIncomeExpenses.findNext(getIndex(), 0));
-            setPreviousIndex(TableIncomeExpenses.findNext(getIndex(), 1));
+            setNextIndex(TableIncomeExpenses.find(movementsList.get(0).getDate(), 0));
+            setPreviousIndex(TableIncomeExpenses.find(movementsList.get(0).getDate(), 1));
+        } else {
+            setNextIndex(TableIncomeExpenses.find(getIndex(), 0));
+            setPreviousIndex(TableIncomeExpenses.find(getIndex(), 1));
         }
 
         if (getPreviousIndex() == null)
             previousMonthWrapper.setDisable(true);
-        
+
         index.addListener((observable, oldValue, newValue) -> {
             if (newValue.getMonthValue() != getIndex().getMonthValue())
                 nextMonthWrapper.setDisable(true);
@@ -128,8 +136,8 @@ public class BalanceManagerController implements Initializable {
         movementsList.addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
                 setIndex(newValue.get(0).getDate());
-                setNextIndex(TableIncomeExpenses.findNext(newValue.get(0).getDate(), 0));
-                setPreviousIndex(TableIncomeExpenses.findNext(newValue.get(0).getDate(), 1));
+                setNextIndex(TableIncomeExpenses.find(newValue.get(0).getDate(), 0));
+                setPreviousIndex(TableIncomeExpenses.find(newValue.get(0).getDate(), 1));
 
                 if (getPreviousIndex() == null)
                     previousMonthWrapper.setDisable(true);
@@ -183,11 +191,12 @@ public class BalanceManagerController implements Initializable {
 
     }
 
-
-    public GridPane getView() {
-        return this.view;
-    }
-
+    /**
+     * Delete button action.
+     * Deletes a registry from the TableView and the DB.
+     *
+     * @param event
+     */
     @FXML
     private void onDeleteMovement(ActionEvent event) {
 
@@ -196,6 +205,13 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.refresh();
     }
 
+    /**
+     * Insert button action
+     * Inserts a registry in the TableView and the DB.
+     * When a movement is inserted, table is updated with the month of that inserted movement.
+     *
+     * @param event
+     */
     @FXML
     private void onInsertMovement(ActionEvent event) {
         IncomeExpense incomeExpense = new IncomeExpense();
@@ -214,7 +230,7 @@ public class BalanceManagerController implements Initializable {
                 setYearAndMonth();
                 balanceTableView.getSelectionModel().clearSelection();
             }
-        }else{
+        } else {
             movementsList.addAll(TableIncomeExpenses.read(incomeExpense.getDate(), 0));
             setYearAndMonth();
             balanceTableView.getSelectionModel().clearSelection();
@@ -224,6 +240,12 @@ public class BalanceManagerController implements Initializable {
         conceptTF.clear();
     }
 
+    /**
+     * Negative RadioButton action.
+     * Filters all negative movements.
+     *
+     * @param event
+     */
     @FXML
     private void onFilterNegativeCheck(ActionEvent event) {
         if (!movementsList.isEmpty())
@@ -235,7 +257,12 @@ public class BalanceManagerController implements Initializable {
         }
     }
 
-
+    /**
+     * Positive RadioButton action.
+     * Filters all positive movements.
+     *
+     * @param event
+     */
     @FXML
     private void onFilterPositiveCheck(ActionEvent event) {
         if (!movementsList.isEmpty())
@@ -247,6 +274,12 @@ public class BalanceManagerController implements Initializable {
         }
     }
 
+    /**
+     * All RadioButton action.
+     * Deletes all filters, shows all movements.
+     *
+     * @param event
+     */
     @FXML
     private void onNoFilterCheck(ActionEvent event) {
         movementsList.clear();
@@ -254,6 +287,9 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Moves to the closest previous month with movements.
+     */
     private void onPreviousMonth() {
         List<IncomeExpense> arrayList;
         arrayList = TableIncomeExpenses.read(getPreviousIndex(), 0);
@@ -264,6 +300,9 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Moves to the closest next month with movements.
+     */
     private void onNextMonth() {
         List<IncomeExpense> arrayList;
         arrayList = TableIncomeExpenses.read(getNextIndex(), 0);
@@ -275,86 +314,147 @@ public class BalanceManagerController implements Initializable {
         balanceTableView.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Method used to calculate the Balance, considering applied filters (Positive, Negative, All; Overall, Month)
+     */
+    private void filter() {
+        if (allFilter.isSelected() && totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 0));
+        } else if (negativeFilter.isSelected() && totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 2));
+        } else if (positiveFilter.isSelected() && totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 1));
+        } else if (allFilter.isSelected() && !totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(0));
+        } else if (negativeFilter.isSelected() && !totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(2));
+        } else if (positiveFilter.isSelected() && !totalToggle.isSelected()) {
+            totalAmount.set(TableIncomeExpenses.getTotal(1));
+        }
+    }
+
+    /**
+     * @return Date used as Index
+     */
     public LocalDate getIndex() {
         return index.get();
     }
 
+    /**
+     * @return Date as ObjectProperty used as Index
+     */
     public ObjectProperty<LocalDate> indexProperty() {
         return index;
     }
 
+    /**
+     * Set a new index
+     *
+     * @param index The date to be used as Index
+     */
     public void setIndex(LocalDate index) {
         this.index.set(index);
     }
 
+    /**
+     * @return Index year
+     */
     public int getYear() {
         return year;
     }
 
+    /**
+     * Set a new Year
+     *
+     * @param year The year to be used as Index
+     */
     public void setYear(int year) {
         this.year = year;
     }
 
+    /**
+     * @return Index month
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     * Set a new Month
+     *
+     * @param month The month to be used as Index
+     */
     public void setMonth(int month) {
         this.month = month;
     }
 
+    /**
+     * Set the month and year Label.
+     */
     private void setYearAndMonth() {
         monthLabel.textProperty().set(ResourceBundle.getBundle("i18n/strings").getString(String.valueOf(getIndex().getMonth())));
         yearLabel.textProperty().set((String.valueOf(getIndex().getYear())));
     }
 
+    /**
+     * Get the previous Index.
+     *
+     * @return the previous Index.
+     */
     public LocalDate getPreviousIndex() {
         return previousIndex.get();
     }
 
+    /**
+     * Get the previous Index as ObjectProperty.
+     *
+     * @return the previous index Property.
+     */
     public ObjectProperty<LocalDate> previousIndexProperty() {
         return previousIndex;
     }
 
+    /**
+     * Set a new previous Index
+     *
+     * @param previousIndex
+     */
     public void setPreviousIndex(LocalDate previousIndex) {
         this.previousIndex.set(previousIndex);
     }
 
+    /**
+     * Get next Index
+     *
+     * @return the next index.
+     */
     public LocalDate getNextIndex() {
         return nextIndex.get();
     }
 
+    /**
+     * Get next Index ObjectProperty
+     *
+     * @return the next index Property.
+     */
     public ObjectProperty<LocalDate> nextIndexProperty() {
         return nextIndex;
     }
 
+    /**
+     * Set a new Next Index
+     *
+     * @param nextIndex
+     */
     public void setNextIndex(LocalDate nextIndex) {
         this.nextIndex.set(nextIndex);
     }
 
-    private void filter() {
-        if (allFilter.isSelected() && totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 0));
-        }
-
-        if (negativeFilter.isSelected() && totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 2));
-        }
-
-        if (positiveFilter.isSelected() && totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 1));
-        }
-
-        if (allFilter.isSelected() && !totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(0));
-        }
-
-        if (negativeFilter.isSelected() && !totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(2));
-        }
-
-        if (positiveFilter.isSelected() && !totalToggle.isSelected()) {
-            totalAmount.set(TableIncomeExpenses.getTotal(1));
-        }
+    /**
+     * @return View
+     */
+    public GridPane getView() {
+        return this.view;
     }
+
 }

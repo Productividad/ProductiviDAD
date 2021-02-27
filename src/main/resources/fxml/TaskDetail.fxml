@@ -59,7 +59,7 @@
       <Button mnemonicParsing="false" onAction="#onArrowButton" styleClass="arrow-button-TaskDetail" GridPane.rowIndex="3" />
       <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label styleClass="text-color" text="Tarea creada el">
+            <Label styleClass="text-color" text="%createdon">
                <font>
                   <Font size="13.0" />
                </font>

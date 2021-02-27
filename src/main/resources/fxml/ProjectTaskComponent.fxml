@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root hgap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: red;" type="GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" styleClass="project-task" stylesheets="@../css/Themes/PrincessBubblegum.css" type="GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints hgrow="NEVER" maxWidth="175.0" />
-      <ColumnConstraints hgrow="ALWAYS" />
-    <ColumnConstraints hgrow="NEVER" />
+      <ColumnConstraints hgrow="NEVER" prefWidth="5.0" />
+      <ColumnConstraints hgrow="SOMETIMES" />
+      <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
-    <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label fx:id="titleLabel" text="Hacer las cosas del proyecto" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <JFXSpinner fx:id="spinner" progress="1.0" GridPane.columnIndex="2" GridPane.rowSpan="2">
+      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="titleLabel" styleClass="text-color" text="Hacer las cosas del proyecto" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
-      </JFXSpinner>
-      <Label fx:id="subTaskRemainLabel" alignment="CENTER" text="label" GridPane.rowIndex="1" />
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <VBox styleClass="project-task-hightlight" />
+      <CheckBox fx:id="doneTaskDetailCB" mnemonicParsing="false" onAction="#taskChecked" GridPane.columnIndex="2">
+         <GridPane.margin>
+            <Insets bottom="15.0" left="15.0" right="20.0" top="15.0" />
+         </GridPane.margin>
+      </CheckBox>
    </children>
-   <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-   </padding>
 </fx:root>

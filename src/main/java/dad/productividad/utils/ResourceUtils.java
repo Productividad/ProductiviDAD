@@ -8,11 +8,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
+
 /**
  * Class to work with resources
  *
  */
 public class ResourceUtils {
+	
 	/**
 	 * Copies the content of a resource as String
 	 * 
