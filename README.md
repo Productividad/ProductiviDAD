@@ -1,4 +1,4 @@
-< p align="center"><img src="/github_images/header.png" width=""/></p>
+<p align="center"><img src="/github_images/header.png" width=""/></p>
 
 <p align="center">Aplicación de gestión de tareas (productividad)</p>
 
