@@ -42,6 +42,8 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## <img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance 
 
+Introducir movimiento positivo![](https://i.imgur.com/OBfRmI7.gif)
+
 ## <img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas
 
 Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
