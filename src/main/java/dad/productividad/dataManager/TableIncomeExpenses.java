@@ -224,9 +224,9 @@ public class TableIncomeExpenses {
      * Method to find the next or previous Month with registries
      * @param indexDate A date of reference
      * @param filter 0 for next, 1 for previous
-     * @return
+     * @return Date of closest previous or closest next month
      */
-    public static LocalDate findNext(LocalDate indexDate, int filter) {
+    public static LocalDate find(LocalDate indexDate, int filter) {
         String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
         String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
         ResultSet rs = null;

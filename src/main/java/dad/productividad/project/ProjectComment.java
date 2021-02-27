@@ -9,45 +9,55 @@ public class ProjectComment {
     
 	private StringProperty content = new SimpleStringProperty();
     private IntegerProperty id = new SimpleIntegerProperty();
-    private IntegerProperty idProject = new SimpleIntegerProperty();
+    private IntegerProperty idTask = new SimpleIntegerProperty();
 
     public ProjectComment() {
     	
     }
-    
-    public StringProperty contentProperty() {
-    	return this.content;
-    }
 
-    public String getContent() {
-    	return this.contentProperty().get();
-    }
+	public final StringProperty contentProperty() {
+		return this.content;
+	}
+	
 
-    public void setContent(String content) {
-    	this.contentProperty().set(content);
-    }
+	public final String getContent() {
+		return this.contentProperty().get();
+	}
+	
 
-    public IntegerProperty idProperty() { 
-    	return this.id;
-    }
+	public final void setContent(final String content) {
+		this.contentProperty().set(content);
+	}
+	
 
-    public int getId() { 
-    	return this.idProperty().get(); 
-    }
+	public final IntegerProperty idProperty() {
+		return this.id;
+	}
+	
 
-    public void setId(int id) { 
-    	this.idProperty().set(id);
-    }
+	public final int getId() {
+		return this.idProperty().get();
+	}
+	
 
-    public IntegerProperty idProjectProperty() { 
-    	return this.idProject; 
-    }
+	public final void setId(final int id) {
+		this.idProperty().set(id);
+	}
+	
 
-    public int getIdProject() { 
-    	return this.idProjectProperty().get(); 
-    }
+	public final IntegerProperty idTaskProperty() {
+		return this.idTask;
+	}
+	
 
-    public void setIdProject(final int idProject) {
-    	this.idProjectProperty().set(idProject);
-    }
+	public final int getIdTask() {
+		return this.idTaskProperty().get();
+	}
+	
+
+	public final void setIdTask(final int idTask) {
+		this.idTaskProperty().set(idTask);
+	}
+	
+
 }
