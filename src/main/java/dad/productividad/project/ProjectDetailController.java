@@ -39,69 +39,95 @@ public class ProjectDetailController implements Initializable {
 
     @FXML
     private JFXSpinner spinner;
-    	
-	private StringProperty title=new SimpleStringProperty(); 
-	private StringProperty description=new SimpleStringProperty();
-	
-	private ObjectProperty<Project> project = new SimpleObjectProperty<>(); 
-	   
-	public ProjectDetailController() { 
-		try {     
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
-			loader.setController(this); 
-			loader.load();
-		} catch (IOException e) {  
-			e.printStackTrace();    
-		}
-	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) { 
- 				
-		scrollPane.setFitToWidth(true);
-		titleProject.textProperty().bind(title);
+    private StringProperty title = new SimpleStringProperty();
+    private StringProperty description = new SimpleStringProperty();
 
-		project.addListener((o, ov, nv) -> {	
-			if (nv != null) {  
-				view.getStylesheets().setAll(nv.getStyleSheet());
-				title.set(nv.getTitle());
-				description.set(nv.getDescription()); 
-				setTasksOnTaskContainer();
-			}            
-		});  		
-	}    
+    private ObjectProperty<Project> project = new SimpleObjectProperty<>();
 
-	public void setTasksOnTaskContainer(){
-		taskContainer.getChildren().clear();
-	
-		double tasksOfProject=0.0;
-		double completedTasks=0.0;
-		
-		for(Task task:TableTasks.readParentTasks(project.get())) {
-			ProjectTaskComponent taskCard=new ProjectTaskComponent(); 
-			taskCard.setTask(task); 
-			taskContainer.getChildren().add(taskCard);
-			if(task.isDone())
-				completedTasks+=1.0;
-			tasksOfProject+=1.0;
-		}
-		spinner.progressProperty().set(((completedTasks*100.0)/tasksOfProject)/100.0);
-	}
-	
-	public GridPane getView() {
-		return this.view;
-	}
- 
-	public final ObjectProperty<Project> projectProperty() {
-		return this.project;    
-	} 
-  
-	public final Project getProject() { 
-		return this.projectProperty().get();
-	}
- 
-	public final void setProject(final Project project) { 
-		this.projectProperty().set(project);
-	}
+    /**
+     * ProjectDetailController constructor
+     */
+    public ProjectDetailController() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
+            loader.setResources(ResourceBundle.getBundle("i18n/strings"));
+            loader.setController(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Project detail view initialization
+     *
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        scrollPane.setFitToWidth(true);
+        titleProject.textProperty().bind(title);
+
+        project.addListener((o, ov, nv) -> {
+            if (nv != null) {
+                view.getStylesheets().setAll(nv.getStyleSheet());
+                title.set(nv.getTitle());
+                description.set(nv.getDescription());
+                setTasksOnTaskContainer();
+            }
+        });
+    }
+
+    /**
+     * Add tasks to the container
+     */
+    public void setTasksOnTaskContainer() {
+        taskContainer.getChildren().clear();
+
+        double tasksOfProject = 0.0;
+        double completedTasks = 0.0;
+
+        for (Task task : TableTasks.readParentTasks(project.get())) {
+            ProjectTaskComponent taskCard = new ProjectTaskComponent();
+            taskCard.setTask(task);
+            taskContainer.getChildren().add(taskCard);
+            if (task.isDone())
+                completedTasks += 1.0;
+            tasksOfProject += 1.0;
+        }
+        spinner.progressProperty().set(((completedTasks * 100.0) / tasksOfProject) / 100.0);
+    }
+
+    /**
+     * @return The ProjectDetail view
+     */
+    public GridPane getView() {
+        return this.view;
+    }
+
+    /**
+     * @return ObjectProperty of Project of project variable
+     */
+    public final ObjectProperty<Project> projectProperty() {
+        return this.project;
+    }
+
+    /**
+     * @return Project of project variable
+     */
+    public final Project getProject() {
+        return this.projectProperty().get();
+    }
+
+    /**
+     * Sets a new project
+     *
+     * @param project
+     */
+    public final void setProject(final Project project) {
+        this.projectProperty().set(project);
+    }
 }

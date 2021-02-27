@@ -10,21 +10,72 @@ public class TaskComments {
     private IntegerProperty id = new SimpleIntegerProperty();
     private IntegerProperty idTask = new SimpleIntegerProperty();
 
-    public StringProperty contentProperty() {return this.content;}
+    /**
+     * @return StringProperty of content
+     */
+    public StringProperty contentProperty() {
+        return this.content;
+    }
 
-    public String getContent() {return this.contentProperty().get();}
+    /**
+     * @return String of content
+     */
+    public String getContent() {
+        return this.contentProperty().get();
+    }
 
-    public void setContent(String content) {this.contentProperty().set(content);}
+    /**
+     * Sets a new content
+     *
+     * @param content
+     */
+    public void setContent(String content) {
+        this.contentProperty().set(content);
+    }
 
-    public IntegerProperty idProperty() { return this.id;}
+    /**
+     * @return IntegerProperty of id
+     */
+    public IntegerProperty idProperty() {
+        return this.id;
+    }
 
-    public int getId() { return this.idProperty().get(); }
+    /**
+     * @return int of id
+     */
+    public int getId() {
+        return this.idProperty().get();
+    }
 
-    public void setId(int id) { this.idProperty().set(id);}
+    /**
+     * Sets a new id
+     *
+     * @param id
+     */
+    public void setId(int id) {
+        this.idProperty().set(id);
+    }
 
-    public IntegerProperty idTaskProperty() { return this.idTask; }
+    /**
+     * @return IntegerProperty of idTask
+     */
+    public IntegerProperty idTaskProperty() {
+        return this.idTask;
+    }
 
-    public int getIdTask() { return this.idTaskProperty().get(); }
+    /**
+     * @return int of idTask
+     */
+    public int getIdTask() {
+        return this.idTaskProperty().get();
+    }
 
-    public void setIdTask(final int idTask) { this.idTaskProperty().set(idTask);}
+    /**
+     * Sets a new idTask
+     *
+     * @param idTask
+     */
+    public void setIdTask(final int idTask) {
+        this.idTaskProperty().set(idTask);
+    }
 }

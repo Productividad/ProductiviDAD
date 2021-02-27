@@ -21,67 +21,94 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class ProjectTaskComponent extends GridPane implements Initializable{
+public class ProjectTaskComponent extends GridPane implements Initializable {
 
     @FXML
-    private Label titleLabel;  
+    private Label titleLabel;
 
     @FXML
     private CheckBox doneTaskDetailCB;
 
-    private StringProperty title=new SimpleStringProperty();
-    private BooleanProperty done=new SimpleBooleanProperty();  
-    
-    private ObjectProperty<Task> task=new SimpleObjectProperty<>();
-    
+    private StringProperty title = new SimpleStringProperty();
+    private BooleanProperty done = new SimpleBooleanProperty();
+
+    private ObjectProperty<Task> task = new SimpleObjectProperty<>();
+
+    /**
+     * ProjectTaskComponent constructor
+     */
     public ProjectTaskComponent() {
-		super();
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectTaskComponent.fxml"));
-			loader.setController(this);
-			loader.setRoot(this);   
-			loader.load(); 
-		} catch (IOException e) {e.printStackTrace();} 
+        super();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectTaskComponent.fxml"));
+            loader.setController(this);
+            loader.setRoot(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {  
-				
-		titleLabel.textProperty().bindBidirectional(title);     
-		doneTaskDetailCB.selectedProperty().bindBidirectional(done); 
-		
-		task.addListener((o,ov,nv)->{ 
-			title.set(nv.getTitle());
-			done.set(nv.isDone()); 
-		});
-		
-		setOnMouseClicked(event->projectTaskComponentClicked());
-		   
-	} 
+    /**
+     * ProjectTaskComponent view initialization
+     *
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-	
-	@FXML
-	private void taskChecked(ActionEvent event) {
-		task.get().setDone(done.get());
-		TableTasks.update(task.get());
-		MainController.mainController.getProjectDetailController().setTasksOnTaskContainer();
-	}
-	
-	private void projectTaskComponentClicked() {
-		System.out.println("ey");
-	}  
-	
-	public final ObjectProperty<Task> taskProperty() { 
-		return this.task;
-	}
-	
+        titleLabel.textProperty().bindBidirectional(title);
+        doneTaskDetailCB.selectedProperty().bindBidirectional(done);
 
-	public final Task getTask() {
-		return this.taskProperty().get();
-	}
-	  
+        task.addListener((o, ov, nv) -> {
+            title.set(nv.getTitle());
+            done.set(nv.isDone());
+        });
 
-	public final void setTask(final Task task) {
-		this.taskProperty().set(task);
-	}
+        setOnMouseClicked(event -> projectTaskComponentClicked());
+
+    }
+
+    /**
+     * Done CheckBox checked action
+     *
+     * @param event
+     */
+    @FXML
+    private void taskChecked(ActionEvent event) {
+        task.get().setDone(done.get());
+        TableTasks.update(task.get());
+        MainController.mainController.getProjectDetailController().setTasksOnTaskContainer();
+    }
+
+    /**
+     * Prints something when you click a component
+     */
+    private void projectTaskComponentClicked() {
+        System.out.println("ey");
+    }
+
+    /**
+     * @return ObjectProperty of Task task
+     */
+    public final ObjectProperty<Task> taskProperty() {
+        return this.task;
+    }
+
+    /**
+     * @return Task task
+     */
+    public final Task getTask() {
+        return this.taskProperty().get();
+    }
+
+    /**
+     * Sets a new task
+     *
+     * @param task
+     */
+    public final void setTask(final Task task) {
+        this.taskProperty().set(task);
+    }
 }
