@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.MainController;
+import dad.productividad.dataManager.TableProjectComments;
 import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import javafx.beans.property.ObjectProperty;
@@ -22,9 +23,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/**
+ *Class controller of projectDetailView 
+ *
+ */
 public class ProjectDetailController implements Initializable {
 
 	@FXML
@@ -49,13 +56,18 @@ public class ProjectDetailController implements Initializable {
     private JFXTextField titleTF;
     
     @FXML
+    private HBox commentInserterWrapper;
+    
+    @FXML
     private Button cancelAddButton;
     	
 	private StringProperty title=new SimpleStringProperty(); 
 	private StringProperty description=new SimpleStringProperty();
 	
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>(); 
-	 
+	private ObjectProperty<Task> taskOnDetailDialog=new SimpleObjectProperty<>();
+ 
+	
     /**
      * ProjectDetailController constructor
      */
@@ -82,6 +94,16 @@ public class ProjectDetailController implements Initializable {
 		titleProject.textProperty().bind(title); 
 		descriptionLabel.textProperty().bindBidirectional(description);
 
+		
+		ProjectCommentInserter inserter =new ProjectCommentInserter();
+		commentInserterWrapper.getChildren().add(inserter);
+		HBox.setHgrow(inserter, Priority.ALWAYS);
+		
+		taskOnDetailDialog.addListener((o,ov,nv)->{ 
+			inserter.setTask(taskOnDetailDialog.get());
+		});
+		
+		
 		project.addListener((o, ov, nv) -> {	
 			if (nv != null) {  
 				view.getStylesheets().setAll(nv.getStyleSheet());
@@ -90,8 +112,10 @@ public class ProjectDetailController implements Initializable {
 				setTasksOnTaskContainer();
 			}             
 		});  
-		
-	}     
+
+
+	}   
+	
     /**
      * Add tasks to the container
      */
@@ -116,15 +140,25 @@ public class ProjectDetailController implements Initializable {
 				cancelAddButton.setDisable(true);
 		}else
 			hideDialog(); 
-		
 	}
 	
+	/**
+	 * Set dialogAdd visible
+	 * @param event
+	 */
 	@FXML
 	public void onAddTask(ActionEvent event) {
 		cancelAddButton.setDisable(false);
 		dialogAdd.setVisible(true);
 	}
 	
+	
+	/**
+	 * Creates a task new task and inserts it in the db.
+	 * hide dialogAdd.
+	 * 
+	 * @param event
+	 */
     @FXML
     private void onAcceptDialogAdd(ActionEvent event) {
     	
@@ -139,35 +173,73 @@ public class ProjectDetailController implements Initializable {
     	titleTF.clear();
     }
 
+    /**
+     * Action of cancel button on dialogAdd. Hides the dialog
+     * @param event
+     */
     @FXML
     private void onCancelDialogAdd(ActionEvent event) {
     	hideDialog();
     }
     
+    /**
+     * Action of close button on dialogTaskDetail. Hides the dialog
+     * @param event
+     */
     @FXML
     private void onCloseDialogTaskDetail(ActionEvent event) {
-
+    	hideDialog();
     }
 
+    /**
+     * Deletes the task on dialogTaskDetail and resets projectTaskDetail
+     * @param event
+     */
     @FXML
     private void onDeleteDialogTaskDetail(ActionEvent event) {
-
+    	
+    	TableTasks.delete(taskOnDetailDialog.get());
+    	setTasksOnTaskContainer();
     }
     
+    /**
+     * Insert the values of the task on the parameter into the taskDetailDialog.
+     * Set the task to taskToDelete ObjectProperty
+     * @param task
+     */
     public void showDialogTaskDetail(Task task) {
-    	//TODO componente y meterlo
-    	
+    	taskOnDetailDialog.set(task);
+    	setProjectComments();
+    	titleTaskDetail.textProperty().set(task.getTitle());
     	dialogTaskDetail.setVisible(true);
     }
     
+    /**
+     * Resets the taskCommentsWrapper and inserts all the projectComment
+     * of the task in it
+     */
+    public void setProjectComments() {
+    	taskCommentsWrapper.getChildren().clear();
+    	
+    	for(ProjectComment comment:TableProjectComments.read(taskOnDetailDialog.get().getId())) {
+    		ProjectCommentComponent component=new ProjectCommentComponent();
+        	component.setProjectComment(comment);
+        	
+        	taskCommentsWrapper.getChildren().add(component);
+    	} 	
+    }
+    
+    /**
+     * Hides dialogAdd and dialogTaskDetail
+     */
     private void hideDialog() {
 		dialogAdd.setVisible(false);
 		dialogTaskDetail.setVisible(false);
     }
     
     /**
-     * @return The ProjectDetail view
-     */
+     * @return The ProjectDetail view 
+     */  
 	public StackPane getView() {
 		return this.view;
 	}

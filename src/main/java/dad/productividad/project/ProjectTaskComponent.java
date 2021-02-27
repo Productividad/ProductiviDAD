@@ -31,7 +31,6 @@ public class ProjectTaskComponent extends GridPane implements Initializable {
     @FXML
     private CheckBox doneCB;
 
-
     private StringProperty title=new SimpleStringProperty();
     private BooleanProperty done=new SimpleBooleanProperty();  
     
@@ -77,7 +76,6 @@ public class ProjectTaskComponent extends GridPane implements Initializable {
 		   
 	}  
 
-
     /**
      * Done CheckBox checked action
      *
@@ -95,6 +93,9 @@ public class ProjectTaskComponent extends GridPane implements Initializable {
 		MainController.mainController.getProjectDetailController().setTasksOnTaskContainer();
 	}
 	
+	/**
+	 * Opens a dialog in projectDetailController using this getTask()
+	 */
 	private void projectTaskComponentClicked() {
 		MainController.mainController.getProjectDetailController().showDialogTaskDetail(getTask());
 	}  

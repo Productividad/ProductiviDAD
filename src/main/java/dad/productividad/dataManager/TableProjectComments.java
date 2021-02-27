@@ -94,11 +94,11 @@ public class TableProjectComments {
 
 
     /**
-     * @param number of comments to be read
+     * @param idTask of comments to be read
      * @return A list of project comments
      */
-    public static List<ProjectComment> read(int number) {
-        String select = "SELECT * FROM project_comments ORDER BY ID_project_comments DESC LIMIT ?";
+    public static List<ProjectComment> read(int idTask) {
+        String select = "SELECT * FROM project_comments where FK_ID_task=?";
         ResultSet rs = null;
         ArrayList<ProjectComment> arrayList = new ArrayList<ProjectComment>();
         ProjectComment projectComment;
@@ -106,14 +106,14 @@ public class TableProjectComments {
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
-            pstmt.setInt(1, number);
-            rs = pstmt.executeQuery();
+            pstmt.setInt(1, idTask);
+            rs = pstmt.executeQuery(); 
 
             while (rs.next()) {
                 projectComment = new ProjectComment();
                 projectComment.setId(rs.getInt("ID_project_comments"));
                 projectComment.setContent(rs.getString("content_project_comments"));
-                projectComment.setIdTask(rs.getInt("FK_ID_project"));
+                projectComment.setIdTask(rs.getInt("FK_ID_task"));
 
                 arrayList.add(projectComment);
             }

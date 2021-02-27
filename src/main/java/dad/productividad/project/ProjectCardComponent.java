@@ -1,6 +1,15 @@
 package dad.productividad.project;
 
+import java.io.IOException;
+import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
+
 import dad.productividad.app.MainController;
+import dad.productividad.dataManager.TableTasks;
+import dad.productividad.task.Task;
 import dad.productividad.utils.CSSUtils;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -12,12 +21,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
 
 /**
  * Class of projectCardComponent used on projectManagerController
@@ -60,11 +63,22 @@ public class ProjectCardComponent extends VBox implements Initializable {
         project.addListener((o, ov, nv) -> {
             if (nv != null) {
                 title.bindBidirectional(nv.titleProperty());
-                progress.bind(nv.progressProperty().asString());
                 styleProjectCard();
+                
+                double completedTasks=0.0;
+                double tasksOfProject=0.0;
+                
+        		for(Task task:TableTasks.readParentTasks(project.get())) {
+        			if(task.isDone())
+        				completedTasks+=1.0;
+        			tasksOfProject+=1.0;
+        		}
+        		
+        		int progressDouble=(int) ((completedTasks*100.0)/tasksOfProject);
+        		progress.set(progressDouble+"%");
             }
         });
-
+        
         projectTitleLabel.textProperty().bindBidirectional(title);
         percentageLabel.textProperty().bind(progress);
     }

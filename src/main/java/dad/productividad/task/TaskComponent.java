@@ -41,11 +41,11 @@ public class TaskComponent extends VBox implements Initializable {
 
     private Media sound = new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
     private MediaPlayer mediaPlayer;
-
+ 
     /**
      * TaskComponent constructor
-     */
-    public TaskComponent() {
+     */ 
+    public TaskComponent() { 
         super();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskComponent.fxml"));
@@ -58,7 +58,7 @@ public class TaskComponent extends VBox implements Initializable {
     }
 
     /**
-     * Initialization of TaskComponent view
+     * Initialization of TaskComponent view 
      *
      * @param location
      * @param resources
