@@ -54,7 +54,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-Para introducir un movimiento hay que introducir un **Concepto**, el **Importe**, seleccionar si es **Positivo** (ingreso) o **Negativo** (gasto) y pulsar el botón de **Introducir movimiento**:
+Para añadir un movimiento hay que introducir un **Concepto**, el **Importe**, seleccionar si es **Positivo** (ingreso) o **Negativo** (gasto) y pulsar el botón de **Introducir movimiento**:
 
 
 
