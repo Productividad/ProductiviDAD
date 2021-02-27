@@ -118,7 +118,7 @@ Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** 
 
 
 
-# <p align="center">Licencia</p> 
+# <p align="center">Créditos</p> 
 
 
 
