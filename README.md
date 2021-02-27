@@ -70,7 +70,7 @@ Para borrar un movimiento hay que seleccionar de la lista el que se desea elimin
 
 
 
-Para navegar por los meses en los que hay movimiento, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo , también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
+Para navegar por los meses en los que hay movimientos, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo , también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
 
 
 
@@ -86,7 +86,7 @@ Para navegar por los meses en los que hay movimiento, en la parte inferior de la
 
 
 
-Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
+Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" /> ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
 
 ​	<img src="/github_images/nota.png " width="" />
 
@@ -98,7 +98,7 @@ Para eliminar una **nota** basta con pulsar la **X** en la parte superior derech
 
 
 
-Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores a elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
+Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores entre los que elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
 
 <img src="/github_images/notecolor.png " width="" />  <img src="/github_images/colorchooser.png " width="400" /> 
 
