@@ -46,7 +46,7 @@ Introducir movimiento positivo:
 
 
 
-![](https://i.imgur.com/OBfRmI7.gif) 
+![](https://i.imgur.com/bX80ymp.gif) 
 
 
 
