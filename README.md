@@ -26,7 +26,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 # <p align="center">Uso de la aplicación ProductiviDAD</p>
 
-## <p align="center"><img src="/github_images/house-door-fill.svg " width="40" />Pestaña de Home</p> 
+## <p align="center"><img src="/github_images/house-door-fill.svg " width="30" /> Pestaña de Home</p> 
 
 
 
@@ -36,19 +36,19 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-## <p align="center"><img src="/github_images/clock-fill.svg " width="40" />Pestaña de Tareas </p>
+## <p align="center"><img src="/github_images/clock-fill.svg " width="30" /> Pestaña de Tareas </p>
 
 
 
 
 
-## <p align="center"><img src="/github_images/columns-gap.svg " width="40" />Pestaña de Proyectos</p> 
+## <p align="center"><img src="/github_images/columns-gap.svg " width="30" /> Pestaña de Proyectos</p> 
 
 
 
 
 
-## <p align="center"><img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance</p> 
+## <p align="center"><img src="/github_images/wallet2.svg " width="30" /> Pestaña de Balance</p> 
 
 
 
@@ -80,7 +80,7 @@ Para navegar por los meses en los que existen movimientos, en la parte inferior 
 
 
 
-## <p align="center"><img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas</p>
+## <p align="center"><img src="/github_images/lightbulb.svg " width="30"/> Pestaña de Notas</p>
 
 
 
@@ -100,7 +100,7 @@ Para eliminar una **nota** basta con pulsar la **X** en la parte superior derech
 
 Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores a elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
 
-<img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" />
+<img src="/github_images/notecolor.png " width="" />  <img src="/github_images/colorchooser.png " width="400" /> 
 
 
 
@@ -108,11 +108,11 @@ Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** 
 
 
 
-## <p align="center"><img src="/github_images/tomato.svg"  width="40"/>Pestaña Pomodoro</p> 
+## <p align="center"><img src="/github_images/tomato.svg"  width="30"/> Pestaña Pomodoro</p> 
 
-## <p align="center"><img src="/github_images/gear-wide-connected.svg " width="40" />Pestaña de Ajustes</p>
+## <p align="center"><img src="/github_images/gear-wide-connected.svg " width="30" /> Pestaña de Ajustes</p>
 
-## <p align="center"><img src="/github_images/github.svg " width="40" />Pestaña de GitHub</p>
+## <p align="center"><img src="/github_images/github.svg " width="30" /> Pestaña de GitHub</p>
 
 
 
