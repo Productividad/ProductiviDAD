@@ -42,19 +42,33 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## <img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance 
 
-Introducir movimiento positivo:
+Para introducir un movimiento hay que introducir un **Concepto**, el **Importe**, seleccionar si es **Positivo** (ingreso) o **Negativo** (gasto) y pulsar el botón de **Introducir movimiento**:
 
 
 
-![](https://i.imgur.com/wKvXYSJ.gif) 
+![](https://i.imgur.com/WzD3D8s.gif)
 
 
+
+Para borrar un movimiento hay que seleccionar de la lista el que se desea eliminar y pulsar el botón de **Borrar movimiento**:
+
+
+
+![](https://i.imgur.com/JMCqL04.gif)
+
+
+
+Para navegar por los meses en los que existen movimientos, en la parte inferior de la ventana hay botones que permite al usuario moverse por los meses en los que hay movimientos, también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
+
+
+
+![](https://i.imgur.com/1cauxX1.gif)
 
 ## <img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas
 
 Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
 
-​	<img src="/github_images/nota.png " width="" />
+​	<p align="center"><img src="/github_images/nota.png " width="" /></p>
 
 Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
 
