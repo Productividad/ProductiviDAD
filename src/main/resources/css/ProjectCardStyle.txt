@@ -1,6 +1,21 @@
-.project-detail-header{
-    -fx-background-color:$cardColor;   
+/**Project-detail**/
+
+.project-task:hover {
+	-fx-background-color:derive($cardColor, 60%);
 }
+.project-task:hover .project-task-hightlight{
+	-fx-background-color:$cardColor;	
+}
+
+.project-task{
+	-fx-background-color:white;
+	-fx-border-width:0 0 1 0;
+	-fx-border-color:transparent transparent $cardColor transparent;
+}
+
+
+/**Project-card**/
+
 .text-color-card{
     -fx-text-fill: $textColor;
     -fx-fill: $textColor;
@@ -11,20 +26,25 @@
 #cardSection:hover #textSection{
     -fx-background-color:$cardColor;   
 }
+
 #textSection,#accessButton:hover,#editButton:hover, #deleteButton:hover{
     -fx-background-color:derive($cardColor,10.0%);
 }
+
 #accessButton:pressed,#editButton:pressed, #deleteButton:pressed{
 	-fx-background-color:derive($cardColor,15.0%);	
 }
+
 #accessButton,#editButton,#deleteButton{
 	-fx-background-color:derive($cardColor,20.0%);
-    -fx-text-fill:derive($cardColor,20.0%);
+    -fx-text-fill:derive($cardColor,20.0%); 
 	-fx-background-radius:15;
 }
+
 #buttonSection{
     -fx-background-color:derive($cardColor,20.0%);
 }
+
 #buttonSection:hover #accessButton,#buttonSection:hover #editButton,#buttonSection:hover #deleteButton,#textSection .label{
     -fx-text-fill: $textColor;
 }

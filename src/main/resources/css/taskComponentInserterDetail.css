@@ -25,13 +25,13 @@
 			    -fx-pref-width:22;
 			    -fx-pref-height:22;
 			}   
-			#doneTaskDetailCB:selected .box, #doneCheckBox:selected .box {
+			#doneTaskDetailCB:selected .box, #doneCheckBox:selected .box{
 			    -fx-background-color: #539464;
 			    -fx-border-color:#539464;
 			    -fx-background-radius:10px;
 			    -fx-background-radius:50%;
 			}   
-			#doneTaskDetailCB .box:hover .mark, #doneCheckBox .box:hover .mark {
+			#doneTaskDetailCB .box:hover .mark, #doneCheckBox .box:hover .mark{
 			    -fx-background-color:black;
 			}
 			#doneTaskDetailCB:selected .box .mark,#doneCheckBox:selected .box .mark{

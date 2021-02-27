@@ -9,7 +9,6 @@ import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableTasks;
-import dad.productividad.segmentedBarUtils.StatusType;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;

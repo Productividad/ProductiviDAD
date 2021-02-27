@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dad.productividad.project.ProjectComments;
+import dad.productividad.project.ProjectComment;
 
 /**
  * Class used to interact with the Notes table in the database.
@@ -20,7 +20,7 @@ public class TableProjectComments {
      *
      * @param projectComments The note to be inserted
      */
-    public static int insertProjectComments(ProjectComments projectComments) {
+    public static int insertProjectComments(ProjectComment projectComments) {
         String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_project) VALUES ( ?, ?)";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
         int id = 0;
@@ -54,7 +54,7 @@ public class TableProjectComments {
      * @param projectComments The projectComments from the registry to be updated
      *
      */
-    public static void update(ProjectComments projectComments) {
+    public static void update(ProjectComment projectComments) {
         String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_project = ? WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
@@ -77,7 +77,7 @@ public class TableProjectComments {
      *
      * @param projectComments The projectComment to be deleted
      */
-    public static void delete(ProjectComments projectComments) {
+    public static void delete(ProjectComment projectComments) {
         String delete = "DELETE FROM project_comments WHERE ID_project_comments = ?";
         try {
             JdbcConnection.connect();
@@ -99,11 +99,11 @@ public class TableProjectComments {
      *
      * @return arrayList An ArrayList of projectComments objects
      */
-    public static List<ProjectComments> read(int number) {
+    public static List<ProjectComment> read(int number) {
         String select = "SELECT * FROM project_comments ORDER BY ID_project_comments DESC LIMIT ?";
         ResultSet rs = null;
-        ArrayList<ProjectComments> arrayList = new ArrayList<ProjectComments>();
-        ProjectComments projectComments;
+        ArrayList<ProjectComment> arrayList = new ArrayList<ProjectComment>();
+        ProjectComment projectComments;
         try {
             JdbcConnection.connect();
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
@@ -111,7 +111,7 @@ public class TableProjectComments {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                projectComments = new ProjectComments();
+                projectComments = new ProjectComment();
                 projectComments.setId(rs.getInt("ID_project_comments"));
                 projectComments.setContent(rs.getString("content_project_comments"));
                 projectComments.setIdProject(rs.getInt("FK_ID_project"));

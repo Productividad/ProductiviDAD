@@ -7,11 +7,10 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import dad.productividad.app.MainController;
 import dad.productividad.project.Project;
-import dad.productividad.segmentedBarUtils.StatusType;
+import dad.productividad.task.StatusType;
 import dad.productividad.task.Task;
 
 /**
@@ -118,7 +117,7 @@ public class TableTasks {
 			while (rs.next()) {
 				task = new Task();
 				task.setId(rs.getInt("ID_Task"));
-				task.setTitle(rs.getString("title_task"));
+				task.setTitle(rs.getString("title_task")); 
 				task.setDone(rs.getInt("completed") == 1);
 				task.setFavourite(rs.getInt("favourite_task") == 1);
 				task.setDescription(rs.getString("description_task"));
@@ -138,7 +137,7 @@ public class TableTasks {
 			e.printStackTrace();
 		} finally {
 			JdbcConnection.close();
-		}
+		} 
 		return arrayList;
 	}
 
@@ -219,8 +218,6 @@ public class TableTasks {
 			pstmt.setInt(8,(task.isFavourite()) ? 1 : 0);
 			pstmt.setString(9,((task.getCompletedDate()) != null) ? task.getCompletedDate().toString() : null);
 			pstmt.setInt(10, task.getId());
-
-
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

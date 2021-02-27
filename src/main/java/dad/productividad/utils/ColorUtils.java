@@ -1,11 +1,13 @@
 package dad.productividad.utils;
 
 import javafx.scene.paint.Color;
+
 /**
  *	Class to work javafx.scene.paint.color
  *
  */
 public class ColorUtils {
+	
 	/**
 	 * Converts a Color object to a hex String
 	 * @param color
