@@ -62,7 +62,7 @@ Para navegar por los meses en los que existen movimientos, en la parte inferior 
 
 
 
-<p align="center">![](https://i.imgur.com/1cauxX1.gif)</p>
+<p align="center">< img src="https://i.imgur.com/1cauxX1.gif" alt="animated" /></p>
 
 ## <p align="center"><img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas</p>
 
