@@ -45,7 +45,12 @@ public class TableNotes {
 
 		return id;
 	}
-	
+
+	/**
+	 * Method to get the color from a task
+	 * @param id
+	 * @return a color from css
+	 */
 	public static String returnColor(int id) {
 		String query = "SELECT color_note FROM notes WHERE ID_note=?";
 		String color="";

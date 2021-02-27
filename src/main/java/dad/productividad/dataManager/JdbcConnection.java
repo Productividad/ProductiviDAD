@@ -15,6 +15,9 @@ import java.sql.SQLException;
 public class JdbcConnection {
 	static Connection connection;
 
+	/**
+	 * Opens the connection with the DB stored in user home
+	 */
 	public static void connect() {
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -37,6 +40,9 @@ public class JdbcConnection {
 		}
 	}
 
+	/**
+	 * Closes the connection
+	 */
 	public static void close() {
 		try {
 			connection.close();

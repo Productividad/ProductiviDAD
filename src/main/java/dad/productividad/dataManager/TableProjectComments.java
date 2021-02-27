@@ -14,9 +14,13 @@ import dad.productividad.project.ProjectComment;
  * Class used to interact with the Project_comments table in the database.
  */
 public class TableProjectComments {
-    
 
 
+    /**
+     * Insert a project Comment in DB
+     * @param projectComment
+     * @return the id of the inserted comment
+     */
     public static int insertProjectComments(ProjectComment projectComment) {
         String insert = "INSERT INTO project_comments (content_project_comments, FK_ID_task) VALUES ( ?, ?)";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
@@ -45,8 +49,10 @@ public class TableProjectComments {
     }
 
 
-
-
+    /**
+     * Updates a comment in DB
+     * @param projectComment to be updated
+     */
     public static void update(ProjectComment projectComment) {
         String update = "UPDATE project_comments SET  content_project_comments = ?, FK_ID_task = ? WHERE ID_project_comments = ?";
         try {
@@ -63,9 +69,10 @@ public class TableProjectComments {
         }
     }
 
-
-
-
+    /**
+     * Delete a project comment in the DB
+     * @param projectComment
+     */
     public static void delete(ProjectComment projectComment) {
 
         String delete = "DELETE FROM project_comments WHERE ID_project_comments = ?";
@@ -83,7 +90,11 @@ public class TableProjectComments {
     }
 
 
-
+    /**
+     *
+     * @param number of comments to be read
+     * @return A list of project comments
+     */
     public static List<ProjectComment> read(int number) {
         String select = "SELECT * FROM project_comments ORDER BY ID_project_comments DESC LIMIT ?";
         ResultSet rs = null;
