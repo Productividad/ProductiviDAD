@@ -44,17 +44,19 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## <img src="/github_images/lightbulb.svg " width="60"/>Pestaña de Notas
 
-​	Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón **+** 	ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con 	clicar en el área central de la nota y usar el teclado.
+Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
 
-​		[gif]
+​	<img src="/github_images/nota.png " width="" />
 
-​	Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
+Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
 
-​		[gif]
+​	<img src="/github_images/notadelete.png " width="" />
 
-​	Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha.
+Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores a elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
 
-​		[gif] 
+​	<img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" />
+
+
 
 ## <img src="/github_images/tomato.svg"  width="60"/>Pestaña Pomodoro 
 
