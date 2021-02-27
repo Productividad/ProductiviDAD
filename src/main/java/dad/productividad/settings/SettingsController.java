@@ -130,7 +130,7 @@ public class SettingsController implements Initializable {
         saveDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
         File file = saveDialog.showSaveDialog(App.getPrimaryStage());
         if (file != null) {
-            List<String> srcFiles = Arrays.asList("preferences.json", "productividad.db");
+            List<String> srcFiles = Arrays.asList("preferences.json", "productiviDAD.db");
             FileOutputStream fos = new FileOutputStream(file);
             ZipOutputStream zipOut = new ZipOutputStream(fos);
             for(String srcFile : srcFiles) {

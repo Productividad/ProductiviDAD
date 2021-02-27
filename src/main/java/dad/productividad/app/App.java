@@ -20,15 +20,15 @@ public class App extends Application{
 	public static Stage primaryStage;
 	
 	static BorderlessScene borderLessScene;
-	/*TODO check if DB exists in user home
-		TODO USE copyResourceToFile from ResourceUtils
-	 */
 	@Override
 	public void init() throws Exception {
-		File dir = new File(System.getProperty("user.home"));
-		File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/productividad.db");
+/**
+ * TODO use this when DB structure is definitive.
+		File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
+		System.out.println(file.getPath());
 		if(!file.exists())
-			ResourceUtils.copyResourceToFile("resources/database/productividad.db", dir);
+			ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
+ */
 		preferences = Preferences.load();
 		Locale.setDefault(preferences.getLocale());
 		super.init();
