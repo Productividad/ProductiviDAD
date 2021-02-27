@@ -62,6 +62,7 @@ public class TaskDetailController implements Initializable {
 	
 	public TaskDetailController() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskDetail.fxml"));
+		loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 		loader.setController(this);
 		try {
 			loader.load();

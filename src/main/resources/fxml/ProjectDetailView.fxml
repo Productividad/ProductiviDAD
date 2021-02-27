@@ -1,51 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="view" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="NEVER" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="80.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" prefHeight="30.0" vgrow="ALWAYS" />
-  </rowConstraints>
+<StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowIndex="1">
-         <content>
-            <VBox fx:id="taskContainer" />
-         </content>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-         <GridPane.margin>
-            <Insets bottom="15.0" right="10.0" top="15.0" />
-         </GridPane.margin>
-      </ScrollPane>
-      <Label fx:id="titleProject" styleClass="text-color-card" text="Set titleProject on controller">
-         <font>
-            <Font size="19.0" />
-         </font>
+      <VBox spacing="10.0" styleClass="main-color">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="40.0" styleClass="project-detail-header">
+               <children>
+                  <JFXSpinner fx:id="spinner" minHeight="110.0" minWidth="80.0" progress="0.0" />
+                  <VBox>
+                     <children>
+                        <Label fx:id="titleProject" styleClass="text-color" text="Set titleProject on controller">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="descriptionLabel" styleClass="text-color" text="Set titleProject on controller" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onAddTask" styleClass="settings-button" text="Añadir tarea" />
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="transparent-scrollPane">
+               <content>
+                  <VBox fx:id="taskContainer" />
+               </content>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </ScrollPane>
+         </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
-      </Label>
-      <JFXSpinner fx:id="spinner" progress="0.0" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </GridPane.margin>
-      </JFXSpinner>
+      </VBox>
+      <GridPane fx:id="dialogAdd" alignment="CENTER" styleClass="dialog-background">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                     <children>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogAdd" styleClass="custom-button" text="%accept" />
+                        <Button fx:id="cancelAddButton" cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogAdd" styleClass="custom-button" text="%cancel" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" styleClass="custom-label" text="Añada una tarea">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="titleTF" focusColor="#405aa800" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+                     <styleClass>
+                        <String fx:value="jfxTextFieldTextArea" />
+                        <String fx:value="text-color" />
+                     </styleClass>
+                  </JFXTextField>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </GridPane>
+      <GridPane fx:id="dialogTaskDetail" alignment="CENTER" styleClass="dialog-background">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <GridPane styleClass="stack-dialog" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" prefWidth="400.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="NEVER" />
+                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onDeleteDialogTaskDetail" text="Borrar tarea" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCloseDialogTaskDetail" styleClass="custom-button" text="Cerrar" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="titleTaskDetail" alignment="CENTER" styleClass="custom-label" text="Añada una tarea">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane fx:id="scrollPaneTaskDetail" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" styleClass="transparent-scrollPane" GridPane.rowIndex="1">
+                     <content>
+                        <VBox fx:id="taskCommentsWrapper" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </GridPane>
    </children>
-   <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-   </padding>
-</GridPane>
+</StackPane>

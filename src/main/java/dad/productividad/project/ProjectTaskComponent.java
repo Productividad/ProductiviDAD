@@ -20,6 +20,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class ProjectTaskComponent extends GridPane implements Initializable{
 
@@ -27,48 +29,58 @@ public class ProjectTaskComponent extends GridPane implements Initializable{
     private Label titleLabel;  
 
     @FXML
-    private CheckBox doneTaskDetailCB;
+    private CheckBox doneCB;
 
     private StringProperty title=new SimpleStringProperty();
     private BooleanProperty done=new SimpleBooleanProperty();  
     
     private ObjectProperty<Task> task=new SimpleObjectProperty<>();
     
+	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
+	private MediaPlayer mediaPlayer;
+    
     public ProjectTaskComponent() {
 		super();
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectTaskComponent.fxml"));
 			loader.setController(this);
-			loader.setRoot(this);   
+			loader.setRoot(this);    
 			loader.load(); 
 		} catch (IOException e) {e.printStackTrace();} 
     }
-
+ 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {  
-				
+				  
 		titleLabel.textProperty().bindBidirectional(title);     
-		doneTaskDetailCB.selectedProperty().bindBidirectional(done); 
+		doneCB.selectedProperty().bindBidirectional(done); 
 		
-		task.addListener((o,ov,nv)->{ 
-			title.set(nv.getTitle());
-			done.set(nv.isDone()); 
-		});
-		
+		task.addListener((o,ov,nv)->{    
+			if(nv!=null) {
+				title.set(nv.getTitle());  
+				done.set(nv.isDone());   
+			} 
+		}); 
+		 
 		setOnMouseClicked(event->projectTaskComponentClicked());
 		   
-	} 
+	}  
 
 	
 	@FXML
 	private void taskChecked(ActionEvent event) {
+    	if(done.get()) {
+	    	mediaPlayer=new MediaPlayer(sound);
+	        mediaPlayer.play();
+    	}
+		
 		task.get().setDone(done.get());
 		TableTasks.update(task.get());
 		MainController.mainController.getProjectDetailController().setTasksOnTaskContainer();
 	}
 	
 	private void projectTaskComponentClicked() {
-		System.out.println("ey");
+		MainController.mainController.getProjectDetailController().showDialogTaskDetail(getTask());
 	}  
 	
 	public final ObjectProperty<Task> taskProperty() { 

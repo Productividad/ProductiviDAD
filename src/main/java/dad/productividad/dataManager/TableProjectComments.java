@@ -37,7 +37,7 @@ public class TableProjectComments {
             ResultSet rs = stmt.executeQuery(getPkId);
 
             while (rs.next()) {
-                id = rs.getInt("seq");
+                id = rs.getInt("seq"); 
             }
             projectComment.setId(id);
         } catch (SQLException e) {

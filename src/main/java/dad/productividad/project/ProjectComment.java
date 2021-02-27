@@ -17,7 +17,7 @@ public class ProjectComment {
 
 	public final StringProperty contentProperty() {
 		return this.content;
-	}
+	} 
 	
 
 	public final String getContent() {
@@ -39,11 +39,11 @@ public class ProjectComment {
 		return this.idProperty().get();
 	}
 	
-
+ 
 	public final void setId(final int id) {
-		this.idProperty().set(id);
+		this.idProperty().set(id); 
 	}
-	
+	      
 
 	public final IntegerProperty idTaskProperty() {
 		return this.idTask;
@@ -57,7 +57,7 @@ public class ProjectComment {
 
 	public final void setIdTask(final int idTask) {
 		this.idTaskProperty().set(idTask);
-	}
+	} 
 	
-
+ 
 }
