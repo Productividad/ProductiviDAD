@@ -17,57 +17,78 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 
-public class TaskInserterController extends HBox implements Initializable{
+public class TaskInserterController extends HBox implements Initializable {
 
     @FXML
     private JFXTextField titleTF;
-    
-    private StringProperty title=new SimpleStringProperty();
-    
-    public TaskInserterController() {
-    	
-	    try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskInserter.fxml"));
-			loader.setController(this);
-			loader.setRoot(this); 
-			loader.load();
-		} catch (IOException e) {e.printStackTrace();}
-    }
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
 
-		titleTF.textProperty().bindBidirectional(title);
-	}  
-	 
+    private StringProperty title = new SimpleStringProperty();
+
+    /**
+     * TaskInserterController constructor
+     */
+    public TaskInserterController() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskInserter.fxml"));
+            loader.setController(this);
+            loader.setRoot(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * TaskInserter view initialization
+     *
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        titleTF.textProperty().bindBidirectional(title);
+    }
+
+    /**
+     * Enter key action
+     *
+     * @param event
+     */
     @FXML
     private void onEnter(ActionEvent event) {
-    	insertTask();
+        insertTask();
     }
 
+    /**
+     * Insert Button action
+     *
+     * @param event
+     */
     @FXML
     private void onInsertTaskButton(ActionEvent event) {
-    	insertTask();
+        insertTask();
     }
-    
+
     /**
-     * Inserts a task into the database, set that task into the right 
+     * Inserts a task into the database, set that task into the right
      * side of mainView and reset the focusProperty
      */
     private void insertTask() {
-    	
-    	if(title.get()!=null) {
-    		if(!title.get().isEmpty()) {
-		    	Task task=new Task();
-		    	task.setTitle(title.get());
-		    	task.setCreationDate(LocalDate.now());
-		    	task.setStatus(StatusType.TODO);
-		    	TableTasks.insert(task);
-		    	MainController.mainController.updateTaskWrapper();
-		    	MainController.mainController.setTaskOnRightSide(task);
-		    	title.set("");
-		    	requestFocus();
-    		}
-    	}
+
+        if (title.get() != null) {
+            if (!title.get().isEmpty()) {
+                Task task = new Task();
+                task.setTitle(title.get());
+                task.setCreationDate(LocalDate.now());
+                task.setStatus(StatusType.TODO);
+                TableTasks.insert(task);
+                MainController.mainController.updateTaskWrapper();
+                MainController.mainController.setTaskOnRightSide(task);
+                title.set("");
+                requestFocus();
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
-![](/github_images/header.png)
+<p align="center"><img src="/github_images/header.png" width=""/></p>
 
-Aplicación de gestión de tareas (productividad)
+<p align="center">Aplicación de gestión de tareas (productividad)</p>
 
 Desarrollada por:
 
@@ -14,7 +14,7 @@ Jesús Daniel Rodríguez Vidal
 
 2º DAM. Grupo B.
 
-# Introducción.
+# <p align="center">Introducción.</p>
 
 
 
@@ -24,11 +24,9 @@ Los desarrolladores de APP (y realmente cualquier trabajador), si realizan un se
 
 Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/8OVDzMGB_kw), [Copyrighted free use](https://unsplash.com/license)
 
-# Uso de la aplicación ProductiviDAD
+# <p align="center">Uso de la aplicación ProductiviDAD</p>
 
-## <img src="/github_images/house-door-fill.svg " width="60" />Pestaña de Home 
-
-
+## <p align="center"><img src="/github_images/house-door-fill.svg " width="30" /> Pestaña de Home</p> 
 
 
 
@@ -36,35 +34,91 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-## <img src="/github_images/clock-fill.svg " width="60" />Pestaña de Tareas 
 
-## <img src="/github_images/columns-gap.svg " width="60" />Pestaña de Proyectos 
 
-## <img src="/github_images/wallet2.svg " width="60" />Pestaña de Balance 
-
-## <img src="/github_images/lightbulb.svg " width="60"/>Pestaña de Notas
-
-​	Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón **+** 	ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con 	clicar en el área central de la nota y usar el teclado.
-
-​		[gif]
-
-​	Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
-
-​		[gif]
-
-​	Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha.
-
-​		[gif] 
-
-## <img src="/github_images/tomato.svg"  width="60"/>Pestaña Pomodoro 
-
-## <img src="/github_images/gear-wide-connected.svg " width="60" />Pestaña de Ajustes
-
-## <img src="/github_images/github.svg " width="60" />Pestaña de GitHub
+## <p align="center"><img src="/github_images/clock-fill.svg " width="30" /> Pestaña de Tareas </p>
 
 
 
-# Licencia 
+
+
+## <p align="center"><img src="/github_images/columns-gap.svg " width="30" /> Pestaña de Proyectos</p> 
+
+
+
+
+
+## <p align="center"><img src="/github_images/wallet2.svg " width="30" /> Pestaña de Balance</p> 
+
+
+
+
+
+Para añadir un movimiento hay que introducir un **Concepto**, el **Importe**, seleccionar si es **Positivo** (ingreso) o **Negativo** (gasto) y pulsar el botón de **Introducir movimiento**:
+
+
+
+![](https://i.imgur.com/WzD3D8s.gif)
+
+
+
+Para borrar un movimiento hay que seleccionar de la lista el que se desea eliminar y pulsar el botón de **Borrar movimiento**:
+
+
+
+![](https://i.imgur.com/JMCqL04.gif)
+
+
+
+Para navegar por los meses en los que hay movimientos, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo , también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
+
+
+
+![](https://i.imgur.com/1cauxX1.gif)
+
+
+
+
+
+## <p align="center"><img src="/github_images/lightbulb.svg " width="30"/> Pestaña de Notas</p>
+
+
+
+
+
+Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" /> ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
+
+​	<img src="/github_images/nota.png " width="" />
+
+
+
+Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
+
+<img src="/github_images/notadelete.png " width=""/>
+
+
+
+Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores entre los que elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
+
+<img src="/github_images/notecolor.png " width="" />  <img src="/github_images/colorchooser.png " width="400" /> 
+
+
+
+
+
+
+
+## <p align="center"><img src="/github_images/tomato.svg"  width="30"/> Pestaña Pomodoro</p> 
+
+## <p align="center"><img src="/github_images/gear-wide-connected.svg " width="30" /> Pestaña de Ajustes</p>
+
+## <p align="center"><img src="/github_images/github.svg " width="30" /> Pestaña de GitHub</p>
+
+
+
+
+
+# <p align="center">Licencia</p> 
 
 
 

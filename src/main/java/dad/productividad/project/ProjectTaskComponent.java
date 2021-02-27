@@ -23,13 +23,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class ProjectTaskComponent extends GridPane implements Initializable{
+public class ProjectTaskComponent extends GridPane implements Initializable {
 
     @FXML
-    private Label titleLabel;  
+    private Label titleLabel;
 
     @FXML
     private CheckBox doneCB;
+
 
     private StringProperty title=new SimpleStringProperty();
     private BooleanProperty done=new SimpleBooleanProperty();  
@@ -38,7 +39,10 @@ public class ProjectTaskComponent extends GridPane implements Initializable{
     
 	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
-    
+
+    /**
+     * ProjectTaskComponent constructor
+     */
     public ProjectTaskComponent() {
 		super();
 		try {
@@ -49,6 +53,13 @@ public class ProjectTaskComponent extends GridPane implements Initializable{
 		} catch (IOException e) {e.printStackTrace();} 
     }
  
+
+    /**
+     * ProjectTaskComponent view initialization
+     *
+     * @param location
+     * @param resources
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {  
 				  
@@ -66,7 +77,12 @@ public class ProjectTaskComponent extends GridPane implements Initializable{
 		   
 	}  
 
-	
+
+    /**
+     * Done CheckBox checked action
+     *
+     * @param event
+     */
 	@FXML
 	private void taskChecked(ActionEvent event) {
     	if(done.get()) {
@@ -83,16 +99,25 @@ public class ProjectTaskComponent extends GridPane implements Initializable{
 		MainController.mainController.getProjectDetailController().showDialogTaskDetail(getTask());
 	}  
 	
+    /**
+     * @return ObjectProperty of Task task
+     */
 	public final ObjectProperty<Task> taskProperty() { 
 		return this.task;
 	}
 	
-
+    /**
+     * @return Task task
+     */
 	public final Task getTask() {
 		return this.taskProperty().get();
 	}
 	  
-
+    /**
+     * Sets a new task
+     *
+     * @param task
+     */
 	public final void setTask(final Task task) {
 		this.taskProperty().set(task);
 	}

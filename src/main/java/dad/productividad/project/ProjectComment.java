@@ -6,58 +6,84 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ProjectComment {
-    
-	private StringProperty content = new SimpleStringProperty();
+
+    private StringProperty content = new SimpleStringProperty();
     private IntegerProperty id = new SimpleIntegerProperty();
     private IntegerProperty idTask = new SimpleIntegerProperty();
 
+    /**
+     * ProjectComment default constructor
+     */
     public ProjectComment() {
     	
     }
 
-	public final StringProperty contentProperty() {
-		return this.content;
-	} 
-	
+    /**
+     * @return StringProperty of content
+     */
+    public final StringProperty contentProperty() {
+        return this.content;
+    }
 
-	public final String getContent() {
-		return this.contentProperty().get();
-	}
-	
+    /**
+     * @return String of content
+     */
+    public final String getContent() {
+        return this.contentProperty().get();
+    }
 
-	public final void setContent(final String content) {
-		this.contentProperty().set(content);
-	}
-	
+    /**
+     * Sets new content
+     *
+     * @param content
+     */
+    public final void setContent(final String content) {
+        this.contentProperty().set(content);
+    }
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
-	
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
-	
- 
-	public final void setId(final int id) {
-		this.idProperty().set(id); 
-	}
-	      
+    /**
+     * @return int of id
+     */
+    public final int getId() {
+        return this.idProperty().get();
+    }
 
-	public final IntegerProperty idTaskProperty() {
-		return this.idTask;
-	}
-	
+    /**
+     * Sets a new id
+     *
+     * @param id
+     */
+    public final void setId(final int id) {
+        this.idProperty().set(id);
+    }
 
-	public final int getIdTask() {
-		return this.idTaskProperty().get();
-	}
-	
+    /**
+     * @return IntegerProperty of idTask
+     */
+    public final IntegerProperty idTaskProperty() {
+        return this.idTask;
+    }
 
-	public final void setIdTask(final int idTask) {
-		this.idTaskProperty().set(idTask);
-	} 
-	
- 
+    /**
+     * @return int of idTask
+     */
+    public final int getIdTask() {
+        return this.idTaskProperty().get();
+    }
+
+    /**
+     * Sets a new idTask
+     *
+     * @param idTask
+     */
+    public final void setIdTask(final int idTask) {
+        this.idTaskProperty().set(idTask);
+    }
 }

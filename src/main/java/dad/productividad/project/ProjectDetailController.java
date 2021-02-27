@@ -55,7 +55,10 @@ public class ProjectDetailController implements Initializable {
 	private StringProperty description=new SimpleStringProperty();
 	
 	private ObjectProperty<Project> project = new SimpleObjectProperty<>(); 
-	   
+	 
+    /**
+     * ProjectDetailController constructor
+     */
 	public ProjectDetailController() { 
 		try {     
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectDetailView.fxml"));
@@ -67,6 +70,12 @@ public class ProjectDetailController implements Initializable {
 		}
 	}
  
+    /**
+     * Project detail view initialization
+     *
+     * @param location
+     * @param resources
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { 
  				
@@ -83,7 +92,9 @@ public class ProjectDetailController implements Initializable {
 		});  
 		
 	}     
-	 
+    /**
+     * Add tasks to the container
+     */
 	public void setTasksOnTaskContainer(){
 		taskContainer.getChildren().clear();
 	
@@ -153,18 +164,33 @@ public class ProjectDetailController implements Initializable {
 		dialogAdd.setVisible(false);
 		dialogTaskDetail.setVisible(false);
     }
+    
+    /**
+     * @return The ProjectDetail view
+     */
 	public StackPane getView() {
 		return this.view;
 	}
- 
+
+    /**
+     * @return ObjectProperty of Project of project variable
+     */
 	public final ObjectProperty<Project> projectProperty() {
 		return this.project;    
 	} 
-  
+	
+    /**
+     * @return Project of project variable
+     */
 	public final Project getProject() { 
 		return this.projectProperty().get();
 	}
  
+    /**
+     * Sets a new project
+     *
+     * @param project
+     */
 	public final void setProject(final Project project) { 
 		this.projectProperty().set(project);
 	}

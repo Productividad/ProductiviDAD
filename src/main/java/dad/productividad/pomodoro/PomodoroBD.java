@@ -1,65 +1,78 @@
 package dad.productividad.pomodoro;
 
-import dad.productividad.page.Page;
 import javafx.beans.property.*;
 
 public class PomodoroBD {
 
-	private IntegerProperty id = new SimpleIntegerProperty();
-	private ObjectProperty<Page> page = new SimpleObjectProperty<>();
-	private StringProperty typeTask = new SimpleStringProperty();
-	private IntegerProperty timeSpent = new SimpleIntegerProperty();
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private StringProperty typeTask = new SimpleStringProperty();
+    private IntegerProperty timeSpent = new SimpleIntegerProperty();
 
-	public PomodoroBD() {
-	}
+    public PomodoroBD() {
+    }
 
-	public PomodoroBD(String typeTask, Integer timeSpent) {
-		this.typeTask.set(typeTask);
-		this.timeSpent.set(timeSpent);
-	}
+    public PomodoroBD(String typeTask, Integer timeSpent) {
+        this.typeTask.set(typeTask);
+        this.timeSpent.set(timeSpent);
+    }
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
+    /**
+     * @return int of id
+     */
+    public final int getId() {
+        return this.idProperty().get();
+    }
 
-	public final ObjectProperty<Page> pageProperty() {
-		return this.page;
-	}
+    /**
+     * @return StringProperty of typeTask
+     */
+    public final StringProperty typeTaskProperty() {
+        return this.typeTask;
+    }
 
-	public final Page getPage() {
-		return this.pageProperty().get();
-	}
+    /**
+     * @return String of typeTask
+     */
+    public final String getTypeTask() {
+        return this.typeTaskProperty().get();
+    }
 
-	public final void setPage(final Page page) {
-		this.pageProperty().set(page);
-	}
+    /**
+     * Sets a new Type Task
+     *
+     * @param typeTask
+     */
+    public final void setTypeTask(final String typeTask) {
+        this.typeTaskProperty().set(typeTask);
+    }
 
-	public final StringProperty typeTaskProperty() {
-		return this.typeTask;
-	}
+    /**
+     * @return IntegerProperty of timeSpent
+     */
+    public final IntegerProperty timeSpentProperty() {
+        return this.timeSpent;
+    }
 
-	public final String getTypeTask() {
-		return this.typeTaskProperty().get();
-	}
+    /**
+     * @return int of timeSpent
+     */
+    public final int getTimeSpent() {
+        return this.timeSpentProperty().get();
+    }
 
-	public final void setTypeTask(final String typeTask) {
-		this.typeTaskProperty().set(typeTask);
-	}
-
-	public final IntegerProperty timeSpentProperty() {
-		return this.timeSpent;
-	}
-
-	public final int getTimeSpent() {
-		return this.timeSpentProperty().get();
-	}
-
-	public final void setTimeSpent(final int timeSpent) {
-		this.timeSpentProperty().set(timeSpent);
-	}
-
+    /**
+     * Sets a new timeSpent
+     *
+     * @param timeSpent
+     */
+    public final void setTimeSpent(final int timeSpent) {
+        this.timeSpentProperty().set(timeSpent);
+    }
 }
