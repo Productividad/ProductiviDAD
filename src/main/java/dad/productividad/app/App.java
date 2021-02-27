@@ -1,10 +1,13 @@
 package dad.productividad.app;
 
 import dad.productividad.utils.Preferences;
+import dad.productividad.utils.ResourceUtils;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.File;
 import java.util.Locale;
 
 import com.goxr3plus.fxborderlessscene.borderless.BorderlessScene;
@@ -18,10 +21,14 @@ public class App extends Application{
 	
 	static BorderlessScene borderLessScene;
 	/*TODO check if DB exists in user home
-		USE copyResourceToFile from ResourceUtils
+		TODO USE copyResourceToFile from ResourceUtils
 	 */
 	@Override
 	public void init() throws Exception {
+		File dir = new File(System.getProperty("user.home"));
+		File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/productividad.db");
+		if(!file.exists())
+			ResourceUtils.copyResourceToFile("resources/database/productividad.db", dir);
 		preferences = Preferences.load();
 		Locale.setDefault(preferences.getLocale());
 		super.init();

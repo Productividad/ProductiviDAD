@@ -2,6 +2,8 @@ package dad.productividad.settings;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.zip.ZipEntry;
@@ -116,6 +118,11 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
 
+    /**
+     * Export your Settings and your Database as a .db file (zip)
+     * https://www.baeldung.com/java-compress-and-uncompress
+     * @throws IOException
+     */
     @FXML
     private void onExportAction() throws IOException {
         FileChooser saveDialog = new FileChooser();
@@ -123,23 +130,30 @@ public class SettingsController implements Initializable {
         saveDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
         File file = saveDialog.showSaveDialog(App.getPrimaryStage());
         if (file != null) {
+            List<String> srcFiles = Arrays.asList("preferences.json", "productividad.db");
             FileOutputStream fos = new FileOutputStream(file);
             ZipOutputStream zipOut = new ZipOutputStream(fos);
-            File fileToZip = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/preferences.json");
-            FileInputStream fis = new FileInputStream(fileToZip);
-            ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
-            zipOut.putNextEntry(zipEntry);
-            byte[] bytes = new byte[1024];
-            int length;
-            while((length = fis.read(bytes)) >= 0) {
-                zipOut.write(bytes, 0, length);
+            for(String srcFile : srcFiles) {
+                File fileToZip = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/" + srcFile);
+                FileInputStream fis = new FileInputStream(fileToZip);
+                ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
+                zipOut.putNextEntry(zipEntry);
+                byte[] bytes = new byte[1024];
+                int length;
+                while ((length = fis.read(bytes)) >= 0) {
+                    zipOut.write(bytes, 0, length);
+                }
+                fis.close();
             }
             zipOut.close();
-            fis.close();
             fos.close();
         }
     }
 
+    /**
+     * Import your Settings and Database from a .db file (zip)
+     * https://www.baeldung.com/java-compress-and-uncompress
+     */
     @FXML
     private void onImportAction() {
         try {
