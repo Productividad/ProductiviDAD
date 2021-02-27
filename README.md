@@ -1,6 +1,6 @@
 ![](/github_images/header.png)
 
-Aplicación de gestión de tareas (productividad)
+<p align="center">Aplicación de gestión de tareas (productividad)</p>
 
 Desarrollada por:
 
@@ -14,7 +14,7 @@ Jesús Daniel Rodríguez Vidal
 
 2º DAM. Grupo B.
 
-# Introducción.
+# <p align="center">Introducción.</p>
 
 
 
@@ -24,11 +24,9 @@ Los desarrolladores de APP (y realmente cualquier trabajador), si realizan un se
 
 Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/8OVDzMGB_kw), [Copyrighted free use](https://unsplash.com/license)
 
-# Uso de la aplicación ProductiviDAD
+# <p align="center">Uso de la aplicación ProductiviDAD</p>
 
-## <img src="/github_images/house-door-fill.svg " width="40" />Pestaña de Home 
-
-
+## <p align="center"><img src="/github_images/house-door-fill.svg " width="40" />Pestaña de Home</p> 
 
 
 
@@ -36,11 +34,13 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-## <img src="/github_images/clock-fill.svg " width="40" />Pestaña de Tareas 
 
-## <img src="/github_images/columns-gap.svg " width="40" />Pestaña de Proyectos 
 
-## <img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance 
+## <p align="center"><img src="/github_images/clock-fill.svg " width="40" />Pestaña de Tareas </p>
+
+## <p align="center"><img src="/github_images/columns-gap.svg " width="40" />Pestaña de Proyectos</p> 
+
+## <p align="center"><img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance</p> 
 
 Para introducir un movimiento hay que introducir un **Concepto**, el **Importe**, seleccionar si es **Positivo** (ingreso) o **Negativo** (gasto) y pulsar el botón de **Introducir movimiento**:
 
@@ -62,9 +62,9 @@ Para navegar por los meses en los que existen movimientos, en la parte inferior 
 
 
 
-![](https://i.imgur.com/1cauxX1.gif)
+<p align="center">![](https://i.imgur.com/1cauxX1.gif)</p>
 
-## <img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas
+## <p align="center"><img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas</p>
 
 Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral derecha, luego pulsar el botón <img src="/github_images/button.png " width="30" />ubicado en la esquina superior derecha de la interfaz de la aplicación. Para escribir en la nota basta con clicar en el área central de la nota y usar el teclado.
 
@@ -72,23 +72,23 @@ Para añadir una **nota**, pulsar el botón de la bombilla en la barra lateral d
 
 Para eliminar una **nota** basta con pulsar la **X** en la parte superior derecha de la **propia nota.**
 
-​	<img src="/github_images/notadelete.png " width="" />
+​	<p align="center"><img src="/github_images/notadelete.png " width="" /></p>
 
 Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** en el la parte superior derecha. Se abrirá un dialogo con varios colores a elegir, una vez seleccionado, pulse aceptar para confirmar el cambio.
 
-​	<img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" />
+​	<p align="center"><img src="/github_images/notecolor.png " width="" /><img src="/github_images/colorchooser.png " width="400" /></p>
 
 
 
-## <img src="/github_images/tomato.svg"  width="40"/>Pestaña Pomodoro 
+## <p align="center"><img src="/github_images/tomato.svg"  width="40"/>Pestaña Pomodoro</p> 
 
-## <img src="/github_images/gear-wide-connected.svg " width="40" />Pestaña de Ajustes
+## <p align="center"><img src="/github_images/gear-wide-connected.svg " width="40" />Pestaña de Ajustes</p>
 
-## <img src="/github_images/github.svg " width="40" />Pestaña de GitHub
+## <p align="center"><img src="/github_images/github.svg " width="40" />Pestaña de GitHub</p>
 
 
 
-# Licencia 
+# <p align="center">Licencia</p> 
 
 
 
