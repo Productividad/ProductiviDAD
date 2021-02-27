@@ -42,7 +42,13 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 ## <img src="/github_images/wallet2.svg " width="40" />Pestaña de Balance 
 
-Introducir movimiento positivo![](https://i.imgur.com/OBfRmI7.gif)
+Introducir movimiento positivo:
+
+
+
+![](https://i.imgur.com/OBfRmI7.gif) 
+
+
 
 ## <img src="/github_images/lightbulb.svg " width="40"/>Pestaña de Notas
 
