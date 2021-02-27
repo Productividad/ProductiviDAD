@@ -91,7 +91,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="titleTF" focusColor="#405aa800" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="titleTF" focusColor="#405aa800" promptText="Título" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
                      <styleClass>
                         <String fx:value="jfxTextFieldTextArea" />
                         <String fx:value="text-color" />
