@@ -70,7 +70,7 @@ public class MainController implements Initializable {
 	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
 	
 	private ProjectManagerController projectManagerController;
-	private NotesController notasController;
+	private NotesController notesController;
 	private BalanceManagerController balanceManagerController;
 	private ProjectDetailController projectDetailController;	
 	private HomeController homeController;	 
@@ -78,8 +78,11 @@ public class MainController implements Initializable {
 	private SettingsController settingsController;
 	private MenuBarController menuBarController;
 
-	public static MainController mainController; 
-	 
+	public static MainController mainController;
+
+	/**
+	 * Class constructor.
+	 */
 	public MainController() { 
 		MainController.mainController = this; 
 		try {
@@ -91,7 +94,12 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * View initialize method.
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		 
@@ -136,7 +144,7 @@ public class MainController implements Initializable {
 		}); 
 		
 		projectManagerController = new ProjectManagerController(); 
-		notasController = new NotesController();
+		notesController = new NotesController();
 		balanceManagerController = new BalanceManagerController();
 		homeController=new HomeController();
 		pomodoroController = new PomodoroController();
@@ -170,14 +178,25 @@ public class MainController implements Initializable {
 		view.setCenter(projectDetailController.getView());
 	}
 
+	/**
+	 * Set the right zone of view with taskDetailController.getView(),
+	 * with a certain Task.
+	 *
+	 * @param task
+	 */
 	public void setTaskOnRightSide(Task task) {
 	
 		view.setRight(null);
 		TaskDetailController taskDetailController=new TaskDetailController();
 		taskDetailController.setTask(task);
 		view.setRight(taskDetailController.getView());
-	}	
-	
+	}
+	/**
+	 * Updates the right zone of view,
+	 * with a concrete Task.
+	 *
+	 * @param task Task
+	 */
 	public void updateRightSide(Task task) {
 		 
 		if(view.getRight()!=null) {
@@ -188,20 +207,33 @@ public class MainController implements Initializable {
 			view.setRight(taskDetailController.getView());
 		}
 	}
-	
+
+	/**
+	 * Clear the right side of view.
+	 */
 	public void setRightSideNull() {
 		view.setRight(null);
 	}
-	 
+
+	/**
+	 * Updates the tasks, when adding one.
+	 */
 	public void updateTaskWrapper() {
 		homeController.insertTaskFromDB(); 
 	}
-	
-	
+
+	/**
+	 *
+	 * @return The view
+	 */
 	public BorderPane getView() {
 		return this.view;
 	}
 
+	/**
+	 *
+	 * @return The top bar
+	 */
 	public GridPane getTopBar() {
 		return this.topBar;
 	}
@@ -217,97 +249,188 @@ public class MainController implements Initializable {
 		minimizeButton.setOnAction(a -> App.primaryStage.setIconified(true));
 		maximizeButton.setOnAction(a -> App.borderLessScene.maximizeStage());
 	}
-	
+
+	/**
+	 * Change the View theme.
+	 */
 	public void changeTheme() {
 		view.getStylesheets().clear();
 		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
 
 	}
 
+	/**
+	 *
+	 * @return project controller
+	 */
 	public ProjectManagerController getProjectManagerController() {
 		return projectManagerController;
 	}
 
+	/**
+	 * Set a new project controller.
+	 * @param projectManagerController
+	 */
 	public void setProjectManagerController(ProjectManagerController projectManagerController) {
 		this.projectManagerController = projectManagerController; 
 	}
 
-	public NotesController getNotasController() {
-		return notasController;
+	/**
+	 *
+	 * @return notes controller
+	 */
+	public NotesController getNotesController() {
+		return notesController;
 	}
 
-	public void setNotasController(NotesController notasController) {
-		this.notasController = notasController;
+	/**
+	 * Set a new notes controller
+	 * @param notesController
+	 */
+	public void setNotesController(NotesController notesController) {
+		this.notesController = notesController;
 	}
 
+	/**
+	 *
+	 * @return balance manager controller
+	 */
 	public BalanceManagerController getBalanceManagerController() {
 		return balanceManagerController;
 	}
 
+	/**
+	 * Set a new balance manager controller
+	 * @param balanceManagerController
+	 */
 	public void setBalanceManagerController(BalanceManagerController balanceManagerController) {
 		this.balanceManagerController = balanceManagerController;
 	}
 
+	/**
+	 *
+	 * @return project detail controller
+	 */
 	public ProjectDetailController getProjectDetailController() {
 		return projectDetailController;
 	}
 
+	/**
+	 * Set a new project detail controller
+	 * @param projectDetailController
+	 */
 	public void setProjectDetailController(ProjectDetailController projectDetailController) {
 		this.projectDetailController = projectDetailController;
 	}
 
+	/**
+	 *
+	 * @return Home controller
+	 */
 	public HomeController getHomeController() {
 		return homeController;
 	}
 
+	/**
+	 * Set a new home controller
+	 * @param homeController
+	 */
 	public void setHomeController(HomeController homeController) {
 		this.homeController = homeController;
 	}
 
+	/**
+	 *
+	 * @return Pomodoro controller
+	 */
 	public PomodoroController getPomodoroController() {
 		return pomodoroController;
 	}
 
+	/**
+	 * Set a new pomodoro controller
+	 * @param pomodoroController
+	 */
 	public void setPomodoroController(PomodoroController pomodoroController) {
 		this.pomodoroController = pomodoroController;
 	}
 
+	/**
+	 *
+	 * @return Settings controller
+	 */
 	public SettingsController getSettingsController() {
 		return settingsController;
 	}
 
+	/**
+	 * Set a new settings controller
+	 * @param settingsController
+	 */
 	public void setSettingsController(SettingsController settingsController) {
 		this.settingsController = settingsController;
 	}
 
+	/**
+	 *
+	 * @return Menu Bar controller
+	 */
 	public MenuBarController getMenuBarController() {
 		return menuBarController;
 	}
 
+	/**
+	 * Set a new Menu Bar controller
+	 * @param menuBarController
+	 */
 	public void setMenuBarController(MenuBarController menuBarController) {
 		this.menuBarController = menuBarController;
 	}
 
+	/**
+	 *
+	 * @return close button
+	 */
 	public Button getCloseButton() {
 		return closeButton;
 	}
 
+	/**
+	 * Set a new close button
+	 * @param closeButton
+	 */
 	public void setCloseButton(Button closeButton) {
 		this.closeButton = closeButton;
 	}
 
+	/**
+	 *
+	 * @return maximize button
+	 */
 	public Button getMaximizeButton() {
 		return maximizeButton;
 	}
 
+	/**
+	 * Set a new maximize button
+	 * @param maximizeButton
+	 */
 	public void setMaximizeButton(Button maximizeButton) {
 		this.maximizeButton = maximizeButton;
 	}
 
+	/**
+	 *
+	 * @return minimize button
+	 */
 	public Button getMinimizeButton() {
 		return minimizeButton;
 	}
 
+	/**
+	 * Set a new minimize button
+	 * @param minimizeButton
+	 */
 	public void setMinimizeButton(Button minimizeButton) {
 		this.minimizeButton = minimizeButton;
 	}

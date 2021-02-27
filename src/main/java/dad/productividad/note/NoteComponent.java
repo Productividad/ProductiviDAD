@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTextArea;
 
-import dad.productividad.app.App;
 import dad.productividad.app.MainController;
 import dad.productividad.dataManager.TableNotes;
 import javafx.beans.property.ObjectProperty;
@@ -72,13 +71,13 @@ public class NoteComponent extends BorderPane implements Initializable{
     void onDeleteNote(ActionEvent event) {
     	
     	TableNotes.delete(note.get());
-    	MainController.mainController.getNotasController().readNotes();
+    	MainController.mainController.getNotesController().readNotes();
 
     }
 
     @FXML
     void onOpenOptions(ActionEvent event) {
-    	MainController.mainController.getNotasController().showDialogPane(note.get());
+    	MainController.mainController.getNotesController().showDialogPane(note.get());
     }
 
 	public final ObjectProperty<Note> noteProperty() {

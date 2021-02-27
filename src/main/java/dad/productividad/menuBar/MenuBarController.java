@@ -13,7 +13,6 @@ import dad.productividad.settings.SettingsController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -92,13 +91,13 @@ public class MenuBarController implements Initializable {
     }
     
 	public void onNotesManagerSection() {
-		if (MainController.mainController.getView().getCenter() != MainController.mainController.getNotasController().getView()) {
+		if (MainController.mainController.getView().getCenter() != MainController.mainController.getNotesController().getView()) {
 			
 			setSectionsDisableFalse();
 			notesManagerSection.setDisable(true);	
 			
-			new FadeIn(MainController.mainController.getNotasController().getView()).play();
-			MainController.mainController.getView().setCenter(MainController.mainController.getNotasController().getView());
+			new FadeIn(MainController.mainController.getNotesController().getView()).play();
+			MainController.mainController.getView().setCenter(MainController.mainController.getNotesController().getView());
 		}
     }
     
