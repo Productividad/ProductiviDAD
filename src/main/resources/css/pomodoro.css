@@ -1,0 +1,4 @@
+.pomodoro-spinner:determinate .percentage{
+	visibility: hidden;
+
+}

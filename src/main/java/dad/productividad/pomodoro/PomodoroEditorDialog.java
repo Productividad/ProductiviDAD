@@ -79,6 +79,9 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 
 	private Stage stage;
 
+	/**
+	 * 
+	 */
 	public PomodoroEditorDialog() {
 		initStyle(StageStyle.UNDECORATED);
 		initModality(Modality.WINDOW_MODAL);
@@ -91,7 +94,10 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// Filling comboBox
+		
+		/**
+		 * Filling comboBox
+		 */
 		ObservableList<Integer> minutesSecondsList = FXCollections.observableArrayList();
 		for (int i = 1; i <= 60; i++) {
 			minutesSecondsList.add(i);
@@ -103,7 +109,8 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 		shortBreakBox.getItems().addAll(5, 10, 15);
 		longBreakBox.getItems().addAll(20, 25);
 	}
-
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -121,7 +128,11 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 		stage.close();
 	}
 
-	// Instance of PomodoroSetup with comboBox values
+	/**
+	 *  Instance of PomodoroSetup with comboBox values
+	 * @param buttonType
+	 * @return
+	 */
 	private PomodoroSetup onAccept(ButtonType buttonType) {
 		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
 			PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
@@ -133,6 +144,9 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 		return null;
 	}
 
+	/*
+	 * 
+	 */
 	@FXML
 	void onPomoLengthDrag(MouseEvent event) {
 
