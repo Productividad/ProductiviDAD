@@ -122,5 +122,7 @@ Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** 
 
 
 
-<div>Tomato icon made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>(editado)
+<div>Tomato icon made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+cartoon_wink_magic_sparkle.wav - MattLeschuck; freesound.org; CreativeCommons license
+(editado)
 26 de febrero de 2021
