@@ -18,6 +18,7 @@ public class TableProjectComments {
 
     /**
      * Insert a project Comment in DB
+     *
      * @param projectComment
      * @return the id of the inserted comment
      */
@@ -51,6 +52,7 @@ public class TableProjectComments {
 
     /**
      * Updates a comment in DB
+     *
      * @param projectComment to be updated
      */
     public static void update(ProjectComment projectComment) {
@@ -71,6 +73,7 @@ public class TableProjectComments {
 
     /**
      * Delete a project comment in the DB
+     *
      * @param projectComment
      */
     public static void delete(ProjectComment projectComment) {
@@ -91,7 +94,6 @@ public class TableProjectComments {
 
 
     /**
-     *
      * @param number of comments to be read
      * @return A list of project comments
      */

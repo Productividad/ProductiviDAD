@@ -194,6 +194,7 @@ public class BalanceManagerController implements Initializable {
     /**
      * Delete button action.
      * Deletes a registry from the TableView and the DB.
+     *
      * @param event
      */
     @FXML
@@ -208,6 +209,7 @@ public class BalanceManagerController implements Initializable {
      * Insert button action
      * Inserts a registry in the TableView and the DB.
      * When a movement is inserted, table is updated with the month of that inserted movement.
+     *
      * @param event
      */
     @FXML
@@ -241,6 +243,7 @@ public class BalanceManagerController implements Initializable {
     /**
      * Negative RadioButton action.
      * Filters all negative movements.
+     *
      * @param event
      */
     @FXML
@@ -257,6 +260,7 @@ public class BalanceManagerController implements Initializable {
     /**
      * Positive RadioButton action.
      * Filters all positive movements.
+     *
      * @param event
      */
     @FXML
@@ -273,6 +277,7 @@ public class BalanceManagerController implements Initializable {
     /**
      * All RadioButton action.
      * Deletes all filters, shows all movements.
+     *
      * @param event
      */
     @FXML
@@ -315,31 +320,20 @@ public class BalanceManagerController implements Initializable {
     private void filter() {
         if (allFilter.isSelected() && totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 0));
-        }
-
-        else if (negativeFilter.isSelected() && totalToggle.isSelected()) {
+        } else if (negativeFilter.isSelected() && totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 2));
-        }
-
-        else if (positiveFilter.isSelected() && totalToggle.isSelected()) {
+        } else if (positiveFilter.isSelected() && totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(getIndex(), 1));
-        }
-
-        else if (allFilter.isSelected() && !totalToggle.isSelected()) {
+        } else if (allFilter.isSelected() && !totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(0));
-        }
-
-        else if (negativeFilter.isSelected() && !totalToggle.isSelected()) {
+        } else if (negativeFilter.isSelected() && !totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(2));
-        }
-
-        else if (positiveFilter.isSelected() && !totalToggle.isSelected()) {
+        } else if (positiveFilter.isSelected() && !totalToggle.isSelected()) {
             totalAmount.set(TableIncomeExpenses.getTotal(1));
         }
     }
 
     /**
-     *
      * @return Date used as Index
      */
     public LocalDate getIndex() {
@@ -347,7 +341,6 @@ public class BalanceManagerController implements Initializable {
     }
 
     /**
-     *
      * @return Date as ObjectProperty used as Index
      */
     public ObjectProperty<LocalDate> indexProperty() {
@@ -356,6 +349,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Set a new index
+     *
      * @param index The date to be used as Index
      */
     public void setIndex(LocalDate index) {
@@ -363,7 +357,6 @@ public class BalanceManagerController implements Initializable {
     }
 
     /**
-     *
      * @return Index year
      */
     public int getYear() {
@@ -372,6 +365,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Set a new Year
+     *
      * @param year The year to be used as Index
      */
     public void setYear(int year) {
@@ -379,7 +373,6 @@ public class BalanceManagerController implements Initializable {
     }
 
     /**
-     *
      * @return Index month
      */
     public int getMonth() {
@@ -388,6 +381,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Set a new Month
+     *
      * @param month The month to be used as Index
      */
     public void setMonth(int month) {
@@ -404,6 +398,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Get the previous Index.
+     *
      * @return the previous Index.
      */
     public LocalDate getPreviousIndex() {
@@ -412,7 +407,8 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Get the previous Index as ObjectProperty.
-     * @return  the previous index Property.
+     *
+     * @return the previous index Property.
      */
     public ObjectProperty<LocalDate> previousIndexProperty() {
         return previousIndex;
@@ -420,6 +416,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Set a new previous Index
+     *
      * @param previousIndex
      */
     public void setPreviousIndex(LocalDate previousIndex) {
@@ -428,13 +425,16 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Get next Index
+     *
      * @return the next index.
      */
     public LocalDate getNextIndex() {
         return nextIndex.get();
     }
+
     /**
      * Get next Index ObjectProperty
+     *
      * @return the next index Property.
      */
     public ObjectProperty<LocalDate> nextIndexProperty() {
@@ -443,6 +443,7 @@ public class BalanceManagerController implements Initializable {
 
     /**
      * Set a new Next Index
+     *
      * @param nextIndex
      */
     public void setNextIndex(LocalDate nextIndex) {
@@ -450,7 +451,6 @@ public class BalanceManagerController implements Initializable {
     }
 
     /**
-     *
      * @return View
      */
     public GridPane getView() {

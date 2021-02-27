@@ -13,6 +13,7 @@ public enum CurrencyType {
 
     /**
      * Currency constructor
+     *
      * @param symbol
      * @param name
      */
@@ -22,16 +23,14 @@ public enum CurrencyType {
     }
 
     /**
-     *
      * @return The currency with the format symbol nm; e.g. "$ Dollar"
      */
     @Override
-	public String toString() {
-		return symbol + " " + nm;
-	}
+    public String toString() {
+        return symbol + " " + nm;
+    }
 
     /**
-     *
      * @return only the symbol; e.g. "$"
      */
     public String getSymbol() {

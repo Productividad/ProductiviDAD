@@ -145,7 +145,8 @@ public class TableIncomeExpenses {
 
     /**
      * Method to get month balance
-     * @param date A date from the month
+     *
+     * @param date   A date from the month
      * @param filter 0 for all registries, 1 for positive registries, 2 for negative registries
      * @return Balance
      */
@@ -182,8 +183,10 @@ public class TableIncomeExpenses {
         }
         return amount;
     }
+
     /**
      * Method to get overall balance
+     *
      * @param filter 0 for all registries, 1 for positive registries, 2 for negative registries
      * @return Balance
      */
@@ -222,8 +225,9 @@ public class TableIncomeExpenses {
 
     /**
      * Method to find the next or previous Month with registries
+     *
      * @param indexDate A date of reference
-     * @param filter 0 for next, 1 for previous
+     * @param filter    0 for next, 1 for previous
      * @return Date of closest previous or closest next month
      */
     public static LocalDate find(LocalDate indexDate, int filter) {

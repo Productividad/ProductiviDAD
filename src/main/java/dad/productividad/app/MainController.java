@@ -37,402 +37,401 @@ import javafx.scene.layout.VBox;
 
 /**
  * Main controller class of the program
- *
  */
 public class MainController implements Initializable {
 
-	@FXML
-	private BorderPane view;
+    @FXML
+    private BorderPane view;
 
-	@FXML
-	private AnchorPane centerPane;
+    @FXML
+    private AnchorPane centerPane;
 
-	@FXML
-	private GridPane topBar;
+    @FXML
+    private GridPane topBar;
 
-	@FXML
-	private VBox center;
+    @FXML
+    private VBox center;
 
-	@FXML
-	private ListView<String> listView;
+    @FXML
+    private ListView<String> listView;
 
-	@FXML
-	private Button closeButton, maximizeButton, minimizeButton;
-	
-	static Page todaysPage = new Page();
- 
-	private final KeyCombination homeShortcut=new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
-	private final KeyCombination calendarShortcut=new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
-	private final KeyCombination projectManagerShortcut=new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
-	private final KeyCombination notesShortcut=new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
-	private final KeyCombination balanceShortcut=new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
-	private final KeyCombination pomodoroShortcut=new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
-	private final KeyCombination settingsShortcut=new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
-	
-	private ProjectManagerController projectManagerController;
-	private NotesController notesController;
-	private BalanceManagerController balanceManagerController;
-	private ProjectDetailController projectDetailController;	
-	private HomeController homeController;	 
-	private PomodoroController pomodoroController;
-	private SettingsController settingsController;
-	private MenuBarController menuBarController;
+    @FXML
+    private Button closeButton, maximizeButton, minimizeButton;
 
-	public static MainController mainController;
+    static Page todaysPage = new Page();
 
-	/**
-	 * Class constructor.
-	 */
-	public MainController() { 
-		MainController.mainController = this; 
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/strings", Locale.getDefault()));
-			loader.setController(this);
-			loader.load();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
-	}
+    private final KeyCombination homeShortcut = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
+    private final KeyCombination calendarShortcut = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
+    private final KeyCombination projectManagerShortcut = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+    private final KeyCombination notesShortcut = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+    private final KeyCombination balanceShortcut = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+    private final KeyCombination pomodoroShortcut = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+    private final KeyCombination settingsShortcut = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
 
-	/**
-	 * View initialize method.
-	 * @param location
-	 * @param resources
-	 */
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		 
-		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
-				
-		view.centerProperty().addListener((o,ov,nv)->{
-			if(nv!=null) {
-				if(view.getRight()!=null)  
-					view.setRight(null); 
-			}
-		}); 
-		
-		view.setOnKeyPressed(new EventHandler<KeyEvent>() { 
-			@Override
-			public void handle(KeyEvent e) {
-				if (e.getCode() == KeyCode.ALT) 
-	            	MainController.mainController.getMenuBarController().showTagShortcut();
-	            if(homeShortcut.match(e)) 
-	            	menuBarController.onHomeManagerSection();
-	            if(calendarShortcut.match(e))
-	            	menuBarController.onTimePlannerManagerSection();
-	            if(projectManagerShortcut.match(e))
-	            	menuBarController.onProjectManagerSection();
-	            if(balanceShortcut.match(e)) 
-	            	menuBarController.onBalanceManagerSection();
-	            if(notesShortcut.match(e))
-	            	menuBarController.onNotesManagerSection();
-	            if(pomodoroShortcut.match(e))
-	            	menuBarController.onPomodoroManagerSection();
-	            if(settingsShortcut.match(e))
-	            	menuBarController.onSettingsManagerSection();
-			}
-		});   
-		 
-		view.setOnKeyReleased(new EventHandler<KeyEvent>() {
-			@Override
-			public void handle(KeyEvent e) {
-				if (e.getCode() == KeyCode.ALT) 
-		           	MainController.mainController.getMenuBarController().hideTagShortcut();
-		        
-			}
-		}); 
-		
-		projectManagerController = new ProjectManagerController(); 
-		notesController = new NotesController();
-		balanceManagerController = new BalanceManagerController();
-		homeController=new HomeController();
-		pomodoroController = new PomodoroController();
-		settingsController = new SettingsController();
-		menuBarController=new MenuBarController();
-		view.setLeft(menuBarController.getView());
+    private ProjectManagerController projectManagerController;
+    private NotesController notesController;
+    private BalanceManagerController balanceManagerController;
+    private ProjectDetailController projectDetailController;
+    private HomeController homeController;
+    private PomodoroController pomodoroController;
+    private SettingsController settingsController;
+    private MenuBarController menuBarController;
+
+    public static MainController mainController;
+
+    /**
+     * Class constructor.
+     */
+    public MainController() {
+        MainController.mainController = this;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+            loader.setResources(ResourceBundle.getBundle("i18n/strings", Locale.getDefault()));
+            loader.setController(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * View initialize method.
+     *
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());
+
+        view.centerProperty().addListener((o, ov, nv) -> {
+            if (nv != null) {
+                if (view.getRight() != null)
+                    view.setRight(null);
+            }
+        });
+
+        view.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                if (e.getCode() == KeyCode.ALT)
+                    MainController.mainController.getMenuBarController().showTagShortcut();
+                if (homeShortcut.match(e))
+                    menuBarController.onHomeManagerSection();
+                if (calendarShortcut.match(e))
+                    menuBarController.onTimePlannerManagerSection();
+                if (projectManagerShortcut.match(e))
+                    menuBarController.onProjectManagerSection();
+                if (balanceShortcut.match(e))
+                    menuBarController.onBalanceManagerSection();
+                if (notesShortcut.match(e))
+                    menuBarController.onNotesManagerSection();
+                if (pomodoroShortcut.match(e))
+                    menuBarController.onPomodoroManagerSection();
+                if (settingsShortcut.match(e))
+                    menuBarController.onSettingsManagerSection();
+            }
+        });
+
+        view.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                if (e.getCode() == KeyCode.ALT)
+                    MainController.mainController.getMenuBarController().hideTagShortcut();
+
+            }
+        });
+
+        projectManagerController = new ProjectManagerController();
+        notesController = new NotesController();
+        balanceManagerController = new BalanceManagerController();
+        homeController = new HomeController();
+        pomodoroController = new PomodoroController();
+        settingsController = new SettingsController();
+        menuBarController = new MenuBarController();
+        view.setLeft(menuBarController.getView());
 //		view.setCenter(homeController.getView());  TODO TODO TODO TODO
-		view.setCenter(projectManagerController.getView());
-		  
-		todaysPage.setDate(LocalDate.now());
-		TablePages.insertPage(todaysPage);
-	} 
+        view.setCenter(projectManagerController.getView());
 
-	public static Page getTodaysPage() {
-		return todaysPage;
-	}
-	    
-	/** 
-	 * Set the center of view with projectDetailController.getView().
-	 * The received project and stylesheet are assigned to the projectDetailController
-	 * 
-	 * @param project Project
-	 * @param styleSheetPath String
-	 */
-	public void openProject(Project project, String styleSheetPath) {
-		projectDetailController=new ProjectDetailController();
-		projectDetailController.setProject(project);
-		
-		new FadeIn(projectDetailController.getView()).play();
-			
-		view.setCenter(projectDetailController.getView());
-	}
+        todaysPage.setDate(LocalDate.now());
+        TablePages.insertPage(todaysPage);
+    }
 
-	/**
-	 * Set the right zone of view with taskDetailController.getView(),
-	 * with a certain Task.
-	 *
-	 * @param task
-	 */
-	public void setTaskOnRightSide(Task task) {
-	
-		view.setRight(null);
-		TaskDetailController taskDetailController=new TaskDetailController();
-		taskDetailController.setTask(task);
-		view.setRight(taskDetailController.getView());
-	}
-	/**
-	 * Updates the right zone of view,
-	 * with a concrete Task.
-	 *
-	 * @param task Task
-	 */
-	public void updateRightSide(Task task) {
-		 
-		if(view.getRight()!=null) {
-			TaskDetailController taskDetailController=new TaskDetailController();
-			taskDetailController.setTask(task);
-			
-			view.setRight(null);
-			view.setRight(taskDetailController.getView());
-		}
-	}
+    public static Page getTodaysPage() {
+        return todaysPage;
+    }
 
-	/**
-	 * Clear the right side of view.
-	 */
-	public void setRightSideNull() {
-		view.setRight(null);
-	}
+    /**
+     * Set the center of view with projectDetailController.getView().
+     * The received project and stylesheet are assigned to the projectDetailController
+     *
+     * @param project        Project
+     * @param styleSheetPath String
+     */
+    public void openProject(Project project, String styleSheetPath) {
+        projectDetailController = new ProjectDetailController();
+        projectDetailController.setProject(project);
 
-	/**
-	 * Updates the tasks, when adding one.
-	 */
-	public void updateTaskWrapper() {
-		homeController.insertTaskFromDB(); 
-	}
+        new FadeIn(projectDetailController.getView()).play();
 
-	/**
-	 *
-	 * @return The view
-	 */
-	public BorderPane getView() {
-		return this.view;
-	}
+        view.setCenter(projectDetailController.getView());
+    }
 
-	/**
-	 *
-	 * @return The top bar
-	 */
-	public GridPane getTopBar() {
-		return this.topBar;
-	}
-	
-	
-	/**
-	 * Init actions of fxBorderlessScene
-	 */
-	public void initActions() {
-		App.borderLessScene.setMoveControl(getTopBar());
-		App.borderLessScene.removeDefaultCSS();
-		closeButton.setOnAction(a -> App.primaryStage.close());
-		minimizeButton.setOnAction(a -> App.primaryStage.setIconified(true));
-		maximizeButton.setOnAction(a -> App.borderLessScene.maximizeStage());
-	}
+    /**
+     * Set the right zone of view with taskDetailController.getView(),
+     * with a certain Task.
+     *
+     * @param task
+     */
+    public void setTaskOnRightSide(Task task) {
 
-	/**
-	 * Change the View theme.
-	 */
-	public void changeTheme() {
-		view.getStylesheets().clear();
-		view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());		
+        view.setRight(null);
+        TaskDetailController taskDetailController = new TaskDetailController();
+        taskDetailController.setTask(task);
+        view.setRight(taskDetailController.getView());
+    }
 
-	}
+    /**
+     * Updates the right zone of view,
+     * with a concrete Task.
+     *
+     * @param task Task
+     */
+    public void updateRightSide(Task task) {
 
-	/**
-	 *
-	 * @return project controller
-	 */
-	public ProjectManagerController getProjectManagerController() {
-		return projectManagerController;
-	}
+        if (view.getRight() != null) {
+            TaskDetailController taskDetailController = new TaskDetailController();
+            taskDetailController.setTask(task);
 
-	/**
-	 * Set a new project controller.
-	 * @param projectManagerController
-	 */
-	public void setProjectManagerController(ProjectManagerController projectManagerController) {
-		this.projectManagerController = projectManagerController; 
-	}
+            view.setRight(null);
+            view.setRight(taskDetailController.getView());
+        }
+    }
 
-	/**
-	 *
-	 * @return notes controller
-	 */
-	public NotesController getNotesController() {
-		return notesController;
-	}
+    /**
+     * Clear the right side of view.
+     */
+    public void setRightSideNull() {
+        view.setRight(null);
+    }
 
-	/**
-	 * Set a new notes controller
-	 * @param notesController
-	 */
-	public void setNotesController(NotesController notesController) {
-		this.notesController = notesController;
-	}
+    /**
+     * Updates the tasks, when adding one.
+     */
+    public void updateTaskWrapper() {
+        homeController.insertTaskFromDB();
+    }
 
-	/**
-	 *
-	 * @return balance manager controller
-	 */
-	public BalanceManagerController getBalanceManagerController() {
-		return balanceManagerController;
-	}
+    /**
+     * @return The view
+     */
+    public BorderPane getView() {
+        return this.view;
+    }
 
-	/**
-	 * Set a new balance manager controller
-	 * @param balanceManagerController
-	 */
-	public void setBalanceManagerController(BalanceManagerController balanceManagerController) {
-		this.balanceManagerController = balanceManagerController;
-	}
+    /**
+     * @return The top bar
+     */
+    public GridPane getTopBar() {
+        return this.topBar;
+    }
 
-	/**
-	 *
-	 * @return project detail controller
-	 */
-	public ProjectDetailController getProjectDetailController() {
-		return projectDetailController;
-	}
 
-	/**
-	 * Set a new project detail controller
-	 * @param projectDetailController
-	 */
-	public void setProjectDetailController(ProjectDetailController projectDetailController) {
-		this.projectDetailController = projectDetailController;
-	}
+    /**
+     * Init actions of fxBorderlessScene
+     */
+    public void initActions() {
+        App.borderLessScene.setMoveControl(getTopBar());
+        App.borderLessScene.removeDefaultCSS();
+        closeButton.setOnAction(a -> App.primaryStage.close());
+        minimizeButton.setOnAction(a -> App.primaryStage.setIconified(true));
+        maximizeButton.setOnAction(a -> App.borderLessScene.maximizeStage());
+    }
 
-	/**
-	 *
-	 * @return Home controller
-	 */
-	public HomeController getHomeController() {
-		return homeController;
-	}
+    /**
+     * Change the View theme.
+     */
+    public void changeTheme() {
+        view.getStylesheets().clear();
+        view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());
 
-	/**
-	 * Set a new home controller
-	 * @param homeController
-	 */
-	public void setHomeController(HomeController homeController) {
-		this.homeController = homeController;
-	}
+    }
 
-	/**
-	 *
-	 * @return Pomodoro controller
-	 */
-	public PomodoroController getPomodoroController() {
-		return pomodoroController;
-	}
+    /**
+     * @return project controller
+     */
+    public ProjectManagerController getProjectManagerController() {
+        return projectManagerController;
+    }
 
-	/**
-	 * Set a new pomodoro controller
-	 * @param pomodoroController
-	 */
-	public void setPomodoroController(PomodoroController pomodoroController) {
-		this.pomodoroController = pomodoroController;
-	}
+    /**
+     * Set a new project controller.
+     *
+     * @param projectManagerController
+     */
+    public void setProjectManagerController(ProjectManagerController projectManagerController) {
+        this.projectManagerController = projectManagerController;
+    }
 
-	/**
-	 *
-	 * @return Settings controller
-	 */
-	public SettingsController getSettingsController() {
-		return settingsController;
-	}
+    /**
+     * @return notes controller
+     */
+    public NotesController getNotesController() {
+        return notesController;
+    }
 
-	/**
-	 * Set a new settings controller
-	 * @param settingsController
-	 */
-	public void setSettingsController(SettingsController settingsController) {
-		this.settingsController = settingsController;
-	}
+    /**
+     * Set a new notes controller
+     *
+     * @param notesController
+     */
+    public void setNotesController(NotesController notesController) {
+        this.notesController = notesController;
+    }
 
-	/**
-	 *
-	 * @return Menu Bar controller
-	 */
-	public MenuBarController getMenuBarController() {
-		return menuBarController;
-	}
+    /**
+     * @return balance manager controller
+     */
+    public BalanceManagerController getBalanceManagerController() {
+        return balanceManagerController;
+    }
 
-	/**
-	 * Set a new Menu Bar controller
-	 * @param menuBarController
-	 */
-	public void setMenuBarController(MenuBarController menuBarController) {
-		this.menuBarController = menuBarController;
-	}
+    /**
+     * Set a new balance manager controller
+     *
+     * @param balanceManagerController
+     */
+    public void setBalanceManagerController(BalanceManagerController balanceManagerController) {
+        this.balanceManagerController = balanceManagerController;
+    }
 
-	/**
-	 *
-	 * @return close button
-	 */
-	public Button getCloseButton() {
-		return closeButton;
-	}
+    /**
+     * @return project detail controller
+     */
+    public ProjectDetailController getProjectDetailController() {
+        return projectDetailController;
+    }
 
-	/**
-	 * Set a new close button
-	 * @param closeButton
-	 */
-	public void setCloseButton(Button closeButton) {
-		this.closeButton = closeButton;
-	}
+    /**
+     * Set a new project detail controller
+     *
+     * @param projectDetailController
+     */
+    public void setProjectDetailController(ProjectDetailController projectDetailController) {
+        this.projectDetailController = projectDetailController;
+    }
 
-	/**
-	 *
-	 * @return maximize button
-	 */
-	public Button getMaximizeButton() {
-		return maximizeButton;
-	}
+    /**
+     * @return Home controller
+     */
+    public HomeController getHomeController() {
+        return homeController;
+    }
 
-	/**
-	 * Set a new maximize button
-	 * @param maximizeButton
-	 */
-	public void setMaximizeButton(Button maximizeButton) {
-		this.maximizeButton = maximizeButton;
-	}
+    /**
+     * Set a new home controller
+     *
+     * @param homeController
+     */
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
+    }
 
-	/**
-	 *
-	 * @return minimize button
-	 */
-	public Button getMinimizeButton() {
-		return minimizeButton;
-	}
+    /**
+     * @return Pomodoro controller
+     */
+    public PomodoroController getPomodoroController() {
+        return pomodoroController;
+    }
 
-	/**
-	 * Set a new minimize button
-	 * @param minimizeButton
-	 */
-	public void setMinimizeButton(Button minimizeButton) {
-		this.minimizeButton = minimizeButton;
-	}
+    /**
+     * Set a new pomodoro controller
+     *
+     * @param pomodoroController
+     */
+    public void setPomodoroController(PomodoroController pomodoroController) {
+        this.pomodoroController = pomodoroController;
+    }
+
+    /**
+     * @return Settings controller
+     */
+    public SettingsController getSettingsController() {
+        return settingsController;
+    }
+
+    /**
+     * Set a new settings controller
+     *
+     * @param settingsController
+     */
+    public void setSettingsController(SettingsController settingsController) {
+        this.settingsController = settingsController;
+    }
+
+    /**
+     * @return Menu Bar controller
+     */
+    public MenuBarController getMenuBarController() {
+        return menuBarController;
+    }
+
+    /**
+     * Set a new Menu Bar controller
+     *
+     * @param menuBarController
+     */
+    public void setMenuBarController(MenuBarController menuBarController) {
+        this.menuBarController = menuBarController;
+    }
+
+    /**
+     * @return close button
+     */
+    public Button getCloseButton() {
+        return closeButton;
+    }
+
+    /**
+     * Set a new close button
+     *
+     * @param closeButton
+     */
+    public void setCloseButton(Button closeButton) {
+        this.closeButton = closeButton;
+    }
+
+    /**
+     * @return maximize button
+     */
+    public Button getMaximizeButton() {
+        return maximizeButton;
+    }
+
+    /**
+     * Set a new maximize button
+     *
+     * @param maximizeButton
+     */
+    public void setMaximizeButton(Button maximizeButton) {
+        this.maximizeButton = maximizeButton;
+    }
+
+    /**
+     * @return minimize button
+     */
+    public Button getMinimizeButton() {
+        return minimizeButton;
+    }
+
+    /**
+     * Set a new minimize button
+     *
+     * @param minimizeButton
+     */
+    public void setMinimizeButton(Button minimizeButton) {
+        this.minimizeButton = minimizeButton;
+    }
 
 }
