@@ -38,6 +38,7 @@ public class TaskInserterController extends HBox implements Initializable {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskInserter.fxml"));
+            loader.setResources(ResourceBundle.getBundle("i18n/strings"));
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
