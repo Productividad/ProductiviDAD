@@ -44,6 +44,7 @@ public class ProjectCommentInserter extends HBox implements Initializable {
         super();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProjectCommentInserter.fxml"));
+            loader.setResources(ResourceBundle.getBundle("i18n/strings"));
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
