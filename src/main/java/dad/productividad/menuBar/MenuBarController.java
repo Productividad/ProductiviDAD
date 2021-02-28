@@ -80,7 +80,7 @@ public class MenuBarController implements Initializable {
   
     }
  
-    /**    
+    /**     
      * Disables the home section button when it's the current section
      */
     public void onHomeManagerSection() {
