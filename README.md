@@ -1,6 +1,6 @@
 <p align="center"><img src="/github_images/header.png" width=""/></p>
 
-<p align="center">Aplicación de gestión de tareas (productividad)</p>
+<p align="center">Aplicación de gestión de tareas</p>
 
 [![GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-%250778B9.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -67,11 +67,11 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-<div>Tomato icon made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 cartoon_wink_magic_sparkle.wav - MattLeschuck; freesound.org; CreativeCommons license
 (editado)
 26 de febrero de 2021
 
 
 
+<div>Tomato icon made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <div>Icons made by <a href="" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
