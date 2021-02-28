@@ -26,12 +26,31 @@ public class PomodoroSetup {
      * Pomodoro length
      */
     private IntegerProperty pomoLength = new SimpleIntegerProperty();
+    /**
+     * Pomodoro id
+     */
     private IntegerProperty idPomodoro = new SimpleIntegerProperty();
-	private StringProperty titlePomodoro = new SimpleStringProperty();
-	private IntegerProperty timeSpent = new SimpleIntegerProperty();
-	private IntegerProperty idPage = new SimpleIntegerProperty();
-	private IntegerProperty idTask = new SimpleIntegerProperty();
-	private StringProperty color = new SimpleStringProperty();
+    /**
+     * Pomodoro title
+     */
+    private StringProperty titlePomodoro = new SimpleStringProperty();
+    /**
+     * Pomodoro time spent
+     */
+    private IntegerProperty timeSpent = new SimpleIntegerProperty();
+    /**
+     * Pomodoro page id
+     */
+    private IntegerProperty idPage = new SimpleIntegerProperty();
+    /**
+     * Pomodoro task id
+     */
+    private IntegerProperty idTask = new SimpleIntegerProperty();
+    /**
+     * Pomodoro color
+     */
+    private StringProperty color = new SimpleStringProperty();
+
     /**
      * PomodoroSetup constructor
      *
@@ -142,95 +161,144 @@ public class PomodoroSetup {
         this.pomoLengthProperty().set(pomoLength);
     }
 
+    /**
+     * @return Pomodoro id IntegerProperty
+     */
+    public final IntegerProperty idPomodoroProperty() {
+        return this.idPomodoro;
+    }
 
-	public final IntegerProperty idPomodoroProperty() {
-		return this.idPomodoro;
-	}
-	
+    /**
+     * @return Pomodoro id int
+     */
+    public final int getIdPomodoro() {
+        return this.idPomodoroProperty().get();
+    }
 
-	public final int getIdPomodoro() {
-		return this.idPomodoroProperty().get();
-	}
-	
+    /**
+     * Set a new Pomodoro id
+     *
+     * @param idPomodoro
+     */
+    public final void setIdPomodoro(final int idPomodoro) {
+        this.idPomodoroProperty().set(idPomodoro);
+    }
 
-	public final void setIdPomodoro(final int idPomodoro) {
-		this.idPomodoroProperty().set(idPomodoro);
-	}
-	
+    /**
+     * @return Pomodoro title StringProperty
+     */
+    public final StringProperty titlePomodoroProperty() {
+        return this.titlePomodoro;
+    }
 
-	public final StringProperty titlePomodoroProperty() {
-		return this.titlePomodoro;
-	}
-	
+    /**
+     * @return Pomodoro title String
+     */
+    public final String getTitlePomodoro() {
+        return this.titlePomodoroProperty().get();
+    }
 
-	public final String getTitlePomodoro() {
-		return this.titlePomodoroProperty().get();
-	}
-	
+    /**
+     * Set a new Pomodoro title
+     *
+     * @param titlePomodoro
+     */
+    public final void setTitlePomodoro(final String titlePomodoro) {
+        this.titlePomodoroProperty().set(titlePomodoro);
+    }
 
-	public final void setTitlePomodoro(final String titlePomodoro) {
-		this.titlePomodoroProperty().set(titlePomodoro);
-	}
-	
+    /**
+     * @return Time Spent IntegerProperty
+     */
+    public final IntegerProperty timeSpentProperty() {
+        return this.timeSpent;
+    }
 
-	public final IntegerProperty timeSpentProperty() {
-		return this.timeSpent;
-	}
-	
+    /**
+     * @return Time Spent int
+     */
+    public final int getTimeSpent() {
+        return this.timeSpentProperty().get();
+    }
 
-	public final int getTimeSpent() {
-		return this.timeSpentProperty().get();
-	}
-	
+    /**
+     * Set a new Time Spent
+     *
+     * @param timeSpent
+     */
+    public final void setTimeSpent(final int timeSpent) {
+        this.timeSpentProperty().set(timeSpent);
+    }
 
-	public final void setTimeSpent(final int timeSpent) {
-		this.timeSpentProperty().set(timeSpent);
-	}
-	
+    /**
+     * @return id Page IntegerProperty
+     */
+    public final IntegerProperty idPageProperty() {
+        return this.idPage;
+    }
 
-	public final IntegerProperty idPageProperty() {
-		return this.idPage;
-	}
-	
+    /**
+     * @return id Page int
+     */
+    public final int getIdPage() {
+        return this.idPageProperty().get();
+    }
 
-	public final int getIdPage() {
-		return this.idPageProperty().get();
-	}
-	
+    /**
+     * Set a new id page
+     *
+     * @param idPage
+     */
+    public final void setIdPage(final int idPage) {
+        this.idPageProperty().set(idPage);
+    }
 
-	public final void setIdPage(final int idPage) {
-		this.idPageProperty().set(idPage);
-	}
-	
+    /**
+     * @return id Task IntegerProperty
+     */
+    public final IntegerProperty idTaskProperty() {
+        return this.idTask;
+    }
 
-	public final IntegerProperty idTaskProperty() {
-		return this.idTask;
-	}
-	
+    /**
+     * @return id Task int
+     */
+    public final int getIdTask() {
+        return this.idTaskProperty().get();
+    }
 
-	public final int getIdTask() {
-		return this.idTaskProperty().get();
-	}
-	
+    /**
+     * Set a new id Task
+     *
+     * @param idTask
+     */
+    public final void setIdTask(final int idTask) {
+        this.idTaskProperty().set(idTask);
+    }
 
-	public final void setIdTask(final int idTask) {
-		this.idTaskProperty().set(idTask);
-	}
-	
+    /**
+     * @return color StringProperty
+     */
+    public final StringProperty colorProperty() {
+        return this.color;
+    }
 
-	public final StringProperty colorProperty() {
-		return this.color;
-	}
-	
+    /**
+     * @return color String
+     */
+    public final String getColor() {
+        return this.colorProperty().get();
+    }
 
-	public final String getColor() {
-		return this.colorProperty().get();
-	}
-	
+    /**
+     * Set a new color
+     *
+     * @param color
+     */
+    public final void setColor(final String color) {
+        this.colorProperty().set(color);
+    }
 
-	public final void setColor(final String color) {
-		this.colorProperty().set(color);
-	}
     /**
      * @return A String with Setup parameters
      */
@@ -238,8 +306,6 @@ public class PomodoroSetup {
     public String toString() {
         return "PomodoroSetup [minutes=" + minutes + ", shortBreak=" + shortBreak + ", longBreak=" + longBreak + "]";
     }
-
-	
 
 
 }
