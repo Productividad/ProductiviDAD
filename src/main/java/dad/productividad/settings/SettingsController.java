@@ -221,16 +221,31 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
     @FXML
-    private void onResetDataAction(ActionEvent event) { //TODO
-    	
-        dialogAccept.setVisible(true);
+    private void onResetDataAction(ActionEvent event) { 
+    	dialogData.setVisible(true);
+    }
+    
+    @FXML 
+    private void onAcceptDialogData() {
+    	resetDatabase();
+    }
+    @FXML
+    private void onCancelDialogData() {
+    	hideDialog(); 
+    }
+    
+    /**
+     * Reset the database to Factory
+     */
+    private void resetDatabase() {
         File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
         try {
             ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
+        }finally {
+        	 App.primaryStage.close();
+		}
     }
     /**
      * Generates a pdf report based on tasks Table
@@ -302,7 +317,7 @@ public class SettingsController implements Initializable {
             }
 
 
-        } catch (Exception e) {
+        } catch (Exception e) {  
             e.printStackTrace();
         }
     }
@@ -314,7 +329,7 @@ public class SettingsController implements Initializable {
      * @throws IOException
      */
     @FXML
-    private void onExportAction() throws IOException {
+    private void onExportAction() throws IOException { 
         FileChooser saveDialog = new FileChooser();
         saveDialog.setInitialDirectory(new File("."));
         saveDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
@@ -393,6 +408,8 @@ public class SettingsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        App.primaryStage.close();
+
     }
 
     /**
