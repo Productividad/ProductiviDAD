@@ -103,6 +103,7 @@ public class ProjectDetailController implements Initializable {
 			inserter.setTask(taskOnDetailDialog.get());
 		});
 		
+		dialogTaskDetail.setVisible(false);
 		
 		project.addListener((o, ov, nv) -> {	
 			if (nv != null) {  

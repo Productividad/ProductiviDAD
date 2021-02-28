@@ -148,7 +148,7 @@ public class MainController implements Initializable {
         balanceManagerController = new BalanceManagerController();
         homeController = new HomeController();
         pomodoroController = new PomodoroController();
-        settingsController = new SettingsController();
+        settingsController = new SettingsController(); 
         menuBarController = new MenuBarController();
         view.setLeft(menuBarController.getView());
 		view.setCenter(homeController.getView()); 
@@ -157,7 +157,7 @@ public class MainController implements Initializable {
         TablePages.insertPage(todaysPage);
     }
 
-    public static Page getTodaysPage() {
+    public static Page getTodaysPage() { 
         return todaysPage;
     }
 

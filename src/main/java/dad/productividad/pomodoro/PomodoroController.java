@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javax.swing.Timer;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 
@@ -18,9 +17,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.converter.NumberStringConverter;
@@ -28,22 +28,13 @@ import javafx.util.converter.NumberStringConverter;
 public class PomodoroController implements Initializable {
 
     @FXML
-    private AnchorPane view;
+    private GridPane view; 
 
     @FXML
     private JFXTextField pomoTextField;
 
     @FXML
-    private JFXButton pomodoroSettings;
-
-    @FXML
-    private JFXButton pomodoroCancel;
-
-    @FXML
-    private JFXButton pomodoroPlay;
-
-    @FXML
-    private JFXButton pomodoroPause;
+    private Button pomodoroSettings,pomodoroCancel,pomodoroPlay,pomodoroPause;
 
     @FXML
     private JFXSpinner pomodoroSpinner;
@@ -51,7 +42,7 @@ public class PomodoroController implements Initializable {
     @FXML
     private Label minuteLabel;
 
-    @FXML
+    @FXML 
     private Label secondsLabel;
 
     private Timer pomodoro;
@@ -120,7 +111,7 @@ public class PomodoroController implements Initializable {
 
         pomodoroSpinner.setProgress(0);
     }
-
+ 
     /**
      * Cancel button action
      *
@@ -133,7 +124,7 @@ public class PomodoroController implements Initializable {
             isShortTimer = false;
             shortTimer.stop();
         } else if (isLongTimer) {
-            isLongTimer = false;
+            isLongTimer = false; 
             longTimer.stop();
         } else {
             pomodoro.stop();
@@ -145,10 +136,10 @@ public class PomodoroController implements Initializable {
         pomodoroPlay.setVisible(true);
         pomodoroCancel.setDisable(true);
         pomodoroPause.setDisable(true);
-        pomodoroPlay.setDisable(true);
-
-        // Reset rounds
-        completed = 0;
+        pomodoroPlay.setDisable(true); 
+    
+        // Reset rounds  
+        completed = 0;    
         totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
                 Integer.valueOf(secondsLabel.textProperty().getValue()));
 
@@ -186,7 +177,7 @@ public class PomodoroController implements Initializable {
         if (isPaused) {
             isPaused = false;
             pomodoro.start();
-        } else {
+        } else { 
 
             minutesTimer = pomodoroSetup.getMinutes();
             secondsTimer = minutesToSeconds(minutesTimer, 0);
@@ -240,10 +231,10 @@ public class PomodoroController implements Initializable {
             minutesSelected = pomodoroSetup.getMinutes();
             pomodoroPlay.setDisable(false);
         }
-    }
-
+    } 
+   
     /**
-     * Starts a short timer
+     * Starts a short timer 
      */
     private void startShortTimer() {
 
@@ -357,8 +348,8 @@ public class PomodoroController implements Initializable {
     /**
      * @return The pomodoro view.
      */
-    public AnchorPane getView() {
-        return this.view;
+    public GridPane getView() { 
+        return this.view; 
     }
 
 }
