@@ -28,28 +28,50 @@ import javafx.scene.media.MediaPlayer;
  * TaskComponent view controller
  */
 public class TaskComponent extends VBox implements Initializable {
-
+    /**
+     * Title task label
+     */
     @FXML
     private Label taskTitleLabel;
-
+    /**
+     * Done and Favourite checkbox
+     */
     @FXML
     private CheckBox doneCheckBox, favouriteCheckBox;
-
+    /**
+     * Grid
+     */
     @FXML
     private GridPane grid;
-
+    /**
+     * Task ObjectProperty
+     */
     private ObjectProperty<Task> task = new SimpleObjectProperty<>();
+    /**
+     * Title
+     */
     private StringProperty title = new SimpleStringProperty();
+    /**
+     * Done
+     */
     private BooleanProperty done = new SimpleBooleanProperty();
+    /**
+     * Favourite
+     */
     private BooleanProperty favourite = new SimpleBooleanProperty();
-
+    /**
+     * Media sound
+     */
     private Media sound = new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
+    /**
+     * Mediaplayer
+     */
     private MediaPlayer mediaPlayer;
- 
+
     /**
      * TaskComponent constructor
-     */ 
-    public TaskComponent() { 
+     */
+    public TaskComponent() {
         super();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskComponent.fxml"));
@@ -62,7 +84,7 @@ public class TaskComponent extends VBox implements Initializable {
     }
 
     /**
-     * Initialization of TaskComponent view 
+     * Initialization of TaskComponent view
      *
      * @param location
      * @param resources
@@ -101,7 +123,7 @@ public class TaskComponent extends VBox implements Initializable {
             mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
             getTask().setCompletedDate(LocalDate.now());
-        }else{
+        } else {
             getTask().setCompletedDate(null);
         }
 

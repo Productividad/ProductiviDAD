@@ -21,10 +21,14 @@ import javafx.scene.layout.HBox;
  * TaskInserter view controller
  */
 public class TaskInserterController extends HBox implements Initializable {
-
+    /**
+     * Title textfield
+     */
     @FXML
     private JFXTextField titleTF;
-
+    /**
+     * Title
+     */
     private StringProperty title = new SimpleStringProperty();
 
     /**

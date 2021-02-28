@@ -22,27 +22,74 @@ import javafx.collections.ObservableList;
  * Task model
  */
 public class Task {
-
+    /**
+     * Task id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
-
+    /**
+     * Task title
+     */
     private StringProperty title = new SimpleStringProperty();
+    /**
+     * Task description
+     */
     private StringProperty description = new SimpleStringProperty();
+    /**
+     * Task color
+     */
     private StringProperty color = new SimpleStringProperty();
-
+    /**
+     * Task favourite
+     */
     private BooleanProperty favourite = new SimpleBooleanProperty();
+    /**
+     * Task done
+     */
     private BooleanProperty done = new SimpleBooleanProperty();
+    /**
+     * Task white
+     */
     private BooleanProperty white = new SimpleBooleanProperty();
-
+    /**
+     * Task deadline
+     */
     private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
+    /**
+     * Task Page
+     */
     private ObjectProperty<Page> page = new SimpleObjectProperty<>();
+    /**
+     * Task pageId
+     */
     private IntegerProperty pageId = new SimpleIntegerProperty();
+    /**
+     * Task parent Task
+     */
     private ObjectProperty<Task> parentTask = new SimpleObjectProperty<>();
+    /**
+     * Task Project
+     */
     private ObjectProperty<Project> project = new SimpleObjectProperty<>();
+    /**
+     * Task Status
+     */
     private ObjectProperty<StatusType> status = new SimpleObjectProperty<>();
+    /**
+     * Task creationDate
+     */
     private ObjectProperty<LocalDate> creationDate = new SimpleObjectProperty<>();
+    /**
+     * Task childTasks
+     */
     private ListProperty<Task> childTasks = new SimpleListProperty<Task>(FXCollections.observableArrayList());
+    /**
+     * Task completedDate
+     */
     private ObjectProperty<LocalDate> completedDate = new SimpleObjectProperty<>();
 
+    /**
+     * Task default constructor
+     */
     public Task() {
 
     }
