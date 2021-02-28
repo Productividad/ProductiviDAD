@@ -244,7 +244,6 @@ public class PomodoroController implements Initializable {
                     secondsTimer--;
                     totalSeconds++;
                     pomodoroSpinner.setProgress(totalSeconds / (minutesTimer * 60F));
-                    System.out.println(totalSeconds / (minutesTimer * 60F));
                     Platform.runLater(() -> {
                         secondsToMinutes(secondsTimer);
                     });
@@ -293,7 +292,7 @@ public class PomodoroController implements Initializable {
      * Starts a short timer
      */
     private void startShortTimer() {
-
+    	shortTimerSeconds=0;
         isShortTimer = true;
         pomodoroCancel.setDisable(false);
         pomodoroPause.setDisable(true);
@@ -310,7 +309,8 @@ public class PomodoroController implements Initializable {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 secondsTimer--;
                 totalSeconds++;
-
+                shortTimerSeconds++;
+                pomodoroSpinner.setProgress(shortTimerSeconds / (minutesTimer * 60F));
                 Platform.runLater(() -> {
                     secondsToMinutes(secondsTimer);
                 });
@@ -333,7 +333,7 @@ public class PomodoroController implements Initializable {
      * Starts long timer based on Pomodoro Settings
      */
     private void startLongTimer() {
-
+    	shortTimerSeconds= 0;
         isLongTimer = true;
         pomodoroCancel.setDisable(false);
         pomodoroPause.setDisable(true);
@@ -341,7 +341,7 @@ public class PomodoroController implements Initializable {
         pomodoro.stop();
 
         minutesTimer = pomodoroSetup.getLongBreak();
-        secondsTimer = minutesToSeconds(0, 10);
+        secondsTimer = minutesToSeconds(minutesTimer, 0);
         mediaPlayer = new MediaPlayer(soundPomodoroEnd);
         mediaPlayer.play();
         longTimer = new Timer(1000, new ActionListener() {
@@ -351,7 +351,8 @@ public class PomodoroController implements Initializable {
 
                 secondsTimer--;
                 totalSeconds++;
-
+                shortTimerSeconds++;
+                pomodoroSpinner.setProgress(shortTimerSeconds / (minutesTimer * 60F));
                 Platform.runLater(() -> {
                     secondsToMinutes(secondsTimer);
                 });

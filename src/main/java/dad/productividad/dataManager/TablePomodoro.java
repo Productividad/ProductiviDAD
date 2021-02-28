@@ -19,6 +19,7 @@ public class TablePomodoro {
      * @param pomodoroSetup The pomodoro to be inserted
      */
     public static void insertPomodoro(PomodoroSetup pomodoroSetup) {
+
         String insert = "INSERT INTO pomodoro (title_pomodoro, time_spent, FK_ID_page) VALUES (?, ?, (SELECT id_page FROM pages where date_page=date('now'))";
         String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='pomodoro'";
         int id = 0;
@@ -27,6 +28,8 @@ public class TablePomodoro {
             PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
             pstmt.setString(1, pomodoroSetup.getTitlePomodoro());
             pstmt.setInt(2, pomodoroSetup.getTimeSpent());
+           
+
 
             pstmt.executeUpdate();
 
