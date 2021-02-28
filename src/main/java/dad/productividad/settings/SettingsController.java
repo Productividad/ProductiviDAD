@@ -258,9 +258,11 @@ public class SettingsController implements Initializable {
      * Accept button in reset dialog
      */
     @FXML
-    private void onAcceptDialogReset() {
+    private void onAcceptDialogReset() throws IOException {
         //TODO Resetear las cosas de resetear
         dialogReset.setVisible(false);
+        App.preferences = new Preferences();
+        App.preferences.save();
     }
 
     /**
