@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -39,7 +40,10 @@
                      <styleClass>
                         <String fx:value="note-button" />
                         <String fx:value="highlight-button" />
-                     </styleClass></Button>
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
                <VBox.margin>
                   <Insets />
@@ -64,7 +68,7 @@
             <Insets right="10.0" />
          </padding>
       </VBox>
-      <GridPane fx:id="dialogColor" alignment="CENTER" styleClass="dialog-background">
+      <GridPane fx:id="dialogColor" alignment="CENTER" styleClass="dialog-background" visible="false">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
          </columnConstraints>
@@ -84,8 +88,14 @@
                <children>
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="Aceptar" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialog" styleClass="custom-button" text="Cancelar" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="Aceptar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialog" styleClass="custom-button" text="Cancelar">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <Label alignment="CENTER" styleClass="custom-label" text="Selecciona un color:">
@@ -95,13 +105,34 @@
                   </Label>
                   <HBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="1">
                      <children>
-                        <Pane fx:id="colorPick1" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick2" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick3" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick4" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick5" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick6" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
-                        <Pane fx:id="colorPick7" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square" />
+                        <Pane fx:id="colorPick1" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick2" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick3" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick4" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick5" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick6" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
+                        <Pane fx:id="colorPick7" maxHeight="25.0" minHeight="25.0" minWidth="25.0" styleClass="color-square">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Pane>
                      </children>
                   </HBox>
                </children>

@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -29,18 +30,27 @@
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-fullscreen-button" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="maximizeButton" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="fullscreen-button" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="closeButton" maxHeight="15.0" maxWidth="15.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false">
                      <styleClass>
                         <String fx:value="top-custom-button" />
                         <String fx:value="exit-button" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <padding>
