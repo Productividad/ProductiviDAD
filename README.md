@@ -26,6 +26,20 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 # <p align="center">Uso de la aplicación ProductiviDAD</p>
 
+
+
+
+
+
+
+## <p align="center"> Instalación</p>
+
+
+
+
+
+
+
 ## <p align="center"><img src="/github_images/house-door-fill.svg " width="30" /> Pestaña de Home</p> 
 
 
@@ -46,7 +60,37 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
+Para añadir un **Proyecto** hay que pulsar el botón de **Añadir Proyecto** en la parte superior derecha de la ventana. Se abrirá un dialogo donde se podrá introducir el **Titulo del proyecto**, una **Descripción**, una **Fecha Limite**,  además de elegir un **Color** que facilite su identificación.
 
+
+
+![](https://i.imgur.com/uLdFMIn.gif)
+
+
+
+Para ver el proyecto basta con pulsar el botón **Acceder al proyecto**, si no hay ninguna tarea dentro del proyecto, te pedirá que añadas una, para incluir mas el usuario tendrá que pulsar el botón **Añadir tarea**. Podrá marcar las tareas como completadas, actualizando inmediatamente el porcentaje de compleción del proyecto.
+
+
+
+![](https://i.imgur.com/1AWMqrM.gif)
+
+
+
+Al seleccionar una tarea, se abrirá una dialogo en el que podrá **añadir comentarios** que faciliten la realización de la tarea. En el mismo dialogo se podrá **borrar** la tarea pulsando el botón correspondiente.
+
+
+
+![](https://i.imgur.com/29fvBZw.gif)
+
+Al pulsar el botón de **Editar Proyecto** podrá cambiar el **Titulo** del proyecto, la **Descripción** de un proyecto existente, así como establecer una **Fecha Límite** y un **Color** distinto.
+
+![img](https://i.imgur.com/TtVFRXM.gif)
+
+
+
+El pulsar el botón **X** se eliminará el proyecto, no sin antes avisar al usuario de que sus cambios no podrán revertirse.
+
+![img](https://i.imgur.com/RzbGqvr.gif)
 
 ## <p align="center"><img src="/github_images/wallet2.svg " width="30" /> Pestaña de Balance</p> 
 
@@ -70,7 +114,7 @@ Para borrar un movimiento hay que seleccionar de la lista el que se desea elimin
 
 
 
-Para navegar por los meses en los que hay movimientos, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo , también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
+Para navegar por los meses en los que hay movimientos, en la parte inferior de la ventana hay botones que permiten al usuario hacerlo, también es posible filtrar los movimientos negativos o positivos y mostrar el balance total o mensual:
 
 
 
