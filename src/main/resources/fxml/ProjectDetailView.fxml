@@ -46,7 +46,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onAddTask" styleClass="settings-button" text="Añadir tarea" />
+                  <Button mnemonicParsing="false" onAction="#onAddTask" styleClass="settings-button" text="%addTask" />
                </children>
             </HBox>
             <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" styleClass="transparent-scrollPane">
@@ -86,12 +86,12 @@
                         <Button fx:id="cancelAddButton" cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogAdd" styleClass="custom-button" text="%cancel" />
                      </children>
                   </HBox>
-                  <Label alignment="CENTER" styleClass="custom-label" text="Añada una tarea">
+                  <Label alignment="CENTER" styleClass="custom-label" text="%addTask">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="titleTF" focusColor="#405aa800" promptText="Título" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="titleTF" focusColor="#405aa800" promptText="%project_title" unFocusColor="#4d4d4d00" GridPane.rowIndex="1">
                      <styleClass>
                         <String fx:value="jfxTextFieldTextArea" />
                         <String fx:value="text-color" />
@@ -125,11 +125,11 @@
                <children>
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="3">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onDeleteDialogTaskDetail" styleClass="custom-button" text="Borrar tarea" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCloseDialogTaskDetail" styleClass="custom-button" text="Cerrar" />
+                        <Button mnemonicParsing="false" onAction="#onDeleteDialogTaskDetail" styleClass="custom-button" text="%deletetask" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCloseDialogTaskDetail" styleClass="custom-button" text="%close" />
                      </children>
                   </HBox>
-                  <Label fx:id="titleTaskDetail" alignment="CENTER" text="Añada una tarea">
+                  <Label fx:id="titleTaskDetail" alignment="CENTER" text="%addTask">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
