@@ -30,20 +30,20 @@ public class MenuBarController implements Initializable {
      * View sections
      */
     @FXML
-    private GridPane homeManagerSection, timePlannerManagerSection, projectManagerSection,
+    private GridPane homeManagerSection, projectManagerSection,
             notesManagerSection, balanceManagerSection, pomodoroManagerSection, settingsManagerSection,
             githubSection;
     /**
      * View labels
      */
     @FXML
-    private Label homeTag, timePlannerTag, projectManagerTag, ideasTag,
+    private Label homeTag, projectManagerTag, ideasTag,
             balanceManagerTag, pomodoroTag, toolsTag, githubTag;
     /**
      * View shortcuts
      */
     @FXML
-    private Label homeShortcut, timePlannerShortCut, projectManagerShortcut,
+    private Label homeShortcut, projectManagerShortcut,
             ideasShortcut, balanceManagerShortcut, pomodoroShortcut, toolsShortcut;
 
     /**
@@ -71,7 +71,6 @@ public class MenuBarController implements Initializable {
         homeManagerSection.setDisable(true);
 
         homeManagerSection.setOnMouseClicked(event -> onHomeManagerSection());
-        timePlannerManagerSection.setOnMouseClicked(event -> onTimePlannerManagerSection());
         projectManagerSection.setOnMouseClicked(event -> onProjectManagerSection());
         notesManagerSection.setOnMouseClicked(event -> onNotesManagerSection());
         balanceManagerSection.setOnMouseClicked(event -> onBalanceManagerSection());
@@ -197,7 +196,6 @@ public class MenuBarController implements Initializable {
     public void showTagShortcut() {
         ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
         homeTag.textProperty().set(rb.getString("home"));
-        timePlannerTag.textProperty().set(rb.getString("planner"));
         projectManagerTag.textProperty().set(rb.getString("project"));
         ideasTag.textProperty().set(rb.getString("notes"));
         balanceManagerTag.textProperty().set(rb.getString("balance"));
@@ -206,20 +204,18 @@ public class MenuBarController implements Initializable {
         githubTag.textProperty().set("Github");
 
         homeShortcut.textProperty().set("Alt+1");
-        timePlannerShortCut.textProperty().set("Alt+2");
-        projectManagerShortcut.textProperty().set("Alt+3");
-        ideasShortcut.textProperty().set("Alt+4");
-        balanceManagerShortcut.textProperty().set("Alt+5");
-        pomodoroShortcut.textProperty().set("Alt+6");
-        toolsShortcut.textProperty().set("Alt+7");
-    }
+        projectManagerShortcut.textProperty().set("Alt+2");
+        ideasShortcut.textProperty().set("Alt+3");
+        balanceManagerShortcut.textProperty().set("Alt+4");
+        pomodoroShortcut.textProperty().set("Alt+5");
+        toolsShortcut.textProperty().set("Alt+6");
+    } 
 
     /**
      * Hides the tag shortcut
      */
     public void hideTagShortcut() {
         homeTag.textProperty().set("");
-        timePlannerTag.textProperty().set("");
         projectManagerTag.textProperty().set("");
         ideasTag.textProperty().set("");
         balanceManagerTag.textProperty().set("");
@@ -228,7 +224,6 @@ public class MenuBarController implements Initializable {
         githubTag.textProperty().set("");
 
         homeShortcut.textProperty().set("");
-        timePlannerShortCut.textProperty().set("");
         projectManagerShortcut.textProperty().set("");
         ideasShortcut.textProperty().set("");
         balanceManagerShortcut.textProperty().set("");
@@ -242,7 +237,6 @@ public class MenuBarController implements Initializable {
     private void setSectionsDisableFalse() {
 
         homeManagerSection.setDisable(false);
-        timePlannerManagerSection.setDisable(false);
         projectManagerSection.setDisable(false);
         projectManagerSection.setDisable(false);
         notesManagerSection.setDisable(false);

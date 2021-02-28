@@ -41,35 +41,6 @@
                </font></Label>
          </children>
       </GridPane>
-      <GridPane fx:id="timePlannerManagerSection" styleClass="wrapperMenuItem" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" minWidth="60.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Pane GridPane.rowSpan="2">
-               <styleClass>
-                  <String fx:value="side-custom-button" />
-                  <String fx:value="calendar-button" />
-               </styleClass>
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </GridPane.margin>
-            </Pane>
-            <Label fx:id="timePlannerTag" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label fx:id="timePlannerShortCut" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-         </children>
-      </GridPane>
       <GridPane fx:id="projectManagerSection" styleClass="wrapperMenuItem" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" minWidth="60.0" />
