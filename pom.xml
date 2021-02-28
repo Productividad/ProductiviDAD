@@ -114,7 +114,7 @@
 								<icoFile>pdad.ico</icoFile>
 								<generateMsi>false</generateMsi>
 							</winConfig>
-							<createZipball>false</createZipball>
+							<createZipball>true</createZipball>
 						</configuration>
 					</execution>
 				</executions>
