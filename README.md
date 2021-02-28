@@ -2,6 +2,8 @@
 
 <p align="center">Aplicación de gestión de tareas (productividad)</p>
 
+[![GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-%250778B9.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+
 Desarrollada por:
 
 Andrea Fortes Noda
@@ -40,11 +42,26 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 - [Manual de usuario](https://github.com/dam-dad/ProductiviDAD/blob/main/USERMANUAL.md)
 
+- [Javadoc]()
 
+  
 
+## <p align="center"> Librerías utilizadas</p>
 
+- [FX-BorderlessScene](https://github.com/goxr3plus/FX-BorderlessScene)
+- [ControlsFX](https://github.com/controlsfx/controlsfx)
 
+- [JFoenix](https://github.com/sshahine/JFoenix)
 
+- [AnimateFX](https://github.com/Typhon0/AnimateFX)
+
+- [FX Gson](https://github.com/joffrey-bion/fx-gson)
+
+- [SQLite JDBC Driver](https://github.com/xerial/sqlite-jdbc)
+
+- [JavaPackager](https://github.com/fvarrui/JavaPackager)
+
+  
 
 # <p align="center">Créditos</p> 
 
@@ -54,3 +71,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 cartoon_wink_magic_sparkle.wav - MattLeschuck; freesound.org; CreativeCommons license
 (editado)
 26 de febrero de 2021
+
+
+
+<div>Icons made by <a href="" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

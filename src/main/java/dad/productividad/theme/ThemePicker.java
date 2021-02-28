@@ -21,14 +21,23 @@ import javafx.scene.layout.Pane;
  * ThemePicker view controller
  */
 public class ThemePicker extends GridPane implements Initializable {
-
+    /**
+     * Theme Title label
+     */
     @FXML
     private Label themeTitle;
-
+    /**
+     * Color panes
+     */
     @FXML
     private Pane colorSquare0, colorSquare1, colorSquare2, colorSquare3, colorSquare4, colorSquare5;
-
+    /**
+     * Title
+     */
     private StringProperty title = new SimpleStringProperty();
+    /**
+     * Theme ObjectProperty
+     */
     private ObjectProperty<Theme> theme = new SimpleObjectProperty<>();
 
     /**

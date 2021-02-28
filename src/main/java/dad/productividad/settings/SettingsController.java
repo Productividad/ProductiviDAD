@@ -1,22 +1,34 @@
 package dad.productividad.settings;
 
-import java.io.*;
+import java.awt.Desktop;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import javax.imageio.ImageIO;
+
 import dad.productividad.app.App;
 import dad.productividad.app.MainController;
 import dad.productividad.balanceManager.CurrencyType;
+import dad.productividad.dataManager.TasksReportDataProvider;
+import dad.productividad.reports.ReportTask;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
 import dad.productividad.utils.Preferences;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -30,7 +42,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
 
 /**
  * Settings view controller class
@@ -60,7 +81,7 @@ public class SettingsController implements Initializable {
      * Save, Reset, Export, Import buttons
      */
     @FXML
-    private Button saveButton, resetButton, exportButton, importButton;
+    private Button saveButton, resetButton, exportButton, importButton,generateReportButton;
     /**
      * Locale Picker
      */
@@ -83,6 +104,9 @@ public class SettingsController implements Initializable {
      * Selected theme
      */
     public static String selectedTheme;
+    
+    private static final String JRXML_FILE = "/reports/tasks.jrxml";
+	private static final String REPORT_PDF_FILE_NAME = "tasks.pdf";
 
     private ThemePicker pickerBW = new ThemePicker();
     private ThemePicker pickerPB = new ThemePicker();
@@ -157,6 +181,74 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
 
+    @FXML
+    private void onGenerateReportAction(ActionEvent event) {
+
+		try {
+			DirectoryChooser chooser = new DirectoryChooser(); 
+		    chooser.setInitialDirectory(new File("."));
+
+		    File selectedDirectory = chooser.showDialog(App.getPrimaryStage());    
+
+		    if (selectedDirectory != null) {
+				// Map the parameters for the report
+				Map<String, Object> parameters = new HashMap<String, Object>();
+	
+				List<ReportTask> tasks = TasksReportDataProvider.readReportTasks();
+	
+				Class cls = Class.forName(this.getClass().getName());
+	
+				// returns the ClassLoader object associated with this Class
+				ClassLoader cLoader = cls.getClassLoader();
+	
+				// Getting the jrxml
+				InputStream is = cls.getResourceAsStream(JRXML_FILE);
+	
+				// Compile the inputStream
+				JasperReport report = JasperCompileManager.compileReport(is);
+	
+		        ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
+				parameters.put("REPORT_TITLE", rb.getString("reportTitle"));
+				parameters.put("TASK_TITLE_HEADER", rb.getString("reportTaskTitleHeader"));
+				parameters.put("TASK_DATE_HEADER", rb.getString("reportTaskDateHeader"));
+				
+				parameters.put("TASKS", tasks);
+				
+				BufferedImage reportHeaderImage = ImageIO.read(getClass().getResource("/images/report-header.png"));
+				parameters.put("HEADER_IMAGE", reportHeaderImage);
+				BufferedImage reportCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-completed-task.png"));
+				parameters.put("COMPLETED_TASK_IMAGE", reportCompletedTaskImage);
+				BufferedImage reportNotCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-not-completed-task.png"));
+				parameters.put("NOT_COMPLETED_TASK_IMAGE", reportNotCompletedTaskImage);
+				
+				// Generates the report combining the compiled report with the dataSource
+				JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tasks);
+				JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
+	
+				// Exports the report into a pdf file
+				JasperExportManager.exportReportToPdfFile(print, selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
+	
+				// Opens up the file with the default program
+				// Check if the desktop is supported
+				if (!Desktop.isDesktopSupported()) {
+					System.out.println("Desktop is not supported");
+					return;
+				}
+	
+				Desktop desktop = Desktop.getDesktop();
+	
+				File reportFile = new File(selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
+				// After check if file exists and open it
+				if (reportFile.exists()) {
+					desktop.open(reportFile);
+				}
+		    }
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
     /**
      * Export your Settings and your Database as a .db file (zip)
      * https://www.baeldung.com/java-compress-and-uncompress
@@ -303,6 +395,9 @@ public class SettingsController implements Initializable {
         hideDialog();
     }
 
+    
+    
+    
     /**
      * Hide dialogAccept and DialogReset
      */
@@ -451,4 +546,5 @@ public class SettingsController implements Initializable {
     public StackPane getView() {
         return view;
     }
+
 }

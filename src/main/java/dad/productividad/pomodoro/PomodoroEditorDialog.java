@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.App;
+import dad.productividad.utils.ColorUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,6 +36,7 @@ import javafx.stage.StageStyle;
  * Pomodoro dialog class
  */
 public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initializable {
+
     /**
      * Pomodoro editor view
      */
@@ -138,11 +140,23 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
             minutesSecondsList.add(i);
 
         }
+        /**
+		 * Filling comboBox rounds
+		 */
+		ObservableList<Integer> pomoRounds = FXCollections.observableArrayList();
+		for (int i = 1; i <= 10; i++) {
+			pomoRounds.add(i);
+
+		}
+		
+		
 
         pomodoroBox.setItems(minutesSecondsList);
         pomodoroBox.setValue(0);
         shortBreakBox.getItems().addAll(5, 10, 15);
         longBreakBox.getItems().addAll(20, 25);
+        //pomoLength.setItems(pomoRounds);
+		//pomoLength.setValue(0);
     }
 
     /**
@@ -180,10 +194,11 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
      * @return
      */
     private PomodoroSetup onAccept(ButtonType buttonType) {
+    	// TODO settear color
         if (buttonType.getButtonData() == ButtonData.OK_DONE) {
             PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
                     shortBreakBox.getSelectionModel().getSelectedItem(),
-                    longBreakBox.getSelectionModel().getSelectedItem(), (int) pomogLengthSlider.getValue());
+                    longBreakBox.getSelectionModel().getSelectedItem(), (int) pomogLengthSlider.getValue(), null);
             return pomodoroSetup;
         }
 
@@ -204,5 +219,6 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
     public BorderPane getView() {
         return view;
     }
+
 
 }

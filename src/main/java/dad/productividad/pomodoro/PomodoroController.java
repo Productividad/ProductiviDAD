@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import javax.swing.Timer;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 
@@ -19,7 +18,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -29,6 +27,7 @@ import javafx.util.converter.NumberStringConverter;
  * Pomodoro view Controller
  */
 public class PomodoroController implements Initializable {
+
     /**
      * Pomodoro view
      */
@@ -130,70 +129,76 @@ public class PomodoroController implements Initializable {
      */
     private MediaPlayer mediaPlayer;
 
-    /**
-     * PomodoroController constructor
-     */
-    public PomodoroController() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroView.fxml"));
-            loader.setResources(ResourceBundle.getBundle("i18n/strings"));
-            loader.setController(this);
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private int shortTimerSeconds;
 
-    }
+	/**
+	 * PomodoroController constructor
+	 */
+	public PomodoroController() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroView.fxml"));
+			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
+			loader.setController(this);
+			loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-    /**
-     * Initialization of Pomodoro view
-     *
-     * @param location
-     * @param resources
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        pomodoroPlay.setDisable(true);
-        pomodoroPause.setDisable(true);
-        pomodoroCancel.setDisable(true);
-        totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
-                Integer.valueOf(secondsLabel.textProperty().getValue()));
+	}
 
-        pomodoroSpinner.setProgress(0);
-    }
+	/**
+	 * Initialization of Pomodoro view
+	 *
+	 * @param location
+	 * @param resources
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		pomodoroPlay.setDisable(true);
+		pomodoroPause.setDisable(true);
+		pomodoroCancel.setDisable(true);
+		totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
+				Integer.valueOf(secondsLabel.textProperty().getValue()));
+		pomodoroSpinner.setProgress(0);
+		pomodoroSpinner.getStyleClass().add("pomodoroSpinner");
+	}
 
-    /**
-     * Cancel button action
-     *
-     * @param event
-     */
-    @FXML
-    private void onPomodoroCancelAction(ActionEvent event) {
+	/**
+	 * Cancel button action
+	 *
+	 * @param event
+	 */
+	@FXML
+	private void onPomodoroCancelAction(ActionEvent event) {
 
-        if (isShortTimer) {
-            isShortTimer = false;
-            shortTimer.stop();
-        } else if (isLongTimer) { 
-            isLongTimer = false;  
-            longTimer.stop();
-        } else {
-            pomodoro.stop(); 
+		if (isShortTimer) {
+			isShortTimer = false;
+			shortTimer.stop();
+		} else if (isLongTimer) {
+			isLongTimer = false;
+			longTimer.stop();
+		} else {
+			pomodoro.stop();
 
-        }
-        pomodoroSpinner.setProgress(0);
-        minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
-        secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
-        pomodoroPlay.setVisible(true);
-        pomodoroCancel.setDisable(true);
-        pomodoroPause.setDisable(true);
-        pomodoroPlay.setDisable(true);
+		}
+		pomodoroSpinner.setProgress(0);
+		minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
+		secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
+		pomodoroPlay.setVisible(true);
+		pomodoroCancel.setDisable(true);
+		pomodoroPause.setDisable(true);
+		pomodoroPlay.setDisable(true);
 
-        // Reset rounds  
-        completed = 0;
-        totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
-                Integer.valueOf(secondsLabel.textProperty().getValue()));
+		// Reset rounds
+		completed = 0;
+		totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
+				Integer.valueOf(secondsLabel.textProperty().getValue()));
 
-    }
+	}
+
+
+	
+
 
     /**
      * Pause button action
@@ -202,6 +207,7 @@ public class PomodoroController implements Initializable {
      */
     @FXML
     private void onPomodoroPauseAction(ActionEvent event) {
+    
         //pomodoroSpinner.setProgress(value);
 
         isPaused = true;
@@ -296,6 +302,7 @@ public class PomodoroController implements Initializable {
         secondsTimer = minutesToSeconds(minutesTimer, 0);
         mediaPlayer = new MediaPlayer(soundTimerStart);
         mediaPlayer.play();
+		pomodoroSpinner.setProgress(0);
 
         shortTimer = new Timer(1000, new ActionListener() {
 

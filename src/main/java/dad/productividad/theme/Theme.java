@@ -7,16 +7,37 @@ import javafx.beans.property.StringProperty;
  * Theme model
  */
 public class Theme {
-
+    /**
+     * Title
+     */
     private StringProperty title = new SimpleStringProperty();
-
+    /**
+     * Color 0
+     */
     private StringProperty color0 = new SimpleStringProperty();
+    /**
+     * Color 1
+     */
     private StringProperty color1 = new SimpleStringProperty();
+    /**
+     * Color 2
+     */
     private StringProperty color2 = new SimpleStringProperty();
+    /**
+     * Color 3
+     */
     private StringProperty color3 = new SimpleStringProperty();
+    /**
+     * Color 4
+     */
     private StringProperty color4 = new SimpleStringProperty();
+    /**
+     * Color 5
+     */
     private StringProperty color5 = new SimpleStringProperty();
-
+    /**
+     * Path to css
+     */
     private StringProperty path = new SimpleStringProperty();
 
     /**

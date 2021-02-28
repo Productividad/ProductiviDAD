@@ -29,6 +29,16 @@
       </Button>
       <StackPane GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="0.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="329.0" minHeight="10.0" prefHeight="329.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+              </rowConstraints>
             <JFXSpinner fx:id="pomodoroSpinner" progress="0.4" styleClass="pomodoro-spinner" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

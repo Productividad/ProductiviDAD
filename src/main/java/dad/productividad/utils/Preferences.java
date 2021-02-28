@@ -23,16 +23,28 @@ import javafx.beans.property.StringProperty;
  * Preferences class util
  */
 public class Preferences {
-
+    /**
+     * Theme picked
+     */
     private StringProperty theme = new SimpleStringProperty();
+    /**
+     * Locale picked
+     */
     private ObjectProperty<Locale> locale = new SimpleObjectProperty<>();
+    /**
+     * CurrencyType picked
+     */
     private ObjectProperty<CurrencyType> currency = new SimpleObjectProperty<>();
-
+    /**
+     * JSON converter
+     */
     private static Gson GSON = FxGson
             .fullBuilder()
             .setPrettyPrinting()
             .create();
-
+    /**
+     * File storage
+     */
     private static File PREFS_FILE = new File(System.getProperty("user.home"), "." + App.APP_NAME + "/preferences.json");
 
     /**
