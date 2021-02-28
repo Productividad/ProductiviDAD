@@ -42,8 +42,6 @@ public class HomeController implements Initializable {
     @FXML
     private VBox taskWrapper;
 
-    //Borrar
-
     @FXML
     private VBox bottomPane;
 
@@ -111,26 +109,26 @@ public class HomeController implements Initializable {
                 rb.getString(LocalDate.now().getMonth().toString()), String.valueOf(LocalDate.now().getYear())};
         format.applyPattern(str);
 
-        date.textProperty().set(format.format(arguments));
+        date.textProperty().set(format.format(arguments)); 
     }
 
     /**
      * Accept button action, from the dialog when deleting a Task
      *
      * @param e
-     */
+     */ 
     @FXML
     private void onAcceptDialog(ActionEvent e) {
         TableTasks.delete(dialogTask.get());
         MainController.mainController.updateTaskWrapper();
         dialogPane.setVisible(false);
     }
-
+ 
     /**
      * Cancel button action, from the dialog when deleting a Task
      *
-     * @param e
-     */
+     * @param e 
+     */  
     @FXML
     private void onCancelDialog(ActionEvent e) {
         hideDialog();

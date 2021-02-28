@@ -112,7 +112,7 @@ public class ProjectDetailController implements Initializable {
 				description.set(nv.getDescription()); 
 				setTasksOnTaskContainer();
 			}             
-		});  
+		});   
 
 
 	}   

@@ -27,3 +27,39 @@
 	.princess-bubblegum-theme .text{
 		-fx-fill:white;
 	}
+	
+/* Grape Soda */
+.grape-soda-theme{
+	-fx-background-color:#511C29;
+}
+	.grape-soda-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
+	}
+	.grape-soda-theme .text{
+		-fx-fill:white;
+	}
+
+/* Citric Summer */
+.citric-summer-theme{
+	-fx-background-color:#D86B4C;
+}
+	.citric-summer-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
+	}
+	.citric-summer-theme .text{
+		-fx-fill:white;
+	}
+	
+/* Scary Monsters */
+.scary-monsters-theme{
+	-fx-background-color:;
+}
+	.scary-monsters-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
+	}
+	.scary-monsters-theme .text{
+		-fx-fill:white;
+	}
+	
+	
+	

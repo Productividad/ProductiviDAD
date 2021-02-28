@@ -29,7 +29,7 @@
       </Button>
       <StackPane GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
-            <JFXSpinner fx:id="pomodoroSpinner" progress="0.4" styleClass="pomodoro-spinner" stylesheets="@../css/pomodoro.css" StackPane.alignment="CENTER">
+            <JFXSpinner fx:id="pomodoroSpinner" progress="0.4" styleClass="pomodoro-spinner" StackPane.alignment="CENTER">
                <StackPane.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </StackPane.margin>

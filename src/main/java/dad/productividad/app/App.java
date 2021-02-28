@@ -27,7 +27,6 @@ public class App extends Application {
  * TODO use this when DB structure is definitive.
  */
         File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
-        System.out.println(file.getPath());
         if (!file.exists())
             ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
         preferences = Preferences.load();

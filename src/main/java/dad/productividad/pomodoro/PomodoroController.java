@@ -123,11 +123,11 @@ public class PomodoroController implements Initializable {
         if (isShortTimer) {
             isShortTimer = false;
             shortTimer.stop();
-        } else if (isLongTimer) {
-            isLongTimer = false; 
+        } else if (isLongTimer) { 
+            isLongTimer = false;  
             longTimer.stop();
         } else {
-            pomodoro.stop();
+            pomodoro.stop(); 
 
         }
         pomodoroSpinner.setProgress(0);

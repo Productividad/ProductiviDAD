@@ -163,6 +163,13 @@
 		-fx-background-color:#E0DBDF;    
 	}
 /*------ </Color del centro del borderPane> ------*/
+	
+	/**
+	 * 	Color del spinner 
+	 */
+ 	.pomodoro-spinner .arc{
+ 		-fx-stroke:black;
+ 	}
 
 /**
  * <Barra superior, tablas, columnas, scrollBar y botones>

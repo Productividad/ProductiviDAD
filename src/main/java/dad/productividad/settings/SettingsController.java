@@ -63,6 +63,9 @@ public class SettingsController implements Initializable {
 
     private ThemePicker pickerBW = new ThemePicker();
     private ThemePicker pickerPB = new ThemePicker();
+    private ThemePicker pickerGS = new ThemePicker();
+    private ThemePicker pickerCS = new ThemePicker();
+    private ThemePicker pickerSM = new ThemePicker();
 
     /**
      * Settings view initialization
@@ -318,7 +321,7 @@ public class SettingsController implements Initializable {
 
         //Black and White
         Theme blackAndWhite = new Theme();
-        blackAndWhite.setTitle("Black and white");
+        blackAndWhite.setTitle("Black and White");
         blackAndWhite.setPalette("transparent", "transparent", "transparent", "#FFFFFF", "#E0DBDF", "#4C4C4C");
         blackAndWhite.setPath("/css/Themes/BlackAndWhite.css");
         pickerBW.setTheme(blackAndWhite);
@@ -332,14 +335,36 @@ public class SettingsController implements Initializable {
         pickerPB.setTheme(princessBubblegum);
         pickerPB.getStyleClass().addAll("theme-component", "princess-bubblegum-theme");
 
-        themeWrapper.getChildren().addAll(pickerBW, pickerPB);
+        Theme grapeSoda=new Theme(); 
+        grapeSoda.setTitle("Grape Soda");
+        grapeSoda.setPalette("transparent", "transparent", "transparent", "#AF929D", "#A06B75", "#874F59");
+        grapeSoda.setPath("/css/Themes/GrapeSoda.css");
+        pickerGS.setTheme(grapeSoda);
+        pickerGS.getStyleClass().addAll("theme-component", "grape-soda-theme");
+        
+        Theme citricSummer=new Theme();
+        citricSummer.setTitle("Citric Summer");
+        citricSummer.setPalette("transparent", "transparent", "transparent", "#ECE4B7", "#FFD485", "#FFC352");
+        citricSummer.setPath("/css/Themes/CitricSummer.css");
+        pickerCS.setTheme(citricSummer);
+        pickerCS.getStyleClass().addAll("theme-component", "citric-summer-theme");
+
+        Theme scaryMonsters=new Theme();
+        scaryMonsters.setTitle("Scary Monsters");
+        scaryMonsters.setPalette("transparent", "transparent", "transparent", "#ECE4B7", "#FFD485", "#FFC352");
+        scaryMonsters.setPath("/css/Themes/ScaryMonsters.css");
+        pickerSM.setTheme(scaryMonsters);
+        pickerSM.getStyleClass().addAll("theme-component", "scary-monsters-theme");
+
+        
+        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM);
     }
 
-    /**
+    /** 
      * Set the selected themePicker on themeWrapper from the preferences JSON
      */
     public void setSelectedThemeFromJSON() {
-
+ 
         if (pickerBW.getTheme().getPath().equals(App.preferences.getTheme()))
             pickerBW.setDisable(true);
 
@@ -354,6 +379,8 @@ public class SettingsController implements Initializable {
     public void setAllThemesDisableFalse() {
         pickerBW.setDisable(false);
         pickerPB.setDisable(false);
+        pickerGS.setDisable(false);
+        pickerCS.setDisable(false);
     }
 
     /**
