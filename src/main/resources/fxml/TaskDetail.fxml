@@ -26,7 +26,7 @@
       <RowConstraints vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" prefHeight="255.0" prefWidth="340.0" promptText="Description" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
+      <JFXTextArea fx:id="descriptionTaskDetailTA" focusColor="#415aa6bf" prefHeight="255.0" prefWidth="340.0" promptText="%description" unFocusColor="#610f0f00" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <font>
             <Font size="15.0" />
          </font>

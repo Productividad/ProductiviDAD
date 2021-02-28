@@ -75,6 +75,7 @@ public class TaskComponent extends VBox implements Initializable {
         super();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskComponent.fxml"));
+            loader.setResources(ResourceBundle.getBundle("i18n/strings"));
             loader.setController(this);
             loader.setRoot(this);
             loader.load();
