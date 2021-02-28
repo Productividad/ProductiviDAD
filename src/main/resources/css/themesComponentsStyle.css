@@ -76,10 +76,21 @@
 .viudo-submarino-theme{
 	-fx-background-color:#40476D;
 }
-	.viudo-submarino-theme{
+	.viudo-submarino-theme:disabled{
 		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
 	}
 	.viudo-submarino-theme .text{
+		-fx-fill:white;
+	}
+
+/* Dark Shadow */
+.dark-shadow-theme{
+	-fx-background-color:#000000;
+}
+	.dark-shadow-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
+	}
+	.dark-shadow-theme .text{
 		-fx-fill:white;
 	}
 	
@@ -93,3 +104,4 @@
 	.real-betis-theme .text{
 		-fx-fill:#049750;
 	}
+	

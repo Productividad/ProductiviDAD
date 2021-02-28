@@ -90,8 +90,9 @@ public class SettingsController implements Initializable {
     private ThemePicker pickerCS = new ThemePicker();
     private ThemePicker pickerSM = new ThemePicker();
     private ThemePicker pickerVF = new ThemePicker();
-    private ThemePicker pickerVS =new ThemePicker();
+    private ThemePicker pickerVS = new ThemePicker();
     private ThemePicker pickerRB = new ThemePicker();
+    private ThemePicker pickerDS = new ThemePicker();
 
     /**
      * Settings view initialization
@@ -397,13 +398,21 @@ public class SettingsController implements Initializable {
         pickerRB.getStyleClass().addAll("theme-component", "real-betis-theme");
         
         Theme viudoSubmarino=new Theme();
-        viudoSubmarino.setTitle("Viudo submarino");
+        viudoSubmarino.setTitle("Viudo Submarino");
         viudoSubmarino.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
         viudoSubmarino.setPath("/css/Themes/ViudoSubmarino.css");
         pickerVS.setTheme(viudoSubmarino);
         pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
         
-        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM, pickerVF, pickerRB, pickerVS);
+        Theme darkShadow=new Theme();
+        darkShadow.setTitle("Dark Shadow");
+        darkShadow.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
+        darkShadow.setPath("/css/Themes/DarkShadow.css");
+        pickerDS.setTheme(darkShadow);
+        pickerDS.getStyleClass().addAll("theme-component", "dark-shadow-theme");
+        
+        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM,
+        									pickerVF, pickerRB, pickerVS, pickerDS);
     }
 
     /** 
@@ -430,6 +439,8 @@ public class SettingsController implements Initializable {
         pickerSM.setDisable(false);
         pickerVF.setDisable(false);
         pickerRB.setDisable(false);
+        pickerVS.setDisable(false);
+        pickerDS.setDisable(false);
     }
 
     /**
