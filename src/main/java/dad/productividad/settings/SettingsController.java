@@ -100,13 +100,13 @@ public class SettingsController implements Initializable {
      * Locales
      */
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
-    /**
+    /** 
      * Selected theme
      */
-    public static String selectedTheme;
+    public static String selectedTheme; 
     
     private static final String JRXML_FILE = "/reports/tasks.jrxml";
-	private static final String REPORT_PDF_FILE_NAME = "tasks.pdf";
+	private static final String REPORT_PDF_FILE_NAME = "tasks.pdf"; 
 
     private ThemePicker pickerBW = new ThemePicker();
     private ThemePicker pickerPB = new ThemePicker();
@@ -503,7 +503,7 @@ public class SettingsController implements Initializable {
         darkShadow.setTitle("Dark Shadow");
         darkShadow.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
         darkShadow.setPath("/css/Themes/DarkShadow.css");
-        pickerDS.setTheme(darkShadow);
+        pickerDS.setTheme(darkShadow); 
         pickerDS.getStyleClass().addAll("theme-component", "dark-shadow-theme");
         
         themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM,
