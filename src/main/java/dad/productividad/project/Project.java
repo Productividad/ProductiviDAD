@@ -6,138 +6,245 @@ import java.time.LocalDate;
 
 public class Project {
 
-	private IntegerProperty id = new SimpleIntegerProperty();
-	private StringProperty title = new SimpleStringProperty();
-	private DoubleProperty progress = new SimpleDoubleProperty();
-	private BooleanProperty completed = new SimpleBooleanProperty();
-	private BooleanProperty white = new SimpleBooleanProperty();
-	private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
-	private StringProperty color = new SimpleStringProperty();
-	private StringProperty description = new SimpleStringProperty();
-	private StringProperty styleSheet=new SimpleStringProperty();
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private StringProperty title = new SimpleStringProperty();
+    private DoubleProperty progress = new SimpleDoubleProperty();
+    private BooleanProperty completed = new SimpleBooleanProperty();
+    private BooleanProperty white = new SimpleBooleanProperty();
+    private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
+    private StringProperty color = new SimpleStringProperty();
+    private StringProperty description = new SimpleStringProperty();
+    private StringProperty styleSheet = new SimpleStringProperty();
 
-	public Project(String title, double progress, String color, boolean white) {
-		this.title.set(title);
-		this.progress.set(progress);
-		this.color.set(color);
-		this.white.set(white);
-	}
+    /**
+     * Project constructor
+     *
+     * @param title
+     * @param progress
+     * @param color
+     * @param white
+     */
+    public Project(String title, double progress, String color, boolean white) {
+        this.title.set(title);
+        this.progress.set(progress);
+        this.color.set(color);
+        this.white.set(white);
+    }
 
-	public Project() {
+    /**
+     * Project default constructor
+     */
+    public Project() {
 
-	}
+    }
 
-	public final StringProperty titleProperty() {
-		return this.title;
-	}
+    /**
+     * @return StringProperty of title
+     */
+    public final StringProperty titleProperty() {
+        return this.title;
+    }
 
-	public final String getTitle() {
-		return this.titleProperty().get();
-	}
+    /**
+     * @return String of title
+     */
+    public final String getTitle() {
+        return this.titleProperty().get();
+    }
 
-	public final void setTitle(final String title) {
-		this.titleProperty().set(title);
-	}
+    /**
+     * Sets a new title
+     *
+     * @param title
+     */
+    public final void setTitle(final String title) {
+        this.titleProperty().set(title);
+    }
 
-	public final DoubleProperty progressProperty() {
-		return this.progress;
-	}
+    /**
+     * @return DoubleProperty of progress
+     */
+    public final DoubleProperty progressProperty() {
+        return this.progress;
+    }
 
-	public final double getProgress() {
-		return this.progressProperty().get();
-	}
+    /**
+     * @return double of progress
+     */
+    public final double getProgress() {
+        return this.progressProperty().get();
+    }
 
-	public final void setProgress(final double progress) {
-		this.progressProperty().set(progress);
-	}
+    /**
+     * Sets a new progress
+     *
+     * @param progress
+     */
+    public final void setProgress(final double progress) {
+        this.progressProperty().set(progress);
+    }
 
-	public final BooleanProperty CompletedProperty() {
-		return this.completed;
-	}
+    /**
+     * @return BooleanProperty of completed
+     */
+    public final BooleanProperty CompletedProperty() {
+        return this.completed;
+    }
 
-	public final boolean isCompleted() {
-		return this.CompletedProperty().get();
-	}
+    /**
+     * @return boolean of completed
+     */
+    public final boolean isCompleted() {
+        return this.CompletedProperty().get();
+    }
 
-	public final void setCompleted(final boolean Completed) {
-		this.CompletedProperty().set(Completed);
-	}
+    /**
+     * Sets a new value for completed
+     *
+     * @param Completed
+     */
+    public final void setCompleted(final boolean Completed) {
+        this.CompletedProperty().set(Completed);
+    }
 
-	public final ObjectProperty<LocalDate> deadLineProperty() {
-		return this.deadLine;
-	}
+    /**
+     * @return ObjectPropery of LocalDate deadline
+     */
+    public final ObjectProperty<LocalDate> deadLineProperty() {
+        return this.deadLine;
+    }
 
-	public final LocalDate getDeadLine() {
-		return this.deadLineProperty().get();
-	}
+    /**
+     * @return LocalDate of deadline
+     */
+    public final LocalDate getDeadLine() {
+        return this.deadLineProperty().get();
+    }
 
-	public final void setDeadLine(final LocalDate deadLine) {
-		this.deadLineProperty().set(deadLine);
-	}
+    /**
+     * Sets a new deadline
+     *
+     * @param deadLine
+     */
+    public final void setDeadLine(final LocalDate deadLine) {
+        this.deadLineProperty().set(deadLine);
+    }
 
-	public final StringProperty colorProperty() {
-		return this.color;
-	}
+    /**
+     * @return StringProperty of color
+     */
+    public final StringProperty colorProperty() {
+        return this.color;
+    }
 
-	public final String getColor() {
-		return this.colorProperty().get();
-	}
+    /**
+     * @return String of color
+     */
+    public final String getColor() {
+        return this.colorProperty().get();
+    }
 
-	public final void setColor(final String color) {
-		this.colorProperty().set(color);
-	}
+    /**
+     * Sets a new color
+     *
+     * @param color
+     */
+    public final void setColor(final String color) {
+        this.colorProperty().set(color);
+    }
 
-	public final IntegerProperty IDProperty() {
-		return this.id;
-	}
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty IDProperty() {
+        return this.id;
+    }
 
-	public final int getId() {
-		return this.IDProperty().get();
-	}
+    /**
+     * @return int of id
+     */
+    public final int getId() {
+        return this.IDProperty().get();
+    }
 
-	public final void setId(final int id) {
-		this.IDProperty().set(id);
-	}
+    /**
+     * Sets a new id
+     *
+     * @param id
+     */
+    public final void setId(final int id) {
+        this.IDProperty().set(id);
+    }
 
-	public final StringProperty descriptionProperty() {
-		return this.description;
-	}
+    /**
+     * @return StringProperty of description
+     */
+    public final StringProperty descriptionProperty() {
+        return this.description;
+    }
 
-	public final String getDescription() {
-		return this.descriptionProperty().get();
-	}
+    /**
+     * @return String of description
+     */
+    public final String getDescription() {
+        return this.descriptionProperty().get();
+    }
 
-	public final void setDescription(final String description) {
-		this.descriptionProperty().set(description);
-	}
+    /**
+     * Sets a new description
+     *
+     * @param description
+     */
+    public final void setDescription(final String description) {
+        this.descriptionProperty().set(description);
+    }
 
-	public final BooleanProperty WhiteProperty() {
-		return this.white;
-	}
+    /**
+     * @return BooleanProperty of white
+     */
+    public final BooleanProperty WhiteProperty() {
+        return this.white;
+    }
 
-	public final boolean isWhite() {
-		return this.WhiteProperty().get();
-	}
+    /**
+     * @return boolean of white
+     */
+    public final boolean isWhite() {
+        return this.WhiteProperty().get();
+    }
 
-	public final void setWhite(final boolean white) {
-		this.WhiteProperty().set(white);
-	}
+    /**
+     * Sets a new value for white
+     *
+     * @param white
+     */
+    public final void setWhite(final boolean white) {
+        this.WhiteProperty().set(white);
+    }
 
-	public final StringProperty styleSheetProperty() {
-		return this.styleSheet;
-	}
-	
+    /**
+     * @return StringProperty of styleSheet
+     */
+    public final StringProperty styleSheetProperty() {
+        return this.styleSheet;
+    }
 
-	public final String getStyleSheet() {
-		return this.styleSheetProperty().get();
-	}
-	
+    /**
+     * @return String of styleSheet
+     */
 
-	public final void setStyleSheet(final String styleSheet) {
-		this.styleSheetProperty().set(styleSheet);
-	}
-	
+    public final String getStyleSheet() {
+        return this.styleSheetProperty().get();
+    }
 
+    /**
+     * Sets a new styleSheet
+     *
+     * @param styleSheet
+     */
+    public final void setStyleSheet(final String styleSheet) {
+        this.styleSheetProperty().set(styleSheet);
+    }
 
 
 }

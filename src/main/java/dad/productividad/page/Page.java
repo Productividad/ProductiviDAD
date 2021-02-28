@@ -8,32 +8,54 @@ import javafx.beans.property.SimpleObjectProperty;
 import java.time.LocalDate;
 
 public class Page {
-	
-	private IntegerProperty id = new SimpleIntegerProperty();
-	private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
-	public final IntegerProperty idProperty() {
-		return this.id;
-	}
+    private IntegerProperty id = new SimpleIntegerProperty();
+    private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
-	public final int getId() {
-		return this.idProperty().get();
-	}
+    /**
+     * @return IntegerProperty of id
+     */
+    public final IntegerProperty idProperty() {
+        return this.id;
+    }
 
-	public final void setId(final int id) {
-		this.idProperty().set(id);
-	}
+    /**
+     * @return int of id
+     */
+    public final int getId() {
+        return this.idProperty().get();
+    }
 
-	public final ObjectProperty<LocalDate> dateProperty() {
-		return this.date;
-	}
+    /**
+     * Sets a new id
+     *
+     * @param id
+     */
+    public final void setId(final int id) {
+        this.idProperty().set(id);
+    }
 
-	public final LocalDate getDate() {
-		return this.dateProperty().get();
-	}
+    /**
+     * @return ObjectProperty of date (LocalDate)
+     */
+    public final ObjectProperty<LocalDate> dateProperty() {
+        return this.date;
+    }
 
-	public final void setDate(final LocalDate date) {
-		this.dateProperty().set(date);
-	}
+    /**
+     * @return LocalDate of date
+     */
+    public final LocalDate getDate() {
+        return this.dateProperty().get();
+    }
+
+    /**
+     * Sets a new date
+     *
+     * @param date
+     */
+    public final void setDate(final LocalDate date) {
+        this.dateProperty().set(date);
+    }
 
 }

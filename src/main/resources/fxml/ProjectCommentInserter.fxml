@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxWidth="1.7976931348623157E308" type="HBox" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane hgap="10.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="task-inserter" HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+          <ColumnConstraints hgrow="NEVER" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="60.0" valignment="CENTER" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <JFXTextField fx:id="titleTF" focusColor="#405aa800" onAction="#onEnter" prefWidth="1.0" promptText="Agregar una comentario" styleClass="text-color" unFocusColor="#4d4d4d00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <Button mnemonicParsing="false" onAction="#onInsertTaskButton" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="insertTaskButton" />
+                  <String fx:value="task-inserter-button" />
+               </styleClass>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</fx:root>

@@ -23,69 +23,94 @@ public class ThemePicker extends GridPane implements Initializable {
     private Label themeTitle;
 
     @FXML
-    private Pane colorSquare0,colorSquare1,colorSquare2,colorSquare3,colorSquare4,colorSquare5;
+    private Pane colorSquare0, colorSquare1, colorSquare2, colorSquare3, colorSquare4, colorSquare5;
 
-    private StringProperty title=new SimpleStringProperty();
-    private ObjectProperty<Theme>theme=new SimpleObjectProperty<>();
-    
-	public ThemePicker() {
-		super();
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ThemePickerComponent.fxml"));
-			loader.setController(this);
-			loader.setRoot(this); 
-			loader.load();
-		} catch (IOException e) {e.printStackTrace();}
-	} 
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		themeTitle.textProperty().bindBidirectional(title);		
-		 
-		theme.addListener((o,ov,nv)->{
-			
-			setPalette(theme.get()); 
-			title.set(theme.get().getTitle());
-			
-		});
-		
-		setOnMouseClicked(evt->onMouseClicked());
+    private StringProperty title = new SimpleStringProperty();
+    private ObjectProperty<Theme> theme = new SimpleObjectProperty<>();
 
-	}
+    /**
+     * ThemePicker constructor
+     */
+    public ThemePicker() {
+        super();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ThemePickerComponent.fxml"));
+            loader.setController(this);
+            loader.setRoot(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	private void onMouseClicked() {
-		MainController.mainController.getSettingsController().setAllThemesDisableFalse();
-		setDisable(true);
-		SettingsController.selectedTheme=getTheme().getPath();
-	} 
+    /**
+     * ThemePicker view initialization
+     *
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-	private void setPalette(Theme theme) {
-		
-		colorSquare0.setStyle("-fx-background-color:"+theme.getColor0()+";-fx-background-radius:5px;");
-		colorSquare1.setStyle("-fx-background-color:"+theme.getColor1()+";-fx-background-radius:5px;");
-		colorSquare2.setStyle("-fx-background-color:"+theme.getColor2()+";-fx-background-radius:5px;");
-		colorSquare3.setStyle("-fx-background-color:"+theme.getColor3()+";-fx-background-radius:5px;");
-		colorSquare4.setStyle("-fx-background-color:"+theme.getColor4()+";-fx-background-radius:5px;");
-		colorSquare5.setStyle("-fx-background-color:"+theme.getColor5()+";-fx-background-radius:5px;");
-	}
+        themeTitle.textProperty().bindBidirectional(title);
 
-	public final ObjectProperty<Theme> themeProperty() { 
-		return this.theme; 
-	}
-	
+        theme.addListener((o, ov, nv) -> {
 
-	public final Theme getTheme() {
-		return this.themeProperty().get();
-	}
-	
+            setPalette(theme.get());
+            title.set(theme.get().getTitle());
 
-	public final void setTheme(final Theme theme) {
-		this.themeProperty().set(theme);
-	}
-	
+        });
+
+        setOnMouseClicked(evt -> onMouseClicked());
+
+    }
+
+    /**
+     * Mouse Clicked action
+     */
+    private void onMouseClicked() {
+        MainController.mainController.getSettingsController().setAllThemesDisableFalse();
+        setDisable(true);
+        SettingsController.selectedTheme = getTheme().getPath();
+    }
+
+    /**
+     * Sets a new palette
+     *
+     * @param theme
+     */
+    private void setPalette(Theme theme) {
+
+        colorSquare0.setStyle("-fx-background-color:" + theme.getColor0() + ";-fx-background-radius:5px;");
+        colorSquare1.setStyle("-fx-background-color:" + theme.getColor1() + ";-fx-background-radius:5px;");
+        colorSquare2.setStyle("-fx-background-color:" + theme.getColor2() + ";-fx-background-radius:5px;");
+        colorSquare3.setStyle("-fx-background-color:" + theme.getColor3() + ";-fx-background-radius:5px;");
+        colorSquare4.setStyle("-fx-background-color:" + theme.getColor4() + ";-fx-background-radius:5px;");
+        colorSquare5.setStyle("-fx-background-color:" + theme.getColor5() + ";-fx-background-radius:5px;");
+    }
+
+    /**
+     * @return ObjectProperty of Theme theme
+     */
+    public final ObjectProperty<Theme> themeProperty() {
+        return this.theme;
+    }
+
+    /**
+     * @return Theme theme
+     */
+    public final Theme getTheme() {
+        return this.themeProperty().get();
+    }
+
+    /**
+     * Sets a new theme
+     *
+     * @param theme
+     */
+    public final void setTheme(final Theme theme) {
+        this.themeProperty().set(theme);
+    }
 
 
-	
-	
 }

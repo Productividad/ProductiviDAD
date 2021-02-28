@@ -33,19 +33,19 @@ public class TaskDetailController implements Initializable {
 
     @FXML
     private CheckBox doneTaskDetailCB;
-    
+
     @FXML
     private CheckBox favouriteTaskDetailCB;
-    
+
     @FXML
     private JFXTextField titleTaskDetailTF;
 
     @FXML
     private JFXTextArea descriptionTaskDetailTA;
-     
-    @FXML 
+
+    @FXML
     private Button arrowButton;
-    
+
     @FXML
     private Label creationDateLabel;
 
@@ -60,8 +60,12 @@ public class TaskDetailController implements Initializable {
 	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
 	private MediaPlayer mediaPlayer;
 	
+    /**
+     * TaskDetailController constructor
+     */
 	public TaskDetailController() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskDetail.fxml"));
+		loader.setResources(ResourceBundle.getBundle("i18n/strings"));
 		loader.setController(this);
 		try {
 			loader.load();
@@ -70,6 +74,12 @@ public class TaskDetailController implements Initializable {
 		}
 	}
 
+    /**
+     * TaskDetail view initialization
+     *
+     * @param location
+     * @param resources
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -115,67 +125,107 @@ public class TaskDetailController implements Initializable {
 		});
 	}       
     
-	@FXML
-    void onArrowButton(ActionEvent event) {
-   	    MainController.mainController.setRightSideNull();
+
+    /**
+     * Arrow Button action
+     *
+     * @param event
+     */
+    @FXML
+    private void onArrowButton(ActionEvent event) {
+        MainController.mainController.setRightSideNull();
     }
-    
-	@FXML
-	private void onTitleTaskDetailTF(ActionEvent event) {
-		view.requestFocus();
-	}
-	
+
+    /**
+     * TitleTaskDetailTF action
+     *
+     * @param event
+     */
+    @FXML
+    private void onTitleTaskDetailTF(ActionEvent event) {
+        view.requestFocus();
+    }
+
+    /**
+     * Done CheckBox click action
+     *
+     * @param event
+     */
     @FXML
     private void onDoneClicked(ActionEvent event) {
 
-    	if(doneTaskDetailCB.selectedProperty().get()) {
-	    	mediaPlayer=new MediaPlayer(sound);
-	        mediaPlayer.play();
-    	}
-    	task.get().setDone(doneTaskDetailCB.selectedProperty().get());
-    	updateTaskAndWrapper();
+        if (doneTaskDetailCB.selectedProperty().get()) {
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        }
+        task.get().setDone(doneTaskDetailCB.selectedProperty().get());
+        updateTaskAndWrapper();
     }
 
+    /**
+     * Favourite CheckBox click action
+     *
+     * @param event
+     */
     @FXML
     private void onFavouriteClicked(ActionEvent event) {
 
-    	task.get().setFavourite(favouriteTaskDetailCB.selectedProperty().get());
-    	updateTaskAndWrapper();
-    } 
-    
-    private void updateTaskAndWrapper() {
-    	TableTasks.update(task.get());
-    	MainController.mainController.updateTaskWrapper();
-    	MainController.mainController.updateRightSide(task.get());
+        task.get().setFavourite(favouriteTaskDetailCB.selectedProperty().get());
+        updateTaskAndWrapper();
     }
-    
+
+    /**
+     * Updates task and wrapper
+     */
+    private void updateTaskAndWrapper() {
+        TableTasks.update(task.get());
+        MainController.mainController.updateTaskWrapper();
+        MainController.mainController.updateRightSide(task.get());
+    }
+
+    /**
+     * Delete Button action
+     *
+     * @param event
+     */
     @FXML
     private void onDeleteTask(ActionEvent event) {
 
-    	MainController.mainController.getHomeController().showDialog(task.get()); 
-   	    MainController.mainController.setRightSideNull();
-   	    
+        MainController.mainController.getHomeController().showDialog(task.get());
+        MainController.mainController.setRightSideNull();
+
 
     }
-    
-	public GridPane getView() { 
-		return this.view; 
-	}  
- 
-	public final ObjectProperty<Task> taskProperty() {
-		return this.task;
-	}
-	
 
-	public final Task getTask() {
-		return this.taskProperty().get();
-	}
-	
+    /**
+     * @return TaskDetail view
+     */
+    public GridPane getView() {
+        return this.view;
+    }
 
-	public final void setTask(final Task task) {
-		this.taskProperty().set(task);
-	}
-	
-	
-	
+    /**
+     * @return ObjectProperty of Task task
+     */
+    public final ObjectProperty<Task> taskProperty() {
+        return this.task;
+    }
+
+    /**
+     * @return Task task
+     */
+    public final Task getTask() {
+        return this.taskProperty().get();
+    }
+
+    /**
+     * Sets a new task
+     *
+     * @param task
+     */
+    public final void setTask(final Task task) {
+        this.taskProperty().set(task);
+    }
+
+
 }

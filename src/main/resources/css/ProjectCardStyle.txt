@@ -13,6 +13,27 @@
 	-fx-border-color:transparent transparent $cardColor transparent;
 }
 
+#doneCB .box{
+	-fx-background-color: white;
+	-fx-border-color:$cardColor;
+	-fx-border-width:1.5px;
+	-fx-border-radius:50%; 
+	-fx-background-radius:50%;
+	-fx-pref-width:22;
+	-fx-pref-height:22;
+}
+#doneCB:selected .box{
+	-fx-background-color: $cardColor;
+	-fx-border-color:$cardColor;
+	-fx-background-radius:10px;
+	-fx-background-radius:50%;
+}
+#doneCB .box:hover .mark{
+	-fx-background-color:$cardColor;
+}
+#doneCB:selected .box .mark{
+	-fx-background-color:white;
+}
 
 /**Project-card**/
 
@@ -23,7 +44,7 @@
     -fx-font-size:16;
 }
 
-#cardSection:hover #textSection{
+#cardSection:hover #textSection{ 
     -fx-background-color:$cardColor;   
 }
 
