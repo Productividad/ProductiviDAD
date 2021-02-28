@@ -1,0 +1,347 @@
+     
+@import "../topBar.css";  
+@import "../leftBorderPane.css";
+@import "../scrollBar.css";   
+@import "../balanceManager.css";
+@import "../ProjectManager.css";
+@import "../taskComponentInserterDetail.css";
+@import "../settings.css";
+@import "../stackDialog.css";
+@import "../pomodoro.css";
+@import "../themesComponentsStyle.css";
+@import "../notes/notesController.css";
+		 
+/**
+ * <Revisar por separado>
+ */
+ 	/**
+ 	 * Color de los botones de la izquierda cuando te encuentras en la pestaña que le corresponde 
+ 	 */
+ 	  	#homeManagerSection:disabled .home-button,
+		#calendarManagerSection:disabled .calendar-button,
+		#entryManagerSection:disabled .reader-button,
+		#projectManagerSection:disabled .project-manager-button,
+		#notesManagerSection:disabled .notes-button,
+		#balanceManagerSection:disabled .expenses-button,
+		#pomodoroManagerSection:disabled .clock-button,
+		#settingsManagerSection:disabled .option-button{ 
+			-fx-opacity: 0.4
+		}
+
+
+ 	/**
+ 	 * Colores del toggleButton de balanceManager
+ 	 */
+		
+		#totalToggle{
+			-jfx-toggle-color:#4281A4;
+			-jfx-toggle-line-color:derive(#4281A4,60%);	
+			
+			-jfx-untoggle-color:#4281A4;
+			-jfx-untoggle-line-color:derive(#4281A4,80%);	
+			
+		}
+	
+	/** 
+	 * Colores de los radioButton y los toggleButton de balance 
+	 */	
+	
+		#positiveRB,#positiveFilter{ /* RadioButtons positivos */
+		-jfx-selected-color:#008148;
+		}
+		
+		#negativeRB,#negativeFilter{ /* RadioButtons negativos */
+			-jfx-selected-color:#A8201A;
+		}
+		
+		#allFilter{/* RadioButton para ver todos los gastos, tanto positivos como negativos */
+			-jfx-selected-color:#533A71;
+		}
+	
+	
+	/**
+	 *
+	 * Lines of jfxTextField and jfxTextArea  
+	 * 
+	 */
+		.jfxTextFieldTextArea{
+   			-jfx-focus-color:#4281A4;
+   		}
+   			.jfxTextFieldTextArea:hover{
+   				-jfx-unfocus-color:derive(#4281A4,60.0%);
+   			}
+	
+		.text-color, .text-color .date-picker-display-node,.balance-manager-label,
+		#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text,
+		.table-balance:row-selection:constrained-resize .placeholder .label .text,
+		#colorPicker .color-label .text{
+			-fx-fill:#4281A4;
+			-fx-text-fill:#4281A4;
+			-fx-prompt-text-fill:derive(#4281A4,30%);
+		}
+
+	
+		/** 
+		 * Checkbox del dialogo de projectManager
+		 */
+		 	
+			.project-checkBox:determinate{
+				-jfx-unchecked-color:#4281A4;
+				-jfx-checked-color:#4281A4;
+			}
+		
+		/**
+		 *  Botón de borrado de comentario en projectTaskDetail y borde del scrollpane
+		 */
+		.delete-comment-button{
+		    -fx-shape:"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z";
+			-fx-background-color:#4281A4;
+		} 
+		#scrollPaneTaskDetail{
+			-fx-border-width:1;
+			-fx-border-color:#4281A4;
+			-fx-border-raidus:10;
+		}
+		
+		.task-comment{
+			-fx-background-color:white;
+		}
+		.task-comment:hover{
+			-fx-background-color:derive(#E0DBDF,10%);
+		}
+				
+		/*TASK-INSERTER */ 
+			.task-inserter{/*Color de fondo*/
+				-fx-background-color:white;
+			}
+			.task-inserter-button{/*Color botones*/
+				-fx-background-color:#4281A4;	
+			}
+				.insertTaskButton:hover{
+				    -fx-background-color:derive(#4281A4,40%);
+				}
+				.insertTaskButton:pressed{
+				    -fx-background-color:derive(#4281A4,10%);
+				}
+				 
+		/*TASK-COMPONENT*/   
+			.task-component{/*Inner wrapper of the taskComponent*/
+				-fx-background-color:white;
+			}
+				.task-component:hover{
+					-fx-background-color:derive(#E0DBDF,10%);
+				}
+
+			.completed-task .text{
+				-fx-strikethrough: true ;
+			}
+			.uncompleted-task .text{
+				-fx-strikethrough: false ;
+			}
+			#doneTaskDetailCB .box, #doneCheckBox .box {
+				-fx-border-color:#4281A4;
+			}
+			#doneTaskDetailCB:selected .box, #doneCheckBox:selected .box {
+				-fx-background-color:#4281A4;
+				-fx-border-color:#4281A4;
+			}
+			#doneTaskDetailCB .box:hover .mark, #doneCheckBox .box:hover .mark {
+			    -fx-background-color:#4281A4;
+			}
+			#doneTaskDetailCB:selected .box:hover .mark, #doneCheckBox:selected .box:hover .mark {
+			    -fx-background-color:white;
+			}
+
+			#favouriteCheckBox .box, #favouriteTaskDetailCB .box{
+				-fx-background-color:#4281A4;
+			}
+				#favouriteCheckBox .box:hover, #favouriteTaskDetailCB .box:hover{
+					-fx-background-color:#4281A4;
+				}
+			#favouriteCheckBox:selected .box, #favouriteTaskDetailCB:selected .box,
+			#favouriteCheckBox:selected:hover .box, #favouriteTaskDetailCB:selected:hover .box{
+				-fx-background-color:#4281A4;				
+			}
+			
+		/*TASK-DETAIL*/
+
+			.arrow-button-TaskDetail,.delete-button{
+				-fx-background-color:#4281A4;
+			}
+				 .arrow-button-TaskDetail:hover{
+				 	-fx-background-color:derive(#4281A4,40%);
+				}
+				 .delete-button:hover{
+					-fx-background-color:#5D061E;
+				}
+/*------ </Revisar por separado> ------*/
+
+/**
+ * <Color del centro del borderPane>
+ * También de los elementos que necesitan camuflarse hasta que se les haga hover,
+ * como el fondo de las celdas de las tablas
+ */
+	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
+		-fx-background-color:#EAD2AC;    
+	}
+/*------ </Color del centro del borderPane> ------*/
+	
+	/**
+	 * 	Color del spinner 
+	 */
+ 	.pomodoro-spinner .arc{
+ 		-fx-stroke:#4281A4;
+ 	}
+ 	
+/**
+ * <Barra superior, tablas, columnas, scrollBar y botones>
+ * Color de fondo y color de texto
+ */
+  
+	.top-menu-bar {/*Borde inferior de la barra superior*/
+		-fx-border-color: transparent transparent derive(#4281A4, 40.0%) transparent;
+		-fx-border-width: 2px;
+	}  
+	
+	.top-custom-button{/*Color de los botones de la topBar*/
+	-fx-background-color:white;		
+	}
+	
+ 	#datePicker{/*DatePicker de BalanceManager*/
+		-jfx-default-color:#4281A4;
+	}
+	.balance-manager-textField{/*TextField de BalanceManager*/
+		-jfx-focus-color:#4281A4;
+	}
+		#datePicker:hover .date-picker-display-node,.balance-manager-textField:hover{
+			-jfx-unfocus-color:derive(#4281A4,60.0%);
+		}
+	
+	/*SCROLL-BAR DEFAULT */
+		.scroll-bar:horizontal .track, .scroll-bar:vertical .track{/*Track*/
+		    -fx-background-color :derive(#4281A4,60%);
+		}
+		.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {/*Arrastrable*/
+			-fx-background-color:#4281A4;
+		}
+		.scroll-bar:horizontal .thumb:hover, .scroll-bar:vertical .thumb:hover {/*Arrastrable :hover*/
+		    -fx-background-color :derive(#4281A4,25%);
+	    }
+
+	/*:NORMAL*/
+		.title-label, .table-column .label .text, .balance-manager-button,
+		.project-button,.settings-button,.stack-dialog .custom-button{/*Texto de botones,columnas,topBar,...*/
+			-fx-text-fill:white;   
+			-fx-fill:white;  
+		}  
+		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button,
+		.highlight-button{   
+		    -fx-background-color:#4281A4;     
+		}  
+		.jfx-radio-button{
+			-jfx-unselected-color:#4281A4;
+		}
+	
+	/*:HOVER*/
+		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover,
+		.highlight-button:hover{
+			-fx-background-color: derive(#4281A4, 60%); 
+		}
+		.table-row-cell .text{
+			-fx-fill:#4281A4;
+		}
+		.table-row-cell:hover .text{
+			-fx-fill:white;
+		}
+
+	/*:FOCUSED*/
+		.table-row-cell:focused{
+			-fx-background-color: derive(#4281A4, 40%);
+		}
+		.table-row-cell:focused .text{
+			-fx-fill:white;
+		}
+		
+	/*:PRESSED*/
+		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed,
+		.highlight-button:pressed{
+		-fx-background-color:derive(#4281A4,20%);
+	}
+/*------ </Barra superior, tablas, scrollBar y columnas> ------*/
+
+/**
+ * </Botonera del borderPane lado izquierdo>
+ */
+	.sideBars-color{ 
+		-fx-background-color:#9CAFB7; 
+	}
+	.side-custom-button{
+		-fx-background-color:#4281A4;
+	} 
+ 
+	.wrapperMenuItem:hover{
+		-fx-background-color:derive(#9CAFB7,30%);
+	}
+		.wrapperMenuItem:pressed{
+			-fx-background-color:derive(#9CAFB7,25%);
+		}
+		
+	.wrapperMenuItem:hover .side-custom-button{
+		-fx-background-color:derive(#4281A4,50.0%);
+	}
+		.wrapperMenuItem:pressed .side-custom-button{
+			-fx-background-color:derive(#4281A4,20.0%);
+		}
+	.wrapperMenuItem .label{
+		-fx-text-fill:#4281A4;
+	}
+		.wrapperMenuItem:hover .label{
+			-fx-text-fill:derive(#4281A4,50.0%);
+		}
+		.wrapperMenuItem:pressed .label{
+			-fx-text-fill:derive(#4281A4,20.0%);
+		}
+
+/*------ </Botonera del borderPane lado izquierdo> ------*/
+
+/**
+ * <comboBox de settings>
+ */
+	.settings-combo, .settings-combo .list-view{
+		-fx-background-color:#4281A4;
+	}
+	.settings-combo .list-cell{
+		-fx-background-color:derive(#4281A4, 60%);
+	}
+		.settings-combo .list-cell:hover{
+			-fx-background-color:derive(#4281A4, 40%);
+		}
+		.settings-combo .list-cell:focused{
+			-fx-background-color:derive(#4281A4, 20%);
+		}	 
+	.settings-combo .text{
+		-fx-fill:white;
+	}
+	.settings-combo .arrow-button .arrow{
+		-fx-background-color:white;
+	}
+/*------ </comboBox de settings> ------*/
+
+/**
+ * Miscelanea 
+ */
+ 	.project-button{/*Radio de los botones de ProjectManager */
+ 		-fx-background-radius:20;
+ 	}
+	.scroll-pane {/*Trasparencia scrollPane de homeView */
+	    -fx-background-color:transparent;
+	}
+	.settings-button{/*Botones de Settings */
+		-fx-background-radius:20;
+		-fx-min-height:30;
+		-fx-min-width:150;
+	}
+

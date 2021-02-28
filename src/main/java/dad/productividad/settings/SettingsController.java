@@ -117,6 +117,7 @@ public class SettingsController implements Initializable {
     private ThemePicker pickerVS = new ThemePicker();
     private ThemePicker pickerRB = new ThemePicker();
     private ThemePicker pickerDS = new ThemePicker();
+    private ThemePicker pickerPD = new ThemePicker();
 
     /**
      * Settings view initialization
@@ -457,6 +458,15 @@ public class SettingsController implements Initializable {
         pickerPB.setTheme(princessBubblegum);
         pickerPB.getStyleClass().addAll("theme-component", "princess-bubblegum-theme");
 
+        //Dark Shadow
+        Theme darkShadow=new Theme();
+        darkShadow.setTitle("Dark Shadow");
+        darkShadow.setPalette("transparent", "transparent", "transparent","#8D8E8E", "#3B3B3B", "#2F2F2F");
+        darkShadow.setPath("/css/Themes/DarkShadow.css");
+        pickerDS.setTheme(darkShadow); 
+        pickerDS.getStyleClass().addAll("theme-component", "dark-shadow-theme");
+        
+        //Grape Soda
         Theme grapeSoda=new Theme(); 
         grapeSoda.setTitle("Grape Soda");
         grapeSoda.setPalette("transparent", "transparent", "transparent", "#AF929D", "#A06B75", "#874F59");
@@ -464,6 +474,7 @@ public class SettingsController implements Initializable {
         pickerGS.setTheme(grapeSoda);
         pickerGS.getStyleClass().addAll("theme-component", "grape-soda-theme");
         
+        //Citric Summer
         Theme citricSummer=new Theme();
         citricSummer.setTitle("Citric Summer");
         citricSummer.setPalette("transparent", "transparent", "transparent", "#ECE4B7", "#FFD485", "#FFC352");
@@ -471,6 +482,7 @@ public class SettingsController implements Initializable {
         pickerCS.setTheme(citricSummer);
         pickerCS.getStyleClass().addAll("theme-component", "citric-summer-theme");
 
+        //Scary Monsters
         Theme scaryMonsters=new Theme();
         scaryMonsters.setTitle("Scary Monsters");
         scaryMonsters.setPalette("transparent", "transparent", "transparent", "#F7D5C6", "#EEAC91", "#E88D67");
@@ -478,36 +490,41 @@ public class SettingsController implements Initializable {
         pickerSM.setTheme(scaryMonsters);
         pickerSM.getStyleClass().addAll("theme-component", "scary-monsters-theme");
 
+        //Violent Femmes
         Theme violentFemmes=new Theme();
         violentFemmes.setTitle("Violent Femmes");
         violentFemmes.setPalette("transparent", "transparent", "transparent", "#E6DBD7", "#A76A71", "#904E55");
         violentFemmes.setPath("/css/Themes/ViolentFemmes.css");
         pickerVF.setTheme(violentFemmes);
         pickerVF.getStyleClass().addAll("theme-component", "violent-femmes-theme");
+
+        //Viudo Submarino
+        Theme viudoSubmarino=new Theme();
+        viudoSubmarino.setTitle("Submarine Widower");
+        viudoSubmarino.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
+        viudoSubmarino.setPath("/css/Themes/ViudoSubmarino.css");
+        pickerVS.setTheme(viudoSubmarino);
+        pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
         
+        //Real Betis
         Theme realBetis=new Theme();
         realBetis.setTitle("Real Betis");
         realBetis.setPalette("transparent", "transparent", "transparent","#65C296", "#049750", "#DA9513");
         realBetis.setPath("/css/Themes/RealBetis.css");
         pickerRB.setTheme(realBetis);
         pickerRB.getStyleClass().addAll("theme-component", "real-betis-theme");
+
+        //ProductiviDAD
+        Theme productiviDAD=new Theme();
+        productiviDAD.setTitle("ProductiviDAD");
+        productiviDAD.setPalette("transparent", "transparent", "transparent","#EAD2AC", "#B7C6CC", "#9CAFB7");
+        productiviDAD.setPath("/css/Themes/ProductiviDAD.css");
+        pickerPD.setTheme(productiviDAD);
+        pickerPD.getStyleClass().addAll("theme-component", "productividad-theme");
         
-        Theme viudoSubmarino=new Theme();
-        viudoSubmarino.setTitle("Viudo Submarino");
-        viudoSubmarino.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
-        viudoSubmarino.setPath("/css/Themes/ViudoSubmarino.css");
-        pickerVS.setTheme(viudoSubmarino);
-        pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
         
-        Theme darkShadow=new Theme();
-        darkShadow.setTitle("Dark Shadow");
-        darkShadow.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
-        darkShadow.setPath("/css/Themes/DarkShadow.css");
-        pickerDS.setTheme(darkShadow); 
-        pickerDS.getStyleClass().addAll("theme-component", "dark-shadow-theme");
-        
-        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM,
-        									pickerVF, pickerRB, pickerVS, pickerDS);
+        themeWrapper.getChildren().addAll(pickerBW, pickerDS, pickerSM, pickerVF, pickerPB, pickerGS, pickerCS,
+        								  pickerVS, pickerPD, pickerRB);
     }
 
     /** 
@@ -533,9 +550,10 @@ public class SettingsController implements Initializable {
         pickerCS.setDisable(false);
         pickerSM.setDisable(false);
         pickerVF.setDisable(false);
-        pickerRB.setDisable(false);
         pickerVS.setDisable(false);
+        pickerRB.setDisable(false);
         pickerDS.setDisable(false);
+        pickerPD.setDisable(false);
     }
 
     /**

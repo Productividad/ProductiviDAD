@@ -96,6 +96,16 @@
 		-fx-fill:white;
 	}
 	
+/* ProductiviDAD */
+.productividad-theme{
+	-fx-background-color:#4281A4;
+}
+	.productividad-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
+	}	
+	.productividad-theme .text{
+		-fx-fill:white;
+	}
 /* Real Betis */
 .real-betis-theme{
 	-fx-background-color:white;
