@@ -89,6 +89,9 @@ public class SettingsController implements Initializable {
     private ThemePicker pickerGS = new ThemePicker();
     private ThemePicker pickerCS = new ThemePicker();
     private ThemePicker pickerSM = new ThemePicker();
+    private ThemePicker pickerVF = new ThemePicker();
+    private ThemePicker pickerVS =new ThemePicker();
+    private ThemePicker pickerRB = new ThemePicker();
 
     /**
      * Settings view initialization
@@ -374,13 +377,33 @@ public class SettingsController implements Initializable {
 
         Theme scaryMonsters=new Theme();
         scaryMonsters.setTitle("Scary Monsters");
-        scaryMonsters.setPalette("transparent", "transparent", "transparent", "#ECE4B7", "#FFD485", "#FFC352");
+        scaryMonsters.setPalette("transparent", "transparent", "transparent", "#F7D5C6", "#EEAC91", "#E88D67");
         scaryMonsters.setPath("/css/Themes/ScaryMonsters.css");
         pickerSM.setTheme(scaryMonsters);
         pickerSM.getStyleClass().addAll("theme-component", "scary-monsters-theme");
 
+        Theme violentFemmes=new Theme();
+        violentFemmes.setTitle("Violent Femmes");
+        violentFemmes.setPalette("transparent", "transparent", "transparent", "#E6DBD7", "#A76A71", "#904E55");
+        violentFemmes.setPath("/css/Themes/ViolentFemmes.css");
+        pickerVF.setTheme(violentFemmes);
+        pickerVF.getStyleClass().addAll("theme-component", "violent-femmes-theme");
         
-        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM);
+        Theme realBetis=new Theme();
+        realBetis.setTitle("Real Betis");
+        realBetis.setPalette("transparent", "transparent", "transparent","#65C296", "#049750", "#DA9513");
+        realBetis.setPath("/css/Themes/RealBetis.css");
+        pickerRB.setTheme(realBetis);
+        pickerRB.getStyleClass().addAll("theme-component", "real-betis-theme");
+        
+        Theme viudoSubmarino=new Theme();
+        viudoSubmarino.setTitle("Viudo submarino");
+        viudoSubmarino.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
+        viudoSubmarino.setPath("/css/Themes/ViudoSubmarino.css");
+        pickerVS.setTheme(viudoSubmarino);
+        pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
+        
+        themeWrapper.getChildren().addAll(pickerBW, pickerPB, pickerGS, pickerCS, pickerSM, pickerVF, pickerRB, pickerVS);
     }
 
     /** 
@@ -404,6 +427,9 @@ public class SettingsController implements Initializable {
         pickerPB.setDisable(false);
         pickerGS.setDisable(false);
         pickerCS.setDisable(false);
+        pickerSM.setDisable(false);
+        pickerVF.setDisable(false);
+        pickerRB.setDisable(false);
     }
 
     /**
