@@ -38,7 +38,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-- [Manual de usuario]()
+- [Manual de usuario](https://github.com/dam-dad/ProductiviDAD/blob/main/USERMANUAL.md)
 
 
 
