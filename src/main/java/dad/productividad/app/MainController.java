@@ -211,6 +211,7 @@ public class MainController implements Initializable {
         menuBarController = new MenuBarController();
         view.setLeft(menuBarController.getView());
         view.setCenter(homeController.getView());
+        
 
         todaysPage.setDate(LocalDate.now());
         TablePages.insertPage(todaysPage);

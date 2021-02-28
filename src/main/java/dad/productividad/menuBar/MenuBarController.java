@@ -183,7 +183,7 @@ public class MenuBarController implements Initializable {
      */
     private void onGithubSection() {
         try {
-            Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD").toURI());
+            Desktop.getDesktop().browse(new URL("https://github.com/dam-dad/ProductiviDAD/blob/main/USERMANUAL.md").toURI());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
