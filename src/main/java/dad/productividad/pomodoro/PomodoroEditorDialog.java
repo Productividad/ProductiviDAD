@@ -103,10 +103,10 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
     @FXML
     private Label pomoTimes;
     /**
-     * Slider
+     * ComboBox
      */
     @FXML
-    private Slider pomogLengthSlider;
+    private JFXComboBox<Integer> pomoLength;
     /**
      * Save button
      */
@@ -155,8 +155,8 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
         pomodoroBox.setValue(0);
         shortBreakBox.getItems().addAll(5, 10, 15);
         longBreakBox.getItems().addAll(20, 25);
-        //pomoLength.setItems(pomoRounds);
-		//pomoLength.setValue(0);
+        pomoLength.setItems(pomoRounds);
+		pomoLength.setValue(0);
     }
 
     /**
@@ -198,7 +198,7 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
         if (buttonType.getButtonData() == ButtonData.OK_DONE) {
             PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
                     shortBreakBox.getSelectionModel().getSelectedItem(),
-                    longBreakBox.getSelectionModel().getSelectedItem(), (int) pomogLengthSlider.getValue(), null);
+                    longBreakBox.getSelectionModel().getSelectedItem(),pomoLength.getSelectionModel().getSelectedItem() , null);
             return pomodoroSetup;
         }
 
