@@ -220,15 +220,24 @@ public class SettingsController implements Initializable {
     private void onSaveAction(ActionEvent event) {
         dialogAccept.setVisible(true);
     }
+    /**
+     * Shows dialogData
+     * @param event
+     */
     @FXML
     private void onResetDataAction(ActionEvent event) { 
     	dialogData.setVisible(true);
     }
-    
+    /**
+     * Resets database
+     */
     @FXML 
     private void onAcceptDialogData() {
     	resetDatabase();
     }
+    /**
+     * Hides dialogData
+     */
     @FXML
     private void onCancelDialogData() {
     	hideDialog(); 
