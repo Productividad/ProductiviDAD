@@ -66,7 +66,7 @@ public class SettingsController implements Initializable {
      * Bottom Pane, accept and reset dialog
      */
     @FXML
-    private GridPane bottomPane, dialogAccept, dialogReset;
+    private GridPane bottomPane, dialogAccept, dialogReset, dialogData;
     /**
      * Theme wrapper
      */
@@ -450,6 +450,7 @@ public class SettingsController implements Initializable {
     public void hideDialog() {
         dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
+        dialogData.setVisible(false);
     }
 
 

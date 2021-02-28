@@ -50,11 +50,11 @@ public class MainController implements Initializable {
     @FXML
     private AnchorPane centerPane;
     /**
-     * Top bar of main view
+     * Top bar of main view 
      */
-    @FXML
+    @FXML 
     private GridPane topBar;
-    /**
+    /** 
      * Center of main view
      */
     @FXML
@@ -165,7 +165,7 @@ public class MainController implements Initializable {
         view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());
 
         view.centerProperty().addListener((o, ov, nv) -> {
-            if (nv != null) {
+            if (nv != null) { 
                 if (view.getRight() != null)
                     view.setRight(null);
             }
@@ -180,7 +180,7 @@ public class MainController implements Initializable {
                     menuBarController.onHomeManagerSection();
                 if (calendarShortcut.match(e))
                     menuBarController.onTimePlannerManagerSection();
-                if (projectManagerShortcut.match(e))
+                if (projectManagerShortcut.match(e)) 
                     menuBarController.onProjectManagerSection();
                 if (balanceShortcut.match(e))
                     menuBarController.onBalanceManagerSection();

@@ -161,5 +161,42 @@
             </GridPane>
          </children>
       </GridPane>
+      <GridPane fx:id="dialogData" alignment="CENTER" styleClass="dialog-background">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" styleClass="custom-label" text="%dataResetDescription" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
+                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                     <children>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogData" styleClass="custom-button" text="%accept" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogData" styleClass="custom-button" text="%cancel" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" styleClass="custom-label" text="%dataResetTitle">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </GridPane>
+         </children>
+      </GridPane>
    </children>
 </StackPane>
