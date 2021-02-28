@@ -51,6 +51,7 @@ public class App extends Application {
         if (!file.exists())
             ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
         preferences = Preferences.load();
+        preferences.save();
         Locale.setDefault(preferences.getLocale());
         super.init();
     }

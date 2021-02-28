@@ -51,11 +51,11 @@ public class MainController implements Initializable {
     @FXML
     private AnchorPane centerPane;
     /**
-     * Top bar of main view
+     * Top bar of main view 
      */
-    @FXML
+    @FXML 
     private GridPane topBar;
-    /**
+    /** 
      * Center of main view
      */
     @FXML
@@ -79,29 +79,25 @@ public class MainController implements Initializable {
      */
     private final KeyCombination homeShortcut = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
     /**
-     * Calendar shortcut
-     */
-    private final KeyCombination calendarShortcut = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
-    /**
      * Project Manager shortcut
      */
-    private final KeyCombination projectManagerShortcut = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+    private final KeyCombination projectManagerShortcut = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
     /**
      * Notes shortcut
      */
-    private final KeyCombination notesShortcut = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+    private final KeyCombination notesShortcut = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
     /**
      * Balance shortcut
      */
-    private final KeyCombination balanceShortcut = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+    private final KeyCombination balanceShortcut = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
     /**
      * Pomodoro shortcut
      */
-    private final KeyCombination pomodoroShortcut = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+    private final KeyCombination pomodoroShortcut = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
     /**
      * Settings shortcut
      */
-    private final KeyCombination settingsShortcut = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
+    private final KeyCombination settingsShortcut = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
     /**
      * Project Manager controller
      */
@@ -171,7 +167,7 @@ public class MainController implements Initializable {
         view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());
 
         view.centerProperty().addListener((o, ov, nv) -> {
-            if (nv != null) {
+            if (nv != null) { 
                 if (view.getRight() != null)
                     view.setRight(null);
             }
@@ -184,9 +180,7 @@ public class MainController implements Initializable {
                     MainController.mainController.getMenuBarController().showTagShortcut();
                 if (homeShortcut.match(e))
                     menuBarController.onHomeManagerSection();
-                if (calendarShortcut.match(e))
-                    menuBarController.onTimePlannerManagerSection();
-                if (projectManagerShortcut.match(e))
+                if (projectManagerShortcut.match(e)) 
                     menuBarController.onProjectManagerSection();
                 if (balanceShortcut.match(e))
                     menuBarController.onBalanceManagerSection();

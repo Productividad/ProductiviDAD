@@ -29,6 +29,7 @@ import dad.productividad.reports.ReportTask;
 import dad.productividad.theme.Theme;
 import dad.productividad.theme.ThemePicker;
 import dad.productividad.utils.Preferences;
+import dad.productividad.utils.ResourceUtils;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -66,7 +67,7 @@ public class SettingsController implements Initializable {
      * Bottom Pane, accept and reset dialog
      */
     @FXML
-    private GridPane bottomPane, dialogAccept, dialogReset;
+    private GridPane bottomPane, dialogAccept, dialogReset, dialogData;
     /**
      * Theme wrapper
      */
@@ -81,7 +82,7 @@ public class SettingsController implements Initializable {
      * Save, Reset, Export, Import buttons
      */
     @FXML
-    private Button saveButton, resetButton, exportButton, importButton,generateReportButton;
+    private Button saveButton, resetButton, exportButton, importButton, generateReportButton, resetDataButton;
     /**
      * Locale Picker
      */
@@ -100,21 +101,20 @@ public class SettingsController implements Initializable {
      * Locales
      */
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
-    /** 
+    /**
      * Selected theme
      */
-    public static String selectedTheme; 
+    public static String selectedTheme;
     /**
      * Directory of Jasper informs
      */
     private static final String JRXML_FILE = "/reports/tasks.jrxml";
 
-    
 
-	/**
-	 * Sets default name for the JasperReport
-	 */
-    private static final String REPORT_PDF_FILE_NAME = "tasks.pdf"; 
+    /**
+     * Sets default name for the JasperReport
+     */
+    private static final String REPORT_PDF_FILE_NAME = "tasks.pdf";
 
 
     /**
@@ -220,81 +220,117 @@ public class SettingsController implements Initializable {
     private void onSaveAction(ActionEvent event) {
         dialogAccept.setVisible(true);
     }
-
-
     /**
-     * Generates a pdf report based on tasks Table  
+     * Shows dialogData
+     * @param event
+     */
+    @FXML
+    private void onResetDataAction(ActionEvent event) { 
+    	dialogData.setVisible(true);
+    }
+    /**
+     * Resets database
+     */
+    @FXML 
+    private void onAcceptDialogData() {
+    	resetDatabase();
+    }
+    /**
+     * Hides dialogData
+     */
+    @FXML
+    private void onCancelDialogData() {
+    	hideDialog(); 
+    }
+    
+    /**
+     * Reset the database to Factory
+     */
+    private void resetDatabase() {
+        File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
+        try {
+            ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+        	 App.primaryStage.close();
+		}
+    }
+    /**
+     * Generates a pdf report based on tasks Table
+     *
      * @param event
      */
 
     @FXML
     private void onGenerateReportAction(ActionEvent event) {
 
-		try {
-			DirectoryChooser chooser = new DirectoryChooser(); 
-		    chooser.setInitialDirectory(new File("."));
+        try {
+            DirectoryChooser chooser = new DirectoryChooser();
+            chooser.setInitialDirectory(new File("."));
 
-		    File selectedDirectory = chooser.showDialog(App.getPrimaryStage());    
+            File selectedDirectory = chooser.showDialog(App.getPrimaryStage());
 
-		    if (selectedDirectory != null) {
-				// Map the parameters for the report
-				Map<String, Object> parameters = new HashMap<String, Object>();
-	
-				List<ReportTask> tasks = TasksReportDataProvider.readReportTasks();
-	
-				Class cls = Class.forName(this.getClass().getName());
-	
-				// returns the ClassLoader object associated with this Class
-				ClassLoader cLoader = cls.getClassLoader();
-	
-				// Getting the jrxml
-				InputStream is = cls.getResourceAsStream(JRXML_FILE);
-	
-				// Compile the inputStream
-				JasperReport report = JasperCompileManager.compileReport(is);
-	
-		        ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
-				parameters.put("REPORT_TITLE", rb.getString("reportTitle"));
-				parameters.put("TASK_TITLE_HEADER", rb.getString("reportTaskTitleHeader"));
-				parameters.put("TASK_DATE_HEADER", rb.getString("reportTaskDateHeader"));
-				
-				parameters.put("TASKS", tasks);
-				
-				BufferedImage reportHeaderImage = ImageIO.read(getClass().getResource("/images/report-header.png"));
-				parameters.put("HEADER_IMAGE", reportHeaderImage);
-				BufferedImage reportCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-completed-task.png"));
-				parameters.put("COMPLETED_TASK_IMAGE", reportCompletedTaskImage);
-				BufferedImage reportNotCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-not-completed-task.png"));
-				parameters.put("NOT_COMPLETED_TASK_IMAGE", reportNotCompletedTaskImage);
-				
-				// Generates the report combining the compiled report with the dataSource
-				JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tasks);
-				JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
-	
-				// Exports the report into a pdf file
-				JasperExportManager.exportReportToPdfFile(print, selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
-	
-				// Opens up the file with the default program
-				// Check if the desktop is supported
-				if (!Desktop.isDesktopSupported()) {
-					System.out.println("Desktop is not supported");
-					return;
-				}
-	
-				Desktop desktop = Desktop.getDesktop();
-	
-				File reportFile = new File(selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
-				// After check if file exists and open it
-				if (reportFile.exists()) {
-					desktop.open(reportFile);
-				}
-		    }
+            if (selectedDirectory != null) {
+                // Map the parameters for the report
+                Map<String, Object> parameters = new HashMap<String, Object>();
+
+                List<ReportTask> tasks = TasksReportDataProvider.readReportTasks();
+
+                Class cls = Class.forName(this.getClass().getName());
+
+                // returns the ClassLoader object associated with this Class
+                ClassLoader cLoader = cls.getClassLoader();
+
+                // Getting the jrxml
+                InputStream is = cls.getResourceAsStream(JRXML_FILE);
+
+                // Compile the inputStream
+                JasperReport report = JasperCompileManager.compileReport(is);
+
+                ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
+                parameters.put("REPORT_TITLE", rb.getString("reportTitle"));
+                parameters.put("TASK_TITLE_HEADER", rb.getString("reportTaskTitleHeader"));
+                parameters.put("TASK_DATE_HEADER", rb.getString("reportTaskDateHeader"));
+
+                parameters.put("TASKS", tasks);
+
+                BufferedImage reportHeaderImage = ImageIO.read(getClass().getResource("/images/report-header.png"));
+                parameters.put("HEADER_IMAGE", reportHeaderImage);
+                BufferedImage reportCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-completed-task.png"));
+                parameters.put("COMPLETED_TASK_IMAGE", reportCompletedTaskImage);
+                BufferedImage reportNotCompletedTaskImage = ImageIO.read(getClass().getResource("/images/report-not-completed-task.png"));
+                parameters.put("NOT_COMPLETED_TASK_IMAGE", reportNotCompletedTaskImage);
+
+                // Generates the report combining the compiled report with the dataSource
+                JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(tasks);
+                JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
+
+                // Exports the report into a pdf file
+                JasperExportManager.exportReportToPdfFile(print, selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
+
+                // Opens up the file with the default program
+                // Check if the desktop is supported
+                if (!Desktop.isDesktopSupported()) {
+                    System.out.println("Desktop is not supported");
+                    return;
+                }
+
+                Desktop desktop = Desktop.getDesktop();
+
+                File reportFile = new File(selectedDirectory.getAbsolutePath() + "\\" + REPORT_PDF_FILE_NAME);
+                // After check if file exists and open it
+                if (reportFile.exists()) {
+                    desktop.open(reportFile);
+                }
+            }
 
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (Exception e) {  
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Export your Settings and your Database as a .db file (zip)
      * https://www.baeldung.com/java-compress-and-uncompress
@@ -302,7 +338,7 @@ public class SettingsController implements Initializable {
      * @throws IOException
      */
     @FXML
-    private void onExportAction() throws IOException {
+    private void onExportAction() throws IOException { 
         FileChooser saveDialog = new FileChooser();
         saveDialog.setInitialDirectory(new File("."));
         saveDialog.getExtensionFilters().add(new FileChooser.ExtensionFilter("ProductiviDAD (*.pdad)", "*.pdad"));
@@ -381,6 +417,8 @@ public class SettingsController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        App.primaryStage.close();
+
     }
 
     /**
@@ -441,17 +479,14 @@ public class SettingsController implements Initializable {
         hideDialog();
     }
 
-    
-    
-    
     /**
      * Hide dialogAccept and DialogReset
      */
     public void hideDialog() {
         dialogAccept.setVisible(false);
         dialogReset.setVisible(false);
+        dialogData.setVisible(false);
     }
-
 
     /**
      * Set the themes availables on themeWrapper
@@ -475,23 +510,23 @@ public class SettingsController implements Initializable {
         pickerPB.getStyleClass().addAll("theme-component", "princess-bubblegum-theme");
 
         //Dark Shadow
-        Theme darkShadow=new Theme(); 
+        Theme darkShadow = new Theme();
         darkShadow.setTitle("Dark Shadow");
-        darkShadow.setPalette("transparent", "transparent", "transparent","#8D8E8E", "#3B3B3B", "#2F2F2F");
+        darkShadow.setPalette("transparent", "transparent", "transparent", "#8D8E8E", "#3B3B3B", "#2F2F2F");
         darkShadow.setPath("/css/Themes/DarkShadow.css");
-        pickerDS.setTheme(darkShadow); 
+        pickerDS.setTheme(darkShadow);
         pickerDS.getStyleClass().addAll("theme-component", "dark-shadow-theme");
-        
+
         //Grape Soda
-        Theme grapeSoda=new Theme(); 
+        Theme grapeSoda = new Theme();
         grapeSoda.setTitle("Grape Soda");
         grapeSoda.setPalette("transparent", "transparent", "transparent", "#AF929D", "#A06B75", "#874F59");
         grapeSoda.setPath("/css/Themes/GrapeSoda.css");
         pickerGS.setTheme(grapeSoda);
         pickerGS.getStyleClass().addAll("theme-component", "grape-soda-theme");
-        
+
         //Citric Summer
-        Theme citricSummer=new Theme();
+        Theme citricSummer = new Theme();
         citricSummer.setTitle("Citric Summer");
         citricSummer.setPalette("transparent", "transparent", "transparent", "#ECE4B7", "#FFD485", "#FFC352");
         citricSummer.setPath("/css/Themes/CitricSummer.css");
@@ -499,7 +534,7 @@ public class SettingsController implements Initializable {
         pickerCS.getStyleClass().addAll("theme-component", "citric-summer-theme");
 
         //Scary Monsters
-        Theme scaryMonsters=new Theme();
+        Theme scaryMonsters = new Theme();
         scaryMonsters.setTitle("Scary Monsters");
         scaryMonsters.setPalette("transparent", "transparent", "transparent", "#F7D5C6", "#EEAC91", "#E88D67");
         scaryMonsters.setPath("/css/Themes/ScaryMonsters.css");
@@ -507,7 +542,7 @@ public class SettingsController implements Initializable {
         pickerSM.getStyleClass().addAll("theme-component", "scary-monsters-theme");
 
         //Violent Femmes
-        Theme violentFemmes=new Theme();
+        Theme violentFemmes = new Theme();
         violentFemmes.setTitle("Violent Femmes");
         violentFemmes.setPalette("transparent", "transparent", "transparent", "#E6DBD7", "#A76A71", "#904E55");
         violentFemmes.setPath("/css/Themes/ViolentFemmes.css");
@@ -515,39 +550,39 @@ public class SettingsController implements Initializable {
         pickerVF.getStyleClass().addAll("theme-component", "violent-femmes-theme");
 
         //Viudo Submarino
-        Theme viudoSubmarino=new Theme();
+        Theme viudoSubmarino = new Theme();
         viudoSubmarino.setTitle("Submarine Widower");
-        viudoSubmarino.setPalette("transparent", "transparent", "transparent","#B3CBB9", "#A4C1D2", "#84A9C0");
+        viudoSubmarino.setPalette("transparent", "transparent", "transparent", "#B3CBB9", "#A4C1D2", "#84A9C0");
         viudoSubmarino.setPath("/css/Themes/ViudoSubmarino.css");
         pickerVS.setTheme(viudoSubmarino);
         pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
-        
+
         //Real Betis
-        Theme realBetis=new Theme();
+        Theme realBetis = new Theme();
         realBetis.setTitle("Real Betis");
-        realBetis.setPalette("transparent", "transparent", "transparent","#65C296", "#049750", "#DA9513");
+        realBetis.setPalette("transparent", "transparent", "transparent", "#65C296", "#049750", "#DA9513");
         realBetis.setPath("/css/Themes/RealBetis.css");
         pickerRB.setTheme(realBetis);
         pickerRB.getStyleClass().addAll("theme-component", "real-betis-theme");
 
         //ProductiviDAD
-        Theme productiviDAD=new Theme();
+        Theme productiviDAD = new Theme();
         productiviDAD.setTitle("ProductiviDAD");
-        productiviDAD.setPalette("transparent", "transparent", "transparent","#EAD2AC", "#B7C6CC", "#9CAFB7");
+        productiviDAD.setPalette("transparent", "transparent", "transparent", "#EAD2AC", "#B7C6CC", "#9CAFB7");
         productiviDAD.setPath("/css/Themes/ProductiviDAD.css");
         pickerPD.setTheme(productiviDAD);
         pickerPD.getStyleClass().addAll("theme-component", "productividad-theme");
-        
-        
+
+
         themeWrapper.getChildren().addAll(pickerBW, pickerDS, pickerSM, pickerVF, pickerPB, pickerGS, pickerCS,
-        								  pickerVS, pickerPD, pickerRB);
+                pickerVS, pickerPD, pickerRB);
     }
 
-    /** 
+    /**
      * Set the selected themePicker on themeWrapper from the preferences JSON
      */
     public void setSelectedThemeFromJSON() {
- 
+
         if (pickerBW.getTheme().getPath().equals(App.preferences.getTheme()))
             pickerBW.setDisable(true);
 
