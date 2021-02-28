@@ -151,7 +151,7 @@ public class MainController implements Initializable {
         settingsController = new SettingsController(); 
         menuBarController = new MenuBarController();
         view.setLeft(menuBarController.getView());
-		view.setCenter(homeController.getView()); 
+        view.setCenter(homeController.getView());
 
         todaysPage.setDate(LocalDate.now());
         TablePages.insertPage(todaysPage);
@@ -169,7 +169,7 @@ public class MainController implements Initializable {
      * @param styleSheetPath String
      */
     public void openProject(Project project, String styleSheetPath) {
-        projectDetailController = new ProjectDetailController(); 
+        projectDetailController = new ProjectDetailController();
         projectDetailController.setProject(project);
 
         new FadeIn(projectDetailController.getView()).play();

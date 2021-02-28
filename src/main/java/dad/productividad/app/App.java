@@ -25,11 +25,11 @@ public class App extends Application {
     public void init() throws Exception {
 /**
  * TODO use this when DB structure is definitive.
- File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
- System.out.println(file.getPath());
- if(!file.exists())
- ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
  */
+        File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
+        System.out.println(file.getPath());
+        if (!file.exists())
+            ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
         preferences = Preferences.load();
         Locale.setDefault(preferences.getLocale());
         super.init();

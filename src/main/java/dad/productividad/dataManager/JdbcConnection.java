@@ -20,9 +20,9 @@ public class JdbcConnection {
     public static void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
-            String dbURL = "jdbc:sqlite::resource:database/productiviDAD.db";
+//            String dbURL = "jdbc:sqlite::resource:database/productiviDAD.db";
             //TODO deprecate line above
-//			String dbURL = "jdbc:sqlite:" + System.getProperty("user.home")+ "\\." + App.APP_NAME + "\\productiviDAD.db";
+			String dbURL = "jdbc:sqlite:" + System.getProperty("user.home")+ "\\." + App.APP_NAME + "\\productiviDAD.db";
             connection = DriverManager.getConnection(dbURL);
             if (connection != null) {
 //				System.out.println("Connected to the database");
