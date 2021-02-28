@@ -1,6 +1,6 @@
 <p align="center"><img src="/github_images/header.png" width=""/></p>
 
-<p align="center">Aplicación de gestión de tareas (productividad)</p>
+<p align="center">Aplicación de gestión de tareas</p>
 
 [![GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-%250778B9.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
