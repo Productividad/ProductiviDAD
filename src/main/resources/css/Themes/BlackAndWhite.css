@@ -7,6 +7,7 @@
 @import "../taskComponentInserterDetail.css";
 @import "../settings.css";
 @import "../stackDialog.css";
+@import "../pomodoro.css";
 @import "../themesComponentsStyle.css";
 @import "../notes/notesController.css";
  
@@ -162,6 +163,13 @@
 		-fx-background-color:#E0DBDF;    
 	}
 /*------ </Color del centro del borderPane> ------*/
+	
+	/**
+	 * 	Color del spinner 
+	 */
+ 	.pomodoro-spinner .arc{
+ 		-fx-stroke:black;
+ 	}
 
 /**
  * <Barra superior, tablas, columnas, scrollBar y botones>
@@ -205,13 +213,15 @@
 			-fx-fill:white; 
 		}  
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
-		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button {   
+		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button,
+		.highlight-button {   
 		    -fx-background-color:black;     
 		}  
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
-		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover{
+		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover,
+		.highlight-button:hover{
 			-fx-background-color: derive(black, 60%); 
 		}
 		.table-row-cell:hover .text{
@@ -228,7 +238,8 @@
 		
 	/*:PRESSED*/
 		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
-		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed{
+		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed,
+		.highlight-button:pressed{
 		-fx-background-color:derive(black,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/

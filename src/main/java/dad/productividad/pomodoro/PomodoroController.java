@@ -20,13 +20,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
+=======
+import javafx.scene.layout.GridPane;
+>>>>>>> 42f039d4c0a3e59cac472828802be2429c480d14
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.converter.NumberStringConverter;
 
+/**
+ * Pomodoro view Controller
+ */
 public class PomodoroController implements Initializable {
+<<<<<<< HEAD
 
 	@FXML
 	private AnchorPane view;
@@ -66,6 +75,108 @@ public class PomodoroController implements Initializable {
 	private static final int CANCEL_SECONDS = 0;
 
 	private Integer minutesTimer;
+=======
+    /**
+     * Pomodoro view
+     */
+    @FXML
+    private GridPane view;
+    /**
+     * Pomodoro Textfield
+     */
+    @FXML
+    private JFXTextField pomoTextField;
+    /**
+     * Pomodoro buttons
+     */
+    @FXML
+    private Button pomodoroSettings, pomodoroCancel, pomodoroPlay, pomodoroPause;
+    /**
+     * Pomodor spinner
+     */
+    @FXML
+    private JFXSpinner pomodoroSpinner;
+    /**
+     * Pomodoro minute label
+     */
+    @FXML
+    private Label minuteLabel;
+    /**
+     * Pomodoro seconds label
+     */
+    @FXML
+    private Label secondsLabel;
+    /**
+     * Pomodoro timer
+     */
+    private Timer pomodoro;
+    /**
+     * Pomodoro short timer
+     */
+    private Timer shortTimer;
+    /**
+     * Pomodoro long timer
+     */
+    private Timer longTimer;
+    /**
+     * Integer seconds timer
+     */
+    private Integer secondsTimer;
+    /**
+     * Cancel seconds
+     */
+    private static final int CANCEL_SECONDS = 0;
+    /**
+     * Minutes timer
+     */
+    private Integer minutesTimer;
+    /**
+     * Minutes selected
+     */
+    private Integer minutesSelected;
+    /**
+     * Cancel minutes
+     */
+    private static final int CANCEL_MINUTES = 0;
+    /**
+     * Completed
+     */
+    private Integer completed = 0;
+    /**
+     * Total seconds
+     */
+    private Integer totalSeconds;
+    /**
+     * Pomodoro Setup
+     */
+    private PomodoroSetup pomodoroSetup;
+    /**
+     * Paused
+     */
+    private boolean isPaused;
+    /**
+     * Short timer
+     */
+    private boolean isShortTimer;
+    /**
+     * Long timer
+     */
+    private boolean isLongTimer;
+    /**
+     * End sound
+     */
+    private Media soundPomodoroEnd = new Media(
+            this.getClass().getResource("/sound/completed-pomodoro-sound.wav").toExternalForm());
+    /**
+     * Start sound
+     */
+    private Media soundTimerStart = new Media(
+            this.getClass().getResource("/sound/started-pomodoro-break.wav").toExternalForm());
+    /**
+     * Media player
+     */
+    private MediaPlayer mediaPlayer;
+>>>>>>> 42f039d4c0a3e59cac472828802be2429c480d14
 
 	private Integer minutesSelected;
 
@@ -77,6 +188,7 @@ public class PomodoroController implements Initializable {
 
 	private PomodoroSetup pomodoroSetup;
 
+<<<<<<< HEAD
 	private boolean isPaused;
 
 	private boolean isShortTimer;
@@ -373,5 +485,238 @@ public class PomodoroController implements Initializable {
 	public AnchorPane getView() {
 		return this.view;
 	}
+=======
+        if (isShortTimer) {
+            isShortTimer = false;
+            shortTimer.stop();
+        } else if (isLongTimer) { 
+            isLongTimer = false;  
+            longTimer.stop();
+        } else {
+            pomodoro.stop(); 
+
+        }
+        pomodoroSpinner.setProgress(0);
+        minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
+        secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
+        pomodoroPlay.setVisible(true);
+        pomodoroCancel.setDisable(true);
+        pomodoroPause.setDisable(true);
+        pomodoroPlay.setDisable(true);
+
+        // Reset rounds  
+        completed = 0;
+        totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
+                Integer.valueOf(secondsLabel.textProperty().getValue()));
+
+    }
+
+    /**
+     * Pause button action
+     *
+     * @param event
+     */
+    @FXML
+    private void onPomodoroPauseAction(ActionEvent event) {
+        //pomodoroSpinner.setProgress(value);
+
+        isPaused = true;
+        pomodoroPause.setDisable(true);
+        pomodoroPlay.setDisable(false);
+        pomodoroCancel.setDisable(false);
+        pomodoro.stop();
+
+    }
+
+    /**
+     * Starts the timer, initializing the timer Thread
+     *
+     * @param event
+     */
+    @FXML
+    private void onPomodoroPlayAction(ActionEvent event) {
+
+        pomodoroCancel.setDisable(false);
+        pomodoroPause.setDisable(false);
+        pomodoroPlay.setDisable(true);
+
+        if (isPaused) {
+            isPaused = false;
+            pomodoro.start();
+        } else {
+
+            minutesTimer = pomodoroSetup.getMinutes();
+            secondsTimer = minutesToSeconds(minutesTimer, 0);
+            pomodoro = new Timer(1000, new ActionListener() {
+
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    secondsTimer--;
+                    totalSeconds++;
+                    pomodoroSpinner.setProgress(totalSeconds / (minutesTimer * 60F));
+                    System.out.println(totalSeconds / (minutesTimer * 60F));
+                    Platform.runLater(() -> {
+                        secondsToMinutes(secondsTimer);
+                    });
+
+                    if (secondsTimer == 0) {
+
+                        completed++;
+
+                        if (completed > 4 && completed == pomodoroSetup.getPomoLength()) {
+                            startLongTimer();
+                        } else
+                            startShortTimer();
+
+                        pomodoro.stop();
+
+                    }
+                }
+
+            });
+
+            pomodoro.start();
+        }
+    }
+
+    /**
+     * Opens up the pomodoro settings dialog
+     *
+     * @param event
+     */
+
+    @FXML
+    private void onPomodoroSettingsAction(ActionEvent event) {
+        PomodoroEditorDialog dialog = new PomodoroEditorDialog();
+        Optional<PomodoroSetup> result = dialog.showAndWait();
+
+        if (result.isPresent()) {
+            pomodoroSetup = result.get();
+            minuteLabel.textProperty().bindBidirectional(pomodoroSetup.minutesProperty(),
+                    new NumberStringConverter("00"));
+            minutesSelected = pomodoroSetup.getMinutes();
+            pomodoroPlay.setDisable(false);
+        }
+    }
+
+    /**
+     * Starts a short timer
+     */
+    private void startShortTimer() {
+
+        isShortTimer = true;
+        pomodoroCancel.setDisable(false);
+        pomodoroPause.setDisable(true);
+        pomodoroPlay.setDisable(true);
+        minutesTimer = pomodoroSetup.getShortBreak();
+        secondsTimer = minutesToSeconds(minutesTimer, 0);
+        mediaPlayer = new MediaPlayer(soundTimerStart);
+        mediaPlayer.play();
+
+        shortTimer = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                secondsTimer--;
+                totalSeconds++;
+
+                Platform.runLater(() -> {
+                    secondsToMinutes(secondsTimer);
+                });
+
+                if (secondsTimer == 0) {
+                    mediaPlayer = new MediaPlayer(soundPomodoroEnd);
+                    mediaPlayer.play();
+                    pomodoroPlay.setVisible(true);
+                    pomodoroPlay.setDisable(false);
+                    shortTimer.stop();
+
+                }
+            }
+
+        });
+        shortTimer.start();
+    }
+
+    /**
+     * Starts long timer based on Pomodoro Settings
+     */
+    private void startLongTimer() {
+
+        isLongTimer = true;
+        pomodoroCancel.setDisable(false);
+        pomodoroPause.setDisable(true);
+        pomodoroPlay.setDisable(true);
+        pomodoro.stop();
+
+        minutesTimer = pomodoroSetup.getLongBreak();
+        secondsTimer = minutesToSeconds(0, 10);
+        mediaPlayer = new MediaPlayer(soundPomodoroEnd);
+        mediaPlayer.play();
+        longTimer = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+
+                secondsTimer--;
+                totalSeconds++;
+
+                Platform.runLater(() -> {
+                    secondsToMinutes(secondsTimer);
+                });
+
+                if (secondsTimer == 0) {
+
+                    longTimer.stop();
+                    minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
+                    secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
+                    pomodoroCancel.setDisable(true);
+                    pomodoroPause.setDisable(true);
+                    pomodoroPlay.setDisable(true);
+
+                    totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
+                            Integer.valueOf(secondsLabel.textProperty().getValue()));
+                }
+            }
+
+        });
+
+        longTimer.start();
+    }
+
+    /**
+     * Converts minutes to seconds
+     *
+     * @param minutes
+     * @param seconds
+     * @return total
+     */
+    private Integer minutesToSeconds(Integer minutes, Integer seconds) {
+        Integer minutesSeconds = minutes * 60;
+        Integer total = minutesSeconds + seconds;
+        return total;
+    }
+
+    /**
+     * Converts seconds to minutes
+     *
+     * @param seconds
+     */
+    private void secondsToMinutes(Integer seconds) {
+        Integer minutes = seconds / 60;
+        Integer secondsRemaining = seconds % 60;
+
+        minuteLabel.setText(String.format("%02d", minutes));
+        secondsLabel.setText(String.format("%02d", secondsRemaining));
+
+    }
+
+    /**
+     * @return The pomodoro view.
+     */
+    public GridPane getView() {
+        return this.view;
+    }
+>>>>>>> 42f039d4c0a3e59cac472828802be2429c480d14
 
 }

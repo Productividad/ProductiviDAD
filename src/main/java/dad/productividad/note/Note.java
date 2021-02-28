@@ -2,11 +2,25 @@ package dad.productividad.note;
 
 import javafx.beans.property.*;
 
+/**
+ * Note model
+ */
 public class Note {
-
+    /**
+     * Note content
+     */
     private StringProperty content = new SimpleStringProperty();
+    /**
+     * Note id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Note page id
+     */
     private IntegerProperty idPage = new SimpleIntegerProperty();
+    /**
+     * Note color
+     */
     private StringProperty color = new SimpleStringProperty();
 
     /**
@@ -78,6 +92,7 @@ public class Note {
 
     /**
      * Sets a new id
+     * @param idPage
      */
     public final void setIdPage(final int idPage) {
         this.idPageProperty().set(idPage);

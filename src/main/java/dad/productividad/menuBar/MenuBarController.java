@@ -17,19 +17,31 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * MenuBar view controller
+ */
 public class MenuBarController implements Initializable {
-
+    /**
+     * MenuBar view
+     */
     @FXML
     private VBox view;
-
+    /**
+     * View sections
+     */
     @FXML
     private GridPane homeManagerSection, timePlannerManagerSection, projectManagerSection,
             notesManagerSection, balanceManagerSection, pomodoroManagerSection, settingsManagerSection,
             githubSection;
-
+    /**
+     * View labels
+     */
     @FXML
     private Label homeTag, timePlannerTag, projectManagerTag, ideasTag,
             balanceManagerTag, pomodoroTag, toolsTag, githubTag;
+    /**
+     * View shortcuts
+     */
     @FXML
     private Label homeShortcut, timePlannerShortCut, projectManagerShortcut,
             ideasShortcut, balanceManagerShortcut, pomodoroShortcut, toolsShortcut;

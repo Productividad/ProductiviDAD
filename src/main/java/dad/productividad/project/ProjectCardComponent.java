@@ -26,12 +26,25 @@ import javafx.scene.layout.VBox;
  * Class of projectCardComponent used on projectManagerController
  */
 public class ProjectCardComponent extends VBox implements Initializable {
-
+    /**
+     * Project card title
+     */
     private StringProperty title = new SimpleStringProperty();
+    /**
+     * Project card progress
+     */
     private StringProperty progress = new SimpleStringProperty();
+    /**
+     * Project card Project
+     */
     private ObjectProperty<Project> project = new SimpleObjectProperty<>();
+    /**
+     * Project card stylesheet path
+     */
     private StringProperty styleSheetPath = new SimpleStringProperty();
-
+    /**
+     * Title and percentage labels
+     */
     @FXML
     private Label projectTitleLabel, percentageLabel;
 

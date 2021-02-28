@@ -20,15 +20,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * Note Component controller
+ */
 public class NoteComponent extends BorderPane implements Initializable {
-
+    /**
+     * checkButton
+     */
     @FXML
     private Button checkButton;
-
+    /**
+     * Note textArea
+     */
     @FXML
     private JFXTextArea contentTA;
-
+    /**
+     * Note content
+     */
     private StringProperty content = new SimpleStringProperty();
+    /**
+     * Note object
+     */
     private ObjectProperty<Note> note = new SimpleObjectProperty<>();
 
     /**

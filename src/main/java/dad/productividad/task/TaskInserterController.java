@@ -17,6 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 
+/**
+ * TaskInserter view controller
+ */
 public class TaskInserterController extends HBox implements Initializable {
 
     @FXML

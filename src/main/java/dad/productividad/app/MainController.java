@@ -39,44 +39,103 @@ import javafx.scene.layout.VBox;
  * Main controller class of the program
  */
 public class MainController implements Initializable {
-
+    /**
+     * Main view
+     */
     @FXML
     private BorderPane view;
-
+    /**
+     * Center pane of main view
+     */
     @FXML
     private AnchorPane centerPane;
-
+    /**
+     * Top bar of main view
+     */
     @FXML
     private GridPane topBar;
-
+    /**
+     * Center of main view
+     */
     @FXML
     private VBox center;
-
+    /**
+     * ListView
+     */
     @FXML
     private ListView<String> listView;
-
+    /**
+     * Close, maximize and minimize buttons
+     */
     @FXML
     private Button closeButton, maximizeButton, minimizeButton;
-
+    /**
+     * Todays page
+     */
     static Page todaysPage = new Page();
-
+    /**
+     * Home shortcut
+     */
     private final KeyCombination homeShortcut = new KeyCodeCombination(KeyCode.DIGIT1, KeyCombination.ALT_DOWN);
+    /**
+     * Calendar shortcut
+     */
     private final KeyCombination calendarShortcut = new KeyCodeCombination(KeyCode.DIGIT2, KeyCombination.ALT_DOWN);
+    /**
+     * Project Manager shortcut
+     */
     private final KeyCombination projectManagerShortcut = new KeyCodeCombination(KeyCode.DIGIT3, KeyCombination.ALT_DOWN);
+    /**
+     * Notes shortcut
+     */
     private final KeyCombination notesShortcut = new KeyCodeCombination(KeyCode.DIGIT4, KeyCombination.ALT_DOWN);
+    /**
+     * Balance shortcut
+     */
     private final KeyCombination balanceShortcut = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+    /**
+     * Pomodoro shortcut
+     */
     private final KeyCombination pomodoroShortcut = new KeyCodeCombination(KeyCode.DIGIT6, KeyCombination.ALT_DOWN);
+    /**
+     * Settings shortcut
+     */
     private final KeyCombination settingsShortcut = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
-
+    /**
+     * Project Manager controller
+     */
     private ProjectManagerController projectManagerController;
+    /**
+     * Notes controller
+     */
     private NotesController notesController;
+    /**
+     * Balance Manager controller
+     */
     private BalanceManagerController balanceManagerController;
+    /**
+     * Project Detail Controller
+     */
     private ProjectDetailController projectDetailController;
+    /**
+     * Home Controller
+     */
     private HomeController homeController;
+    /**
+     * Pomodoro Controller
+     */
     private PomodoroController pomodoroController;
+    /**
+     * Settings Controller
+     */
     private SettingsController settingsController;
+    /**
+     * Menu Bar controller
+     */
     private MenuBarController menuBarController;
-
+    /**
+     * Main controller
+     */
     public static MainController mainController;
 
     /**
@@ -148,16 +207,20 @@ public class MainController implements Initializable {
         balanceManagerController = new BalanceManagerController();
         homeController = new HomeController();
         pomodoroController = new PomodoroController();
-        settingsController = new SettingsController();
+        settingsController = new SettingsController(); 
         menuBarController = new MenuBarController();
         view.setLeft(menuBarController.getView());
-		view.setCenter(homeController.getView()); 
+        view.setCenter(homeController.getView());
 
         todaysPage.setDate(LocalDate.now());
         TablePages.insertPage(todaysPage);
     }
 
-    public static Page getTodaysPage() {
+    /**
+     *
+     * @return todaysPage Page of today
+     */
+    public static Page getTodaysPage() { 
         return todaysPage;
     }
 
@@ -169,7 +232,7 @@ public class MainController implements Initializable {
      * @param styleSheetPath String
      */
     public void openProject(Project project, String styleSheetPath) {
-        projectDetailController = new ProjectDetailController(); 
+        projectDetailController = new ProjectDetailController();
         projectDetailController.setProject(project);
 
         new FadeIn(projectDetailController.getView()).play();
@@ -181,7 +244,7 @@ public class MainController implements Initializable {
      * Set the right zone of view with taskDetailController.getView(),
      * with a certain Task.
      *
-     * @param task
+     * @param task The task to be set
      */
     public void setTaskOnRightSide(Task task) {
 

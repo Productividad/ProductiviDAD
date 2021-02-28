@@ -4,10 +4,25 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
+/**
+ * IncomeExpense model
+ */
 public class IncomeExpense {
+    /**
+     * Movement id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Movement Date
+     */
     private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    /**
+     * Movement concept
+     */
     private StringProperty concept = new SimpleStringProperty();
+    /**
+     * Movement amount
+     */
     private DoubleProperty amount = new SimpleDoubleProperty();
 
     /**

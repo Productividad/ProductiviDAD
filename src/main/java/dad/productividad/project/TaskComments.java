@@ -5,9 +5,21 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Task Comments model
+ */
 public class TaskComments {
+    /**
+     * Task comment content
+     */
     private StringProperty content = new SimpleStringProperty();
+    /**
+     * Task comment id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Task comment idTask
+     */
     private IntegerProperty idTask = new SimpleIntegerProperty();
 
     /**

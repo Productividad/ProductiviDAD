@@ -34,11 +34,11 @@
  	 */
 		
 		#totalToggle{
-			-jfx-toggle-color:#BB5358;
-			-jfx-toggle-line-color:derive(#BB5358,60%);	
+			-jfx-toggle-color:#511C29;
+			-jfx-toggle-line-color:derive(#511C29,60%);	
 			
-			-jfx-untoggle-color:#BB5358;
-			-jfx-untoggle-line-color:derive(#BB5358,80%);	
+			-jfx-untoggle-color:#511C29;
+			-jfx-untoggle-line-color:derive(#511C29,80%);	
 			
 		}
 	
@@ -65,19 +65,19 @@
 	 * 
 	 */
 		.jfxTextFieldTextArea{
-   			-jfx-focus-color:#BB5358;
+   			-jfx-focus-color:#511C29;
    		}
    			.jfxTextFieldTextArea:hover{
-   				-jfx-unfocus-color:derive(#BB5358,60.0%);
+   				-jfx-unfocus-color:derive(#511C29,60.0%);
    			}
 	
 		.text-color, .text-color .date-picker-display-node,.balance-manager-label,
 		#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text,
 		.table-balance:row-selection:constrained-resize .placeholder .label .text,
 		#colorPicker .color-label .text{
-			-fx-fill:#BB5358;
-			-fx-text-fill:#BB5358;
-			-fx-prompt-text-fill:derive(#BB5358,30%);
+			-fx-fill:#511C29;
+			-fx-text-fill:#511C29;
+			-fx-prompt-text-fill:derive(#511C29,30%);
 		}
 
 	
@@ -86,8 +86,8 @@
 		 */
 		 	
 			.project-checkBox:determinate{
-				-jfx-unchecked-color:#BB5358;
-				-jfx-checked-color:#BB5358;
+				-jfx-unchecked-color:#511C29;
+				-jfx-checked-color:#511C29;
 			}
 		
 		/**
@@ -95,11 +95,11 @@
 		 */
 		.delete-comment-button{
 		    -fx-shape:"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z";
-			-fx-background-color:#BB5358;
+			-fx-background-color:#511C29;
 		} 
 		#scrollPaneTaskDetail{
 			-fx-border-width:1;
-			-fx-border-color:#BB5358;
+			-fx-border-color:#511C29;
 			-fx-border-raidus:10;
 		}
 		
@@ -107,7 +107,7 @@
 			-fx-background-color:white;
 		}
 		.task-comment:hover{
-			-fx-background-color:derive(#E0DBDF,10%);
+			-fx-background-color:derive(#511C29,10%);
 		}
 				
 		/*TASK-INSERTER */ 
@@ -115,13 +115,13 @@
 				-fx-background-color:white;
 			}
 			.task-inserter-button{/*Color botones*/
-				-fx-background-color:#BB5358;	
+				-fx-background-color:#511C29;	
 			}
 				.insertTaskButton:hover{
-				    -fx-background-color:derive(#BB5358,40%);
+				    -fx-background-color:derive(#511C29,40%);
 				}
 				.insertTaskButton:pressed{
-				    -fx-background-color:derive(#BB5358,10%);
+				    -fx-background-color:derive(#511C29,10%);
 				}
 				 
 		/*TASK-COMPONENT*/   
@@ -139,37 +139,37 @@
 				-fx-strikethrough: false ;
 			}
 			#doneTaskDetailCB .box, #doneCheckBox .box {
-				-fx-border-color:#BB5358;
+				-fx-border-color:#511C29;
 			}
 			#doneTaskDetailCB:selected .box, #doneCheckBox:selected .box {
-				-fx-background-color:#BB5358;
-				-fx-border-color:#BB5358;
+				-fx-background-color:#511C29;
+				-fx-border-color:#511C29;
 			}
 			#doneTaskDetailCB .box:hover .mark, #doneCheckBox .box:hover .mark {
-			    -fx-background-color:#BB5358;
+			    -fx-background-color:#511C29;
 			}
 			#doneTaskDetailCB:selected .box:hover .mark, #doneCheckBox:selected .box:hover .mark {
 			    -fx-background-color:white;
 			}
 
 			#favouriteCheckBox .box, #favouriteTaskDetailCB .box{
-				-fx-background-color:#BB5358;
+				-fx-background-color:#511C29;
 			}
 				#favouriteCheckBox .box:hover, #favouriteTaskDetailCB .box:hover{
-					-fx-background-color:#BB5358;
+					-fx-background-color:#511C29;
 				}
 			#favouriteCheckBox:selected .box, #favouriteTaskDetailCB:selected .box,
 			#favouriteCheckBox:selected:hover .box, #favouriteTaskDetailCB:selected:hover .box{
-				-fx-background-color:#BB5358;				
+				-fx-background-color:#511C29;				
 			}
 			
 		/*TASK-DETAIL*/
 
 			.arrow-button-TaskDetail,.delete-button{
-				-fx-background-color:#BB5358;
+				-fx-background-color:#511C29;
 			}
 				 .arrow-button-TaskDetail:hover{
-				 	-fx-background-color:derive(#BB5358,40%);
+				 	-fx-background-color:derive(#511C29,40%);
 				}
 				 .delete-button:hover{
 					-fx-background-color:#5D061E;
@@ -182,7 +182,7 @@
  * como el fondo de las celdas de las tablas
  */
 	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
-		-fx-background-color:#F5D8DA;    
+		-fx-background-color:#AF929D;    
 	}
 /*------ </Color del centro del borderPane> ------*/
 	
@@ -190,7 +190,7 @@
 	 * 	Color del spinner 
 	 */
  	.pomodoro-spinner .arc{
- 		-fx-stroke:#BB5358;
+ 		-fx-stroke:#511C29;
  	}
  	
 /**
@@ -199,7 +199,7 @@
  */
   
 	.top-menu-bar {/*Borde inferior de la barra superior*/
-		-fx-border-color: transparent transparent derive(#BB5358, 40.0%) transparent;
+		-fx-border-color: transparent transparent derive(#511C29, 40.0%) transparent;
 		-fx-border-width: 2px;
 	}  
 	
@@ -208,24 +208,24 @@
 	}
 	
  	#datePicker{/*DatePicker de BalanceManager*/
-		-jfx-default-color:#BB5358;
+		-jfx-default-color:#511C29;
 	}
 	.balance-manager-textField{/*TextField de BalanceManager*/
-		-jfx-focus-color:#BB5358;
+		-jfx-focus-color:#511C29;
 	}
 		#datePicker:hover .date-picker-display-node,.balance-manager-textField:hover{
-			-jfx-unfocus-color:derive(#BB5358,60.0%);
+			-jfx-unfocus-color:derive(#511C29,60.0%);
 		}
 	
 	/*SCROLL-BAR DEFAULT */
 		.scroll-bar:horizontal .track, .scroll-bar:vertical .track{/*Track*/
-		    -fx-background-color :derive(#BB5358,60%);
+		    -fx-background-color :derive(#511C29,60%);
 		}
 		.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {/*Arrastrable*/
-			-fx-background-color:#BB5358;
+			-fx-background-color:#511C29;
 		}
 		.scroll-bar:horizontal .thumb:hover, .scroll-bar:vertical .thumb:hover {/*Arrastrable :hover*/
-		    -fx-background-color :derive(#BB5358,25%);
+		    -fx-background-color :derive(#511C29,25%);
 	    }
 
 	/*:NORMAL*/
@@ -237,20 +237,20 @@
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
 		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button,
 		.highlight-button{   
-		    -fx-background-color:#BB5358;     
+		    -fx-background-color:#511C29;     
 		}  
 		.jfx-radio-button{
-			-jfx-unselected-color:#BB5358;
+			-jfx-unselected-color:#511C29;
 		}
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
 		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover,
 		.highlight-button:hover{
-			-fx-background-color: derive(#BB5358, 60%); 
+			-fx-background-color: derive(#511C29, 60%); 
 		}
 		.table-row-cell .text{
-			-fx-fill:#BB5358;
+			-fx-fill:#511C29;
 		}
 		.table-row-cell:hover .text{
 			-fx-fill:white;
@@ -258,7 +258,7 @@
 
 	/*:FOCUSED*/
 		.table-row-cell:focused{
-			-fx-background-color: derive(#BB5358, 40%);
+			-fx-background-color: derive(#511C29, 40%);
 		}
 		.table-row-cell:focused .text{
 			-fx-fill:white;
@@ -268,7 +268,7 @@
 		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
 		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed,
 		.highlight-button:pressed{
-		-fx-background-color:derive(#BB5358,20%);
+		-fx-background-color:derive(#511C29,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/
 
@@ -276,33 +276,33 @@
  * </Botonera del borderPane lado izquierdo>
  */
 	.sideBars-color{ 
-		-fx-background-color:#EBB3B4; 
+		-fx-background-color:#874F59; 
 	}
 	.side-custom-button{
-		-fx-background-color:#BB5358;
+		-fx-background-color:#511C29;
 	} 
  
 	.wrapperMenuItem:hover{
-		-fx-background-color:derive(#EBB3B4,30%);
+		-fx-background-color:derive(#874F59,30%);
 	}
 		.wrapperMenuItem:pressed{
-			-fx-background-color:derive(#EBB3B4,25%);
+			-fx-background-color:derive(#874F59,25%);
 		}
 		
 	.wrapperMenuItem:hover .side-custom-button{
-		-fx-background-color:derive(#BB5358,50.0%);
+		-fx-background-color:derive(#511C29,50.0%);
 	}
 		.wrapperMenuItem:pressed .side-custom-button{
-			-fx-background-color:derive(#BB5358,20.0%);
+			-fx-background-color:derive(#511C29,20.0%);
 		}
 	.wrapperMenuItem .label{
-		-fx-text-fill:#BB5358;
+		-fx-text-fill:#511C29;
 	}
 		.wrapperMenuItem:hover .label{
-			-fx-text-fill:derive(#BB5358,50.0%);
+			-fx-text-fill:derive(#511C29,50.0%);
 		}
 		.wrapperMenuItem:pressed .label{
-			-fx-text-fill:derive(#BB5358,20.0%);
+			-fx-text-fill:derive(#511C29,20.0%);
 		}
 
 /*------ </Botonera del borderPane lado izquierdo> ------*/
@@ -311,16 +311,16 @@
  * <comboBox de settings>
  */
 	.settings-combo, .settings-combo .list-view{
-		-fx-background-color:#BB5358;
+		-fx-background-color:#511C29;
 	}
 	.settings-combo .list-cell{
-		-fx-background-color:derive(#BB5358, 60%);
+		-fx-background-color:derive(#511C29, 60%);
 	}
 		.settings-combo .list-cell:hover{
-			-fx-background-color:derive(#BB5358, 40%);
+			-fx-background-color:derive(#511C29, 40%);
 		}
 		.settings-combo .list-cell:focused{
-			-fx-background-color:derive(#BB5358, 20%);
+			-fx-background-color:derive(#511C29, 20%);
 		}	 
 	.settings-combo .text{
 		-fx-fill:white;

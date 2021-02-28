@@ -7,9 +7,17 @@ import javafx.beans.property.SimpleObjectProperty;
 
 import java.time.LocalDate;
 
+/**
+ * Page model
+ */
 public class Page {
-
+    /**
+     * Page id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Page date
+     */
     private ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
     /**
