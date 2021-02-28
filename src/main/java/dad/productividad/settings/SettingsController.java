@@ -221,7 +221,8 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
     @FXML
-    private void onResetDataAction(ActionEvent event) {
+    private void onResetDataAction(ActionEvent event) { //TODO
+    	
         dialogAccept.setVisible(true);
         File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
         try {
