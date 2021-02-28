@@ -48,14 +48,13 @@
                   <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
                </children>
             </HBox>
-<<<<<<< HEAD
+
             <HBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
                <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#onGenerateReportAction" styleClass="settings-button" text="%generateReport" />
             <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportAction" styleClass="settings-button" text="%export" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Button fx:id="importButton" mnemonicParsing="false" onAction="#onImportAction" styleClass="settings-button" text="%import" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             </HBox>
-=======
->>>>>>> 42f039d4c0a3e59cac472828802be2429c480d14
+
             <Label styleClass="text-color" text="%picktheme" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />

@@ -7,6 +7,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import dad.productividad.app.App;
+
 /**
  * The class used to open and close the connection in the app to the SQLite database.
  */

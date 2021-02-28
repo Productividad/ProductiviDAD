@@ -52,7 +52,7 @@
 	
 /* Scary Monsters */
 .scary-monsters-theme{
-	-fx-background-color:;
+	-fx-background-color:"";
 }
 	.scary-monsters-theme:disabled{
 		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
