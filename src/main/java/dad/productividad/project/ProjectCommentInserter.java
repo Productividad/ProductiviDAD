@@ -19,6 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 
+/**
+ * Project Comment inserter class
+ */
 public class ProjectCommentInserter extends HBox implements Initializable{
     @FXML
     private JFXTextField titleTF;

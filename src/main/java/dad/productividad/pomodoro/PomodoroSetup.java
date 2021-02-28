@@ -3,6 +3,9 @@ package dad.productividad.pomodoro;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * Pomodoro setup class
+ */
 public class PomodoroSetup {
 
     private IntegerProperty minutes = new SimpleIntegerProperty();

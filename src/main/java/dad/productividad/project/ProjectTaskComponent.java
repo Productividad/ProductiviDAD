@@ -23,6 +23,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * ProjectTaskComponent view controller
+ */
 public class ProjectTaskComponent extends GridPane implements Initializable {
 
     @FXML

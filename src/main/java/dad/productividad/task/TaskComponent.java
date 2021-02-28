@@ -24,6 +24,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * TaskComponent view controller
+ */
 public class TaskComponent extends VBox implements Initializable {
 
     @FXML

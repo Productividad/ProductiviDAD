@@ -3,6 +3,9 @@ package dad.productividad.theme;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Theme model
+ */
 public class Theme {
 
     private StringProperty title = new SimpleStringProperty();

@@ -13,14 +13,35 @@ import java.util.Locale;
 import com.goxr3plus.fxborderlessscene.borderless.BorderlessScene;
 import com.goxr3plus.fxborderlessscene.borderless.CustomStage;
 
+/**
+ * App class
+ */
 public class App extends Application {
+    /**
+     * App name
+     */
     public static final String APP_NAME = "ProductiviDAD";
+    /**
+     * Preferences manager
+     */
     public static Preferences preferences;
+    /**
+     * Main controller
+     */
     private MainController controller;
+    /**
+     * App stage
+     */
     public static Stage primaryStage;
-
+    /**
+     * Borderless Scene implementation
+     */
     static BorderlessScene borderLessScene;
 
+    /**
+     * App initialization
+     * @throws Exception
+     */
     @Override
     public void init() throws Exception {
 /**
@@ -35,7 +56,11 @@ public class App extends Application {
         super.init();
     }
 
-
+    /**
+     * App start
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -57,15 +82,27 @@ public class App extends Application {
         stage.showAndAdjust();
     }
 
+    /**
+     * Stop method
+     * @throws Exception
+     */
     @Override
     public void stop() throws Exception {
         super.stop();
     }
 
+    /**
+     * Main thread
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     *
+     * @return Stage Primary stage
+     */
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

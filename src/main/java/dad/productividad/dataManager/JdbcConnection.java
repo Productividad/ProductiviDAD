@@ -12,6 +12,9 @@ import java.sql.SQLException;
  * The class used to open and close the connection in the app to the SQLite database.
  */
 public class JdbcConnection {
+    /**
+     * Connection connection
+     */
     static Connection connection;
 
     /**

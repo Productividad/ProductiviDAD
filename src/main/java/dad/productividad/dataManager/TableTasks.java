@@ -145,7 +145,6 @@ public class TableTasks {
      * Method to get child tasks from the table
      *
      * @param parentTask The parent Task
-     * @return A ResultSet of registries.
      */
     public static void readChildTasks(Task parentTask) {
         String select = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task = ?";

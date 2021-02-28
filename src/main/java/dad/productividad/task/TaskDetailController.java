@@ -27,6 +27,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Task Detail controller
+ */
 public class TaskDetailController implements Initializable {
 
     @FXML

@@ -32,7 +32,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-
+/**
+ * Settings view controller class
+ */
 public class SettingsController implements Initializable {
 
     @FXML

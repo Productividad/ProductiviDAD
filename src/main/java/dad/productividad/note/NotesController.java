@@ -24,6 +24,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 
+/**
+ * Notes view controller
+ */
 public class NotesController implements Initializable {
 
     @FXML

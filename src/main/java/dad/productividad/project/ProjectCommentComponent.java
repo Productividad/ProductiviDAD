@@ -17,6 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
+/**
+ * Project comment component
+ */
 public class ProjectCommentComponent extends GridPane implements Initializable{
 
     @FXML

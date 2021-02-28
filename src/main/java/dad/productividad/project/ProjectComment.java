@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Project Comment model
+ */
 public class ProjectComment {
 
     private StringProperty content = new SimpleStringProperty();

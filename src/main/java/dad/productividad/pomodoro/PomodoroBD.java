@@ -2,6 +2,9 @@ package dad.productividad.pomodoro;
 
 import javafx.beans.property.*;
 
+/**
+ * Pomodoro model
+ */
 public class PomodoroBD {
 
     private IntegerProperty id = new SimpleIntegerProperty();

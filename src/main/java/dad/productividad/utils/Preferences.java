@@ -19,6 +19,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Preferences class util
+ */
 public class Preferences {
 
     private StringProperty theme = new SimpleStringProperty();

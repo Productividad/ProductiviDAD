@@ -10,7 +10,7 @@ import java.util.List;
 
 import dad.productividad.project.Project;
 
-/*
+/**
  * Class used to interact with the Projects table in the database.
  */
 public class TableProjects {

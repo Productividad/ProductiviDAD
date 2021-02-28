@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Task Comments model
+ */
 public class TaskComments {
     private StringProperty content = new SimpleStringProperty();
     private IntegerProperty id = new SimpleIntegerProperty();

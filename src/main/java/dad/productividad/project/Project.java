@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
+/**
+ * Project Model
+ */
 public class Project {
 
     private IntegerProperty id = new SimpleIntegerProperty();

@@ -28,38 +28,67 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Home View controller
+ */
 public class HomeController implements Initializable {
-
+    /**
+     * Home view
+     */
     @FXML
     private StackPane view;
-
+    /**
+     * Top wrapper of view
+     */
     @FXML
     private VBox topWrapper;
-
+    /**
+     * ScrollPane of view
+     */
     @FXML
     private ScrollPane scrollPane;
-
+    /**
+     * Task wrapper of view
+     */
     @FXML
     private VBox taskWrapper;
 
     //Borrar
-
+    /**
+     * BottomPane of view
+     */
     @FXML
     private VBox bottomPane;
-
+    /**
+     * Dialog pane of home
+     */
     @FXML
     private GridPane dialogPane;
-
+    /**
+     * Accept and cancel button
+     */
     @FXML
     private Button acceptButton, cancelButton;
-
+    /**
+     * Date label
+     */
     @FXML
     private Label date;
-
+    /**
+     * Tasks uncompleted and not favourite list
+     */
     private ListProperty<Task> normalTask = new SimpleListProperty<>(FXCollections.observableArrayList());
+    /**
+     * Favourite tasks list
+     */
     private ListProperty<Task> favouriteList = new SimpleListProperty<>(FXCollections.observableArrayList());
+    /**
+     * Completed tasks list
+     */
     private ListProperty<Task> doneList = new SimpleListProperty<>(FXCollections.observableArrayList());
-
+    /**
+     * Task dialog
+     */
     private ObjectProperty<Task> dialogTask = new SimpleObjectProperty<>();
 
     /**

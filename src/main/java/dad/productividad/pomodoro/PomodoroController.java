@@ -25,6 +25,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.converter.NumberStringConverter;
 
+/**
+ * Pomodoro view Controller
+ */
 public class PomodoroController implements Initializable {
 
     @FXML
