@@ -142,7 +142,6 @@ public class PomodoroController implements Initializable {
 
 	@FXML
 	private void onPomodoroPauseAction(ActionEvent event) {
-		//pomodoroSpinner.setProgress(value);
 
 		isPaused = true;
 		pomodoroPause.setDisable(true);
@@ -177,7 +176,6 @@ public class PomodoroController implements Initializable {
 					secondsTimer--;
 					totalSeconds++;
 					pomodoroSpinner.setProgress(totalSeconds/(minutesTimer*60F));
-					System.out.println(totalSeconds/(minutesTimer*60F));
 					Platform.runLater(() -> {
 						secondsToMinutes(secondsTimer);
 					});
@@ -221,6 +219,9 @@ public class PomodoroController implements Initializable {
 		}
 	}
 
+	/**
+	 * Starts a short timer based on Pomodoro Settings
+	 */
 	private void startShortTimer() {
 		
 		isShortTimer = true;
@@ -258,7 +259,8 @@ public class PomodoroController implements Initializable {
 	}
 
 	/**
-	 * Starts long timer based on Pomodoro Settings
+	 * Starts a long timer based on Pomodoro Settings
+	 * If the number of sessions is shorter than 4 the long timer will be the last one
 	 */
 	private void startLongTimer() {
 		
@@ -303,6 +305,13 @@ public class PomodoroController implements Initializable {
 		longTimer.start();
 	}
 
+	
+	/**
+	 * 
+	 * @param minutes
+	 * @param seconds
+	 * @return
+	 */
 	private Integer minutesToSeconds(Integer minutes, Integer seconds) {
 		Integer minutesSeconds = minutes * 60;
 		Integer total = minutesSeconds + seconds;

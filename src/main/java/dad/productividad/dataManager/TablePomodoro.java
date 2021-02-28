@@ -5,52 +5,47 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import dad.productividad.note.Note;
 import dad.productividad.pomodoro.PomodoroSetup;
-import dad.productividad.project.ProjectComments;
 
 /**
  * Class used to interact with the Pomodoro table in the database.
  */
 public class TablePomodoro {
+	 /**
+	  * Inserts new pomodoro into the database
+	  * @param pomodoroSetup The pomodoro to be inserted
+	  */
+    public static void insertPomodoro(PomodoroSetup pomodoroSetup) {
+        String insert = "INSERT INTO pomodoro (title_pomodoro, time_spent,FK_ID_page,FK_ID_task) VALUES ( ?, ?, ?)";
+        String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='pomodoro'";
+        int id = 0;
+        try {
+            JdbcConnection.connect();
+            PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
+            pstmt.setString(1, pomodoroSetup.getTitlePomodoro());
+            pstmt.setInt(2, pomodoroSetup.getTimeSpent());
+            pstmt.setInt(2, pomodoroSetup.getTimeSpent());
+            pstmt.setInt(2, pomodoroSetup.getIdPage());
+            pstmt.setInt(2, pomodoroSetup.getIdTask());
 
-	/**
-     * Method to insert a new pomodoro register in the database
-     *
-     * @param projectComments The note to be inserted
-     */
-	
-	
-//	public static int insertProjectComments(PomodoroSetup pomodoroSetup) {
-//        String insert = "INSERT INTO pomodoro (id, t) VALUES ( ?, ?)";
-//        String getPkId = "SELECT seq FROM sqlite_sequence WHERE name='project_comments'";
-//        int id = 0;
-//        try {
-//            JdbcConnection.connect();
-//            PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(insert);
-//            pstmt.setString(1, projectComments.getContent());
-//            pstmt.setInt(2, projectComments.getIdProject());
-//            pstmt.executeUpdate();
-//
-//            Statement stmt = JdbcConnection.connection.createStatement();
-//            ResultSet rs = stmt.executeQuery(getPkId);
-//
-//            while (rs.next()) {
-//                id = rs.getInt("seq");
-//            }
-//            projectComments.setId(id);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            JdbcConnection.close();
-//        }
-//
-//        return id;
-//    }
-	
-	
-	
-	
-	
+            pstmt.executeUpdate();
+
+            Statement stmt = JdbcConnection.connection.createStatement();
+            ResultSet rs = stmt.executeQuery(getPkId);
+
+            while (rs.next()) {
+                id = rs.getInt("seq");
+            }
+            pomodoroSetup.setIdPomodoro(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JdbcConnection.close();
+        }
+
+ 
+    }
 	
 	
 	

@@ -1,7 +1,6 @@
 package dad.productividad.dataManager;
 
 
-import dad.productividad.app.App;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
