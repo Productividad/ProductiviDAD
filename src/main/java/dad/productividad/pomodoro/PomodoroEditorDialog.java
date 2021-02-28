@@ -35,51 +35,83 @@ import javafx.stage.StageStyle;
  * Pomodoro dialog class
  */
 public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initializable {
-
+    /**
+     * Pomodoro editor view
+     */
     @FXML
     private BorderPane view;
-
+    /**
+     * Editor top bar
+     */
     @FXML
     private GridPane pomodoroTopBar;
-
+    /**
+     * Close dialog button
+     */
     @FXML
     private Button closeWindowButton;
-
+    /**
+     * Editor title
+     */
     @FXML
     private Label pomoEditorTitle;
-
+    /**
+     * Title textfield
+     */
     @FXML
     private JFXTextField titleTF;
-
+    /**
+     * White checkbox
+     */
     @FXML
     private JFXCheckBox whiteText;
-
+    /**
+     * Color picker
+     */
     @FXML
     private JFXColorPicker colorPicker;
-
+    /**
+     * Pomodoro Box combobox
+     */
     @FXML
     private JFXComboBox<Integer> pomodoroBox;
-
+    /**
+     * Short label
+     */
     @FXML
     private Label shortLabel;
-
+    /**
+     * short BreakBox
+     */
     @FXML
     private JFXComboBox<Integer> shortBreakBox;
-
+    /**
+     * Long label
+     */
     @FXML
     private Label longLabel;
-
+    /**
+     * Long break combobox
+     */
     @FXML
     private JFXComboBox<Integer> longBreakBox;
-
+    /**
+     * Pomodoro times
+     */
     @FXML
     private Label pomoTimes;
-
+    /**
+     * Slider
+     */
     @FXML
     private Slider pomogLengthSlider;
-
+    /**
+     * Save button
+     */
     private Button saveButton;
-
+    /**
+     * Stage
+     */
     private Stage stage;
 
     /**

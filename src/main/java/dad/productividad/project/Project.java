@@ -8,15 +8,41 @@ import java.time.LocalDate;
  * Project Model
  */
 public class Project {
-
+    /**
+     * Project id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Project tile
+     */
     private StringProperty title = new SimpleStringProperty();
+    /**
+     * Project progress
+     */
     private DoubleProperty progress = new SimpleDoubleProperty();
+    /**
+     * Project completed
+     */
     private BooleanProperty completed = new SimpleBooleanProperty();
+    /**
+     * Project white
+     */
     private BooleanProperty white = new SimpleBooleanProperty();
+    /**
+     * Project deadline
+     */
     private ObjectProperty<LocalDate> deadLine = new SimpleObjectProperty<>();
+    /**
+     * Project color
+     */
     private StringProperty color = new SimpleStringProperty();
+    /**
+     * Project description
+     */
     private StringProperty description = new SimpleStringProperty();
+    /**
+     * Project stylesheet
+     */
     private StringProperty styleSheet = new SimpleStringProperty();
 
     /**

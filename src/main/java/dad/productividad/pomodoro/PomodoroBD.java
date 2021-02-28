@@ -6,14 +6,30 @@ import javafx.beans.property.*;
  * Pomodoro model
  */
 public class PomodoroBD {
-
+    /**
+     * Pomodoro id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Task type
+     */
     private StringProperty typeTask = new SimpleStringProperty();
+    /**
+     * Pomodoro time spent
+     */
     private IntegerProperty timeSpent = new SimpleIntegerProperty();
 
+    /**
+     * PomodoroBD default constructor
+     */
     public PomodoroBD() {
     }
 
+    /**
+     * PomodoroBD constructor
+     * @param typeTask
+     * @param timeSpent
+     */
     public PomodoroBD(String typeTask, Integer timeSpent) {
         this.typeTask.set(typeTask);
         this.timeSpent.set(timeSpent);

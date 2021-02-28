@@ -27,19 +27,35 @@ import javafx.scene.media.MediaPlayer;
  * ProjectTaskComponent view controller
  */
 public class ProjectTaskComponent extends GridPane implements Initializable {
-
+	/**
+	 * Title label
+	 */
     @FXML
     private Label titleLabel;
-
+	/**
+	 * Done checkbox
+	 */
     @FXML
     private CheckBox doneCB;
-
+	/**
+	 * Title
+	 */
     private StringProperty title=new SimpleStringProperty();
-    private BooleanProperty done=new SimpleBooleanProperty();  
-    
-    private ObjectProperty<Task> task=new SimpleObjectProperty<>();
-    
+	/**
+	 * Done
+	 */
+	private BooleanProperty done=new SimpleBooleanProperty();
+	/**
+	 * Task
+	 */
+	private ObjectProperty<Task> task=new SimpleObjectProperty<>();
+	/**
+	 * Media
+	 */
 	private Media sound=new Media(this.getClass().getResource("/sound/cartoon_wink_magic_sparkle.wav").toExternalForm());
+	/**
+	 * Mediaplayer
+	 */
 	private MediaPlayer mediaPlayer;
 
     /**

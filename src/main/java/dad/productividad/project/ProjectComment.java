@@ -9,9 +9,17 @@ import javafx.beans.property.StringProperty;
  * Project Comment model
  */
 public class ProjectComment {
-
+    /**
+     * Project Comment content
+     */
     private StringProperty content = new SimpleStringProperty();
+    /**
+     * Project Comment id
+     */
     private IntegerProperty id = new SimpleIntegerProperty();
+    /**
+     * Project Comment idTask
+     */
     private IntegerProperty idTask = new SimpleIntegerProperty();
 
     /**

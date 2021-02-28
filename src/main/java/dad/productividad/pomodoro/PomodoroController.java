@@ -29,58 +29,105 @@ import javafx.util.converter.NumberStringConverter;
  * Pomodoro view Controller
  */
 public class PomodoroController implements Initializable {
-
+    /**
+     * Pomodoro view
+     */
     @FXML
-    private GridPane view; 
-
+    private GridPane view;
+    /**
+     * Pomodoro Textfield
+     */
     @FXML
     private JFXTextField pomoTextField;
-
+    /**
+     * Pomodoro buttons
+     */
     @FXML
-    private Button pomodoroSettings,pomodoroCancel,pomodoroPlay,pomodoroPause;
-
+    private Button pomodoroSettings, pomodoroCancel, pomodoroPlay, pomodoroPause;
+    /**
+     * Pomodor spinner
+     */
     @FXML
     private JFXSpinner pomodoroSpinner;
-
+    /**
+     * Pomodoro minute label
+     */
     @FXML
     private Label minuteLabel;
-
-    @FXML 
+    /**
+     * Pomodoro seconds label
+     */
+    @FXML
     private Label secondsLabel;
-
+    /**
+     * Pomodoro timer
+     */
     private Timer pomodoro;
-
+    /**
+     * Pomodoro short timer
+     */
     private Timer shortTimer;
-
+    /**
+     * Pomodoro long timer
+     */
     private Timer longTimer;
-
+    /**
+     * Integer seconds timer
+     */
     private Integer secondsTimer;
-
+    /**
+     * Cancel seconds
+     */
     private static final int CANCEL_SECONDS = 0;
-
+    /**
+     * Minutes timer
+     */
     private Integer minutesTimer;
-
+    /**
+     * Minutes selected
+     */
     private Integer minutesSelected;
-
+    /**
+     * Cancel minutes
+     */
     private static final int CANCEL_MINUTES = 0;
-
+    /**
+     * Completed
+     */
     private Integer completed = 0;
-
+    /**
+     * Total seconds
+     */
     private Integer totalSeconds;
-
+    /**
+     * Pomodoro Setup
+     */
     private PomodoroSetup pomodoroSetup;
-
+    /**
+     * Paused
+     */
     private boolean isPaused;
-
+    /**
+     * Short timer
+     */
     private boolean isShortTimer;
-
+    /**
+     * Long timer
+     */
     private boolean isLongTimer;
-
+    /**
+     * End sound
+     */
     private Media soundPomodoroEnd = new Media(
             this.getClass().getResource("/sound/completed-pomodoro-sound.wav").toExternalForm());
+    /**
+     * Start sound
+     */
     private Media soundTimerStart = new Media(
             this.getClass().getResource("/sound/started-pomodoro-break.wav").toExternalForm());
-
+    /**
+     * Media player
+     */
     private MediaPlayer mediaPlayer;
 
     /**
@@ -114,7 +161,7 @@ public class PomodoroController implements Initializable {
 
         pomodoroSpinner.setProgress(0);
     }
- 
+
     /**
      * Cancel button action
      *
@@ -127,7 +174,7 @@ public class PomodoroController implements Initializable {
             isShortTimer = false;
             shortTimer.stop();
         } else if (isLongTimer) {
-            isLongTimer = false; 
+            isLongTimer = false;
             longTimer.stop();
         } else {
             pomodoro.stop();
@@ -139,10 +186,10 @@ public class PomodoroController implements Initializable {
         pomodoroPlay.setVisible(true);
         pomodoroCancel.setDisable(true);
         pomodoroPause.setDisable(true);
-        pomodoroPlay.setDisable(true); 
-    
+        pomodoroPlay.setDisable(true);
+
         // Reset rounds  
-        completed = 0;    
+        completed = 0;
         totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
                 Integer.valueOf(secondsLabel.textProperty().getValue()));
 
@@ -180,7 +227,7 @@ public class PomodoroController implements Initializable {
         if (isPaused) {
             isPaused = false;
             pomodoro.start();
-        } else { 
+        } else {
 
             minutesTimer = pomodoroSetup.getMinutes();
             secondsTimer = minutesToSeconds(minutesTimer, 0);
@@ -234,10 +281,10 @@ public class PomodoroController implements Initializable {
             minutesSelected = pomodoroSetup.getMinutes();
             pomodoroPlay.setDisable(false);
         }
-    } 
-   
+    }
+
     /**
-     * Starts a short timer 
+     * Starts a short timer
      */
     private void startShortTimer() {
 
@@ -351,8 +398,8 @@ public class PomodoroController implements Initializable {
     /**
      * @return The pomodoro view.
      */
-    public GridPane getView() { 
-        return this.view; 
+    public GridPane getView() {
+        return this.view;
     }
 
 }

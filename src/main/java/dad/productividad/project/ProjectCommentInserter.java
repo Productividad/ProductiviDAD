@@ -22,13 +22,21 @@ import javafx.scene.layout.HBox;
 /**
  * Project Comment inserter class
  */
-public class ProjectCommentInserter extends HBox implements Initializable{
+public class ProjectCommentInserter extends HBox implements Initializable {
+    /**
+     * Inserter title textfield
+     */
     @FXML
     private JFXTextField titleTF;
+    /**
+     * Title
+     */
+    private StringProperty title = new SimpleStringProperty();
+    /**
+     * Task objectproperty
+     */
+    private ObjectProperty<Task> task = new SimpleObjectProperty<>();
 
-    private StringProperty title=new SimpleStringProperty();
-    private ObjectProperty<Task>task=new SimpleObjectProperty<>();
-    
     /**
      * Default constructor of ProjectCommentInserter
      */
@@ -43,58 +51,71 @@ public class ProjectCommentInserter extends HBox implements Initializable{
             e.printStackTrace();
         }
     }
+
     /**
      * ProjectCommentInserter initialization
      */
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		titleTF.textProperty().bindBidirectional(title);
-	} 
-
-	/**
-	 * Use insertComment method
-	 * @param event
-	 */
-    @FXML
-    private void onInsertTaskButton(ActionEvent event) { 	
-    	insertComment();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        titleTF.textProperty().bindBidirectional(title);
     }
-    
-	/**
-	 * Use insertComment method
-	 * @param event
-	 */
+
+    /**
+     * Use insertComment method
+     *
+     * @param event
+     */
+    @FXML
+    private void onInsertTaskButton(ActionEvent event) {
+        insertComment();
+    }
+
+    /**
+     * Use insertComment method
+     *
+     * @param event
+     */
     @FXML
     private void onEnter(ActionEvent event) {
-    	insertComment();
+        insertComment();
     }
+
     /**
      * Inserts a comment into the database and resets the comments wrapper
      * on projectDetail
      */
     private void insertComment() {
-    	ProjectComment projectComment=new ProjectComment();
-    	projectComment.setIdTask(task.get().getId());
-    	projectComment.setContent(title.get());
-    	
-    	TableProjectComments.insertProjectComments(projectComment);
-    	titleTF.clear();
-    	MainController.mainController.getProjectDetailController().setProjectComments();
+        ProjectComment projectComment = new ProjectComment();
+        projectComment.setIdTask(task.get().getId());
+        projectComment.setContent(title.get());
+
+        TableProjectComments.insertProjectComments(projectComment);
+        titleTF.clear();
+        MainController.mainController.getProjectDetailController().setProjectComments();
     }
 
-	public final ObjectProperty<Task> taskProperty() {
-		return this.task;
-	}
-	
+    /**
+     * @return ObjectProperty of Task
+     */
+    public final ObjectProperty<Task> taskProperty() {
+        return this.task;
+    }
 
-	public final Task getTask() {
-		return this.taskProperty().get();
-	}
-	
+    /**
+     * @return Task
+     */
+    public final Task getTask() {
+        return this.taskProperty().get();
+    }
 
-	public final void setTask(final Task task) {
-		this.taskProperty().set(task);
-	}
-	
-    
+    /**
+     * Set a new Task
+     *
+     * @param task
+     */
+    public final void setTask(final Task task) {
+        this.taskProperty().set(task);
+    }
+
+
 }

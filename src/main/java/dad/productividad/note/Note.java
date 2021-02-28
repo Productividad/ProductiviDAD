@@ -92,6 +92,7 @@ public class Note {
 
     /**
      * Sets a new id
+     * @param idPage
      */
     public final void setIdPage(final int idPage) {
         this.idPageProperty().set(idPage);

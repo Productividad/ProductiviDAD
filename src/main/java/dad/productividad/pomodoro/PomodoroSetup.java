@@ -7,10 +7,21 @@ import javafx.beans.property.SimpleIntegerProperty;
  * Pomodoro setup class
  */
 public class PomodoroSetup {
-
+    /**
+     * Minutes
+     */
     private IntegerProperty minutes = new SimpleIntegerProperty();
+    /**
+     * Short Break
+     */
     private IntegerProperty shortBreak = new SimpleIntegerProperty();
+    /**
+     * Long break
+     */
     private IntegerProperty longBreak = new SimpleIntegerProperty();
+    /**
+     * Pomodoro length
+     */
     private IntegerProperty pomoLength = new SimpleIntegerProperty();
 
     /**

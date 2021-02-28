@@ -33,38 +33,66 @@ import javafx.scene.layout.VBox;
  *
  */
 public class ProjectDetailController implements Initializable {
-
+	/**
+	 * ProjectDetail view
+	 */
 	@FXML
     private StackPane view;
-
+	/**
+	 * Spinner
+	 */
     @FXML
     private JFXSpinner spinner;
-
+	/**
+	 * Title, description and detail label
+	 */
     @FXML
     private Label titleProject,descriptionLabel,titleTaskDetail;
-    
-    @FXML
+	/**
+	 * Scrollpanes
+	 */
+	@FXML
     private ScrollPane scrollPane,scrollPaneTaskDetail;
-
+	/**
+	 * Wrappers
+	 */
     @FXML
     private VBox taskContainer,taskCommentsWrapper;
-
+	/**
+	 * Dialogs
+	 */
     @FXML
     private GridPane dialogAdd,dialogTaskDetail;
-
+	/**
+	 * Title textfields
+	 */
     @FXML
     private JFXTextField titleTF;
-    
-    @FXML
+	/**
+	 * Comment inserter wrapper
+	 */
+	@FXML
     private HBox commentInserterWrapper;
-    
-    @FXML
+	/**
+	 * Cancel add button
+	 */
+	@FXML
     private Button cancelAddButton;
-    	
-	private StringProperty title=new SimpleStringProperty(); 
+	/**
+	 * Title
+	 */
+	private StringProperty title=new SimpleStringProperty();
+	/**
+	 * Description
+	 */
 	private StringProperty description=new SimpleStringProperty();
-	
-	private ObjectProperty<Project> project = new SimpleObjectProperty<>(); 
+	/**
+	 * Project
+	 */
+	private ObjectProperty<Project> project = new SimpleObjectProperty<>();
+	/**
+	 * Task on Detail dialog
+	 */
 	private ObjectProperty<Task> taskOnDetailDialog=new SimpleObjectProperty<>();
  
 	
