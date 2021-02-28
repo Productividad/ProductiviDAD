@@ -24,28 +24,47 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 
+/**
+ * Notes view controller
+ */
 public class NotesController implements Initializable {
-
+    /**
+     * Notes view
+     */
     @FXML
     private StackPane view;
-
+    /**
+     * Add note button
+     */
     @FXML
     private Button addNotebutton;
-
+    /**
+     * Notes ScrollPane
+     */
     @FXML
     private ScrollPane scrollPane;
-
+    /**
+     * Color dialog
+     */
     @FXML
     private GridPane dialogColor;
-
+    /**
+     * Notes wrapper
+     */
     @FXML
     private JFXMasonryPane notesWrapper;
-
+    /**
+     * Color picker
+     */
     @FXML
     private Pane colorPick1, colorPick2, colorPick3, colorPick4, colorPick5, colorPick6, colorPick7;
-
+    /**
+     * Selected color
+     */
     private StringProperty selectedColor = new SimpleStringProperty();
-
+    /**
+     * Note
+     */
     private ObjectProperty<Note> note = new SimpleObjectProperty<>();
 
     /**

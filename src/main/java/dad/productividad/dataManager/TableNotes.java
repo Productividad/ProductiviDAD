@@ -17,6 +17,7 @@ public class TableNotes {
      * Method to insert a new note in the database
      *
      * @param note The note to be inserted
+     * @return id of the note as int
      */
     public static int insertNote(Note note) {
         String insert = "INSERT INTO notes (content_note, FK_ID_page, color_note) VALUES ( ?, ?, ?)";

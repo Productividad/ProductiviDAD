@@ -38,37 +38,67 @@ import javafx.scene.paint.Color;
  * Controller class of ProjectManagerView
  */
 public class ProjectManagerController implements Initializable {
-
+    /**
+     * Project manager view
+     */
     @FXML
     private StackPane view;
-
+    /**
+     * Dialogs
+     */
     @FXML
     private GridPane dialogProject, dialogDelete;
-
+    /**
+     * Card container
+     */
     @FXML
     private HBox projectCardContainer;
-
+    /**
+     * Add project and accept dialog buttons
+     */
     @FXML
     private Button addProjectButton, acceptDialogProject;
-
+    /**
+     * Title TextField
+     */
     @FXML
     private JFXTextField titleTF;
-
+    /**
+     * Description text area
+     */
     @FXML
     private JFXTextArea descriptionTA;
-
+    /**
+     * White text checkbox
+     */
     @FXML
     private JFXCheckBox whiteText;
-
+    /**
+     * Color Picker
+     */
     @FXML
     private JFXColorPicker colorPicker;
-
+    /**
+     * Date picker
+     *
+     */
     @FXML
     private JFXDatePicker datePicker;
-
+    /**
+     * Projects list
+     */
     private ListProperty<Project> projectsList = new SimpleListProperty<>(FXCollections.observableArrayList());
+    /**
+     * Project to be deleted
+     */
     private ObjectProperty<Project> projectToDelete = new SimpleObjectProperty<>();
+    /**
+     * Project to be modified
+     */
     private ObjectProperty<Project> projectToModify = new SimpleObjectProperty<>();
+    /**
+     * Dialog creating
+     */
     private BooleanProperty dialogCreating = new SimpleBooleanProperty();
 
     /**

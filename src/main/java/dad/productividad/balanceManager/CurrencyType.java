@@ -2,13 +2,23 @@ package dad.productividad.balanceManager;
 
 import java.util.ResourceBundle;
 
+/**
+ * Currency types
+ */
 public enum CurrencyType {
-
+    /**
+     * The currencies
+     */
     EURO("€", "Euro"), POUND("£", ResourceBundle.getBundle("i18n/strings").getString("pound")),
     DOLLAR("$", ResourceBundle.getBundle("i18n/strings").getString("dollar")), YEN("¥", "Yen"),
     SWISS_FRANC("₣", ResourceBundle.getBundle("i18n/strings").getString("franc")), YUAN("¥", "Yuan");
-
+    /**
+     * Symbol e.g. "$"
+     */
     private final String symbol;
+    /**
+     * Name e.g. "Dollar"
+     */
     private final String nm;
 
     /**

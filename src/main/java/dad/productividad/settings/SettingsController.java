@@ -32,33 +32,56 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-
+/**
+ * Settings view controller class
+ */
 public class SettingsController implements Initializable {
-
+    /**
+     * Settings view
+     */
     @FXML
     private StackPane view;
-
+    /**
+     * Bottom Pane, accept and reset dialog
+     */
     @FXML
     private GridPane bottomPane, dialogAccept, dialogReset;
-
+    /**
+     * Theme wrapper
+     */
     @FXML
     private VBox themeWrapper;
-
+    /**
+     * Scrollpane
+     */
     @FXML
     private ScrollPane scroll;
-
+    /**
+     * Save, Reset, Export, Import buttons
+     */
     @FXML
     private Button saveButton, resetButton, exportButton, importButton;
-
+    /**
+     * Locale Picker
+     */
     @FXML
     private ComboBox<Locale> localePicker;
-
+    /**
+     * Currency Picker
+     */
     @FXML
     private ComboBox<CurrencyType> currencyPicker;
-
+    /**
+     * Currencies
+     */
     private ListProperty<CurrencyType> currencies = new SimpleListProperty<>(FXCollections.observableArrayList(CurrencyType.values()));
+    /**
+     * Locales
+     */
     private ListProperty<Locale> languages = new SimpleListProperty<>(FXCollections.observableArrayList(Locale.ENGLISH, new Locale("es"), Locale.FRENCH));
-
+    /**
+     * Selected theme
+     */
     public static String selectedTheme;
 
     private ThemePicker pickerBW = new ThemePicker();

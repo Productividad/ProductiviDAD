@@ -36,49 +36,93 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.NumberStringConverter;
 
+/**
+ * Balance Manager view controller
+ */
 public class BalanceManagerController implements Initializable {
-
+    /**
+     * Balance Manager view
+     */
     @FXML
     private GridPane view;
-
+    /**
+     * Movements Table
+     */
     @FXML
     private TableView<IncomeExpense> balanceTableView;
-
+    /**
+     * Date column
+     */
     @FXML
     private TableColumn<IncomeExpense, LocalDate> dateColumn;
-
+    /**
+     * Concept column
+     */
     @FXML
     private TableColumn<IncomeExpense, String> conceptColumn;
-
+    /**
+     * Amount column
+     */
     @FXML
     private TableColumn<IncomeExpense, Number> amountColumn;
-
+    /**
+     * Concept and amount TextFields
+     */
     @FXML
     private JFXTextField conceptTF, amountTF;
-
+    /**
+     * Date picker
+     */
     @FXML
     private JFXDatePicker datePicker;
-
+    /**
+     * Positive, negative, positive filter, negative filter, no filter RadioButtons
+     */
     @FXML
     private JFXRadioButton positiveRB, negativeRB, positiveFilter, negativeFilter, allFilter;
-
+    /**
+     * Add and Delete button
+     */
     @FXML
     private Button addButton, deleteButton;
-
+    /**
+     * View labels
+     */
     @FXML
     private Label total, totalLabel, typeCoinLabel, yearLabel, monthLabel;
-
+    /**
+     * Total toggle
+     */
     @FXML
     private JFXToggleButton totalToggle;
-
+    /**
+     * Next and previous buttons
+     */
     @FXML
     private VBox previousMonthWrapper, nextMonthWrapper;
-
+    /**
+     * List of movements
+     */
     private ListProperty<IncomeExpense> movementsList = new SimpleListProperty<>(FXCollections.observableArrayList());
+    /**
+     * Total amount
+     */
     private DoubleProperty totalAmount = new SimpleDoubleProperty();
-    private ObjectProperty<LocalDate> index = new SimpleObjectProperty<>(LocalDate.now()); //My actual index
-    private ObjectProperty<LocalDate> previousIndex = new SimpleObjectProperty<>(null); //My previous index
-    private ObjectProperty<LocalDate> nextIndex = new SimpleObjectProperty<>(); //My next index
+    /**
+     * Actual index
+     */
+    private ObjectProperty<LocalDate> index = new SimpleObjectProperty<>(LocalDate.now());
+    /**
+     * Previous index
+     */
+    private ObjectProperty<LocalDate> previousIndex = new SimpleObjectProperty<>(null);
+    /**
+     * Next index
+     */
+    private ObjectProperty<LocalDate> nextIndex = new SimpleObjectProperty<>();
+    /**
+     * Year and month
+     */
     private int year = LocalDate.now().getYear(), month = LocalDate.now().getMonthValue();
 
     /**

@@ -18,6 +18,9 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Task model
+ */
 public class Task {
 
     private IntegerProperty id = new SimpleIntegerProperty();
