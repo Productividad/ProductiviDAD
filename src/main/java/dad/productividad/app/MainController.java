@@ -14,6 +14,7 @@ import dad.productividad.menuBar.MenuBarController;
 import dad.productividad.note.NotesController;
 import dad.productividad.page.Page;
 import dad.productividad.pomodoro.PomodoroController;
+import dad.productividad.pomodoro.PomodoroPopUpController;
 import dad.productividad.project.Project;
 import dad.productividad.project.ProjectDetailController;
 import dad.productividad.project.ProjectManagerController;
@@ -135,6 +136,11 @@ public class MainController implements Initializable {
     public static MainController mainController;
 
     /**
+     * Pomodoro Pop Up Controller
+     */
+    public PomodoroPopUpController pomodoPopUpController;
+    
+    /**
      * Class constructor.
      */
     public MainController() {
@@ -203,8 +209,11 @@ public class MainController implements Initializable {
         pomodoroController = new PomodoroController();
         settingsController = new SettingsController(); 
         menuBarController = new MenuBarController();
+        pomodoPopUpController = new PomodoroPopUpController();
         view.setLeft(menuBarController.getView());
         view.setCenter(homeController.getView());
+        view.setBottom(pomodoPopUpController.getView());
+        
 
         todaysPage.setDate(LocalDate.now());
         TablePages.insertPage(todaysPage);

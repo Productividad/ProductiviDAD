@@ -4,11 +4,25 @@
 
 
 
+Para añadir una **tarea** hay que introducir el nombre de esta en el cuadro de texto de la parte inferior de la ventana.
 
 
 
+![img](https://i.imgur.com/V7drLYR.gif)
 
-## <p align="center"><img src="/github_images/clock-fill.svg" width="30" /> Pestaña de Tareas </p>
+
+
+Para editar una **tarea**, seleccionar de la lista la que se desea modificar, se abrirá en la parte derecha un menú donde se podrá editar el **titulo**, introducir una **descripción** a la tarea. También se podrá marcar la tarea como realizada pulsando el **circulo **de la derecha y/o  marcarla como  **favorita** al clicando en la **estrella** de la derecha.
+
+![img](https://i.imgur.com/IPLGNg6.gif)
+
+
+
+Para borra una **tarea**, seleccione la que desee eliminar de la lista y pulse el botón de la **papelera** en la parte inferior del menú que se despliega desde la derecha.
+
+![img](https://i.imgur.com/jFui14f.gif)
+
+
 
 
 
@@ -114,5 +128,9 @@ Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** 
 
 ## <p align="center"><img src="/github_images/gear-wide-connected.svg" width="30" /> Pestaña de Ajustes</p>
 
-## <p align="center"><img src="/github_images/github.svg" width="30" /> Pestaña de GitHub</p>
+Es posible cambiar el Idioma de ProductiviDAD , así como la moneda con la que opera. Para hacerlo seleccione en los menú desplegables de **Elegir Idioma** y **Elegir moneda** las opciones deseadas.  Para hacer efectivos los cambios ha de pulsar el botón de aceptar, en la parte inferior derecha de la ventana. **¡Importante!** Algunos cambios solo se harán efectivos cuando reinicie la aplicación
+
+![img](https://i.imgur.com/3cJMXw8.gif)
+
+
 

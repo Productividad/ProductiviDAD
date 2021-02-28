@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="pomoHomeView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<GridPane fx:id="pomoPopUpView" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" />
     <ColumnConstraints hgrow="NEVER" />
@@ -16,13 +17,28 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER" GridPane.halignment="CENTER">
+      <HBox fx:id="timerPopUpBox" alignment="CENTER" maxWidth="1.7976931348623157E308" GridPane.halignment="CENTER">
          <children>
             <Label fx:id="minutesPopUpLabel" text="00" />
             <Label text=":" />
             <Label fx:id="secondsPopUpLabel" text="00" />
+            <Label text="Label" textAlignment="RIGHT">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
          </children>
       </HBox>
-      <Button fx:id="closePomoPopup" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+      <HBox fx:id="buttonPopUpBox" spacing="5.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+         <children>
+            <Button fx:id="pausePomoPopUpButton" mnemonicParsing="false" onAction="#onPausePomoPopUpAction" />
+            <Button fx:id="playPomoPopUpButton" mnemonicParsing="false" onAction="#onPlayPomoPopUpAction" />
+            <Button fx:id="stopPomoPopUpButton" mnemonicParsing="false" onAction="#onStopPomoPopUpAction" />
+            <Button fx:id="closePomoPopupButton" mnemonicParsing="false" onAction="#onClosePomoPopUpAction" />
+         </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </HBox>
    </children>
 </GridPane>
