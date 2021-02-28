@@ -106,6 +106,8 @@ public class SettingsController implements Initializable {
     public static String selectedTheme; 
     
     private static final String JRXML_FILE = "/reports/tasks.jrxml";
+    
+    
 	private static final String REPORT_PDF_FILE_NAME = "tasks.pdf"; 
 
     private ThemePicker pickerBW = new ThemePicker();
@@ -182,6 +184,9 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
 
+    
+    
+    
     @FXML
     private void onGenerateReportAction(ActionEvent event) {
 
