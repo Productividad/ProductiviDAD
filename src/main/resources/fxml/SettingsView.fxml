@@ -14,40 +14,45 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane fx:id="bottomPane" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" vgap="25.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="ALWAYS" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-        </rowConstraints>
-         <children>
-            <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
-            <Label styleClass="text-color" text="%picklang">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label styleClass="text-color" text="%pickcurr" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
-               <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%accept" />
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
-               </children>
-            </HBox>
+    <children>
+        <GridPane fx:id="bottomPane" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                  minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" vgap="25.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="ALWAYS"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo"
+                          GridPane.columnIndex="1"/>
+                <Label styleClass="text-color" text="%picklang">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label styleClass="text-color" text="%pickcurr" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction"
+                                styleClass="settings-button" text="%accept"/>
+                        <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction"
+                                styleClass="settings-button" text="%reset"/>
+                    </children>
+                </HBox>
 
             <Label styleClass="text-color" text="%picktheme" GridPane.rowIndex="4">
                <font>
