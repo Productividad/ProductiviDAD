@@ -34,11 +34,11 @@
  	 */
 		
 		#totalToggle{
-			-jfx-toggle-color:#BB5358;
-			-jfx-toggle-line-color:derive(#BB5358,60%);	
+			-jfx-toggle-color:#171A21;
+			-jfx-toggle-line-color:derive(#171A21,60%);	
 			
-			-jfx-untoggle-color:#BB5358;
-			-jfx-untoggle-line-color:derive(#BB5358,80%);	
+			-jfx-untoggle-color:#171A21;
+			-jfx-untoggle-line-color:derive(#171A21,80%);	
 			
 		}
 	
@@ -65,19 +65,19 @@
 	 * 
 	 */
 		.jfxTextFieldTextArea{
-   			-jfx-focus-color:#BB5358;
+   			-jfx-focus-color:#171A21;
    		}
    			.jfxTextFieldTextArea:hover{
-   				-jfx-unfocus-color:derive(#BB5358,60.0%);
+   				-jfx-unfocus-color:derive(#171A21,60.0%);
    			}
 	
 		.text-color, .text-color .date-picker-display-node,.balance-manager-label,
 		#monthLabel,#yearLabel,.jfx-radio-button .text,.jfx-toggle-button .text,
 		.table-balance:row-selection:constrained-resize .placeholder .label .text,
 		#colorPicker .color-label .text{
-			-fx-fill:#BB5358;
-			-fx-text-fill:#BB5358;
-			-fx-prompt-text-fill:derive(#BB5358,30%);
+			-fx-fill:#171A21;
+			-fx-text-fill:#171A21;
+			-fx-prompt-text-fill:derive(#171A21,30%);
 		}
 
 	
@@ -86,8 +86,8 @@
 		 */
 		 	
 			.project-checkBox:determinate{
-				-jfx-unchecked-color:#BB5358;
-				-jfx-checked-color:#BB5358;
+				-jfx-unchecked-color:#171A21;
+				-jfx-checked-color:#171A21;
 			}
 		
 		/**
@@ -95,11 +95,11 @@
 		 */
 		.delete-comment-button{
 		    -fx-shape:"M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z";
-			-fx-background-color:#BB5358;
+			-fx-background-color:#171A21;
 		} 
 		#scrollPaneTaskDetail{
 			-fx-border-width:1;
-			-fx-border-color:#BB5358;
+			-fx-border-color:#171A21;
 			-fx-border-raidus:10;
 		}
 		
@@ -115,13 +115,13 @@
 				-fx-background-color:white;
 			}
 			.task-inserter-button{/*Color botones*/
-				-fx-background-color:#BB5358;	
+				-fx-background-color:#171A21;	
 			}
 				.insertTaskButton:hover{
-				    -fx-background-color:derive(#BB5358,40%);
+				    -fx-background-color:derive(#171A21,40%);
 				}
 				.insertTaskButton:pressed{
-				    -fx-background-color:derive(#BB5358,10%);
+				    -fx-background-color:derive(#171A21,10%);
 				}
 				 
 		/*TASK-COMPONENT*/   
@@ -139,37 +139,37 @@
 				-fx-strikethrough: false ;
 			}
 			#doneTaskDetailCB .box, #doneCheckBox .box {
-				-fx-border-color:#BB5358;
+				-fx-border-color:#171A21;
 			}
 			#doneTaskDetailCB:selected .box, #doneCheckBox:selected .box {
-				-fx-background-color:#BB5358;
-				-fx-border-color:#BB5358;
+				-fx-background-color:#171A21;
+				-fx-border-color:#171A21;
 			}
 			#doneTaskDetailCB .box:hover .mark, #doneCheckBox .box:hover .mark {
-			    -fx-background-color:#BB5358;
+			    -fx-background-color:#171A21;
 			}
 			#doneTaskDetailCB:selected .box:hover .mark, #doneCheckBox:selected .box:hover .mark {
 			    -fx-background-color:white;
 			}
 
 			#favouriteCheckBox .box, #favouriteTaskDetailCB .box{
-				-fx-background-color:#BB5358;
+				-fx-background-color:#171A21;
 			}
 				#favouriteCheckBox .box:hover, #favouriteTaskDetailCB .box:hover{
-					-fx-background-color:#BB5358;
+					-fx-background-color:#171A21;
 				}
 			#favouriteCheckBox:selected .box, #favouriteTaskDetailCB:selected .box,
 			#favouriteCheckBox:selected:hover .box, #favouriteTaskDetailCB:selected:hover .box{
-				-fx-background-color:#BB5358;				
+				-fx-background-color:#171A21;				
 			}
 			
 		/*TASK-DETAIL*/
 
 			.arrow-button-TaskDetail,.delete-button{
-				-fx-background-color:#BB5358;
+				-fx-background-color:#171A21;
 			}
 				 .arrow-button-TaskDetail:hover{
-				 	-fx-background-color:derive(#BB5358,40%);
+				 	-fx-background-color:derive(#171A21,40%);
 				}
 				 .delete-button:hover{
 					-fx-background-color:#5D061E;
@@ -182,7 +182,7 @@
  * como el fondo de las celdas de las tablas
  */
 	.main-color, .table-view,.table-row-cell,.table-row-cell:empty:hover, .transparent-scrollPane .viewport {         
-		-fx-background-color:#F5D8DA;    
+		-fx-background-color:#F7D5C6;    
 	}
 /*------ </Color del centro del borderPane> ------*/
 	
@@ -190,7 +190,7 @@
 	 * 	Color del spinner 
 	 */
  	.pomodoro-spinner .arc{
- 		-fx-stroke:#BB5358;
+ 		-fx-stroke:#171A21;
  	}
  	
 /**
@@ -199,7 +199,7 @@
  */
   
 	.top-menu-bar {/*Borde inferior de la barra superior*/
-		-fx-border-color: transparent transparent derive(#BB5358, 40.0%) transparent;
+		-fx-border-color: transparent transparent derive(#171A21, 40.0%) transparent;
 		-fx-border-width: 2px;
 	}  
 	
@@ -208,24 +208,24 @@
 	}
 	
  	#datePicker{/*DatePicker de BalanceManager*/
-		-jfx-default-color:#BB5358;
+		-jfx-default-color:#171A21;
 	}
 	.balance-manager-textField{/*TextField de BalanceManager*/
-		-jfx-focus-color:#BB5358;
+		-jfx-focus-color:#171A21;
 	}
 		#datePicker:hover .date-picker-display-node,.balance-manager-textField:hover{
-			-jfx-unfocus-color:derive(#BB5358,60.0%);
+			-jfx-unfocus-color:derive(#171A21,60.0%);
 		}
 	
 	/*SCROLL-BAR DEFAULT */
 		.scroll-bar:horizontal .track, .scroll-bar:vertical .track{/*Track*/
-		    -fx-background-color :derive(#BB5358,60%);
+		    -fx-background-color :derive(#171A21,60%);
 		}
 		.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {/*Arrastrable*/
-			-fx-background-color:#BB5358;
+			-fx-background-color:#171A21;
 		}
 		.scroll-bar:horizontal .thumb:hover, .scroll-bar:vertical .thumb:hover {/*Arrastrable :hover*/
-		    -fx-background-color :derive(#BB5358,25%);
+		    -fx-background-color :derive(#171A21,25%);
 	    }
 
 	/*:NORMAL*/
@@ -237,20 +237,20 @@
 		.secondary-color,.table-view .column-header, .column-header-background .filler,.balance-manager-button,
 		.project-button,.settings-button, #previousMonthWrapper .button, #nextMonthWrapper .button,.stack-dialog .custom-button,
 		.highlight-button{   
-		    -fx-background-color:#BB5358;     
+		    -fx-background-color:#171A21;     
 		}  
 		.jfx-radio-button{
-			-jfx-unselected-color:#BB5358;
+			-jfx-unselected-color:#171A21;
 		}
 	
 	/*:HOVER*/
 		.table-row-cell:hover, .balance-manager-button:hover, .project-button:hover,.settings-button:hover,
 		#previousMonthWrapper:hover .button, #nextMonthWrapper:hover .button,.stack-dialog .custom-button:hover,
 		.highlight-button:hover{
-			-fx-background-color: derive(#BB5358, 60%); 
+			-fx-background-color: derive(#171A21, 60%); 
 		}
 		.table-row-cell .text{
-			-fx-fill:#BB5358;
+			-fx-fill:#171A21;
 		}
 		.table-row-cell:hover .text{
 			-fx-fill:white;
@@ -258,7 +258,7 @@
 
 	/*:FOCUSED*/
 		.table-row-cell:focused{
-			-fx-background-color: derive(#BB5358, 40%);
+			-fx-background-color: derive(#171A21, 40%);
 		}
 		.table-row-cell:focused .text{
 			-fx-fill:white;
@@ -268,7 +268,7 @@
 		.balance-manager-button:pressed, .project-button:pressed,.settings-button:pressed,
 		#previousMonthWrapper:pressed .button, #nextMonthWrapper:pressed .button, .stack-dialog .custom-button:pressed,
 		.highlight-button:pressed{
-		-fx-background-color:derive(#BB5358,20%);
+		-fx-background-color:derive(#171A21,20%);
 	}
 /*------ </Barra superior, tablas, scrollBar y columnas> ------*/
 
@@ -276,33 +276,33 @@
  * </Botonera del borderPane lado izquierdo>
  */
 	.sideBars-color{ 
-		-fx-background-color:#EBB3B4; 
+		-fx-background-color:#E88D67; 
 	}
 	.side-custom-button{
-		-fx-background-color:#BB5358;
+		-fx-background-color:#171A21;
 	} 
  
 	.wrapperMenuItem:hover{
-		-fx-background-color:derive(#EBB3B4,30%);
+		-fx-background-color:derive(#E88D67,30%);
 	}
 		.wrapperMenuItem:pressed{
-			-fx-background-color:derive(#EBB3B4,25%);
+			-fx-background-color:derive(#E88D67,25%);
 		}
 		
 	.wrapperMenuItem:hover .side-custom-button{
-		-fx-background-color:derive(#BB5358,50.0%);
+		-fx-background-color:derive(#171A21,50.0%);
 	}
 		.wrapperMenuItem:pressed .side-custom-button{
-			-fx-background-color:derive(#BB5358,20.0%);
+			-fx-background-color:derive(#171A21,20.0%);
 		}
 	.wrapperMenuItem .label{
-		-fx-text-fill:#BB5358;
+		-fx-text-fill:#171A21;
 	}
 		.wrapperMenuItem:hover .label{
-			-fx-text-fill:derive(#BB5358,50.0%);
+			-fx-text-fill:derive(#171A21,50.0%);
 		}
 		.wrapperMenuItem:pressed .label{
-			-fx-text-fill:derive(#BB5358,20.0%);
+			-fx-text-fill:derive(#171A21,20.0%);
 		}
 
 /*------ </Botonera del borderPane lado izquierdo> ------*/
@@ -311,16 +311,16 @@
  * <comboBox de settings>
  */
 	.settings-combo, .settings-combo .list-view{
-		-fx-background-color:#BB5358;
+		-fx-background-color:#171A21;
 	}
 	.settings-combo .list-cell{
-		-fx-background-color:derive(#BB5358, 60%);
+		-fx-background-color:derive(#171A21, 60%);
 	}
 		.settings-combo .list-cell:hover{
-			-fx-background-color:derive(#BB5358, 40%);
+			-fx-background-color:derive(#171A21, 40%);
 		}
 		.settings-combo .list-cell:focused{
-			-fx-background-color:derive(#BB5358, 20%);
+			-fx-background-color:derive(#171A21, 20%);
 		}	 
 	.settings-combo .text{
 		-fx-fill:white;
@@ -344,4 +344,13 @@
 		-fx-min-height:30;
 		-fx-min-width:150;
 	}
-
+.clock-button{
+	-fx-shape:"M344.566,146.952c-18.4-56.8-61.6-68.4-94-68.4c-20.4,0-37.2,4.4-43.6,6.4l-2.8,0.8l-2.4-1.6c-4-2.4-8.4-4.4-12.8-5.6
+			c9.2-38.8,52-52,52-52l-19.6-20.8c0,0-12,1.2-29.6,15.2c-17.6,14.4-22,50.4-22,50.4s0.4,2.4,1.6,6c-6.4,0.8-12.8,3.2-18.4,7.2
+			l-2.4,1.6l-2.8-1.2c-0.4,0-20.8-7.2-46.4-7.2c-32.8,0-75.6,12-94,68.4c-15.6,47.2-6,102,24.8,144.4c24,33.2,56,52,88,52
+			c9.2,0,18.4-1.6,27.2-4.8l2.8-1.2l2.4,1.6c14.4,10,34.4,10.4,49.2,0.8l2.4-1.6l2.8,0.8c8,2.4,16.4,4,24.8,4c16,0,32-4.8,46.8-13.6
+			c15.2-8.8,28.8-22,40.8-38.4C350.166,248.152,359.766,193.352,344.566,146.952z M275.766,139.352c-25.2,80.8-74.4,31.6-74.4,31.6
+			L275.766,139.352z M154.166,170.552c0,0-49.2,49.2-74.4-31.6L154.166,170.552z M261.366,269.352l-13.6-14.4l-45.2,29.6l-26.8-22
+			l-26.4,22l-45.6-29.6l-14,14.4l-45.2-69.6l45.2,28.8l14-14.4l45.2,29.6l26.4-22l26.4,22l46-29.6l14,14.4l45.2-28.8
+			L261.366,269.352z";
+}

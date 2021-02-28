@@ -52,14 +52,46 @@
 	
 /* Scary Monsters */
 .scary-monsters-theme{
-	-fx-background-color:"";
+
+	-fx-background-color:#171A21;
+
 }
 	.scary-monsters-theme:disabled{
 		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);
 	}
 	.scary-monsters-theme .text{
+		-fx-fill:#E88D67;
+	}
+
+/* Violent Femmes */
+.violent-femmes-theme{
+	-fx-background-color:#3E3A40;
+}
+	.violent-femmes-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
+	}
+	.violent-femmes-theme .text{
 		-fx-fill:white;
 	}
 	
+/* Viudo submarino */
+.viudo-submarino-theme{
+	-fx-background-color:#40476D;
+}
+	.viudo-submarino-theme{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
+	}
+	.viudo-submarino-theme .text{
+		-fx-fill:white;
+	}
 	
-	
+/* Real Betis */
+.real-betis-theme{
+	-fx-background-color:white;
+}
+	.real-betis-theme:disabled{
+		-fx-effect: dropshadow(two-pass-box , black, 15, 0.0, 0, 0);	
+	}
+	.real-betis-theme .text{
+		-fx-fill:#049750;
+	}
