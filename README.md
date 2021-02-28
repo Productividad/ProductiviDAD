@@ -35,6 +35,13 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 ## <p align="center"> Instalación</p>
+* Vamos a la pestaña de [Releases](https://github.com/dam-dad/ProductiviDAD/releases) y descargamos la última disponible.
+* Ejecutamos el instalador.
+* Seleccionamos un idioma y confirmamos.
+* Aceptamos el acuerdo de licencia y le damos a siguiente.
+* Marcamos la casilla de crear un acceso directo en el escritorio si asi lo deseamos.
+* Pulsamos instalar y esperamos a que finalice.
+* Una vez que acabe, la aplicación se abrirá automáticamente.
 
 ## <p align="center"> Links Útiles</p>
 
