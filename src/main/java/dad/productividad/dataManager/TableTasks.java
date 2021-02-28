@@ -90,7 +90,8 @@ public class TableTasks {
      */
     public static List<Task> readParentTasks(Project project) {
         String selectProject = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task IS NULL AND FK_ID_project = ?";
-        String selectTask = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
+      //  String selectTask = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL";
+        String selectTask = "SELECT * FROM tasks INNER JOIN pages on FK_ID_page=ID_page WHERE (FK_ID_Parent_task IS NULL AND FK_ID_project IS NULL) AND (completed_date= date('now') OR date_page = date('now') OR completed=0)";
         String getDate = "SELECT date_page FROM pages WHERE date_page = date('now')";
         ResultSet rsd;
         Statement stmt;

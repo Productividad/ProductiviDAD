@@ -2,6 +2,7 @@ package dad.productividad.task;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import dad.productividad.app.MainController;
@@ -96,6 +97,9 @@ public class TaskComponent extends VBox implements Initializable {
         if (doneCheckBox.selectedProperty().get()) {
             mediaPlayer = new MediaPlayer(sound);
             mediaPlayer.play();
+            getTask().setCompletedDate(LocalDate.now());
+        }else{
+            getTask().setCompletedDate(null);
         }
 
         task.get().setDone(doneCheckBox.selectedProperty().get());
