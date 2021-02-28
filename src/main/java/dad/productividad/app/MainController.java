@@ -228,7 +228,7 @@ public class MainController implements Initializable {
      * Set the center of view with projectDetailController.getView().
      * The received project and stylesheet are assigned to the projectDetailController
      *
-     * @param project        Project
+     * @param project Project
      * @param styleSheetPath String
      */
     public void openProject(Project project, String styleSheetPath) {

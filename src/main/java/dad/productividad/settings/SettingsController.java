@@ -104,21 +104,58 @@ public class SettingsController implements Initializable {
      * Selected theme
      */
     public static String selectedTheme; 
-    
+    /**
+     * Directory of Jasper informs
+     */
     private static final String JRXML_FILE = "/reports/tasks.jrxml";
-    
-    
-	private static final String REPORT_PDF_FILE_NAME = "tasks.pdf"; 
 
+    
+
+	/**
+	 * Sets default name for the JasperReport
+	 */
+    private static final String REPORT_PDF_FILE_NAME = "tasks.pdf"; 
+
+
+    /**
+     * Theme Picker of Black and White theme
+     */
     private ThemePicker pickerBW = new ThemePicker();
+    /**
+     * Theme Picker of Princess Bubblegum theme
+     */
     private ThemePicker pickerPB = new ThemePicker();
+    /**
+     * Theme Picker of Grape Soda theme
+     */
     private ThemePicker pickerGS = new ThemePicker();
+    /**
+     * Theme Picker of Citric Summer Theme
+     */
     private ThemePicker pickerCS = new ThemePicker();
+    /**
+     * Theme Picker of Scary Monsters Theme
+     */
     private ThemePicker pickerSM = new ThemePicker();
+    /**
+     * Theme Picker of Violent Femmes Theme
+     */
     private ThemePicker pickerVF = new ThemePicker();
+    /**
+     * Theme Picker of Submarine Widower Theme
+     */
     private ThemePicker pickerVS = new ThemePicker();
+    /**
+     * Theme Picker of Real Betis Theme
+     */
     private ThemePicker pickerRB = new ThemePicker();
+    /**
+     * Theme Picker of Dark Shadow Theme
+     */
     private ThemePicker pickerDS = new ThemePicker();
+    /**
+     * Theme Picker of ProductiviDAD Theme
+     */
     private ThemePicker pickerPD = new ThemePicker();
 
     /**
@@ -184,9 +221,12 @@ public class SettingsController implements Initializable {
         dialogAccept.setVisible(true);
     }
 
-    
-    
-    
+
+    /**
+     * Generates a pdf report based on tasks Table  
+     * @param event
+     */
+
     @FXML
     private void onGenerateReportAction(ActionEvent event) {
 
@@ -412,35 +452,6 @@ public class SettingsController implements Initializable {
         dialogReset.setVisible(false);
     }
 
-    private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
-        if (fileToZip.isHidden()) {
-            return;
-        }
-        if (fileToZip.isDirectory()) {
-            if (fileName.endsWith("/")) {
-                zipOut.putNextEntry(new ZipEntry(fileName));
-                zipOut.closeEntry();
-            } else {
-                zipOut.putNextEntry(new ZipEntry(fileName + "/"));
-                zipOut.closeEntry();
-            }
-            File[] children = fileToZip.listFiles();
-            for (File childFile : children) {
-                zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
-            }
-            return;
-        }
-        FileInputStream fis = new FileInputStream(fileToZip);
-        ZipEntry zipEntry = new ZipEntry(fileName);
-        zipOut.putNextEntry(zipEntry);
-        byte[] bytes = new byte[1024];
-        int length;
-        while ((length = fis.read(bytes)) >= 0) {
-            zipOut.write(bytes, 0, length);
-        }
-        fis.close();
-    }
-
 
     /**
      * Set the themes availables on themeWrapper
@@ -464,7 +475,7 @@ public class SettingsController implements Initializable {
         pickerPB.getStyleClass().addAll("theme-component", "princess-bubblegum-theme");
 
         //Dark Shadow
-        Theme darkShadow=new Theme();
+        Theme darkShadow=new Theme(); 
         darkShadow.setTitle("Dark Shadow");
         darkShadow.setPalette("transparent", "transparent", "transparent","#8D8E8E", "#3B3B3B", "#2F2F2F");
         darkShadow.setPath("/css/Themes/DarkShadow.css");
