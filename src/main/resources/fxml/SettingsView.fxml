@@ -14,152 +14,170 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="view" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane fx:id="bottomPane" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" vgap="25.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="NEVER" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" vgrow="NEVER" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="ALWAYS" />
-            <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
-        </rowConstraints>
-         <children>
-            <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
-            <Label styleClass="text-color" text="%picklang">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label styleClass="text-color" text="%pickcurr" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
-               <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%accept" />
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
-               </children>
-            </HBox>
+    <children>
+        <GridPane fx:id="bottomPane" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                  minHeight="-Infinity" minWidth="-Infinity" styleClass="main-color" vgap="25.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" vgrow="NEVER"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="ALWAYS"/>
+                <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo"
+                          GridPane.columnIndex="1"/>
+                <Label styleClass="text-color" text="%picklang">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label styleClass="text-color" text="%pickcurr" GridPane.rowIndex="1">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction"
+                                styleClass="settings-button" text="%accept"/>
+                        <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction"
+                                styleClass="settings-button" text="%reset"/>
+                    </children>
+                </HBox>
 
-            <Label styleClass="text-color" text="%picktheme" GridPane.rowIndex="4">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <ScrollPane fx:id="scroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="transparent-scrollPane" GridPane.columnSpan="2" GridPane.rowIndex="5">
-               <content>
-                  <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="7.0">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-               </content>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ScrollPane>
-            <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-               <Button fx:id="importButton" mnemonicParsing="false" onAction="#onImportAction" styleClass="settings-button" text="%import" />
-               <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportAction" styleClass="settings-button" text="%export" />
-               </children>
-            </HBox>
-            <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#onGenerateReportAction" styleClass="settings-button" text="%generateReport" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label styleClass="text-color" text="%data" GridPane.rowIndex="2">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label styleClass="text-color" text="%report" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-         </padding>
-      </GridPane>
-      <GridPane fx:id="dialogAccept" alignment="CENTER" styleClass="dialog-background" visible="false">
-         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="NEVER" />
-         </rowConstraints>
-         <children>
-            <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
-               <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
-               </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" styleClass="custom-label" text="%mustrestart" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
-                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
-                     <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="%accept" />
-                     </children>
-                  </HBox>
-                  <Label alignment="CENTER" styleClass="custom-label" text="%modified">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
-            </GridPane>
-         </children>
-      </GridPane>
-      <GridPane fx:id="dialogReset" alignment="CENTER" styleClass="dialog-background" visible="false">
-         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="NEVER" />
-         </rowConstraints>
-         <children>
-            <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
-               <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints prefHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints prefHeight="50.0" vgrow="NEVER" />
-               </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" styleClass="custom-label" text="%willreset" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
-                  <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
-                     <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset" styleClass="custom-button" text="%accept" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset" styleClass="custom-button" text="%cancel" />
-                     </children>
-                  </HBox>
-                  <Label alignment="CENTER" styleClass="custom-label" text="%wantmodify">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
-            </GridPane>
-         </children>
-      </GridPane>
-   </children>
+                <Label styleClass="text-color" text="%picktheme" GridPane.rowIndex="4">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <ScrollPane fx:id="scroll" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                            styleClass="transparent-scrollPane" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                    <content>
+                        <VBox fx:id="themeWrapper" alignment="CENTER" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" spacing="7.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                        </VBox>
+                    </content>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </ScrollPane>
+                <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Button fx:id="importButton" mnemonicParsing="false" onAction="#onImportAction"
+                                styleClass="settings-button" text="%import"/>
+                        <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportAction"
+                                styleClass="settings-button" text="%export"/>
+                        <Button fx:id="resetDataButton" mnemonicParsing="false" onAction="#onResetDataAction"
+                                styleClass="settings-button" text="%resetdata"/>
+                    </children>
+                </HBox>
+                <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#onGenerateReportAction"
+                        styleClass="settings-button" text="%generateReport" GridPane.columnIndex="1"
+                        GridPane.rowIndex="3"/>
+                <Label styleClass="text-color" text="%data" GridPane.rowIndex="2">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+                <Label styleClass="text-color" text="%report" GridPane.rowIndex="3">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+        </GridPane>
+        <GridPane fx:id="dialogAccept" alignment="CENTER" styleClass="dialog-background" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints prefHeight="40.0" vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER"/>
+                        <RowConstraints prefHeight="50.0" vgrow="NEVER"/>
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER" styleClass="custom-label" text="%mustrestart" textAlignment="CENTER"
+                               textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1"/>
+                        <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                            <children>
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog"
+                                        styleClass="custom-button" text="%accept"/>
+                            </children>
+                        </HBox>
+                        <Label alignment="CENTER" styleClass="custom-label" text="%modified">
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                </GridPane>
+            </children>
+        </GridPane>
+        <GridPane fx:id="dialogReset" alignment="CENTER" styleClass="dialog-background" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="NEVER"/>
+            </rowConstraints>
+            <children>
+                <GridPane prefWidth="350.0" styleClass="stack-dialog" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints prefHeight="40.0" vgrow="NEVER"/>
+                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="NEVER"/>
+                        <RowConstraints prefHeight="50.0" vgrow="NEVER"/>
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER" styleClass="custom-label" text="%willreset" textAlignment="CENTER"
+                               textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1"/>
+                        <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
+                            <children>
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset"
+                                        styleClass="custom-button" text="%accept"/>
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset"
+                                        styleClass="custom-button" text="%cancel"/>
+                            </children>
+                        </HBox>
+                        <Label alignment="CENTER" styleClass="custom-label" text="%wantmodify">
+                            <font>
+                                <Font name="System Bold" size="13.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                    </padding>
+                </GridPane>
+            </children>
+        </GridPane>
+    </children>
 </StackPane>
