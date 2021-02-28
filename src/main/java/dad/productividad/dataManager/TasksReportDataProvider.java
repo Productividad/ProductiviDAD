@@ -3,32 +3,49 @@ package dad.productividad.dataManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-import dad.productividad.reports.TasksReport;
+import dad.productividad.reports.ReportTask;
 
 public class TasksReportDataProvider {
 
-	public static List<TasksReport> readTasks(int number) {
-		String select = "SELECT * FROM tasks ORDER BY title_task DESC LIMIT ?";
+	/**
+	 * Returns a list of tasks to be provided to the report
+	 *
+	 * @return			List of tasks
+	 */
+	public static List<ReportTask> readReportTasks() {
+		String select = "select t.title_task as 'title', t.description_task as 'description', coalesce(t.completed, 0) as 'completed', coalesce(t.completed_date, p.date_page) as 'date'\r\n" + 
+				"from tasks t\r\n" + 
+				"left join pages p on p.ID_page = t.FK_ID_page\r\n" + 
+				"order by date asc;";
 		ResultSet resultSet = null;
-		ArrayList<TasksReport> arrayList = new ArrayList<TasksReport>();
-		TasksReport task;
+		ArrayList<ReportTask> arrayList = new ArrayList<>();
 		try {
 			JdbcConnection.connect();
+	        ResourceBundle rb = ResourceBundle.getBundle("i18n/strings");
+			DateTimeFormatter sourceFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(rb.getString("reportDateFormat"));
 			PreparedStatement pstmt = JdbcConnection.connection.prepareStatement(select);
-			pstmt.setInt(1, number);
 			resultSet = pstmt.executeQuery();
 
 			while (resultSet.next()) {
-				task = new TasksReport();
-				task.setId(resultSet.getInt("ID_task"));
-				task.setTitle(resultSet.getString("title_task"));
-				task.setCompleted((resultSet.getBoolean("completed")));
-				task.setIdPage(resultSet.getInt("FK_ID_Page"));
+				ReportTask reportTask = new ReportTask();
+				reportTask.setTitle(resultSet.getString("title"));
+				reportTask.setDescription(resultSet.getString("description"));
+				reportTask.setCompleted(resultSet.getInt("completed") == 1 ? true : false);
+				String date = resultSet.getString("date");
+				if (date != null) {
+					reportTask.setDate(outputFormatter.format(LocalDate.parse(date, sourceFormatter)));
+				}
 
-				arrayList.add(task);
+				arrayList.add(reportTask);
 			}
 
 		} catch (SQLException e) {
@@ -38,5 +55,4 @@ public class TasksReportDataProvider {
 		}
 		return arrayList;
 	}
-
 }
