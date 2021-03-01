@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dad.ProductiviDAD</groupId>
 	<artifactId>ProductiviDAD</artifactId>
-	<version>1.0-RC1</version>
+	<version>1.0</version>
 	<name>ProductiviDAD</name>
 	<description>Programa de gestion de productividad</description>
 	<properties>
