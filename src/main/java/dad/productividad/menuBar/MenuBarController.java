@@ -77,10 +77,10 @@ public class MenuBarController implements Initializable {
         pomodoroManagerSection.setOnMouseClicked(event -> onPomodoroManagerSection());
         settingsManagerSection.setOnMouseClicked(event -> onSettingsManagerSection());
         githubSection.setOnMouseClicked(event -> onGithubSection());
-
+  
     }
-
-    /**
+ 
+    /**     
      * Disables the home section button when it's the current section
      */
     public void onHomeManagerSection() {

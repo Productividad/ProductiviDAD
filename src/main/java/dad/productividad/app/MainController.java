@@ -39,7 +39,7 @@ import javafx.scene.layout.VBox;
 /**
  * Main controller class of the program
  */
-public class MainController implements Initializable {
+public class MainController implements Initializable { 
     /**
      * Main view
      */
@@ -160,6 +160,18 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        homeController = new HomeController();
+        view.setCenter(homeController.getView());
+        projectManagerController = new ProjectManagerController();
+        notesController = new NotesController();
+        balanceManagerController = new BalanceManagerController();
+        pomodoroController = new PomodoroController();
+        settingsController = new SettingsController(); 
+        menuBarController = new MenuBarController();
+//        pomodoPopUpController = new PomodoroPopUpController();
+        view.setLeft(menuBarController.getView());
+//        view.setBottom(pomodoPopUpController.getView());
+    	
         view.getStylesheets().add(getClass().getResource(App.preferences.getTheme()).toExternalForm());
 
         view.centerProperty().addListener((o, ov, nv) -> {
@@ -198,6 +210,7 @@ public class MainController implements Initializable {
             }
         });
 
+
         projectManagerController = new ProjectManagerController();
         notesController = new NotesController();
         balanceManagerController = new BalanceManagerController();
@@ -207,6 +220,7 @@ public class MainController implements Initializable {
         menuBarController = new MenuBarController();
         view.setLeft(menuBarController.getView());
         view.setCenter(homeController.getView());
+
         
 
         todaysPage.setDate(LocalDate.now());

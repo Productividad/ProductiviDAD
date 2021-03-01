@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -30,7 +31,10 @@
                 <RowConstraints minHeight="20.0" prefHeight="30.0" vgrow="NEVER" />
             </rowConstraints>
             <children>
-                <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" />
+                <ComboBox fx:id="localePicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
                 <Label styleClass="text-color" text="%picklang">
                     <font>
                         <Font name="System Bold" size="13.0" />
@@ -41,11 +45,20 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="currencyPicker" prefHeight="25.0" prefWidth="187.0" styleClass="settings-combo" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
                 <HBox alignment="CENTER_RIGHT" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
                     <children>
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%accept" />
-                        <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveAction" styleClass="settings-button" text="%accept">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                        <Button fx:id="resetButton" mnemonicParsing="false" onAction="#onResetAction" styleClass="settings-button" text="%reset">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                     </children>
                 </HBox>
 
@@ -68,12 +81,24 @@
             </ScrollPane>
             <HBox spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-               <Button fx:id="importButton" mnemonicParsing="false" onAction="#onImportAction" styleClass="settings-button" text="%import" />
-               <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportAction" styleClass="settings-button" text="%export" />
-                  <Button fx:id="exportButton1" mnemonicParsing="false" onAction="#onResetDataAction" styleClass="settings-button" text="%resetdata" />
+               <Button fx:id="importButton" mnemonicParsing="false" onAction="#onImportAction" styleClass="settings-button" text="%import">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportAction" styleClass="settings-button" text="%export">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="exportButton1" mnemonicParsing="false" onAction="#onResetDataAction" styleClass="settings-button" text="%resetdata">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </HBox>
-            <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#onGenerateReportAction" styleClass="settings-button" text="%generateReport" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#onGenerateReportAction" styleClass="settings-button" text="%generateReport" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Label styleClass="text-color" text="%data" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -110,7 +135,10 @@
                   <Label alignment="CENTER" styleClass="custom-label" text="%mustrestart" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="%accept" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialog" styleClass="custom-button" text="%accept">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <Label alignment="CENTER" styleClass="custom-label" text="%modified">
@@ -146,8 +174,14 @@
                   <Label alignment="CENTER" styleClass="custom-label" text="%willreset" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset" styleClass="custom-button" text="%accept" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset" styleClass="custom-button" text="%cancel" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogReset" styleClass="custom-button" text="%accept">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogReset" styleClass="custom-button" text="%cancel">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <Label alignment="CENTER" styleClass="custom-label" text="%wantmodify">
@@ -183,8 +217,14 @@
                   <Label alignment="CENTER" styleClass="custom-label" text="%dataResetDescription" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" spacing="15.0" GridPane.rowIndex="2">
                      <children>
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogData" styleClass="custom-button" text="%accept" />
-                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogData" styleClass="custom-button" text="%cancel" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onAcceptDialogData" styleClass="custom-button" text="%accept">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#onCancelDialogData" styleClass="custom-button" text="%cancel">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <Label alignment="CENTER" styleClass="custom-label" text="%dataResetTitle">

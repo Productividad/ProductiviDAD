@@ -44,9 +44,7 @@ public class App extends Application {
      */
     @Override
     public void init() throws Exception {
-/**
- * TODO use this when DB structure is definitive.
- */
+
         File file = new File(System.getProperty("user.home"), "." + App.APP_NAME + "\\productiviDAD.db");
         if (!file.exists())
             ResourceUtils.copyResourceToFile("/database/productiviDAD.db", file);
