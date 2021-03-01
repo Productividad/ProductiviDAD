@@ -95,7 +95,7 @@ public class MenuBarController implements Initializable {
             MainController.mainController.getView().setCenter(MainController.mainController.getHomeController().getView());
         }
     }
-
+ 
     public void onTimePlannerManagerSection() {
 
     }
