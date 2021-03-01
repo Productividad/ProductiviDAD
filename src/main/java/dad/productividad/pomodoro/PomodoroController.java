@@ -8,9 +8,12 @@ import java.util.ResourceBundle;
 
 import javax.swing.Timer;
 
+import org.controlsfx.control.Notifications;
+
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 
+import dad.productividad.dataManager.TablePomodoro;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,11 +21,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 
 /**
@@ -40,6 +46,9 @@ public class PomodoroController implements Initializable {
 	 */
 	@FXML
 	private JFXTextField pomoTextField;
+
+	@FXML
+	private Label pomodoroTitleLabel;
 	/**
 	 * Pomodoro buttons
 	 */
@@ -132,9 +141,8 @@ public class PomodoroController implements Initializable {
 	private MediaPlayer mediaPlayer;
 
 	private int shortTimerSeconds;
-
-	public static StringProperty pomodoroMinutesTimer = new SimpleStringProperty();
-	public static StringProperty pomodoroSecondsTimer = new SimpleStringProperty();
+	
+	private ResourceBundle rb;
 
 	/**
 	 * PomodoroController constructor
@@ -162,6 +170,7 @@ public class PomodoroController implements Initializable {
 		pomodoroPlay.setDisable(true);
 		pomodoroPause.setDisable(true);
 		pomodoroCancel.setDisable(true);
+		pomodoroTitleLabel.setVisible(false);
 		totalSeconds = minutesToSeconds(Integer.valueOf(minuteLabel.textProperty().getValue()),
 				Integer.valueOf(secondsLabel.textProperty().getValue()));
 		pomodoroSpinner.setProgress(0);
@@ -189,8 +198,7 @@ public class PomodoroController implements Initializable {
 		pomodoroSpinner.setProgress(0);
 		minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
 		secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
-		setPomodoroMinutesTimer(minuteLabel.getText());
-		setPomodoroSecondsTimer(secondsLabel.getText());
+		pomodoroTitleLabel.setText("");
 		pomodoroPlay.setVisible(true);
 		pomodoroCancel.setDisable(true);
 		pomodoroPause.setDisable(true);
@@ -257,6 +265,7 @@ public class PomodoroController implements Initializable {
 							startLongTimer();
 						} else
 							startShortTimer();
+						
 
 						pomodoro.stop();
 
@@ -279,12 +288,13 @@ public class PomodoroController implements Initializable {
 	private void onPomodoroSettingsAction(ActionEvent event) {
 		PomodoroEditorDialog dialog = new PomodoroEditorDialog();
 		Optional<PomodoroSetup> result = dialog.showAndWait();
-
+		pomodoroTitleLabel.setVisible(true);
 		if (result.isPresent()) {
 			pomodoroSetup = result.get();
 			minuteLabel.textProperty().bindBidirectional(pomodoroSetup.minutesProperty(),
 					new NumberStringConverter("00"));
 			minutesSelected = pomodoroSetup.getMinutes();
+			pomodoroTitleLabel.setText(pomodoroSetup.getTitlePomodoro());
 			pomodoroPlay.setDisable(false);
 		}
 	}
@@ -293,6 +303,7 @@ public class PomodoroController implements Initializable {
 	 * Starts a short timer
 	 */
 	private void startShortTimer() {
+		shortTimer.start();
 		shortTimerSeconds = 0;
 		isShortTimer = true;
 		pomodoroCancel.setDisable(false);
@@ -331,9 +342,11 @@ public class PomodoroController implements Initializable {
 	}
 
 	/**
-	 * Starts long timer based on Pomodoro Settings
+	 * Starts long timer based on Pomodoro Settings Inserts into the database the
+	 * pomodoro object
 	 */
 	private void startLongTimer() {
+		
 		shortTimerSeconds = 0;
 		isLongTimer = true;
 		pomodoroCancel.setDisable(false);
@@ -359,7 +372,8 @@ public class PomodoroController implements Initializable {
 				});
 
 				if (secondsTimer == 0) {
-
+					pomodoroSetup.setTimeSpent(totalSeconds);
+					TablePomodoro.insertPomodoro(pomodoroSetup);
 					longTimer.stop();
 					minuteLabel.setText(String.format("%02d", CANCEL_MINUTES));
 					secondsLabel.setText(String.format("%02d", CANCEL_SECONDS));
@@ -402,9 +416,7 @@ public class PomodoroController implements Initializable {
 		minuteLabel.setText(String.format("%02d", minutes));
 		secondsLabel.setText(String.format("%02d", secondsRemaining));
 
-		setPomodoroSecondsTimer(secondsLabel.getText());
-		setPomodoroMinutesTimer(minuteLabel.getText());
-
+	
 	}
 
 	/**
@@ -412,30 +424,6 @@ public class PomodoroController implements Initializable {
 	 */
 	public GridPane getView() {
 		return this.view;
-	}
-
-	public final StringProperty pomodoroMinutesTimerProperty() {
-		return PomodoroController.pomodoroMinutesTimer;
-	}
-
-	public final String getPomodoroMinutesTimer() {
-		return this.pomodoroMinutesTimerProperty().get();
-	}
-
-	public final void setPomodoroMinutesTimer(final String pomodoroMinutesTimer) {
-		this.pomodoroMinutesTimerProperty().set(pomodoroMinutesTimer);
-	}
-
-	public final StringProperty pomodoroSecondsTimerProperty() {
-		return PomodoroController.pomodoroSecondsTimer;
-	}
-
-	public final String getPomodoroSecondsTimer() {
-		return this.pomodoroSecondsTimerProperty().get();
-	}
-
-	public final void setPomodoroSecondsTimer(final String pomodoroSecondsTimer) {
-		this.pomodoroSecondsTimerProperty().set(pomodoroSecondsTimer);
 	}
 
 }

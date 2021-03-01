@@ -22,7 +22,7 @@
             <Label fx:id="minutesPopUpLabel" text="00" />
             <Label text=":" />
             <Label fx:id="secondsPopUpLabel" text="00" />
-            <Label text="Label" textAlignment="RIGHT">
+            <Label fx:id="titlePomodoroLabel" textAlignment="RIGHT">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
@@ -31,9 +31,6 @@
       </HBox>
       <HBox fx:id="buttonPopUpBox" spacing="5.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
          <children>
-            <Button fx:id="pausePomoPopUpButton" mnemonicParsing="false" onAction="#onPausePomoPopUpAction" />
-            <Button fx:id="playPomoPopUpButton" mnemonicParsing="false" onAction="#onPlayPomoPopUpAction" />
-            <Button fx:id="stopPomoPopUpButton" mnemonicParsing="false" onAction="#onStopPomoPopUpAction" />
             <Button fx:id="closePomoPopupButton" mnemonicParsing="false" onAction="#onClosePomoPopUpAction" />
          </children>
          <GridPane.margin>

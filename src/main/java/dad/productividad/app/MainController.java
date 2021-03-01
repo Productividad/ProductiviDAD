@@ -135,10 +135,6 @@ public class MainController implements Initializable {
      */
     public static MainController mainController;
 
-    /**
-     * Pomodoro Pop Up Controller
-     */
-    public PomodoroPopUpController pomodoPopUpController;
     
     /**
      * Class constructor.
@@ -209,10 +205,8 @@ public class MainController implements Initializable {
         pomodoroController = new PomodoroController();
         settingsController = new SettingsController(); 
         menuBarController = new MenuBarController();
-        pomodoPopUpController = new PomodoroPopUpController();
         view.setLeft(menuBarController.getView());
         view.setCenter(homeController.getView());
-        view.setBottom(pomodoPopUpController.getView());
         
 
         todaysPage.setDate(LocalDate.now());

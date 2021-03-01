@@ -46,10 +46,7 @@ public class PomodoroSetup {
      * Pomodoro task id
      */
     private IntegerProperty idTask = new SimpleIntegerProperty();
-    /**
-     * Pomodoro color
-     */
-    private StringProperty color = new SimpleStringProperty();
+    
 
     /**
      * PomodoroSetup constructor
@@ -58,14 +55,14 @@ public class PomodoroSetup {
      * @param shortBreak
      * @param longBreak
      * @param pomoLength
-     * @param color
      */
-    public PomodoroSetup(int minutes, int shortBreak, int longBreak, int pomoLength, String color) {
+    public PomodoroSetup(int minutes, int shortBreak, int longBreak, int pomoLength, String title) {
         this.minutes.set(minutes);
         this.shortBreak.set(shortBreak);
         this.longBreak.set(longBreak);
         this.pomoLength.set(pomoLength);
-        this.color.set(color);
+        this.titlePomodoro.set(title);
+
 
     }
 
@@ -276,28 +273,6 @@ public class PomodoroSetup {
         this.idTaskProperty().set(idTask);
     }
 
-    /**
-     * @return color StringProperty
-     */
-    public final StringProperty colorProperty() {
-        return this.color;
-    }
-
-    /**
-     * @return color String
-     */
-    public final String getColor() {
-        return this.colorProperty().get();
-    }
-
-    /**
-     * Set a new color
-     *
-     * @param color
-     */
-    public final void setColor(final String color) {
-        this.colorProperty().set(color);
-    }
 
     /**
      * @return A String with Setup parameters

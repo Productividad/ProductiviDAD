@@ -37,14 +37,7 @@ public class PomodoroPopUpController implements Initializable {
 	private HBox buttonPopUpBox;
 
 	@FXML
-	private Button pausePomoPopUpButton;
-
-	@FXML
-	private Button playPomoPopUpButton;
-
-	@FXML
-	private Button stopPomoPopUpButton;
-
+	private Label titlePomodoroLabel;
 	@FXML
 	private Button closePomoPopupButton;
 
@@ -53,21 +46,21 @@ public class PomodoroPopUpController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		PomodoroController.pomodoroMinutesTimer.addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-
-				minutesPopUpLabel.setText(newValue);
-			}
-		});
-
-		PomodoroController.pomodoroSecondsTimer.addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-
-				secondsPopUpLabel.setText(newValue);
-			}
-		});
+//		PomodoroController.pomodoroMinutesTimer.addListener(new ChangeListener<String>() {
+//			@Override
+//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//
+//				minutesPopUpLabel.setText(newValue);
+//			}
+//		});
+//
+//		PomodoroController.pomodoroSecondsTimer.addListener(new ChangeListener<String>() {
+//			@Override
+//			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//
+//				secondsPopUpLabel.setText(newValue);
+//			}
+//		});
 
 	}
 
@@ -85,21 +78,6 @@ public class PomodoroPopUpController implements Initializable {
 	@FXML
 	void onClosePomoPopUpAction(ActionEvent event) {
 		MainController.mainController.getView().setBottom(null);
-	}
-
-	@FXML
-	void onPausePomoPopUpAction(ActionEvent event) {
-
-	}
-
-	@FXML
-	void onPlayPomoPopUpAction(ActionEvent event) {
-
-	}
-
-	@FXML
-	void onStopPomoPopUpAction(ActionEvent event) {
-
 	}
 
 	public GridPane getView() {

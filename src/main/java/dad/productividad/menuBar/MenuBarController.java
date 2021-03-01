@@ -96,9 +96,6 @@ public class MenuBarController implements Initializable {
         }
     }
 
-    public void onTimePlannerManagerSection() {
-
-    }
 
     /**
      * Disables the project section button when it's the current section

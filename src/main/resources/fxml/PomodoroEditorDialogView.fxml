@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXColorPicker?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -21,7 +20,6 @@
             <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="6.0" prefWidth="60.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="50.0" vgrow="NEVER" />
@@ -31,10 +29,6 @@
             <RowConstraints minHeight="36.0" prefHeight="30.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
-            <JFXColorPicker fx:id="colorPicker" minWidth="120.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin></JFXColorPicker>
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Pomodoro" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
@@ -55,7 +49,7 @@
             <JFXComboBox fx:id="shortBreakBox" focusColor="#51387a" prefHeight="15.0" prefWidth="150.0" unFocusColor="#51387a" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <JFXTextField fx:id="titleTF" labelFloat="true" promptText="%titleTF" GridPane.columnSpan="3">
                <GridPane.margin>
-                  <Insets left="10.0" />
+                  <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </JFXTextField>
          </children>

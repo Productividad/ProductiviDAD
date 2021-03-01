@@ -4,17 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.jfree.data.time.Minute;
+
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.app.App;
-import dad.productividad.utils.ColorUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,8 +21,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.BorderPane;
@@ -67,11 +64,7 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 	 */
 	@FXML
 	private JFXCheckBox whiteText;
-	/**
-	 * Color picker
-	 */
-	@FXML
-	private JFXColorPicker colorPicker;
+
 	/**
 	 * Pomodoro Box combobox
 	 */
@@ -92,29 +85,39 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 	 */
 	@FXML
 	private Label longLabel;
+
 	/**
 	 * Long break combobox
 	 */
 	@FXML
 	private JFXComboBox<Integer> longBreakBox;
+
 	/**
 	 * Pomodoro times
 	 */
 	@FXML
 	private Label pomoTimes;
+
 	/**
 	 * ComboBox
 	 */
 	@FXML
 	private JFXComboBox<Integer> pomoLength;
+
 	/**
 	 * Save button
 	 */
 	private Button saveButton;
+
 	/**
 	 * Stage
 	 */
 	private Stage stage;
+
+	/**
+	 * Resource bundle
+	 */
+	private ResourceBundle rb;
 
 	/**
 	 * Dialog constructor
@@ -125,7 +128,8 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 		initOwner(App.primaryStage);
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PomodoroEditorDialogView.fxml"));
-			loader.setResources(ResourceBundle.getBundle("i18n/strings"));
+			rb = ResourceBundle.getBundle("i18n/strings");
+			loader.setResources(rb);
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {
@@ -168,7 +172,7 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 
 		getDialogPane().getStyleClass().add("customDialog");
 		getDialogPane().setContent(view);
-		getDialogPane().getButtonTypes().add(new ButtonType("Aceptar", ButtonData.OK_DONE));
+		getDialogPane().getButtonTypes().add(new ButtonType(rb.getString("accept"),ButtonData.OK_DONE));
 		saveButton = (Button) getDialogPane().lookupButton(getDialogPane().getButtonTypes().get(0));
 		setResultConverter(d -> onAccept(d));
 
@@ -192,16 +196,19 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 	 * @return
 	 */
 	private PomodoroSetup onAccept(ButtonType buttonType) {
-		// TODO settear color
-		if (buttonType.getButtonData() == ButtonData.OK_DONE) {
-			PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
-					shortBreakBox.getSelectionModel().getSelectedItem(),
-					longBreakBox.getSelectionModel().getSelectedItem(),
-					pomoLength.getSelectionModel().getSelectedItem(), null);
-			return pomodoroSetup;
+		try {
+			if (buttonType.getButtonData() == ButtonData.OK_DONE) {
+				PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
+						shortBreakBox.getSelectionModel().getSelectedItem(),
+						longBreakBox.getSelectionModel().getSelectedItem(),
+						pomoLength.getSelectionModel().getSelectedItem(), titleTF.getText());
+				return pomodoroSetup;
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
 		}
-
 		return null;
+
 	}
 
 	/**
