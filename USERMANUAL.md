@@ -124,7 +124,19 @@ Para cambiar el color de la **nota** hay que pulsar el botón del **engranaje** 
 
 
 
+
+
 ## <p align="center"><img src="/github_images/tomato.svg"  width="30"/> Pestaña Pomodoro</p> 
+
+El Pomodoro es una técnica de gestión de tiempo, ProductiviDAD incluye un temporizador que te permite crear sesiones de trabajos que siguen este método. Para modificar la duración de las sesiones del Pomodoro, pulse el botón del engranaje en la parte superior derecha de la aplicación y seleccione la configuración mas acorde a sus preferencias.
+
+
+
+![img](https://i.imgur.com/75List0.gif)
+
+
+
+
 
 ## <p align="center"><img src="/github_images/gear-wide-connected.svg" width="30" /> Pestaña de Ajustes</p>
 
