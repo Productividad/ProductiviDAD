@@ -8,27 +8,22 @@ import java.util.ResourceBundle;
 
 import javax.swing.Timer;
 
-import org.controlsfx.control.Notifications;
-
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 
 import dad.productividad.dataManager.TablePomodoro;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 
 /**
@@ -36,39 +31,7 @@ import javafx.util.converter.NumberStringConverter;
  */
 public class PomodoroController implements Initializable {
 
-	/**
-	 * Pomodoro view
-	 */
-	@FXML
-	private GridPane view;
-	/**
-	 * Pomodoro Textfield
-	 */
-	@FXML
-	private JFXTextField pomoTextField;
 
-	@FXML
-	private Label pomodoroTitleLabel;
-	/**
-	 * Pomodoro buttons
-	 */
-	@FXML
-	private Button pomodoroSettings, pomodoroCancel, pomodoroPlay, pomodoroPause;
-	/**
-	 * Pomodor spinner
-	 */
-	@FXML
-	private JFXSpinner pomodoroSpinner;
-	/**
-	 * Pomodoro minute label
-	 */
-	@FXML
-	private Label minuteLabel;
-	/**
-	 * Pomodoro seconds label
-	 */
-	@FXML
-	private Label secondsLabel;
 	/**
 	 * Pomodoro timer
 	 */
@@ -144,6 +107,59 @@ public class PomodoroController implements Initializable {
 	
 	private ResourceBundle rb;
 
+	 @FXML
+	    private StackPane view;
+
+	    @FXML
+	    private Label pomodoroTitleLabel;
+
+	    @FXML
+	    private Button pomodoroSettings;
+
+	    @FXML
+	    private JFXSpinner pomodoroSpinner;
+
+	    @FXML
+	    private Label minuteLabel;
+
+	    @FXML
+	    private Label secondsLabel;
+
+	    @FXML
+	    private Button pomodoroCancel;
+
+	    @FXML
+	    private Button pomodoroPlay;
+
+	    @FXML
+	    private Button pomodoroPause;
+
+	    @FXML
+	    private GridPane dialogPomo;
+
+	    @FXML
+	    private Button acceptDialogProject;
+
+	    @FXML
+	    private Label shortLabel;
+
+	    @FXML
+	    private Label longLabel;
+
+	    @FXML
+	    private ComboBox<Integer> pomodoroBox;
+
+	    @FXML
+	    private ComboBox<Integer> shortBreakBox;
+
+	    @FXML
+	    private ComboBox<Integer> longBreakBox;
+
+	    @FXML
+	    private ComboBox<Integer> pomoLength;
+
+	
+	
 	/**
 	 * PomodoroController constructor
 	 */
@@ -175,6 +191,33 @@ public class PomodoroController implements Initializable {
 				Integer.valueOf(secondsLabel.textProperty().getValue()));
 		pomodoroSpinner.setProgress(0);
 		pomodoroSpinner.getStyleClass().add("pomodoroSpinner");
+		dialogPomo.setVisible(false);
+	}
+	
+    @FXML
+    private void onAcceptDialog(ActionEvent event) {
+//		PomodoroEditorDialog dialog = new PomodoroEditorDialog();
+//		Optional<PomodoroSetup> result = dialog.showAndWait();
+//		pomodoroTitleLabel.setVisible(true);
+//		if (result.isPresent()) {
+//			pomodoroSetup = result.get();
+//			minuteLabel.textProperty().bindBidirectional(pomodoroSetup.minutesProperty(),
+//					new NumberStringConverter("00"));
+//			minutesSelected = pomodoroSetup.getMinutes();
+//			pomodoroTitleLabel.setText(pomodoroSetup.getTitlePomodoro());
+//			pomodoroPlay.setDisable(false);
+//		}
+    	//TODO
+    	hideDialog();
+    }
+
+    @FXML
+    private void onCancelDialog(ActionEvent event) {
+    	hideDialog();
+    }
+    
+	private void hideDialog() {
+		dialogPomo.setVisible(false);
 	}
 
 	/**
@@ -286,17 +329,10 @@ public class PomodoroController implements Initializable {
 
 	@FXML
 	private void onPomodoroSettingsAction(ActionEvent event) {
-		PomodoroEditorDialog dialog = new PomodoroEditorDialog();
-		Optional<PomodoroSetup> result = dialog.showAndWait();
-		pomodoroTitleLabel.setVisible(true);
-		if (result.isPresent()) {
-			pomodoroSetup = result.get();
-			minuteLabel.textProperty().bindBidirectional(pomodoroSetup.minutesProperty(),
-					new NumberStringConverter("00"));
-			minutesSelected = pomodoroSetup.getMinutes();
-			pomodoroTitleLabel.setText(pomodoroSetup.getTitlePomodoro());
-			pomodoroPlay.setDisable(false);
-		}
+		
+		dialogPomo.setVisible(true);
+		
+
 	}
 
 	/**
@@ -422,7 +458,7 @@ public class PomodoroController implements Initializable {
 	/**
 	 * @return The pomodoro view.
 	 */
-	public GridPane getView() {
+	public StackPane getView() {
 		return this.view;
 	}
 
