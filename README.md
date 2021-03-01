@@ -16,7 +16,7 @@ Jesús Daniel Rodríguez Vidal
 
 2º DAM. Grupo B.
 
-# <p align="center">Introducción.</p>
+# <p align="Left">Introducción.</p>
 
 
 
@@ -34,7 +34,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
 
 
-## <p align="center"> Instalación</p>
+## <p align="Left"> Instalación</p>
 * Vamos a la pestaña de [Releases](https://github.com/dam-dad/ProductiviDAD/releases) y descargamos la última disponible.
 * Ejecutamos el instalador.
 * Seleccionamos un idioma y confirmamos.
@@ -43,7 +43,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 * Pulsamos instalar y esperamos a que finalice.
 * Una vez que acabe, la aplicación se abrirá automáticamente.
 
-## <p align="center"> Links Útiles</p>
+## <p align="Left"> Links Útiles</p>
 
 
 
@@ -53,7 +53,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
   
 
-## <p align="center"> Librerías utilizadas</p>
+## <p align="Left"> Librerías utilizadas</p>
 
 - [FX-BorderlessScene](https://github.com/goxr3plus/FX-BorderlessScene)
 - [ControlsFX](https://github.com/controlsfx/controlsfx)
@@ -70,7 +70,7 @@ Ejemplo de bullet journal, hecho por [Matt Raglan ](https://unsplash.com/photos/
 
   
 
-# <p align="center">Créditos</p> 
+# <p align="Left">Créditos</p> 
 
 
 
