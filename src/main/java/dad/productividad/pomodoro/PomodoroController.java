@@ -359,7 +359,6 @@ public class PomodoroController implements Initializable {
 	 * Starts a short timer
 	 */
 	private void startShortTimer() {
-		shortTimer.start();
 		shortTimerSeconds = 0;
 		isShortTimer = true;
 		pomodoroCancel.setDisable(false);
