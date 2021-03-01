@@ -3,14 +3,11 @@ package dad.productividad.pomodoro;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.Timer;
 
 import com.jfoenix.controls.JFXSpinner;
-import com.jfoenix.controls.JFXTextField;
-
 import dad.productividad.dataManager.TablePomodoro;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -26,7 +23,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.converter.NumberStringConverter;
 
 /**
  * Pomodoro view Controller
@@ -104,58 +100,108 @@ public class PomodoroController implements Initializable {
 	 */
 	private MediaPlayer mediaPlayer;
 
+	/**
+	 * Count seconds short break
+	 */
+
 	private int shortTimerSeconds;
 
+	/**
+	 * Resource Bundle
+	 */
 	private ResourceBundle rb;
 
+	/**
+	 * StackPane view
+	 */
 	@FXML
 	private StackPane view;
-
+	/**
+	 * Pomodoro Title
+	 */
 	@FXML
 	private Label pomodoroTitleLabel;
-
+	/**
+	 * Pomodoro Settings button
+	 */
 	@FXML
 	private Button pomodoroSettings;
-
+	/**
+	 * Spinner pomodoro
+	 */
 	@FXML
 	private JFXSpinner pomodoroSpinner;
+	/**
+	 * Minutes Label
+	 */
 
 	@FXML
 	private Label minuteLabel;
+	/**
+	 * Seconds Label
+	 */
 
 	@FXML
 	private Label secondsLabel;
+	/**
+	 * Pomodoro cancel Button
+	 */
 
 	@FXML
 	private Button pomodoroCancel;
+	/**
+	 * Pomodoro play Button
+	 */
 
 	@FXML
 	private Button pomodoroPlay;
+	/**
+	 * Pomodoro pause Button
+	 */
 
 	@FXML
 	private Button pomodoroPause;
+	/**
+	 * Gridpane dialog
+	 */
 
 	@FXML
 	private GridPane dialogPomo;
+	/**
+	 * Accept button dialog
+	 */
 
 	@FXML
 	private Button acceptDialogProject;
+	/**
+	 * Short Timer label
+	 */
 
 	@FXML
 	private Label shortLabel;
-
+	/**
+	 * Long Timer label
+	 */
 	@FXML
 	private Label longLabel;
-
+	/**
+	 * Combo Box Pomodoro
+	 */
 	@FXML
 	private ComboBox<Integer> pomodoroBox;
-
+	/**
+	 * Combo Box Short Break
+	 */
 	@FXML
 	private ComboBox<Integer> shortBreakBox;
-
+	/**
+	 * Combo Box Long Break
+	 */
 	@FXML
 	private ComboBox<Integer> longBreakBox;
-
+	/**
+	 * Combo Box Pomodoro Length
+	 */
 	@FXML
 	private ComboBox<Integer> pomoLength;
 
@@ -219,6 +265,11 @@ public class PomodoroController implements Initializable {
 		pomoLength.setValue(3);
 	}
 
+	/**
+	 * Accept button on dialog, sets the pomodoro Setup values with the ones selected by the user in the comboBox
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void onAcceptDialog(ActionEvent event) {
 
@@ -233,6 +284,11 @@ public class PomodoroController implements Initializable {
 		hideDialog();
 	}
 
+	/**
+	 * Cancel button on dialog
+	 * 
+	 * @param event
+	 */
 	@FXML
 	private void onCancelDialog(ActionEvent event) {
 		hideDialog();
