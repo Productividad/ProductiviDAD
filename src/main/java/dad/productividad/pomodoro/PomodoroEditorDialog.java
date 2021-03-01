@@ -201,7 +201,7 @@ public class PomodoroEditorDialog extends Dialog<PomodoroSetup> implements Initi
 				PomodoroSetup pomodoroSetup = new PomodoroSetup(pomodoroBox.getSelectionModel().getSelectedItem(),
 						shortBreakBox.getSelectionModel().getSelectedItem(),
 						longBreakBox.getSelectionModel().getSelectedItem(),
-						pomoLength.getSelectionModel().getSelectedItem(), titleTF.getText());
+						pomoLength.getSelectionModel().getSelectedItem());
 				return pomodoroSetup;
 			}
 		} catch (Exception e) {
