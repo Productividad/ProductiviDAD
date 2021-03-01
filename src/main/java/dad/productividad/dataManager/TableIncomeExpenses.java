@@ -231,8 +231,8 @@ public class TableIncomeExpenses {
      * @return Date of closest previous or closest next month
      */
     public static LocalDate find(LocalDate indexDate, int filter) {
-        String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
-        String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
+        String queryNext = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) < strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) ASC LIMIT 1";
+        String queryPrevious = "SELECT date_incomeExpense FROM incomesExpenses WHERE strftime('%Y-%m', ?) > strftime('%Y-%m', date_incomeExpense) ORDER BY date(date_incomeExpense) DESC LIMIT 1";
         ResultSet rs = null;
         LocalDate date = null;
         PreparedStatement pstmt;
