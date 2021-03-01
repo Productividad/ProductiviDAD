@@ -107,7 +107,8 @@ public class MenuBarController implements Initializable {
             projectManagerSection.setDisable(true);
 
             MainController.mainController.getProjectManagerController().hideDialogs();
-
+            MainController.mainController.getProjectManagerController().readProjects();
+            
             new FadeIn(MainController.mainController.getProjectManagerController().getView()).play();
             MainController.mainController.getView().setCenter(MainController.mainController.getProjectManagerController().getView());
         }

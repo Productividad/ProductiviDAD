@@ -124,7 +124,6 @@ public class ProjectManagerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        readProjects();
         dialogProject.setVisible(false);
         dialogDelete.setVisible(false);
         colorPicker.setValue(new Color(1, 1, 1, 1));
