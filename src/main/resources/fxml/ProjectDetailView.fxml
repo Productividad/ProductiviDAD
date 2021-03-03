@@ -22,7 +22,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="40.0" styleClass="project-detail-header">
                <children>
-                  <JFXSpinner fx:id="spinner" minHeight="110.0" minWidth="80.0" progress="0.0" />
+                  <JFXSpinner fx:id="spinner" minHeight="110.0" minWidth="80.0" progress="0.0" styleClass="project-spinner" />
                   <VBox>
                      <children>
                         <Label fx:id="titleProject" styleClass="text-color" text="Set titleProject on controller">

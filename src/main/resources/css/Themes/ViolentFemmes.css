@@ -192,7 +192,9 @@
  	.pomodoro-spinner .arc{
  		-fx-stroke:#3E3A40;
  	}
- 	
+ 	.project-spinner .arc{
+ 		-fx-stroke:#3E3A40;
+ 	}
 /**
  * <Barra superior, tablas, columnas, scrollBar y botones>
  * Color de fondo y color de texto

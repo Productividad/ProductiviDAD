@@ -145,10 +145,7 @@ public class SettingsController implements Initializable {
      * Theme Picker of Submarine Widower Theme
      */
     private ThemePicker pickerVS = new ThemePicker();
-    /**
-     * Theme Picker of Real Betis Theme
-     */
-    private ThemePicker pickerRB = new ThemePicker();
+
     /**
      * Theme Picker of Dark Shadow Theme
      */
@@ -557,14 +554,6 @@ public class SettingsController implements Initializable {
         pickerVS.setTheme(viudoSubmarino);
         pickerVS.getStyleClass().addAll("theme-component", "viudo-submarino-theme");
 
-        //Real Betis
-        Theme realBetis = new Theme();
-        realBetis.setTitle("Real Betis");
-        realBetis.setPalette("transparent", "transparent", "transparent", "#65C296", "#049750", "#DA9513");
-        realBetis.setPath("/css/Themes/RealBetis.css");
-        pickerRB.setTheme(realBetis);
-        pickerRB.getStyleClass().addAll("theme-component", "real-betis-theme");
-
         //ProductiviDAD
         Theme productiviDAD = new Theme();
         productiviDAD.setTitle("ProductiviDAD");
@@ -575,7 +564,7 @@ public class SettingsController implements Initializable {
 
 
         themeWrapper.getChildren().addAll(pickerBW, pickerDS, pickerSM, pickerVF, pickerPB, pickerGS, pickerCS,
-                pickerVS, pickerPD, pickerRB);
+                pickerVS, pickerPD);
     }
 
     /**
@@ -602,7 +591,6 @@ public class SettingsController implements Initializable {
         pickerSM.setDisable(false);
         pickerVF.setDisable(false);
         pickerVS.setDisable(false);
-        pickerRB.setDisable(false);
         pickerDS.setDisable(false);
         pickerPD.setDisable(false);
     }

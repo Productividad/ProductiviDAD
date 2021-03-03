@@ -26,6 +26,7 @@ public class ProjectCommentComponent extends GridPane implements Initializable {
      */
     @FXML
     private Label titleComment;
+
     /**
      * Project Comment title
      */

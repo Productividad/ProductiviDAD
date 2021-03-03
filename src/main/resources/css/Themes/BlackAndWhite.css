@@ -170,6 +170,9 @@
  	.pomodoro-spinner .arc{
  		-fx-stroke:black;
  	}
+ 	.project-spinner .arc{
+ 		-fx-stroke:black;
+ 	}
 
 /**
  * <Barra superior, tablas, columnas, scrollBar y botones>

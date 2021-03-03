@@ -13,15 +13,17 @@
 
 <fx:root hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" styleClass="project-task" type="GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-      <ColumnConstraints hgrow="NEVER" prefWidth="5.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" />
+      <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="SOMETIMES" />
       <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+      <HBox alignment="CENTER_LEFT" GridPane.columnIndex="2" GridPane.rowSpan="2">
          <children>
             <Label fx:id="titleLabel" styleClass="text-color" text="Hacer las cosas del proyecto" wrapText="true">
                <font>
@@ -36,12 +38,13 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <VBox styleClass="project-task-hightlight" />
-      <CheckBox fx:id="doneCB" mnemonicParsing="false" onAction="#taskChecked" GridPane.columnIndex="2">
+      <VBox styleClass="project-task-hightlight" GridPane.rowSpan="2" />
+      <CheckBox fx:id="doneCB" mnemonicParsing="false" onAction="#taskChecked" GridPane.columnIndex="3" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets bottom="15.0" left="15.0" right="20.0" top="15.0" />
          </GridPane.margin>
       </CheckBox>
+      <Label fx:id="numComentLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

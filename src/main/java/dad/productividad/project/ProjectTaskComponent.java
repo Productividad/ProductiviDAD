@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import dad.productividad.app.MainController;
+import dad.productividad.dataManager.TableProjectComments;
 import dad.productividad.dataManager.TableTasks;
 import dad.productividad.task.Task;
 import javafx.beans.property.BooleanProperty;
@@ -32,6 +33,13 @@ public class ProjectTaskComponent extends GridPane implements Initializable {
 	 */
     @FXML
     private Label titleLabel;
+    
+    /**
+     * Label which contains the number of comments of a project
+     */
+    @FXML
+    private Label numComentLabel;
+    
 	/**
 	 * Done checkbox
 	 */
@@ -88,6 +96,10 @@ public class ProjectTaskComponent extends GridPane implements Initializable {
 			if(nv!=null) {
 				title.set(nv.getTitle());  
 				done.set(nv.isDone());   
+				int commentsCounter=TableProjectComments.read(task.get().getId()).size();
+				if(commentsCounter!=0) {
+					numComentLabel.textProperty().set(String.valueOf(commentsCounter));
+				}
 			} 
 		}); 
 		 

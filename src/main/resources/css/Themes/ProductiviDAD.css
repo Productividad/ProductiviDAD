@@ -192,6 +192,9 @@
  	.pomodoro-spinner .arc{
  		-fx-stroke:#4281A4;
  	}
+ 	.project-spinner .arc{
+ 		-fx-stroke:#4281A4;
+ 	}
  	
 /**
  * <Barra superior, tablas, columnas, scrollBar y botones>
